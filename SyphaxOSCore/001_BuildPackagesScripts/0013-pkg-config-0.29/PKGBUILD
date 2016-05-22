@@ -1,0 +1,28 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=pkg-config
+pkgver=0.29
+pkgrel=1
+pkgdesc="pkg-config"
+arch=('x86_64')
+url="http://pkgconfig.freedesktop.org/releases"
+license=('GPL')
+groups=('core')
+source=("$url/$pkgname-$pkgver.tar.gz")
+md5sums=('77f27dce7ef88d0634d0d6f90e03a77f')
+depends=('rootfs>=1.0.0')
+
+build() {
+        cd "$srcdir/$pkgname-$pkgver"
+        ./configure --prefix=/usr        \
+                    --with-internal-glib \
+                    --disable-host-tool  \
+                    --docdir=/usr/share/doc/pkg-config-0.29
+        make
+}
+
+package() {
+        cd "$srcdir/$pkgname-$pkgver"
+
+        make DESTDIR="$pkgdir/" install
+}
