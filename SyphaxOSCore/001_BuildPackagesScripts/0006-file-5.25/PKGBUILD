@@ -1,0 +1,24 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=file
+pkgver=5.25
+pkgrel=1
+pkgdesc="file"
+arch=('x86_64')
+url="ftp://ftp.astron.com/pub/file"
+license=('GPL')
+groups=('core')
+source=("$url/$pkgname-$pkgver.tar.gz")
+md5sums=('e6a972d4e10d9e76407a432f4a63cd4c')
+depends=('rootfs>=1.0.0')
+
+build() {
+        cd "$srcdir/$pkgname-$pkgver"
+        ./configure --prefix=/usr
+        make
+}
+
+package() {
+        cd "$srcdir/$pkgname-$pkgver"
+        make DESTDIR="$pkgdir/" install
+}
