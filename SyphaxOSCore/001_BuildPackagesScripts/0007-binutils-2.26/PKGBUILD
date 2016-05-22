@@ -1,0 +1,27 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=binutils
+pkgver=2.26
+pkgrel=1
+pkgdesc="binutils"
+arch=('x86_64')
+url="http://ftp.gnu.org/gnu/binutils"
+license=('GPL')
+groups=('core')
+source=("$url/$pkgname-$pkgver.tar.bz2")
+md5sums=('64146a0faa3b411ba774f47d41de239f')
+depends=('rootfs>=1.0.0')
+
+build() {
+        cd "$srcdir/$pkgname-$pkgver"
+        patch -Np1 -i ../../binutils-2.26-upstream_fix-2.patch
+        ./configure --prefix=/usr     \
+                     --enable-shared  \
+                     --disable-werror
+        make tooldir=/usr
+}
+
+package() {
+        cd "$srcdir/$pkgname-$pkgver"
+        make DESTDIR="$pkgdir/" tooldir=/usr install
+}
