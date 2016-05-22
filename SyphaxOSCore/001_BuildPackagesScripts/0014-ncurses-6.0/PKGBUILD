@@ -1,0 +1,54 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=ncurses
+pkgver=6.0
+pkgrel=1
+pkgdesc="ncurses"
+arch=('x86_64')
+url="http://ftp.gnu.org/gnu/ncurses"
+license=('GPL')
+groups=('core')
+source=("$url/$pkgname-$pkgver.tar.gz")
+md5sums=('ee13d052e1ead260d7c28071f46eefb1')
+depends=('rootfs>=1.0.0')
+
+prepare() {
+        cd "$srcdir/$pkgname-$pkgver"
+        sed -i '/LIBTOOL_INSTALL/d' c++/Makefile.in
+}
+
+build() {
+        cd "$srcdir/$pkgname-$pkgver"
+        ./configure --prefix=/usr           \
+                    --mandir=/usr/share/man \
+                    --with-shared           \
+                    --without-debug         \
+                    --without-normal        \
+                    --enable-pc-files       \
+                    --enable-widec
+        make
+}
+
+package() {
+        cd "$srcdir/$pkgname-$pkgver"
+
+        make DESTDIR="$pkgdir/" install
+
+        mkdir -pv "$pkgdir"/lib
+        mkdir -pv "$pkgdir"/usr/lib/pkgconfig
+
+        mv -v "$pkgdir"/usr/lib/libncursesw.so.6* "$pkgdir"/lib
+        ln -sfv ../../lib/$(readlink /usr/lib/libncursesw.so) "$pkgdir"/usr/lib/libncursesw.so
+        for lib in ncurses form panel menu ; do
+            rm -vf                    "$pkgdir"/usr/lib/lib${lib}.so
+            echo "INPUT(-l${lib}w)" > "$pkgdir"/usr/lib/lib${lib}.so
+            ln -sfv ${lib}w.pc        "$pkgdir"/usr/lib/pkgconfig/${lib}.pc
+        done
+
+        rm -vf                     "$pkgdir"/usr/lib/libcursesw.so
+        echo "INPUT(-lncursesw)" > "$pkgdir"/usr/lib/libcursesw.so
+        ln -sfv libncurses.so      "$pkgdir"/usr/lib/libcurses.so
+
+        mkdir -pv       "$pkgdir"/usr/share/doc/ncurses-6.0
+        cp -v -R doc/* "$pkgdir"/usr/share/doc/ncurses-6.0
+}
