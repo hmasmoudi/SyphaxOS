@@ -46,4 +46,7 @@ package() {
         chgrp -v utmp $pkgdir/var/log/lastlog
         chmod -v 664 $pkgdir/var/log/lastlog
         chmod -v 600 $pkgdir/var/log/btmp
+        
+        ln -snfv lib $pkgdir/lib64
+        ln -snfv lib $pkgdir/usr/lib64
 }
