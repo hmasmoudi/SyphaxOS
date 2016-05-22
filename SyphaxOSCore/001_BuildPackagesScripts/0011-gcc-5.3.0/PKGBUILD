@@ -1,0 +1,45 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=gcc
+pkgver=5.3.0
+pkgrel=1
+pkgdesc="gcc"
+arch=('x86_64')
+url="http://ftp.gnu.org/gnu/gcc/gcc-5.3.0"
+license=('GPL')
+groups=('core')
+source=("$url/$pkgname-$pkgver.tar.bz2")
+md5sums=('c9616fd448f980259c31de613e575719')
+depends=('rootfs>=1.0.0')
+
+build() {
+        cd "$srcdir/$pkgname-$pkgver"
+        mkdir -v build
+        cd build        
+        SED=sed                               \
+        ../configure --prefix=/usr             \
+                     --enable-languages=c,c++ \
+                     --disable-multilib       \
+                     --disable-bootstrap      \
+                     --with-system-zlib
+        make
+}
+
+package() {
+        cd "$srcdir/$pkgname-$pkgver"
+
+        mkdir -pv $pkgdir/lib
+        mkdir -pv $pkgdir/usr/lib
+        ln -snf lib $pkgdir/usr/lib64
+
+        cd build
+        make DESTDIR="$pkgdir/" install   
+
+        ln -sfv ../usr/bin/cpp $pkgdir/lib/cpp
+        ln -sfv gcc $pkgdir/usr/bin/cc
+        install -v -dm755 $pkgdir/usr/lib/bfd-plugins
+        ln -sfv ../../libexec/gcc/$(gcc -dumpmachine)/5.3.0/liblto_plugin.so $pkgdir/usr/lib/bfd-plugins/
+        mkdir -pv $pkgdir/usr/share/gdb/auto-load/usr/lib
+        mv -v $pkgdir/usr/lib/*gdb.py $pkgdir/usr/share/gdb/auto-load/usr/lib
+        rm -rf $pkgdir/usr/lib64
+}
