@@ -1,0 +1,37 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=attr
+pkgver=2.4.47
+pkgrel=1
+pkgdesc="attr"
+arch=('x86_64')
+url="http://download.savannah.gnu.org/releases/attr"
+license=('GPL')
+groups=('core')
+source=("$url/$pkgname-$pkgver.src.tar.gz")
+md5sums=('84f58dec00b60f2dc8fd1c9709291cc7')
+depends=('rootfs>=1.0.0')
+
+prepare() {
+        cd "$srcdir/$pkgname-$pkgver"
+        sed -i -e 's|/@pkg_name@|&-@pkg_version@|' include/builddefs.in
+        sed -i -e "/SUBDIRS/s|man[25]||g" man/Makefile
+}
+
+build() {
+        cd "$srcdir/$pkgname-$pkgver"
+        ./configure --prefix=/usr --bindir=/bin --disable-static
+        make
+}
+
+package() {
+        cd "$srcdir/$pkgname-$pkgver"
+
+        make DESTDIR="$pkgdir/" install install-dev install-lib
+
+        mkdir -pv "$pkgdir"/lib
+
+        chmod -v 755 "$pkgdir"/usr/lib/libattr.so
+        mv -v "$pkgdir"/usr/lib/libattr.so.* "$pkgdir"/lib
+        ln -sfv ../../lib/$(readlink /usr/lib/libattr.so) "$pkgdir"/usr/lib/libattr.so
+}
