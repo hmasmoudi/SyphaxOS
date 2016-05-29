@@ -1,0 +1,42 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=readline
+pkgver=6.3
+pkgrel=1
+pkgdesc="readline"
+arch=('x86_64')
+url="http://ftp.gnu.org/gnu/readline"
+license=('GPL')
+groups=('core')
+source=("$url/$pkgname-$pkgver.tar.gz")
+md5sums=('33c8fb279e981274f485fd91da77e94a')
+depends=('rootfs>=1.0.0')
+
+prepare() {
+        cd "$srcdir/$pkgname-$pkgver"
+        patch -Np1 -i ../../readline-6.3-upstream_fixes-3.patch
+        sed -i '/MV.*old/d' Makefile.in
+        sed -i '/{OLDSUFF}/c:' support/shlib-install
+}
+
+build() {
+        cd "$srcdir/$pkgname-$pkgver"
+        ./configure --prefix=/usr    \
+                    --disable-static \
+                    --docdir=/usr/share/doc/readline-6.3
+
+        make SHLIB_LIBS=-lncurses
+}
+
+package() {
+        cd "$srcdir/$pkgname-$pkgver"
+        
+        make SHLIB_LIBS=-lncurses DESTDIR="$pkgdir/" install
+
+        mkdir -pv $pkgdir/lib
+
+        mv -v $pkgdir/usr/lib/lib{readline,history}.so.* $pkgdir/lib
+        ln -sfv ../../lib/$(readlink /usr/lib/libreadline.so) $pkgdir/usr/lib/libreadline.so
+        ln -sfv ../../lib/$(readlink /usr/lib/libhistory.so ) $pkgdir/usr/lib/libhistory.so
+        install -v -m644 doc/*.{ps,pdf,html,dvi} $pkgdir/usr/share/doc/readline-6.3
+}
