@@ -1,0 +1,32 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=gdbm
+pkgver=1.11
+pkgrel=1
+pkgdesc="gdbm"
+arch=('x86_64')
+url="http://ftp.gnu.org/gnu/gdbm"
+license=('GPL')
+groups=('core')
+source=("$url/$pkgname-$pkgver.tar.gz")
+md5sums=('72c832680cf0999caedbe5b265c8c1bd')
+depends=('rootfs>=1.0.0')
+
+prepare() {
+        cd "$srcdir/$pkgname-$pkgver"
+}
+
+build() {
+        cd "$srcdir/$pkgname-$pkgver"
+
+        ./configure --prefix=/usr    \
+                    --disable-static \
+                    --enable-libgdbm-compat
+        make
+}
+
+package() {
+        cd "$srcdir/$pkgname-$pkgver"
+        
+        make DESTDIR="$pkgdir/" install
+}
