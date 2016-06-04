@@ -1,0 +1,39 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=util-linux
+pkgver=2.27.1
+pkgrel=1
+pkgdesc="util-linux"
+arch=('x86_64')
+url="https://www.kernel.org/pub/linux/utils/util-linux/v2.27"
+license=('GPL')
+groups=('core')
+source=("$url/$pkgname-$pkgver.tar.xz")
+md5sums=('3cd2698d1363a2c64091c2dadc974647')
+depends=('rootfs>=1.0.0')
+
+prepare() {
+        cd "$srcdir/$pkgname-$pkgver"
+}
+
+build() {
+        cd "$srcdir/$pkgname-$pkgver"
+
+        ./configure --docdir=/usr/share/doc/util-linux-2.27.1 \
+                    --disable-chfn-chsh  \
+                    --disable-login      \
+                    --disable-nologin    \
+                    --disable-su         \
+                    --disable-setpriv    \
+                    --disable-runuser    \
+                    --disable-pylibmount \
+                    --disable-static     \
+                    --without-python
+        make
+}
+
+package() {
+        cd "$srcdir/$pkgname-$pkgver"
+        
+        make DESTDIR="$pkgdir" install
+}
