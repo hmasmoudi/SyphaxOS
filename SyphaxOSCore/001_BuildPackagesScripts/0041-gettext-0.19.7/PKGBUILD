@@ -1,0 +1,34 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=gettext
+pkgver=0.19.7
+pkgrel=1
+pkgdesc="gettext"
+arch=('x86_64')
+url="http://ftp.gnu.org/gnu/gettext"
+license=('GPL')
+groups=('core')
+source=("$url/$pkgname-$pkgver.tar.xz")
+md5sums=('f81e50556da41b44c1d59ac93474dca5')
+depends=('rootfs>=1.0.0')
+
+prepare() {
+        cd "$srcdir/$pkgname-$pkgver"
+}
+
+build() {
+        cd "$srcdir/$pkgname-$pkgver"
+
+        ./configure --prefix=/usr    \
+                    --disable-static \
+                    --docdir=/usr/share/doc/gettext-0.19.7
+        make
+}
+
+package() {
+        cd "$srcdir/$pkgname-$pkgver"
+        
+        make DESTDIR="$pkgdir" install
+
+        chmod -v 0755 $pkgdir/usr/lib/preloadable_libintl.so
+}
