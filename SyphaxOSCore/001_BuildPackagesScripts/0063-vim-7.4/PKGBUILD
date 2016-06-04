@@ -1,0 +1,42 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=vim
+pkgver=7.4
+pkgrel=1
+pkgdesc="vim"
+arch=('x86_64')
+install=vim.install
+url="ftp://ftp.vim.org/pub/vim/unix"
+license=('GPL')
+groups=('core')
+source=("$url/$pkgname-$pkgver.tar.bz2")
+md5sums=('607e135c559be642f210094ad023dc65')
+depends=('rootfs>=1.0.0')
+
+prepare() {
+        cd "$srcdir/$pkgname${pkgver//.}"
+
+        echo '#define SYS_VIMRC_FILE "/etc/vimrc"' >> src/feature.h
+}
+
+build() {
+        cd "$srcdir/$pkgname${pkgver//.}"
+
+        ./configure --prefix=/usr
+
+        make
+}
+
+package() {
+        cd "$srcdir/$pkgname${pkgver//.}"
+        
+        make DESTDIR="$pkgdir" install
+
+        ln -sv vim $pkgdir/usr/bin/vi
+        for L in $pkgdir/usr/share/man/{,*/}man1/vim.1; do
+         ln -sv vim.1 $(dirname $L)/vi.1
+        done
+
+        mkdir -pv $pkgdir/usr/share/doc/vim-7.4
+        ln -sv ../vim/vim74/doc $pkgdir/usr/share/doc/vim-7.4
+}

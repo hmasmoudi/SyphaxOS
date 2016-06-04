@@ -1,0 +1,16 @@
+# arg 1:  the new package version
+post_install() {
+cat > /etc/vimrc << "EOF"
+" Begin /etc/vimrc
+
+set nocompatible
+set backspace=2
+syntax on
+if (&term == "iterm") || (&term == "putty")
+  set background=dark
+endif
+
+" End /etc/vimrc
+EOF
+}
+
