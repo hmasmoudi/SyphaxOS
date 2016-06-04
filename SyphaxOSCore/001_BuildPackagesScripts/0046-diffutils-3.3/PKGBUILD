@@ -1,0 +1,33 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=diffutils
+pkgver=3.3
+pkgrel=1
+pkgdesc="diffutils"
+arch=('x86_64')
+url="http://ftp.gnu.org/gnu/diffutils"
+license=('GPL')
+groups=('core')
+source=("$url/$pkgname-$pkgver.tar.xz")
+md5sums=('99180208ec2a82ce71f55b0d7389f1b3')
+depends=('rootfs>=1.0.0')
+
+prepare() {
+        cd "$srcdir/$pkgname-$pkgver"
+
+        sed -i 's:= @mkdir_p@:= /bin/mkdir -p:' po/Makefile.in.in
+}
+
+build() {
+        cd "$srcdir/$pkgname-$pkgver"
+
+        ./configure --prefix=/usr
+
+        make
+}
+
+package() {
+        cd "$srcdir/$pkgname-$pkgver"
+        
+        make DESTDIR="$pkgdir" install
+}
