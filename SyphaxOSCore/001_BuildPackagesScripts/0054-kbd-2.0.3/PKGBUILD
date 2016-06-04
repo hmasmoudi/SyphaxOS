@@ -1,0 +1,38 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=kbd
+pkgver=2.0.3
+pkgrel=1
+pkgdesc="kbd"
+arch=('x86_64')
+url="https://www.kernel.org/pub/linux/utils/kbd"
+license=('GPL')
+groups=('core')
+source=("$url/$pkgname-$pkgver.tar.xz")
+md5sums=('231b46e7142eb41ea3ae06d2ded3c208')
+depends=('rootfs>=1.0.0')
+
+prepare() {
+        cd "$srcdir/$pkgname-$pkgver"
+
+        patch -Np1 -i ../../kbd-2.0.3-backspace-1.patch
+        sed -i 's/\(RESIZECONS_PROGS=\)yes/\1no/g' configure
+        sed -i 's/resizecons.8 //' docs/man/man8/Makefile.in
+}
+
+build() {
+        cd "$srcdir/$pkgname-$pkgver"
+
+        ./configure --prefix=/usr --disable-vlock
+
+        make
+}
+
+package() {
+        cd "$srcdir/$pkgname-$pkgver"
+        
+        make DESTDIR="$pkgdir" install
+
+        mkdir -pv $pkgdir/usr/share/doc/kbd-2.0.3
+        cp -R -v  docs/doc/* $pkgdir/usr/share/doc/kbd-2.0.3
+}
