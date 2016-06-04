@@ -3,7 +3,7 @@
 pkgname=iproute2
 pkgver=4.4.0
 pkgrel=1
-pkgdesc="gzip"
+pkgdesc="iproute2"
 arch=('x86_64')
 url="https://www.kernel.org/pub/linux/utils/net/iproute2"
 license=('GPL')
