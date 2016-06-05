@@ -3,7 +3,7 @@
 pkgname=make
 pkgver=4.1
 pkgrel=1
-pkgdesc="make"
+pkgdesc="The Make package contains a program for compiling packages."
 arch=('x86_64')
 url="http://ftp.gnu.org/gnu/make"
 license=('GPL')
