@@ -3,7 +3,7 @@
 pkgname=groff
 pkgver=1.22.3
 pkgrel=1
-pkgdesc="groff"
+pkgdesc="The Groff package contains programs for processing and formatting text."
 arch=('x86_64')
 url="http://ftp.gnu.org/gnu/groff"
 license=('GPL')
