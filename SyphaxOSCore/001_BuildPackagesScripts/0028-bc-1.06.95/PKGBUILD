@@ -3,7 +3,7 @@
 pkgname=bc
 pkgver=1.06.95
 pkgrel=1
-pkgdesc="bc"
+pkgdesc="The Bc package contains an arbitrary precision numeric processing language."
 arch=('x86_64')
 url="http://alpha.gnu.org/gnu/bc"
 license=('GPL')
@@ -14,11 +14,13 @@ depends=('rootfs>=1.0.0')
 
 prepare() {
         cd "$srcdir/$pkgname-$pkgver"
+        
         patch -Np1 -i ../../bc-1.06.95-memory_leak-1.patch
 }
 
 build() {
         cd "$srcdir/$pkgname-$pkgver"
+        
         ./configure --prefix=/usr           \
                     --with-readline         \
                     --mandir=/usr/share/man \
