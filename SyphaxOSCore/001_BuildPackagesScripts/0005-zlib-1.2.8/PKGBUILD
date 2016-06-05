@@ -3,7 +3,7 @@
 pkgname=zlib
 pkgver=1.2.8
 pkgrel=1
-pkgdesc="zlib"
+pkgdesc="The Zlib package contains compression and decompression routines used by some programs."
 arch=('x86_64')
 url="http://www.zlib.net"
 license=('GPL')
@@ -14,14 +14,19 @@ depends=('rootfs>=1.0.0')
 
 build() {
         cd "$srcdir/$pkgname-$pkgver"
+        
         ./configure --prefix=/usr
+        
         make
 }
 
 package() {
         cd "$srcdir/$pkgname-$pkgver"
+        
         make DESTDIR="$pkgdir/" install
+        
         mkdir -p $pkgdir/lib
+        
         mv -v $pkgdir/usr/lib/libz.so.* $pkgdir/lib
         ln -sfv ../../lib/$(readlink $pkgdir/usr/lib/libz.so) $pkgdir/usr/lib/libz.so
 }
