@@ -3,7 +3,7 @@
 pkgname=sed
 pkgver=4.2.2
 pkgrel=1
-pkgdesc="sed"
+pkgdesc="The Sed package contains a stream editor."
 arch=('x86_64')
 url="http://ftp.gnu.org/gnu/sed"
 license=('GPL')
@@ -17,8 +17,10 @@ prepare() {
 }
 
 build() {
-        cd "$srcdir/$pkgname-$pkgver"                    
+        cd "$srcdir/$pkgname-$pkgver"
+        
         ./configure --prefix=/usr --bindir=/bin --htmldir=/usr/share/doc/sed-4.2.2
+        
         make
         make html
 }
