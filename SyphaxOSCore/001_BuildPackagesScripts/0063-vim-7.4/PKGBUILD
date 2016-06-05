@@ -3,7 +3,7 @@
 pkgname=vim
 pkgver=7.4
 pkgrel=1
-pkgdesc="vim"
+pkgdesc="The Vim package contains a powerful text editor."
 arch=('x86_64')
 install=vim.install
 url="ftp://ftp.vim.org/pub/vim/unix"
@@ -40,3 +40,4 @@ package() {
         mkdir -pv $pkgdir/usr/share/doc/vim-7.4
         ln -sv ../vim/vim74/doc $pkgdir/usr/share/doc/vim-7.4
 }
+
