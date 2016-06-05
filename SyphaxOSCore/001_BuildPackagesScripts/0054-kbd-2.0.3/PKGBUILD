@@ -3,7 +3,7 @@
 pkgname=kbd
 pkgver=2.0.3
 pkgrel=1
-pkgdesc="kbd"
+pkgdesc="The Kbd package contains key-table files, console fonts, and keyboard utilities."
 arch=('x86_64')
 url="https://www.kernel.org/pub/linux/utils/kbd"
 license=('GPL')
