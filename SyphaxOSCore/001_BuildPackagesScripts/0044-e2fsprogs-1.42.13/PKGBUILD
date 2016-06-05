@@ -3,7 +3,7 @@
 pkgname=e2fsprogs
 pkgver=1.42.13
 pkgrel=1
-pkgdesc="e2fsprogs"
+pkgdesc="The E2fsprogs package contains the utilities for handling the ext2, ext3 and ext4 file system."
 arch=('x86_64')
 url="http://downloads.sourceforge.net/project/e2fsprogs/e2fsprogs/v1.42.13"
 license=('GPL')
@@ -27,6 +27,7 @@ build() {
                     --disable-libuuid       \
                     --disable-uuidd         \
                     --disable-fsck
+        
         make        
         makeinfo -o doc/com_err.info ./lib/et/com_err.texinfo
 }
