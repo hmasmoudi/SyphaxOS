@@ -3,7 +3,7 @@
 pkgname=xz
 pkgver=5.2.2
 pkgrel=1
-pkgdesc="xz"
+pkgdesc="The Xz package contains programs for compressing and decompressing files."
 arch=('x86_64')
 url="http://tukaani.org/xz"
 license=('GPL')
@@ -24,6 +24,7 @@ build() {
         ./configure --prefix=/usr    \
                     --disable-static \
                     --docdir=/usr/share/doc/xz-5.2.2
+        
         make
 }
 
