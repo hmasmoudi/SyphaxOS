@@ -3,7 +3,7 @@
 pkgname=grub
 pkgver=2.02~beta3
 pkgrel=1
-pkgdesc="groff"
+pkgdesc="The GRUB package contains the GRand Unified Bootloader."
 arch=('x86_64')
 url="http://alpha.gnu.org/gnu/grub"
 license=('GPL')
