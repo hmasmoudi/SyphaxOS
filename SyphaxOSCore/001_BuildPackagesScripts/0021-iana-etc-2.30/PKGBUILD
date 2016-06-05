@@ -3,7 +3,7 @@
 pkgname=iana-etc
 pkgver=2.30
 pkgrel=1
-pkgdesc="iana-etc"
+pkgdesc="The Iana-Etc package provides data for network services and protocols."
 arch=('x86_64')
 url="http://anduin.linuxfromscratch.org/LFS"
 license=('GPL')
@@ -18,6 +18,7 @@ prepare() {
 
 build() {
         cd "$srcdir/$pkgname-$pkgver"
+        
         make
 }
 
