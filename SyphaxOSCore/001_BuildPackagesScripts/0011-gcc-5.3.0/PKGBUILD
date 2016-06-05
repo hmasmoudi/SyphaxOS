@@ -3,7 +3,7 @@
 pkgname=gcc
 pkgver=5.3.0
 pkgrel=1
-pkgdesc="gcc"
+pkgdesc="The GCC package contains the GNU compiler collection, which includes the C and C++ compilers."
 arch=('x86_64')
 url="http://ftp.gnu.org/gnu/gcc/gcc-5.3.0"
 license=('GPL')
@@ -14,14 +14,16 @@ depends=('rootfs>=1.0.0')
 
 build() {
         cd "$srcdir/$pkgname-$pkgver"
+        
         mkdir -v build
         cd build        
         SED=sed                               \
-        ../configure --prefix=/usr             \
+        ../configure --prefix=/usr            \
                      --enable-languages=c,c++ \
                      --disable-multilib       \
                      --disable-bootstrap      \
                      --with-system-zlib
+        
         make
 }
 
