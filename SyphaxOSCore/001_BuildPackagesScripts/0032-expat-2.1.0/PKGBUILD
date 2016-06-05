@@ -3,7 +3,7 @@
 pkgname=expat
 pkgver=2.1.0
 pkgrel=1
-pkgdesc="expat"
+pkgdesc="The Expat package contains a stream oriented C library for parsing XML."
 arch=('x86_64')
 url="http://prdownloads.sourceforge.net/expat"
 license=('GPL')
