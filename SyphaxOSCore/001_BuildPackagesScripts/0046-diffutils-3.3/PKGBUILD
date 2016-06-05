@@ -3,7 +3,7 @@
 pkgname=diffutils
 pkgver=3.3
 pkgrel=1
-pkgdesc="diffutils"
+pkgdesc="The Diffutils package contains programs that show the differences between files or directories."
 arch=('x86_64')
 url="http://ftp.gnu.org/gnu/diffutils"
 license=('GPL')
