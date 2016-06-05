@@ -3,7 +3,7 @@
 pkgname=inetutils
 pkgver=1.9.4
 pkgrel=1
-pkgdesc="inetutils"
+pkgdesc="The Inetutils package contains programs for basic networking."
 arch=('x86_64')
 url="http://ftp.gnu.org/gnu/inetutils"
 license=('GPL')
