@@ -3,7 +3,7 @@
 pkgname=automake
 pkgver=1.15
 pkgrel=1
-pkgdesc="automake"
+pkgdesc="The Automake package contains programs for generating Makefiles for use with Autoconf."
 arch=('x86_64')
 url="http://ftp.gnu.org/gnu/automake"
 license=('GPL')
@@ -22,6 +22,7 @@ build() {
         cd "$srcdir/$pkgname-$pkgver"
 
         ./configure --prefix=/usr --docdir=/usr/share/doc/automake-1.15
+        
         make
 }
 
