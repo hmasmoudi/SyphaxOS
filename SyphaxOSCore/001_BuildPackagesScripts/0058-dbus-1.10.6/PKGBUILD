@@ -3,7 +3,7 @@
 pkgname=dbus
 pkgver=1.10.6
 pkgrel=1
-pkgdesc="dbus"
+pkgdesc="D-Bus is a message bus system, a simple way for applications to talk to one another."
 arch=('x86_64')
 url="http://dbus.freedesktop.org/releases/dbus"
 license=('GPL')
