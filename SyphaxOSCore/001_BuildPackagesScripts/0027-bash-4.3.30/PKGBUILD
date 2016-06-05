@@ -3,7 +3,7 @@
 pkgname=bash
 pkgver=4.3.30
 pkgrel=1
-pkgdesc="bash"
+pkgdesc="The Bash package contains the Bourne-Again SHell."
 arch=('x86_64')
 url="http://ftp.gnu.org/gnu/bash"
 license=('GPL')
@@ -14,11 +14,13 @@ depends=('rootfs>=1.0.0')
 
 prepare() {
         cd "$srcdir/$pkgname-$pkgver"
+        
         patch -Np1 -i ../../bash-4.3.30-upstream_fixes-3.patch
 }
 
 build() {
         cd "$srcdir/$pkgname-$pkgver"
+        
         ./configure --prefix=/usr                       \
                     --docdir=/usr/share/doc/bash-4.3.30 \
                     --without-bash-malloc               \
