@@ -3,7 +3,7 @@
 pkgname=kmod
 pkgver=22
 pkgrel=1
-pkgdesc="kmod"
+pkgdesc="The Kmod package contains libraries and utilities for loading kernel modules."
 arch=('x86_64')
 url="https://www.kernel.org/pub/linux/utils/kernel/kmod"
 license=('GPL')
@@ -25,6 +25,7 @@ build() {
                     --with-rootlibdir=/lib \
                     --with-xz              \
                     --with-zlib
+        
         make
 }
 
