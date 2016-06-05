@@ -1,0 +1,42 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=linux
+pkgver=4.4.8
+pkgrel=1
+pkgdesc="linux"
+arch=('x86_64')
+install=linux.install
+url="https://www.kernel.org/pub/linux/kernel/v4.x"
+license=('GPL')
+groups=('core')
+source=("$url/$pkgname-$pkgver.tar.xz")
+md5sums=('d6430ac57c5f1830798095b7147908e4')
+depends=('rootfs>=1.0.0')
+
+prepare() {
+        cd "$srcdir/$pkgname-$pkgver"
+        
+        make mrproper
+        cp -rf ../../linux-$pkgver.config .config
+}
+
+build() {
+        cd "$srcdir/$pkgname-$pkgver"
+
+        make
+}
+
+package() {
+        cd "$srcdir/$pkgname-$pkgver"
+        
+        make modules_install INSTALL_MOD_PATH="$pkgdir"
+
+        mkdir -pv $pkgdir/boot
+
+        cp -v arch/x86/boot/bzImage $pkgdir/boot/vmlinuz-$pkgver-SyphaxOs
+        cp -v System.map $pkgdir/boot/System.map-$pkgver
+        cp -v .config $pkgdir/boot/config-$pkgver
+        install -d $pkgdir/usr/share/doc/linux-$pkgver
+        cp -r Documentation/* $pkgdir/usr/share/doc/linux-$pkgver
+        install -v -m755 -d $pkgdir/etc/modprobe.d
+}
