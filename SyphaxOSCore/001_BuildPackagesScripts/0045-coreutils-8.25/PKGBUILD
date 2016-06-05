@@ -3,7 +3,7 @@
 pkgname=coreutils
 pkgver=8.25
 pkgrel=1
-pkgdesc="coreutils"
+pkgdesc="The Coreutils package contains utilities for showing and setting the basic system characteristics."
 arch=('x86_64')
 url="http://ftp.gnu.org/gnu/coreutils"
 license=('GPL')
@@ -14,6 +14,7 @@ depends=('rootfs>=1.0.0')
 
 prepare() {
         cd "$srcdir/$pkgname-$pkgver"
+        
         patch -Np1 -i ../../coreutils-8.25-i18n-2.patch
 }
 
@@ -23,6 +24,7 @@ build() {
         FORCE_UNSAFE_CONFIGURE=1 ./configure \
                     --prefix=/usr            \
                     --enable-no-install-program=kill,uptime
+        
         FORCE_UNSAFE_CONFIGURE=1 make
 }
 
