@@ -3,7 +3,7 @@
 pkgname=flex
 pkgver=2.6.0
 pkgrel=1
-pkgdesc="flex"
+pkgdesc="The Flex package contains a utility for generating programs that recognize patterns in text."
 arch=('x86_64')
 url="http://prdownloads.sourceforge.net/flex"
 license=('GPL')
@@ -18,7 +18,9 @@ prepare() {
 
 build() {
         cd "$srcdir/$pkgname-$pkgver"
+        
         ./configure --prefix=/usr --docdir=/usr/share/doc/flex-2.6.0
+        
         make
 }
 
