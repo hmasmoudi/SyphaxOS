@@ -3,7 +3,7 @@
 pkgname=man-db
 pkgver=2.7.5
 pkgrel=1
-pkgdesc="man-db"
+pkgdesc="The Man-DB package contains programs for finding and viewing man pages."
 arch=('x86_64')
 url="http://download.savannah.gnu.org/releases/man-db"
 license=('GPL')
@@ -26,6 +26,7 @@ build() {
                     --with-browser=/usr/bin/lynx         \
                     --with-vgrind=/usr/bin/vgrind        \
                     --with-grap=/usr/bin/grap
+        
         make
 }
 
@@ -36,3 +37,4 @@ package() {
 
         sed -i "s:man root:root root:g" $pkgdir/usr/lib/tmpfiles.d/man-db.conf
 }
+
