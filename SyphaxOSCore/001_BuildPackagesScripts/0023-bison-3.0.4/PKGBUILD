@@ -3,7 +3,7 @@
 pkgname=bison
 pkgver=3.0.4
 pkgrel=1
-pkgdesc="bison"
+pkgdesc="The Bison package contains a parser generator."
 arch=('x86_64')
 url="http://ftp.gnu.org/gnu/bison"
 license=('GPL')
@@ -18,7 +18,9 @@ prepare() {
 
 build() {
         cd "$srcdir/$pkgname-$pkgver"
+        
         ./configure --prefix=/usr --docdir=/usr/share/doc/bison-3.0.4
+        
         make
 }
 
