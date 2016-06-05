@@ -3,7 +3,7 @@
 pkgname=autoconf
 pkgver=2.69
 pkgrel=1
-pkgdesc="autoconf"
+pkgdesc="The Autoconf package contains programs for producing shell scripts that can automatically configure source code."
 arch=('x86_64')
 url="http://ftp.gnu.org/gnu/autoconf"
 license=('GPL')
@@ -20,6 +20,7 @@ build() {
         cd "$srcdir/$pkgname-$pkgver"
 
         ./configure --prefix=/usr
+        
         make 
 }
 
