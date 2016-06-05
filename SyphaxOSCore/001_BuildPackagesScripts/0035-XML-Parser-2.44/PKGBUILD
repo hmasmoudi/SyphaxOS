@@ -3,7 +3,7 @@
 pkgname=XML-Parser
 pkgver=2.44
 pkgrel=1
-pkgdesc="XML-Parser"
+pkgdesc="The XML::Parser module is a Perl interface to James Clark's XML parser, Expat."
 arch=('x86_64')
 url="http://cpan.metacpan.org/authors/id/T/TO/TODDR"
 license=('GPL')
