@@ -3,7 +3,7 @@
 pkgname=man-pages
 pkgver=4.04
 pkgrel=1
-pkgdesc="man-pages"
+pkgdesc="The Man-pages package contains over 2,200 man pages."
 arch=('x86_64')
 url="https://www.kernel.org/pub/linux/docs/man-pages"
 license=('GPL')
@@ -13,5 +13,6 @@ md5sums=('c20326ff9687f3ded1c24aa319a3880d')
 
 package() {
         cd "$srcdir/$pkgname-$pkgver"
+
         make DESTDIR="$pkgdir/" install
 }
