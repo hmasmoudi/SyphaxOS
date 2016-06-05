@@ -3,7 +3,7 @@
 pkgname=ncurses
 pkgver=6.0
 pkgrel=1
-pkgdesc="ncurses"
+pkgdesc="The Ncurses package contains libraries for terminal-independent handling of character screens."
 arch=('x86_64')
 url="http://ftp.gnu.org/gnu/ncurses"
 license=('GPL')
@@ -14,11 +14,13 @@ depends=('rootfs>=1.0.0')
 
 prepare() {
         cd "$srcdir/$pkgname-$pkgver"
+        
         sed -i '/LIBTOOL_INSTALL/d' c++/Makefile.in
 }
 
 build() {
         cd "$srcdir/$pkgname-$pkgver"
+        
         ./configure --prefix=/usr           \
                     --mandir=/usr/share/man \
                     --with-shared           \
@@ -26,6 +28,7 @@ build() {
                     --without-normal        \
                     --enable-pc-files       \
                     --enable-widec
+        
         make
 }
 
