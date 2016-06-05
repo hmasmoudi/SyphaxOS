@@ -3,7 +3,7 @@
 pkgname=less
 pkgver=481
 pkgrel=1
-pkgdesc="less"
+pkgdesc="The Less package contains a text file viewer."
 arch=('x86_64')
 url="http://www.greenwoodsoftware.com/less"
 license=('GPL')
