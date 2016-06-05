@@ -3,7 +3,7 @@
 pkgname=bzip2
 pkgver=1.0.6
 pkgrel=1
-pkgdesc="bzip2"
+pkgdesc="The Bzip2 package contains programs for compressing and decompressing files."
 arch=('x86_64')
 url="http://www.bzip.org/1.0.6"
 license=('GPL')
@@ -14,6 +14,7 @@ depends=('rootfs>=1.0.0')
 
 prepare() {
         cd "$srcdir/$pkgname-$pkgver"
+        
         patch -Np1 -i ../../bzip2-1.0.6-install_docs-1.patch
 
         sed -i 's@\(ln -s -f \)$(PREFIX)/bin/@\1@' Makefile
@@ -22,6 +23,7 @@ prepare() {
 
 build() {
         cd "$srcdir/$pkgname-$pkgver"
+        
         make -f Makefile-libbz2_so
         make clean
         make
