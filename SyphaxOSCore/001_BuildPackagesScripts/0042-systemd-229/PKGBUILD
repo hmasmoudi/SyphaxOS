@@ -3,7 +3,7 @@
 pkgname=systemd
 pkgver=229
 pkgrel=1
-pkgdesc="systemd"
+pkgdesc="The systemd package contains programs for controlling the startup, running, and shutdown of the system."
 arch=('x86_64')
 install=$pkgname.install
 url="http://anduin.linuxfromscratch.org/sources/other/systemd"
@@ -32,6 +32,7 @@ build() {
         ./configure --prefix=/usr    \
                     --disable-static \
                     --docdir=/usr/share/doc/gettext-0.19.7
+        
         make LIBRARY_PATH=/lib
 }
 
