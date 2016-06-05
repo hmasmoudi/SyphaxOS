@@ -3,7 +3,7 @@
 pkgname=patch
 pkgver=2.7.5
 pkgrel=1
-pkgdesc="patch"
+pkgdesc="The Patch package contains a program for modifying or creating files by applying a *patch* file typically created by the diff program."
 arch=('x86_64')
 url="http://ftp.gnu.org/gnu/patch"
 license=('GPL')
