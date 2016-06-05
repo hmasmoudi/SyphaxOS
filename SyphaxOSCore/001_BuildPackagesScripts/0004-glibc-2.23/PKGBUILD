@@ -3,7 +3,7 @@
 pkgname=glibc
 pkgver=2.23
 pkgrel=1
-pkgdesc="glibc"
+pkgdesc="The Glibc package contains the main C library."
 arch=('x86_64')
 url="http://ftp.gnu.org/gnu/glibc"
 license=('GPL')
@@ -26,18 +26,23 @@ build() {
 
 package() {
         cd "$srcdir/$pkgname-$pkgver"/build
+
         mkdir -p $pkgdir/etc/
         mkdir -p $pkgdir/lib
         mkdir -p $pkgdir/usr/lib
         ln -snfv lib $pkgdir/lib64
-        ln -snfv lib $pkgdir/usr/lib64
+        ln -snfv lib $pkgdir/usr/lib64        
         
         touch $pkgdir/etc/ld.so.conf
+
         make DESTDIR="$pkgdir/" install
-        cp -v ../nscd/nscd.conf $pkgdir/etc/nscd.conf
+        
+        cp -v ../nscd/nscd.conf $pkgdir/etc/nscd.conf       
         mkdir -pv $pkgdir/var/cache/nscd
+        
         install -v -Dm644 ../nscd/nscd.tmpfiles $pkgdir/usr/lib/tmpfiles.d/nscd.conf
         install -v -Dm644 ../nscd/nscd.service $pkgdir/lib/systemd/system/nscd.service
+        
         mkdir -pv $pkgdir/usr/lib/locale
        
         rm -rf $pkgdir/lib64
