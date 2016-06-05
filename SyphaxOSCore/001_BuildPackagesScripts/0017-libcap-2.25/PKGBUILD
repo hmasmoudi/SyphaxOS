@@ -3,7 +3,7 @@
 pkgname=libcap
 pkgver=2.25
 pkgrel=1
-pkgdesc="libcap"
+pkgdesc="The Libcap package implements the user-space interfaces to the POSIX 1003.1e capabilities available in Linux kernels. These capabilities are a partitioning of the all powerful root privilege into a set of distinct privileges."
 arch=('x86_64')
 url="https://www.kernel.org/pub/linux/libs/security/linux-privs/libcap2"
 license=('GPL')
@@ -14,11 +14,13 @@ depends=('rootfs>=1.0.0')
 
 prepare() {
         cd "$srcdir/$pkgname-$pkgver"
+        
         sed -i '/install.*STALIBNAME/d' libcap/Makefile
 }
 
 build() {
         cd "$srcdir/$pkgname-$pkgver"                    
+        
         make
 }
 
