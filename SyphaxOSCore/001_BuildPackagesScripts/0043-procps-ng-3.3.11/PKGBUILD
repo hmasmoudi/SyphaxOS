@@ -3,7 +3,7 @@
 pkgname=procps-ng
 pkgver=3.3.11
 pkgrel=1
-pkgdesc="procps-ng"
+pkgdesc="The Procps-ng package contains programs for monitoring processes."
 arch=('x86_64')
 url="http://sourceforge.net/projects/procps-ng/files/Production"
 license=('GPL')
@@ -40,3 +40,4 @@ package() {
         mv -v $pkgdir/usr/lib/libprocps.so.* $pkgdir/lib
         ln -sfv ../../lib/$(readlink /usr/lib/libprocps.so) $pkgdir/usr/lib/libprocps.so
 }
+
