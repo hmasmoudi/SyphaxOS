@@ -3,7 +3,7 @@
 pkgname=perl
 pkgver=5.22.1
 pkgrel=1
-pkgdesc="perl"
+pkgdesc="The Perl package contains the Practical Extraction and Report Language."
 arch=('x86_64')
 url="http://www.cpan.org/src/5.0"
 license=('GPL')
