@@ -3,7 +3,7 @@
 pkgname=texinfo
 pkgver=6.1
 pkgrel=1
-pkgdesc="texinfo"
+pkgdesc="The Texinfo package contains programs for reading, writing, and converting info pages."
 arch=('x86_64')
 url="http://ftp.gnu.org/gnu/texinfo"
 license=('GPL')
@@ -38,3 +38,4 @@ package() {
         done
         popd
 }
+
