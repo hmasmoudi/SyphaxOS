@@ -41,9 +41,6 @@ package() {
         ln -snfv bash $pkgdir/bin/sh
         ln -snfv ../../proc/self/mounts $pkgdir/etc/mtab
         
-        cp $pkgdir/../../passwd $pkgdir/etc/passwd
-        cp $pkgdir/../../group $pkgdir/etc/group
-
         #6_06_3_InitializeLogFilesAndGiveProperPermissions
         touch $pkgdir/var/log/{btmp,lastlog,wtmp}
         chgrp -v utmp $pkgdir/var/log/lastlog
