@@ -5,7 +5,6 @@ pkgver=7.4
 pkgrel=1
 pkgdesc="The Vim package contains a powerful text editor."
 arch=('x86_64')
-install=vim.install
 url="ftp://ftp.vim.org/pub/vim/unix"
 license=('GPL')
 groups=('core')
