@@ -20,14 +20,16 @@ build() {
 package() {
         cd "$srcdir/$pkgname-$pkgver"
 
-        mkdir -pv $pkgdir/etc
-
+        mkdir -pv $pkgdir/etc/modprobe.d
+        
         cp ../../lsb-release $pkgdir/etc/
         cp ../../os-release $pkgdir/etc/
         cp ../../issue $pkgdir/etc/
         cp ../../passwd $pkgdir/etc/
         cp ../../group $pkgdir/etc/
-        cp ../../../nsswitch.conf $pkgdir/etc/nsswitch.conf
-        cp ../../../ld.so.conf $pkgdir/etc/ld.so.conf
+        cp ../../nsswitch.conf $pkgdir/etc/nsswitch.conf
+        cp ../../ld.so.conf $pkgdir/etc/ld.so.conf
+        cp ../../vimrc $pkgdir/etc
+        cp ../../usb.conf $pkgdir/etc/modprobe.d/usb.conf
 }
 
