@@ -29,5 +29,6 @@ build() {
 package() {
         cd "$srcdir/$pkgname-$pkgver"
         
+        sed -i "s:./configure:LEXLIB=/usr/lib/libfl.a &:" t/lex-{clean,depend}-cxx.sh
         make DESTDIR="$pkgdir/" install
 }
