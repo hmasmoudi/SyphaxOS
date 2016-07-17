@@ -40,6 +40,9 @@ package() {
         #6_06_0_CreatingEssentialFilesandSymlinks        
         ln -snfv bash $pkgdir/bin/sh
         ln -snfv ../../proc/self/mounts $pkgdir/etc/mtab
+        
+        cp ../../passwd $pkgdir/etc/passwd
+        cp ../../group $pkgdir/etc/group
 
         #6_06_3_InitializeLogFilesAndGiveProperPermissions
         touch $pkgdir/var/log/{btmp,lastlog,wtmp}
