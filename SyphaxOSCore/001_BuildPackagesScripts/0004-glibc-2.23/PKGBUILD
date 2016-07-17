@@ -58,14 +58,7 @@ package() {
         localedef --prefix=$pkgdir -i fr_FR -f UTF-8 fr_FR.UTF-8
         
         make DESTDIR="$pkgdir" localedata/install-locales
-       
-        # 6.9.2. Configuring Glibc
-        # 6.9.2.1. Adding nsswitch.conf
-        cp ../../../nsswitch.conf $pkgdir/etc/nsswitch.conf
-       
-        # 6.9.2.3. Configuring the Dynamic Loader
-        cp ../../../ld.so.conf $pkgdir/etc/ld.so.conf
-        
+            
         mkdir -pv $pkgdir/etc/ld.so.conf.d
         
         rm -rf $pkgdir/lib64
