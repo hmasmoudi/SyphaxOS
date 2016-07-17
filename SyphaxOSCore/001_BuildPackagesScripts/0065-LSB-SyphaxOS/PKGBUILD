@@ -25,5 +25,9 @@ package() {
         cp ../../lsb-release $pkgdir/etc/
         cp ../../os-release $pkgdir/etc/
         cp ../../issue $pkgdir/etc/
+        cp ../../passwd $pkgdir/etc/
+        cp ../../group $pkgdir/etc/
+        cp ../../../nsswitch.conf $pkgdir/etc/nsswitch.conf
+        cp ../../../ld.so.conf $pkgdir/etc/ld.so.conf
 }
 
