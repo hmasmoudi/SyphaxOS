@@ -1,9 +1,9 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
-pkgname=LSB-SyphaxOS
+pkgname=FirstInstall
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="LSB Release of SyphaxOS."
+pkgdesc="First Install Scripts of SyphaxOS."
 arch=('x86_64')
 install=$pkgname.install
 license=('GPL')
