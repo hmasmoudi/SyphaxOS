@@ -10,6 +10,7 @@ license=('GPL')
 groups=('core')
 source=("$url/$pkgname-$pkgver.tar.xz")
 md5sums=('c20326ff9687f3ded1c24aa319a3880d')
+depends=('rootfs>=1.0.0')
 
 package() {
         cd "$srcdir/$pkgname-$pkgver"

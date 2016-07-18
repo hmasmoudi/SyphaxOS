@@ -36,6 +36,7 @@ build() {
 package() {
         cd "$srcdir/$pkgname-$pkgver"
         
+        mkdir -pv $pkgdir/var/lib/hwclock
         make DESTDIR="$pkgdir" install
 }
 

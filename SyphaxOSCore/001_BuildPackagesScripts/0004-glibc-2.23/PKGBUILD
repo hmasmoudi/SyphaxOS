@@ -56,8 +56,6 @@ package() {
         localedef --prefix=$pkgdir -i fr_FR -f ISO-8859-1 fr_FR
         localedef --prefix=$pkgdir -i fr_FR@euro -f ISO-8859-15 fr_FR@euro
         localedef --prefix=$pkgdir -i fr_FR -f UTF-8 fr_FR.UTF-8
-        
-        make DESTDIR="$pkgdir" localedata/install-locales
             
         mkdir -pv $pkgdir/etc/ld.so.conf.d
         

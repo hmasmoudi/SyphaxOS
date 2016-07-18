@@ -10,6 +10,7 @@ license=('GPL')
 groups=('core')
 source=("$url/linux-$pkgver.tar.xz")
 md5sums=('7b59c25c783173969bfb62cac4f057ce')
+depends=('rootfs>=1.0.0')
 
 build() {
         cd "$srcdir/linux-$pkgver"
