@@ -5,6 +5,7 @@ pkgver=1.0.0
 pkgrel=1
 pkgdesc="LSB Release of SyphaxOS."
 arch=('x86_64')
+install=$pkgname.install
 license=('GPL')
 groups=('core')
 depends=('rootfs>=1.0.0')
@@ -21,6 +22,7 @@ package() {
         cd "$srcdir/$pkgname-$pkgver"
 
         mkdir -pv $pkgdir/etc/modprobe.d
+        mkdir -pv $pkgdir/etc/systemd/network/
         
         cp ../../lsb-release $pkgdir/etc/
         cp ../../os-release $pkgdir/etc/
@@ -29,7 +31,38 @@ package() {
         cp ../../group $pkgdir/etc/
         cp ../../nsswitch.conf $pkgdir/etc/nsswitch.conf
         cp ../../ld.so.conf $pkgdir/etc/ld.so.conf
-        cp ../../vimrc $pkgdir/etc
+        cp ../../vimrc $pkgdir/etc/
         cp ../../usb.conf $pkgdir/etc/modprobe.d/usb.conf
+	cp ../../hosts $pkgdir/etc/
+	cp ../../hostname $pkgdir/etc/
+	cp ../../10-eth0-dhcp.network $pkgdir/etc/systemd/network/
+	cp ../../vconsole.conf $pkgdir/etc/
+	cp ../../locale.conf $pkgdir/etc/
+	cp ../../inputrc $pkgdir/etc/
+	cp ../../shells  $pkgdir/etc/
+	
+	mkdir -pv $pkgdir/etc/systemd/system/getty@tty1.service.d
+	cp ../../noclear.conf $pkgdir/etc/systemd/system/getty@tty1.service.d/
+	ln -sfv /dev/null $pkgdir/etc/systemd/system/tmp.mount
+	
+	cp ../../fstab $pkgdir/etc/
+	cp ../../profile $pkgdir/etc/
+	
+	install --directory --mode=0755 --owner=root --group=root $pkgdir/etc/profile.d
+	cp ../../dircolors.sh $pkgdir/etc/profile.d/
+	cp ../../extrapaths.sh $pkgdir/etc/profile.d/
+	cp ../../readline.sh $pkgdir/etc/profile.d/
+	cp ../../umask.sh $pkgdir/etc/profile.d/
+	cp ../../i18n.sh $pkgdir/etc/profile.d/
+	
+	cp ../../bashrc $pkgdir/etc/
+	
+	mkdir -pv $pkgdir/etc/skel
+	cp ../../skel_bash_profile $pkgdir/etc/skel/.bash_profile
+	cp ../../skel_bashrc $pkgdir/etc/skel/.bashrc
+	cp ../../skel_bash_logout $pkgdir/etc/skel/.bash_logout
+	cp ../../skel_vimrc $pkgdir/etc/skel/.vimrc
+	cp ../../skel_gtkrc-2.0 $pkgdir/etc/skel/.gtkrc-2.0
+	cp ../../skel_asoundrc $pkgdir/etc/skel/.asoundrc
 }
 
