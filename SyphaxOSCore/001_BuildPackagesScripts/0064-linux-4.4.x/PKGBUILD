@@ -5,7 +5,6 @@ pkgver=4.4.15
 pkgrel=1
 pkgdesc="The Linux package contains the Linux kernel."
 arch=('x86_64')
-install=linux.install
 url="https://www.kernel.org/pub/linux/kernel/v4.x"
 license=('GPL')
 groups=('core')
