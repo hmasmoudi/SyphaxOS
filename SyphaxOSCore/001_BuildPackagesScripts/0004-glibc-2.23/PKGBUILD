@@ -39,7 +39,7 @@ package() {
         ln -snfv lib $pkgdir/lib64
         ln -snfv lib $pkgdir/usr/lib64        
         
-        touch $pkgdir/etc/ld.so.conf
+        cp ../../../ld.so.conf $pkgdir/etc/ld.so.conf
 
         make DESTDIR="$pkgdir" install
         
