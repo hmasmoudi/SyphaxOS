@@ -29,9 +29,18 @@ prepare() {
 build() {
         cd "$srcdir/$pkgname-$pkgver"
 
-        ./configure --prefix=/usr    \
-                    --disable-static \
-                    --docdir=/usr/share/doc/gettext-0.19.7
+        ./configure --prefix=/usr          \
+                    --sysconfdir=/etc      \
+                    --localstatedir=/var   \
+                    --config-cache         \
+                    --with-rootprefix=/    \
+                    --with-rootlibdir=/lib \
+                    --enable-split-usr     \
+                    --disable-firstboot    \
+                    --disable-ldconfig     \
+                    --disable-sysusers     \
+                    --without-python       \
+                    --docdir=/usr/share/doc/systemd-229
         
         make LIBRARY_PATH=/lib
 }
