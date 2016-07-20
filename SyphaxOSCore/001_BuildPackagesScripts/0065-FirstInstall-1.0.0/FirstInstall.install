@@ -7,7 +7,7 @@ post_install() {
         LC_ALL=fr_FR.UTF-8 locale language
         LC_ALL=fr_FR.UTF-8 locale charmap
         LC_ALL=fr_FR.UTF-8 locale int_curr_symbol
-        LC_ALL=fr_FR.UTF-8locale int_prefix
+        LC_ALL=fr_FR.UTF-8 locale int_prefix
         dircolors -p > /etc/dircolors
 }
 
