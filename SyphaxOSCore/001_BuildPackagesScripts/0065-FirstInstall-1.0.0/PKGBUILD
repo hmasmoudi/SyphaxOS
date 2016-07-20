@@ -30,7 +30,6 @@ package() {
         cp ../../passwd $pkgdir/etc/
         cp ../../group $pkgdir/etc/
         cp ../../nsswitch.conf $pkgdir/etc/nsswitch.conf
-        cp ../../ld.so.conf $pkgdir/etc/ld.so.conf
         cp ../../vimrc $pkgdir/etc/
         cp ../../usb.conf $pkgdir/etc/modprobe.d/usb.conf
 	cp ../../hosts $pkgdir/etc/
