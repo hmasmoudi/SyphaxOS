@@ -1,0 +1,66 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=glibc
+pkgver=2.24
+pkgrel=1
+pkgdesc="The Glibc package contains the main C library."
+arch=('x86_64')
+url="http://ftp.gnu.org/gnu/glibc"
+license=('GPL')
+groups=('core')
+source=("$url/$pkgname-$pkgver.tar.xz")
+md5sums=('97dc5517f92016f3d70d83e3162ad318')
+depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/$pkgname-$pkgver"
+   patch -Np1 -i ../../glibc-2.24-fhs-1.patch
+   mkdir -v build
+}
+
+build() {
+   cd "$srcdir/$pkgname-$pkgver"
+   cd build
+
+   CC=gcc ../configure --prefix=/usr          \
+                       --enable-kernel=2.6.32 \
+                       --enable-obsolete-rpc
+   make
+}
+
+package() {
+   cd "$srcdir/$pkgname-$pkgver"
+   cd build
+
+   mkdir -p $pkgdir/etc/
+   mkdir -p $pkgdir/lib
+   mkdir -p $pkgdir/usr/lib
+   ln -snfv lib $pkgdir/lib64
+   ln -snfv lib $pkgdir/usr/lib64
+
+   touch $pkgdir/etc/ld.so.conf
+
+   make DESTDIR=$pkgdir install
+
+   cp -v ../nscd/nscd.conf $pkgdir/etc/nscd.conf
+   mkdir -pv $pkgdir/var/cache/nscd
+
+   install -v -Dm644 ../nscd/nscd.tmpfiles $pkgdir/usr/lib/tmpfiles.d/nscd.conf
+   install -v -Dm644 ../nscd/nscd.service $pkgdir/lib/systemd/system/nscd.service
+
+   mkdir -pv $pkgdir/usr/lib/locale
+   localedef --prefix=$pkgdir -i en_GB -f UTF-8 en_GB.UTF-8
+   localedef --prefix=$pkgdir -i en_US -f ISO-8859-1 en_US
+   localedef --prefix=$pkgdir -i en_US -f UTF-8 en_US.UTF-8
+   localedef --prefix=$pkgdir -i fr_FR -f ISO-8859-1 fr_FR
+   localedef --prefix=$pkgdir -i fr_FR@euro -f ISO-8859-15 fr_FR@euro
+   localedef --prefix=$pkgdir -i fr_FR -f UTF-8 fr_FR.UTF-8
+
+   cp ../../../nsswitch.conf $pkgdir/etc/nsswitch.conf
+   cp ../../../ld.so.conf $pkgdir/etc/ld.so.conf
+
+   mkdir -pv $pkgdir/etc/ld.so.conf.d
+
+   rm -rf $pkgdir/lib64
+   rm -rf $pkgdir/usr/lib64
+}

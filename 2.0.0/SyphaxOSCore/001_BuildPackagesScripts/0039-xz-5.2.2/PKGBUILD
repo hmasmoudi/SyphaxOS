@@ -1,0 +1,42 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=xz
+pkgver=5.2.2
+pkgrel=1
+pkgdesc="The Xz package contains programs for compressing and decompressing files."
+arch=('x86_64')
+url="http://tukaani.org/xz"
+license=('GPL')
+groups=('core')
+source=("$url/$pkgname-$pkgver.tar.xz")
+md5sums=('e26772b69940085c0632589ab1d52e64')
+depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/$pkgname-$pkgver"
+
+   sed -e '/mf\.buffer = NULL/a next->coder->mf.size = 0;' -i src/liblzma/lz/lz_encoder.c
+}
+
+build() {
+   cd "$srcdir/$pkgname-$pkgver"
+
+   ./configure --prefix=/usr    \
+               --disable-static \
+               --docdir=/usr/share/doc/xz-$pkgver
+
+   make
+}
+
+package() {
+   cd "$srcdir/$pkgname-$pkgver"
+
+   make DESTDIR="$pkgdir" install
+
+   mkdir -pv $pkgdir/lib
+   mkdir -pv $pkgdir/bin
+
+   mv -v $pkgdir/usr/bin/{lzma,unlzma,lzcat,xz,unxz,xzcat} $pkgdir/bin
+   mv -v $pkgdir/usr/lib/liblzma.so.* $pkgdir/lib
+   ln -svf ../../lib/$(readlink /usr/lib/liblzma.so) $pkgdir/usr/lib/liblzma.so
+}
