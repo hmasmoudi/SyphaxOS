@@ -78,6 +78,14 @@ package() {
        install -v -m644 $pkgdir/etc/pam.d/chage $pkgdir/etc/pam.d/${PROGRAM}
        sed -i "s/chage/$PROGRAM/" $pkgdir/etc/pam.d/${PROGRAM}
    done
-   [ -f $pkgdir/etc/login.access ] && mv -v $pkgdir/etc/login.access{,.NOUSE}
-   [ -f $pkgdir/etc/limits ] && mv -v $pkgdir/etc/limits{,.NOUSE}
+   
+   if [ -f "$pkgdir/etc/login.access" ];
+   then
+        mv -v $pkgdir/etc/login.access{,.NOUSE}
+   fi
+   
+   if [ -f "$pkgdir/etc/limits" ];
+   then
+        mv -v $pkgdir/etc/login.access{,.NOUSE}
+   fi
 }
