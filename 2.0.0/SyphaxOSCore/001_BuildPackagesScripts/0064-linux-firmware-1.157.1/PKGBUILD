@@ -26,6 +26,5 @@ package() {
    mkdir -pv $pkgdir/lib/firmware/
 
    cp -rf ../linux-firmware/* $pkgdir/lib/firmware/
-   cp -rf ../../iwlwifi-7260-17.ucode $pkgdir/lib/firmware/
 }
 
