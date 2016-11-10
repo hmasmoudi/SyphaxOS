@@ -44,4 +44,40 @@ package() {
    #grpconv
 
    sed -i 's/yes/no/' $pkgdir/etc/default/useradd
+
+   install -v -m644 $pkgdir/etc/login.defs $pkgdir/etc/login.defs.orig &&
+   for FUNCTION in FAIL_DELAY               \
+                   FAILLOG_ENAB             \
+                   LASTLOG_ENAB             \
+                   MAIL_CHECK_ENAB          \
+                   OBSCURE_CHECKS_ENAB      \
+                   PORTTIME_CHECKS_ENAB     \
+                   QUOTAS_ENAB              \
+                   CONSOLE MOTD_FILE        \
+                   FTMP_FILE NOLOGINS_FILE  \
+                   ENV_HZ PASS_MIN_LEN      \
+                   SU_WHEEL_ONLY            \
+                   CRACKLIB_DICTPATH        \
+                   PASS_CHANGE_TRIES        \
+                   PASS_ALWAYS_WARN         \
+                   CHFN_AUTH ENCRYPT_METHOD \
+                   ENVIRON_FILE
+   do
+       sed -i "s/^${FUNCTION}/# &/" $pkgdir/etc/login.defs
+   done
+
+   #Copy configuration file
+   cp ../../login $pkgdir/etc/pam.d/login
+   cp ../../passwd $pkgdir/etc/pam.d/passwd
+   cp ../../su $pkgdir/etc/pam.d/su
+   cp ../../chage $pkgdir/etc/pam.d/chage
+
+   for PROGRAM in chfn chgpasswd chpasswd chsh groupadd groupdel \
+                  groupmems groupmod newusers useradd userdel usermod
+   do
+       install -v -m644 $pkgdir/etc/pam.d/chage $pkgdir/etc/pam.d/${PROGRAM}
+       sed -i "s/chage/$PROGRAM/" $pkgdir/etc/pam.d/${PROGRAM}
+   done
+   [ -f $pkgdir/etc/login.access ] && mv -v $pkgdir/etc/login.access{,.NOUSE}
+   [ -f $pkgdir/etc/limits ] && mv -v $pkgdir/etc/limits{,.NOUSE}
 }
