@@ -30,6 +30,10 @@ package() {
 
    make modules_install INSTALL_MOD_PATH="$pkgdir"
 
+   #remove firmware. Will be added by linux-firmware package
+   rm -rf $pkgdir/lib/firmware
+  
+   #Create boot directory
    mkdir -pv $pkgdir/boot
 
    cp -v arch/x86/boot/bzImage $pkgdir/boot/vmlinuz-$pkgver-SyphaxOs
