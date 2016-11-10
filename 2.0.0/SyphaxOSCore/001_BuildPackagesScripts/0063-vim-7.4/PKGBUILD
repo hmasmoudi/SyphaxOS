@@ -13,13 +13,13 @@ md5sums=('607e135c559be642f210094ad023dc65')
 depends=('rootfs>=2.0.0')
 
 prepare() {
-   cd "$srcdir/$pkgname${pkgver//.}"
+   cd "$srcdir/$pkgname-$pkgver"
 
    echo '#define SYS_VIMRC_FILE "/etc/vimrc"' >> src/feature.h
 }
 
 build() {
-   cd "$srcdir/$pkgname${pkgver//.}"
+   cd "$srcdir/$pkgname-$pkgver"
 
    ./configure --prefix=/usr
 
@@ -27,7 +27,7 @@ build() {
 }
 
 package() {
-   cd "$srcdir/$pkgname${pkgver//.}"
+   cd "$srcdir/$pkgname-$pkgver"
 
    mkdir -v $pkgdir/etc
 
