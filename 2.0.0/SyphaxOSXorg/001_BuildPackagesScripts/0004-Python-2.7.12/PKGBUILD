@@ -1,6 +1,6 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
-pkgname=Python
+pkgname=Python2
 pkgver=2.7.12
 pkgrel=1
 pkgdesc="The Python 2 package contains the Python development environment."
@@ -8,16 +8,16 @@ arch=('x86_64')
 url="https://www.python.org/ftp/python/$pkgver"
 license=('GPL')
 groups=('core')
-source=("$url/${pkgname}-${pkgver}.tar.xz")
+source=("$url/Python-${pkgver}.tar.xz")
 md5sums=('57dffcee9cee8bb2ab5f82af1d8e9a69')
 depends=('rootfs>=2.0.0')
 
 prepare() {
-   cd "$srcdir/$pkgname-$pkgver"
+   cd "$srcdir/Python-$pkgver"
 }
 
 build() {
-   cd "$srcdir/$pkgname-$pkgver"
+   cd "$srcdir/Python-$pkgver"
 
    ./configure --prefix=/usr       \
                --enable-shared     \
@@ -28,7 +28,7 @@ build() {
 }
 
 package() {
-   cd "$srcdir/$pkgname-$pkgver"
+   cd "$srcdir/Python-$pkgver"
    
    #Create Needed System Link needed for package install
    mkdir -p $pkgdir/lib
@@ -39,6 +39,7 @@ package() {
    #Make the package
    make DESTDIR="$pkgdir" install
    chmod -v 755 $pkgdir/usr/lib/libpython2.7.so.1.0
+   rm -rf $pkgdir/usr/bin/2to3
    
    #Remove Used System Link during package install
    rm -rf $pkgdir/lib64
