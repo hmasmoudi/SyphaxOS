@@ -1,0 +1,49 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=Python3
+pkgver=3.5.2
+pkgrel=1
+pkgdesc="The Python 3 package contains the Python development environment."
+arch=('x86_64')
+url="https://www.python.org/ftp/python/$pkgver"
+license=('GPL')
+groups=('core')
+source=("$url/Python-${pkgver}.tar.xz")
+md5sums=('8906efbacfcdc7c3c9198aeefafd159e')
+depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/Python-$pkgver"
+}
+
+build() {
+   cd "$srcdir/Python-$pkgver"
+
+   CXX="/usr/bin/g++"              \
+   ./configure --prefix=/usr       \
+               --enable-shared     \
+               --with-system-expat \
+               --with-system-ffi   \
+               --without-ensurepip
+   make
+}
+
+package() {
+   cd "$srcdir/Python-$pkgver"
+   
+   #Create Needed System Link needed for package install
+   mkdir -p $pkgdir/lib
+   mkdir -p $pkgdir/usr/lib
+   ln -snfv lib $pkgdir/lib64
+   ln -snfv lib $pkgdir/usr/lib64
+
+   #Make the package
+   make DESTDIR="$pkgdir" install
+   chmod -v 755 $pkgdir/usr/lib/libpython3.5m.so &&
+   chmod -v 755 $pkgdir/usr/lib/libpython3.so
+   
+   #Remove Used System Link during package install
+   rm -rf $pkgdir/lib64
+   rm -rf $pkgdir/usr/lib64
+}
+
