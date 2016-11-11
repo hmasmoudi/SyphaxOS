@@ -13,7 +13,7 @@ md5sums=('27ba3451cb622467fc9267a176f19a31')
 depends=('rootfs>=2.0.0')
 
 prepare() {
-   cd "$srcdir/$pkgname-${pkgver}"
+   cd "$srcdir/$pkgname-$pkgver"
 }
 
 build() {
