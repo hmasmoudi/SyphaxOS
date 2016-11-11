@@ -1,0 +1,33 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=fixesproto
+pkgver=5.0
+pkgrel=1
+pkgdesc="The Xorg protocol headers provide the header files required to build the system, and to allow other applications to build against the installed X Window system."
+arch=('x86_64')
+url="http://ftp.x.org/pub/individual/proto"
+license=('GPL')
+groups=('core')
+source=("$url/${pkgname}-${pkgver}.tar.bz2")
+md5sums=('e7431ab84d37b2678af71e29355e101d')
+depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/$pkgname-$pkgver"
+}
+
+build() {
+   cd "$srcdir/$pkgname-$pkgver"
+   
+   source /etc/profile.d/xorg.sh
+   echo "Using XORG_PREFIX ($XORG_PREFIX) & XORG_CONFIG ($XORG_CONFIG)"
+   ./configure $XORG_CONFIG
+}
+
+package() {
+   cd "$srcdir/$pkgname-$pkgver"
+   
+   #Make the package
+   make DESTDIR="$pkgdir" install
+}
+
