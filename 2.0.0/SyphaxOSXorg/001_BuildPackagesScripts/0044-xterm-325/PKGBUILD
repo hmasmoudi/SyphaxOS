@@ -6,6 +6,7 @@ pkgrel=1
 pkgdesc="xterm is a terminal emulator for the X Window System."
 arch=('x86_64')
 url="ftp://invisible-island.net/xterm"
+install=$pkgname.install
 license=('GPL')
 groups=('core')
 source=("$url/${pkgname}-${pkgver}.tgz")
