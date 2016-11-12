@@ -1,0 +1,36 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=font-util
+pkgver=1.3.1
+pkgrel=1
+pkgdesc="The Xorg font packages provide needed fonts to the Xorg applications."
+arch=('x86_64')
+url="http://ftp.x.org/pub/individual/font"
+license=('GPL')
+groups=('core')
+source=("$url/${pkgname}-${pkgver}.tar.bz2")
+md5sums=('23756dab809f9ec5011bb27fb2c3c7d6')
+depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/$pkgname-$pkgver"
+}
+
+build() {
+   cd "$srcdir/$pkgname-$pkgver"
+   
+   source /etc/profile.d/xorg.sh
+   echo "Using XORG_PREFIX ($XORG_PREFIX) & XORG_CONFIG ($XORG_CONFIG)"
+
+   ./configure $XORG_CONFIG
+   
+   make
+}
+
+package() {
+   cd "$srcdir/$pkgname-$pkgver"
+   
+   #Make the package
+   make DESTDIR="$pkgdir" install
+}
+
