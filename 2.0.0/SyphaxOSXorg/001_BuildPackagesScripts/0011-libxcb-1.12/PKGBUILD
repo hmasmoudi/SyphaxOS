@@ -29,6 +29,7 @@ build() {
             --enable-xinput   \
             --without-doxygen \
             --docdir='${datadir}'/doc/$pkgname-$pkgver
+   make
 }
 
 package() {
