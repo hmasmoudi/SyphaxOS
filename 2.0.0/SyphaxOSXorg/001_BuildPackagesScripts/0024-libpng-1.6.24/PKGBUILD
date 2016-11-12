@@ -1,0 +1,38 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=libpng
+pkgver=1.6.24
+pkgrel=1
+pkgdesc="The libpng package contains libraries used by other programs for reading and writing PNG files."
+arch=('x86_64')
+url="http://downloads.sourceforge.net/libpng"
+license=('GPL')
+groups=('core')
+source=("$url/${pkgname}-${pkgver}.tar.xz")
+md5sums=('ffcdbd549814787fa8010c372e35ff25')
+depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/$pkgname-$pkgver"
+   
+   curl -L http://downloads.sourceforge.net/project/apng/libpng/libpng16/$pkgname-$pkgver-apng.patch.gz | gzip -cd | patch -p0
+}
+
+build() {
+   cd "$srcdir/$pkgname-$pkgver"
+   
+   ./configure --prefix=/usr --disable-static
+   
+   make
+}
+
+package() {
+   cd "$srcdir/$pkgname-$pkgver"
+   
+   #Make the package
+   make DESTDIR="$pkgdir" install
+   
+   mkdir -pv $pkgdir/usr/share/doc/$pkgname-$pkgver
+   cp -v README libpng-manual.txt $pkgdir/usr/share/doc/$pkgname-$pkgver
+}
+
