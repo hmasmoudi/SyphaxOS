@@ -1,0 +1,34 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=pango
+pkgver=1.40.1
+pkgrel=1
+pkgdesc="Pango is a library for laying out and rendering of text, with an emphasis on internationalization."
+arch=('x86_64')
+url="http://ftp.gnome.org/pub/gnome/sources/pango/1.40"
+license=('GPL')
+groups=('core')
+source=("$url/$pkgname-$pkgver.tar.xz")
+md5sums=('6fc88c6529890d6c8e03074d57a3eceb')
+depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/$pkgname-$pkgver"
+   
+   sed -i "/seems to be moved/s/^/#/" ltmain.sh
+}
+
+build() {
+   cd "$srcdir/$pkgname-$pkgver"
+
+   ./configure --prefix=/usr --sysconfdir=/etc
+
+   make
+}
+
+package() {
+   cd "$srcdir/$pkgname-$pkgver"
+
+   make DESTDIR="$pkgdir" install
+}
+
