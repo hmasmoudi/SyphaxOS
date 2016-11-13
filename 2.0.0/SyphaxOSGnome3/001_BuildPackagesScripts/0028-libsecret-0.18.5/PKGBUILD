@@ -1,0 +1,32 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=libsecret
+pkgver=0.18.5
+pkgrel=1
+pkgdesc="The libsecret package contains a GObject based library for accessing the Secret Service API."
+arch=('x86_64')
+url="http://ftp.gnome.org/pub/gnome/sources/libsecret/0.18"
+license=('GPL')
+groups=('core')
+source=("$url/${pkgname}-${pkgver}.tar.xz")
+md5sums=('2d688825921313da8731313b0a7f394c')
+depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/$pkgname-$pkgver"
+}
+
+build() {
+   cd "$srcdir/$pkgname-$pkgver"
+
+   ./configure --prefix=/usr --disable-static
+
+   make
+}
+
+package() {
+   cd "$srcdir/$pkgname-$pkgver"
+
+   make DESTDIR="$pkgdir" install
+}
+
