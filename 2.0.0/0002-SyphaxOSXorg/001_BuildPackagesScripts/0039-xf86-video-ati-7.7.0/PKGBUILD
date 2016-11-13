@@ -1,0 +1,39 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=xf86-video-ati
+pkgver=7.7.0
+pkgrel=1
+pkgdesc="The Xorg ATI Driver package contains the X.Org Video Driver for ATI Radeon video cards"
+arch=('x86_64')
+url="http://ftp.x.org/pub/individual/driver"
+license=('GPL')
+groups=('core')
+source=("$url/${pkgname}-${pkgver}.tar.bz2")
+md5sums=('59bfe0feba875c5cd28b03766aaa3b98')
+depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/$pkgname-$pkgver"
+}
+
+build() {
+   cd "$srcdir/$pkgname-$pkgver"
+   
+   source /etc/profile.d/xorg.sh
+   echo "Using XORG_PREFIX ($XORG_PREFIX) & XORG_CONFIG ($XORG_CONFIG)"
+
+   ./configure $XORG_CONFIG
+   
+   make
+}
+
+package() {
+   cd "$srcdir/$pkgname-$pkgver"
+   
+   #Make the package
+   make DESTDIR="$pkgdir" install
+   
+   mkdir -pv ${pkgdir}/${XORG_PREFIX}/share/X11/xorg.conf.d/
+   cp ../../20-glamor.conf ${pkgdir}/${XORG_PREFIX}/share/X11/xorg.conf.d/
+}
+

@@ -1,0 +1,53 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=openssl
+pkgver=1.0.2j
+pkgrel=1
+pkgdesc="The OpenSSL package contains management tools and libraries relating to cryptography."
+arch=('x86_64')
+url="https://openssl.org/source"
+license=('GPL')
+groups=('core')
+source=("$url/${pkgname}-${pkgver}.tar.gz")
+md5sums=('96322138f0b69e61b7212bc53d5e912b')
+depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/$pkgname-$pkgver"
+}
+
+build() {
+   cd "$srcdir/$pkgname-$pkgver"
+
+   ./config --prefix=$pkgdir/usr         \
+            --openssldir=$pkgdir/etc/ssl \
+            --libdir=lib                 \
+            shared                       \
+            zlib-dynamic
+   make depend
+   make
+   sed -i 's# libcrypto.a##;s# libssl.a##' Makefile
+}
+
+package() {
+   cd "$srcdir/$pkgname-$pkgver"
+
+   make DESTDIR="$pkgdir" install
+   
+   make DESTDIR="$pkgdir" MANDIR=${pkgdir}/usr/share/man MANSUFFIX=ssl install
+   install -dv -m755 $pkgdir/usr/share/doc/$pkgname-$pkgver
+   cp -vfr doc/*     $pkgdir/usr/share/doc/$pkgname-$pkgver
+   
+   cp ../../certdata.txt $srcdir/$pkgname-$pkgver
+   cp ../../remove-expired-certs.sh $srcdir/$pkgname-$pkgver
+   make-ca.sh
+   SSLDIR=$pkgdir/etc/ssl
+   sh remove-expired-certs.sh certs
+   install -d ${SSLDIR}/certs
+   cp -v certs/*.pem ${SSLDIR}/certs
+   c_rehash
+   install BLFS-ca-bundle*.crt ${SSLDIR}/ca-bundle.crt
+   ln -sfv ../ca-bundle.crt ${SSLDIR}/certs/ca-certificates.crt
+   unset SSLDIR
+}
+

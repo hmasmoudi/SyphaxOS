@@ -1,0 +1,51 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=xorg-fonts-75dpi
+pkgver=1.0.4
+pkgrel=1
+pkgdesc="The Xorg font 75dpi packages provide needed fonts to the Xorg applications."
+arch=('x86_64')
+url="http://ftp.x.org/pub/individual/font"
+license=('GPL')
+groups=('core')
+source=("$url/font-adobe-75dpi-1.0.3.tar.bz2"
+        "$url/font-adobe-utopia-75dpi-1.0.4.tar.bz2"
+        "$url/font-bh-75dpi-1.0.3.tar.bz2"
+        "$url/font-bh-lucidatypewriter-75dpi-1.0.3.tar.bz2"
+        "$url/font-bitstream-75dpi-1.0.3.tar.bz2")
+md5sums=('6c9f26c92393c0756f3e8d614713495b'
+         'e99276db3e7cef6dccc8a57bc68aeba7'
+         '565494fc3b6ac08010201d79c677a7a7'
+         'f6d65758ac9eb576ae49ab24c5e9019a'
+         'd7c0588c26fac055c0dd683fdd65ac34')
+depends=('rootfs>=2.0.0')
+
+build() {   
+   source /etc/profile.d/xorg.sh
+   echo "Using XORG_PREFIX ($XORG_PREFIX) & XORG_CONFIG ($XORG_CONFIG)"
+
+   cd "${srcdir}"
+   for dir in font-*-75dpi*; do
+      if [ -d "${dir}" ]; then
+         pushd ${dir}
+         ./configure $XORG_CONFIG
+         make
+         popd
+      fi
+   done
+}
+
+package() {
+   cd "${srcdir}"
+   
+   #Make the package
+      cd "${srcdir}"
+   for dir in font-*-75dpi*; do
+      if [ -d "${dir}" ]; then
+         pushd ${dir}
+         make DESTDIR="$pkgdir" install
+         popd
+      fi
+   done
+}
+

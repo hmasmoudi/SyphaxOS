@@ -1,0 +1,45 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=iptables
+pkgver=1.6.0
+pkgrel=1
+pkgdesc="The principal firewall tool for Linux is Iptables. You will need to install Iptables if you intend on using any form of a firewall."
+arch=('x86_64')
+url="http://www.netfilter.org/projects/iptables/files"
+license=('GPL')
+groups=('core')
+source=("$url/$pkgname-$pkgver.tar.bz2")
+md5sums=('27ba3451cb622467fc9267a176f19a31')
+depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/$pkgname-$pkgver"
+}
+
+build() {
+   cd "$srcdir/$pkgname-$pkgver"
+
+   ./configure --prefix=/usr      \
+               --sbindir=/sbin    \
+               --disable-nftables \
+               --enable-libipq    \
+               --with-xtlibdir=/lib/xtables
+   make
+}
+
+package() {
+   cd "$srcdir/$pkgname-$pkgver"
+
+   mkdir -v $pkgdir/etc
+
+   make DESTDIR="$pkgdir" install
+
+   ln -sfv ../../sbin/xtables-multi $pkgdir/usr/bin/iptables-xml
+
+   for file in ip4tc ip6tc ipq iptc xtables
+   do
+     mv -v $pkgdir/usr/lib/lib${file}.so.* $pkgdir/lib
+     ln -sfv ../../lib/$(readlink $pkgdir/usr/lib/lib${file}.so) $pkgdir/usr/lib/lib${file}.so
+   done
+}
+

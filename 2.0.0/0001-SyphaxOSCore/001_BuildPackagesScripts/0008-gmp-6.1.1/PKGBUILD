@@ -1,0 +1,32 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=gmp
+pkgver=6.1.1
+pkgrel=1
+pkgdesc="The GMP package contains math libraries. These have useful functions for arbitrary precision arithmetic."
+arch=('x86_64')
+url="http://ftp.gnu.org/gnu/gmp"
+license=('GPL')
+groups=('core')
+source=("$url/$pkgname-$pkgver.tar.xz")
+md5sums=('e70e183609244a332d80529e7e155a35')
+depends=('rootfs>=2.0.0')
+
+build() {
+   cd "$srcdir/$pkgname-$pkgver"
+
+   ./configure --prefix=/usr    \
+               --enable-cxx     \
+               --disable-static \
+               --docdir=/usr/share/doc/gmp-$pkgver
+
+   make
+   make html
+}
+
+package() {
+   cd "$srcdir/$pkgname-$pkgver"
+
+   make DESTDIR="$pkgdir" install
+   make DESTDIR="$pkgdir" install-html
+}

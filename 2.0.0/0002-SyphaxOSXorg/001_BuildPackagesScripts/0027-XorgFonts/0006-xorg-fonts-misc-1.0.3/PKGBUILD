@@ -1,0 +1,69 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=xorg-fonts-misc
+pkgver=1.0.4
+pkgrel=1
+pkgdesc="The Xorg font misc packages provide needed fonts to the Xorg applications."
+arch=('x86_64')
+url="http://ftp.x.org/pub/individual/font"
+license=('GPL')
+groups=('core')
+source=("$url/font-arabic-misc-1.0.3.tar.bz2"
+        "$url/font-cursor-misc-1.0.3.tar.bz2"
+        "$url/font-daewoo-misc-1.0.3.tar.bz2"
+        "$url/font-dec-misc-1.0.3.tar.bz2"
+        "$url/font-isas-misc-1.0.3.tar.bz2"
+        "$url/font-jis-misc-1.0.3.tar.bz2"
+        "$url/font-micro-misc-1.0.3.tar.bz2"
+        "$url/font-misc-ethiopic-1.0.3.tar.bz2"
+        "$url/font-misc-meltho-1.0.3.tar.bz2"
+        "$url/font-misc-misc-1.1.2.tar.bz2"
+        "$url/font-mutt-misc-1.0.3.tar.bz2"
+        "$url/font-schumacher-misc-1.1.2.tar.bz2"
+        "$url/font-sony-misc-1.0.3.tar.bz2"
+        "$url/font-sun-misc-1.0.3.tar.bz2")
+md5sums=('cc0726e4a277d6ed93b8e09c1f195470'
+         '3e0069d4f178a399cffe56daa95c2b63'
+         '0571bf77f8fab465a5454569d9989506'
+         '6e7c5108f1b16d7a1c7b2c9760edd6e5'
+         'a2401caccbdcf5698e001784dbd43f1a'
+         'cb7b57d7800fd9e28ec35d85761ed278'
+         '143c228286fe9c920ab60e47c1b60b67'
+         '6306c808f7d7e7d660dfb3859f9091d2'
+         'e3e7b0fda650adc7eb6964ff3c486b1c'
+         'c88eb44b3b903d79fb44b860a213e623'
+         '56b0296e8862fc1df5cdbb4efe604e86'
+         'e805feb7c4f20e6bfb1118d19d972219'
+         'beef61a9b0762aba8af7b736bb961f86'
+         '948f2e07810b4f31195185921470f68d')
+depends=('rootfs>=2.0.0')
+
+build() {   
+   source /etc/profile.d/xorg.sh
+   echo "Using XORG_PREFIX ($XORG_PREFIX) & XORG_CONFIG ($XORG_CONFIG)"
+
+   cd "${srcdir}"
+   for dir in font-*-misc*; do
+      if [ -d "${dir}" ]; then
+         pushd ${dir}
+         ./configure $XORG_CONFIG
+         make
+         popd
+      fi
+   done
+}
+
+package() {
+   cd "${srcdir}"
+   
+   #Make the package
+      cd "${srcdir}"
+   for dir in font-*-misc*; do
+      if [ -d "${dir}" ]; then
+         pushd ${dir}
+         make DESTDIR="$pkgdir" install
+         popd
+      fi
+   done
+}
+

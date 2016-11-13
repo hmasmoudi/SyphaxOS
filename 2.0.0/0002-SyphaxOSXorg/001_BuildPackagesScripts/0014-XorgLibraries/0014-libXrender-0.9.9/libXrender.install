@@ -1,0 +1,9 @@
+# arg 1:  the new package version
+post_install() {
+        /sbin/ldconfig
+}
+
+# Package upgraded
+post_upgrade() {
+        /sbin/ldconfig
+}

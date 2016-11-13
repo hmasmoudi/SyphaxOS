@@ -1,0 +1,37 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=tzdata
+pkgver=2016f
+pkgrel=1
+pkgdesc="timezone data."
+arch=('x86_64')
+url="https://www.iana.org/time-zones/repository/releases/"
+license=('GPL')
+groups=('core')
+source=("$url/$pkgname$pkgver.tar.gz")
+md5sums=('b20b3c1618db1984aac685e763de001d')
+depends=('rootfs>=2.0.0')
+
+package() {
+   cd "$srcdir"
+
+   ZONEINFO=$pkgdir/usr/share/zoneinfo
+
+   mkdir -pv $ZONEINFO/{posix,right}
+   mkdir -pv $pkgdir/etc
+
+   for tz in etcetera southamerica northamerica europe africa antarctica asia australasia backward pacificnew systemv; do
+      zic -L /dev/null   -d $ZONEINFO -y "sh yearistype.sh" ${tz}
+      zic -L /dev/null   -d $ZONEINFO/posix -y "sh yearistype.sh" ${tz}
+      zic -L leapseconds -d $ZONEINFO/right -y "sh yearistype.sh" ${tz}
+   done
+
+   cp -v zone.tab zone1970.tab iso3166.tab $ZONEINFO
+
+   #FIXME WHEN INSTALLER IS CREATED
+   zic -d $ZONEINFO -p Africa/Tunis
+   unset ZONEINFO
+
+   #FIXME WHEN INSTALLER IS CREATED
+   cp -v $pkgdir/usr/share/zoneinfo/Africa/Tunis $pkgdir/etc/localtime
+}

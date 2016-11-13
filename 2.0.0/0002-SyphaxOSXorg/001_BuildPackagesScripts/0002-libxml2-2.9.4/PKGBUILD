@@ -1,0 +1,45 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=libxml2
+pkgver=2.9.4
+pkgrel=1
+pkgdesc="The libxml2 package contains libraries and utilities used for parsing XML files."
+arch=('x86_64')
+url="http://xmlsoft.org/sources"
+license=('GPL')
+groups=('core')
+source=("$url/${pkgname}-${pkgver}.tar.gz")
+md5sums=('ae249165c173b1ff386ee8ad676815f5')
+depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/$pkgname-$pkgver"
+   
+   sed -i "/seems to be moved/s/^/#/" ltmain.sh
+}
+
+build() {
+   cd "$srcdir/$pkgname-$pkgver"
+
+   ./configure --prefix=/usr --disable-static --with-history
+   
+   make
+}
+
+package() {
+   cd "$srcdir/$pkgname-$pkgver"
+   
+   #Create Needed System Link needed for package install
+   mkdir -p $pkgdir/lib
+   mkdir -p $pkgdir/usr/lib
+   ln -snfv lib $pkgdir/lib64
+   ln -snfv lib $pkgdir/usr/lib64
+
+   #Make the package
+   make DESTDIR="$pkgdir" install
+   
+   #Remove Used System Link during package install
+   rm -rf $pkgdir/lib64
+   rm -rf $pkgdir/usr/lib64
+}
+

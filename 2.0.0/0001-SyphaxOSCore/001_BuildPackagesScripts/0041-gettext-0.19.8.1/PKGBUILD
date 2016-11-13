@@ -1,0 +1,35 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=gettext
+pkgver=0.19.8.1
+pkgrel=1
+pkgdesc="The Gettext package contains utilities for internationalization and localization."
+arch=('x86_64')
+url="http://ftp.gnu.org/gnu/gettext"
+license=('GPL')
+groups=('core')
+source=("$url/$pkgname-$pkgver.tar.xz")
+md5sums=('df3f5690eaa30fd228537b00cb7b7590')
+depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/$pkgname-$pkgver"
+}
+
+build() {
+   cd "$srcdir/$pkgname-$pkgver"
+
+   ./configure --prefix=/usr    \
+               --disable-static \
+               --docdir=/usr/share/doc/gettext-$pkgver
+
+   make
+}
+
+package() {
+   cd "$srcdir/$pkgname-$pkgver"
+
+   make DESTDIR="$pkgdir" install
+
+   chmod -v 0755 $pkgdir/usr/lib/preloadable_libintl.so
+}

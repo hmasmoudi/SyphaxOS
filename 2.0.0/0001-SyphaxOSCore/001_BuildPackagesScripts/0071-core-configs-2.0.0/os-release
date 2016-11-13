@@ -1,0 +1,8 @@
+NAME="SyphaxOS"
+VERSION="2.0.0"
+ID=syphaxos
+PRETTY_NAME="SyphaxOS LTS 2.0.0"
+VERSION_ID="2.0.0"
+HOME_URL="https://www.facebook.com/Syphaxos"
+SUPPORT_URL="https://www.facebook.com/Syphaxos"
+BUG_REPORT_URL="https://www.facebook.com/Syphaxos"
