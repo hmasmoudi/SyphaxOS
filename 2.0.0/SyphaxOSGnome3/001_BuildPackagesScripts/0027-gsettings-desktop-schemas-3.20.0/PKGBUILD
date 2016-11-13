@@ -1,0 +1,35 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=gsettings-desktop-schemas
+pkgver=3.20.0
+pkgrel=1
+pkgdesc="The GSettings Desktop Schemas package contains a collection of GSettings schemas for settings shared by various components of a GNOME Desktop."
+arch=('x86_64')
+url="http://ftp.gnome.org/pub/gnome/sources/gsettings-desktop-schemas/3.20"
+install=$pkgname.install
+license=('GPL')
+groups=('core')
+source=("$url/${pkgname}-${pkgver}.tar.xz")
+md5sums=('c5d87ea480aa9bf66b134ddb5b8ea0f8')
+depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/$pkgname-$pkgver"
+   
+   sed -i -r 's:"(/system):"/org/gnome\1:g' schemas/*.in
+}
+
+build() {
+   cd "$srcdir/$pkgname-$pkgver"
+
+   ./configure --prefix=/usr
+
+   make
+}
+
+package() {
+   cd "$srcdir/$pkgname-$pkgver"
+
+   make DESTDIR="$pkgdir" install
+}
+
