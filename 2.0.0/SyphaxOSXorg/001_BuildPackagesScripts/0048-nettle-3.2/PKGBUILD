@@ -1,0 +1,37 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=nettle
+pkgver=3.2
+pkgrel=1
+pkgdesc="The Nettle package contains the low-level cryptographic library that is designed to fit easily in many contexts."
+arch=('x86_64')
+url="https://ftp.gnu.org/gnu/nettle"
+license=('GPL')
+groups=('core')
+source=("$url/${pkgname}-${pkgver}.tar.gz")
+md5sums=('afb15b4764ebf1b4e6d06c62bd4d29e4')
+depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/$pkgname-$pkgver"
+}
+
+build() {
+   cd "$srcdir/$pkgname-$pkgver"
+   
+   ./configure --prefix=/usr --disable-static
+
+   make
+}
+
+package() {
+   cd "$srcdir/$pkgname-$pkgver"
+      
+   #Make the package
+   make DESTDIR="$pkgdir" install
+   
+   chmod   -v   755 $pkgdir/usr/lib/lib{hogweed,nettle}.so
+   install -v -m755 -d $pkgdir/usr/share/doc/nettle-3.2
+   install -v -m644 nettle.html $pkgdir/usr/share/doc/nettle-3.2/libpcre.so
+}
+
