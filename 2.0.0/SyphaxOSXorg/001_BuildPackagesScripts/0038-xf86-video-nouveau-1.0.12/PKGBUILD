@@ -13,11 +13,11 @@ md5sums=('dc79910c7b9e32321cefc7af250c7765')
 depends=('rootfs>=2.0.0')
 
 prepare() {
-   cd "$srcdir/$pkgname"
+   cd "$srcdir/$pkgname-$pkgver"
 }
 
 build() {
-   cd "$srcdir/$pkgname"
+   cd "$srcdir/$pkgname-$pkgver"
    
    source /etc/profile.d/xorg.sh
    echo "Using XORG_PREFIX ($XORG_PREFIX) & XORG_CONFIG ($XORG_CONFIG)"
@@ -28,7 +28,7 @@ build() {
 }
 
 package() {
-   cd "$srcdir/$pkgname"
+   cd "$srcdir/$pkgname-$pkgver"
    
    #Make the package
    make DESTDIR="$pkgdir" install
