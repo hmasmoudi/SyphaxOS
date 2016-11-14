@@ -1,0 +1,31 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=libarchive
+pkgver=3.2.1
+pkgrel=1
+pkgdesc="The libarchive library provides a single interface for reading/writing various compression formats."
+arch=('x86_64')
+url="http://www.libarchive.org/downloads"
+license=('GPL')
+groups=('core')
+source=("$url/${pkgname}-${pkgver}.tar.gz")
+md5sums=('afa257047d1941a565216edbf0171e72')
+depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/$pkgname-$pkgver"
+}
+
+build() {
+   cd "$srcdir/$pkgname-$pkgver"
+
+   ./configure --prefix=/usr --disable-static
+   make
+}
+
+package() {
+   cd "$srcdir/$pkgname-$pkgver"
+
+   make DESTDIR="$pkgdir" install
+}
+
