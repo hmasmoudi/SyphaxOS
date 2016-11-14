@@ -1,0 +1,33 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=gnutls
+pkgver=3.5.3
+pkgrel=1
+pkgdesc="The GnuTLS package contains libraries and userspace tools which provide a secure layer over a reliable transport layer."
+arch=('x86_64')
+url="ftp://ftp.gnutls.org/gcrypt/gnutls/v3.5"
+license=('GPL')
+groups=('core')
+source=("$url/${pkgname}-${pkgver}.tar.xz")
+md5sums=('6c2c7f40ddf52933ee3ca474cb8cb63c')
+depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/$pkgname-$pkgver"
+}
+
+build() {
+   cd "$srcdir/$pkgname-$pkgver"
+
+   ./configure --prefix=/usr \
+               --with-default-trust-store-file=/etc/ssl/ca-bundle.crt 
+
+   make
+}
+
+package() {
+   cd "$srcdir/$pkgname-$pkgver"
+
+   make DESTDIR="$pkgdir" install
+}
+
