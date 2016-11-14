@@ -1,0 +1,32 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=rest
+pkgver=0.8.0
+pkgrel=1
+pkgdesc="The rest package contains a library that was designed to make it easier to access web services that claim to be RESTful."
+arch=('x86_64')
+url="http://ftp.gnome.org/pub/gnome/sources/rest/0.8"
+license=('GPL')
+groups=('core')
+source=("$url/${pkgname}-${pkgver}.tar.xz")
+md5sums=('07ae736561aab03ee9bdd451445926ba')
+depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/$pkgname-$pkgver"
+}
+
+build() {
+   cd "$srcdir/$pkgname-$pkgver"
+
+   ./configure --prefix=/usr 
+
+   make
+}
+
+package() {
+   cd "$srcdir/$pkgname-$pkgver"
+
+   make DESTDIR="$pkgdir" install
+}
+
