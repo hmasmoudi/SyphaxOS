@@ -1,0 +1,37 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=libwebp
+pkgver=0.5.1
+pkgrel=1
+pkgdesc="The libwebp package contains a library and support programs to encode and decode images in WebP format."
+arch=('x86_64')
+url="http://downloads.webmproject.org/releases/webp"
+license=('GPL')
+groups=('core')
+source=("$url/${pkgname}-${pkgver}.tar.gz")
+md5sums=('3d7db92ebba5b4f679413d25c6040881')
+depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/$pkgname-$pkgver"
+}
+
+build() {
+   cd "$srcdir/$pkgname-$pkgver"
+
+   ./configure --prefix=/usr           \
+               --enable-libwebpmux     \
+               --enable-libwebpdemux   \
+               --enable-libwebpdecoder \
+               --enable-libwebpextras  \
+               --enable-swap-16bit-csp \
+               --disable-static
+   make
+}
+
+package() {
+   cd "$srcdir/$pkgname-$pkgver"
+
+   make DESTDIR="$pkgdir" install
+}
+
