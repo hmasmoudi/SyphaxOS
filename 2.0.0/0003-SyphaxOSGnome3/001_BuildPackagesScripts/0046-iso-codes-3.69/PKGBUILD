@@ -1,0 +1,31 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=iso-codes
+pkgver=3.69
+pkgrel=1
+pkgdesc="The ISO Codes package contains a list of country, language and currency names and it is used as a central database for accessing this data."
+arch=('x86_64')
+url="https://pkg-isocodes.alioth.debian.org/downloads"
+license=('GPL')
+groups=('core')
+source=("$url/${pkgname}-${pkgver}.tar.xz")
+md5sums=('33ed5ea7eed84a7609f041c838fc96d7')
+depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/$pkgname-$pkgver"
+}
+
+build() {
+   cd "$srcdir/$pkgname-$pkgver"
+
+   ./configure --prefix=/usr
+   make
+}
+
+package() {
+   cd "$srcdir/$pkgname-$pkgver"
+
+   make DESTDIR="$pkgdir" install
+}
+
