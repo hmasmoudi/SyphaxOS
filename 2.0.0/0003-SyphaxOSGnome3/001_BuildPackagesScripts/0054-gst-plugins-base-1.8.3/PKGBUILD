@@ -1,0 +1,34 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=gst-plugins-base
+pkgver=1.8.3
+pkgrel=1
+pkgdesc="The GStreamer Base Plug-ins is a well-groomed and well-maintained collection of GStreamer plug-ins and elements, spanning the range of possible types of elements one would want to write for GStreamer."
+arch=('x86_64')
+url="http://gstreamer.freedesktop.org/src/gst-plugins-base"
+license=('GPL')
+groups=('core')
+source=("$url/${pkgname}-${pkgver}.tar.xz")
+md5sums=('4d03dd81828ea6b98a44c8f1ab7f4976')
+depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/$pkgname-$pkgver"
+}
+
+build() {
+   cd "$srcdir/$pkgname-$pkgver"
+
+   ./configure --prefix=/usr \
+            --with-package-name="GStreamer Base Plugins 1.8.3 SyphaxOS" \
+            --with-package-origin="http://gstreamer.freedesktop.org/src/gst-plugins-base"
+            
+   make
+}
+
+package() {
+   cd "$srcdir/$pkgname-$pkgver"
+
+   make DESTDIR="$pkgdir" install
+}
+
