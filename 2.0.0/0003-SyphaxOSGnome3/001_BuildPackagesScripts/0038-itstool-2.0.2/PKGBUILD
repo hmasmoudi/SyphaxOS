@@ -1,0 +1,32 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=itstool
+pkgver=2.0.2
+pkgrel=1
+pkgdesc="Itstool extracts messages from XML files and outputs PO template files, then merges translations from MO files to create translated XML files."
+arch=('x86_64')
+url="http://files.itstool.org/itstool"
+license=('GPL')
+groups=('core')
+source=("$url/${pkgname}-${pkgver}.tar.bz2")
+md5sums=('d472d877a7bc49899a73d442085b2f93')
+depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/$pkgname-$pkgver"
+}
+
+build() {
+   cd "$srcdir/$pkgname-$pkgver"
+
+   ./configure --prefix=/usr
+   
+   make
+}
+
+package() {
+   cd "$srcdir/$pkgname-$pkgver"
+
+   make DESTDIR="$pkgdir" install
+}
+
