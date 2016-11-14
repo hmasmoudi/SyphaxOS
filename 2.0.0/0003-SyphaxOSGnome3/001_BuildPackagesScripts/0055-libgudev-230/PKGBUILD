@@ -1,0 +1,32 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=libgudev
+pkgver=230
+pkgrel=1
+pkgdesc="The libgudev package contains GObject bindings for libudev."
+arch=('x86_64')
+url="http://ftp.gnome.org/pub/gnome/sources/libgudev/230"
+license=('GPL')
+groups=('core')
+source=("$url/${pkgname}-${pkgver}.tar.xz")
+md5sums=('e4dee8f3f349e9372213d33887819a4d')
+depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/$pkgname-$pkgver"
+}
+
+build() {
+   cd "$srcdir/$pkgname-$pkgver"
+
+   ./configure --prefix=/usr
+            
+   make
+}
+
+package() {
+   cd "$srcdir/$pkgname-$pkgver"
+
+   make DESTDIR="$pkgdir" install
+}
+
