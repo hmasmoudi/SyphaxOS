@@ -1,0 +1,36 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=ModemManager
+pkgver=1.6.0
+pkgrel=1
+pkgdesc="ModemManager provides a unified high level API for communicating with mobile broadband modems, regardless of the protocol used to communicate with the actual device."
+arch=('x86_64')
+url="http://www.freedesktop.org/software/ModemManager"
+license=('GPL')
+groups=('core')
+source=("$url/${pkgname}-${pkgver}.tar.xz")
+md5sums=('d9d93d2961ee35b4cd8a75a6a8631cb4')
+depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/$pkgname-$pkgver"
+}
+
+build() {
+   cd "$srcdir/$pkgname-$pkgver"
+
+   ./configure --prefix=/usr                 \
+               --sysconfdir=/etc             \
+               --localstatedir=/var          \
+               --enable-more-warnings=no     \
+               --with-suspend-resume=systemd \
+               --disable-static
+   make
+}
+
+package() {
+   cd "$srcdir/$pkgname-$pkgver"
+
+   make DESTDIR="$pkgdir" install
+}
+
