@@ -1,0 +1,31 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=unzip
+pkgver=6.0
+pkgrel=1
+pkgdesc="The UnZip package contains ZIP extraction utilities. These are useful for extracting files from ZIP archives."
+arch=('x86_64')
+url="http://downloads.sourceforge.net/infozip"
+license=('GPL')
+groups=('core')
+source=("$url/${pkgname}60.tar.gz")
+md5sums=('62b490407489521db863b523a7f86375')
+depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/${pkgname}60"
+}
+
+build() {
+   cd "$srcdir/${pkgname}60"
+
+   make -f unix/Makefile generic
+}
+
+package() {
+   cd "$srcdir/${pkgname}60"
+      
+   make prefix=${pkgdir}/usr MANDIR=${pkgdir}/usr/share/man/man1 \
+    -f unix/Makefile install
+}
+
