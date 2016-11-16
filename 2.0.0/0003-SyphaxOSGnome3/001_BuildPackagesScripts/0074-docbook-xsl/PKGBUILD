@@ -1,0 +1,43 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=docbook-xsl
+pkgver=1.79.1
+pkgrel=1
+pkgdesc="The DocBook XSL Stylesheets package contains XSL stylesheets. These are useful for performing transformations on XML DocBook files."
+arch=('x86_64')
+url="http://downloads.sourceforge.net/docbook"
+install=${pkgname}.install
+license=('GPL')
+groups=('core')
+source=("$url/${pkgname}-${pkgver}.tar.bz2")
+md5sums=('b48cbf929a2ad85e6672f710777ca7bc')
+depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+}
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   install -v -m755 -d ${pkgdir}/usr/share/xml/docbook/xsl-stylesheets-${pkgver}
+
+   cp -v -R VERSION assembly common eclipse epub epub3 extensions fo        \
+            highlighting html htmlhelp images javahelp lib manpages params  \
+            profiling roundtrip slides template tests tools webhelp website \
+            xhtml xhtml-1_1 xhtml5                                          \
+       ${pkgdir}/usr/share/xml/docbook/xsl-stylesheets-${pkgver}
+       
+   ln -s VERSION ${pkgdir}/usr/share/xml/docbook/xsl-stylesheets-${pkgver}/VERSION.xsl
+
+   install -v -m644 -D README \
+                       ${pkgdir}/usr/share/doc/${pkgname}-${pkgver}/README.txt
+                       
+   install -v -m644    RELEASE-NOTES* NEWS* \
+                       ${pkgdir}/usr/share/doc/${pkgname}-${pkgver}
+}
+
