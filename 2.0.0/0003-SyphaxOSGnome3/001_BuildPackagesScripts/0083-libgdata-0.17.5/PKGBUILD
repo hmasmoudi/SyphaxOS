@@ -1,0 +1,32 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=libgdata
+pkgver=0.17.5
+pkgrel=1
+pkgdesc="The libgdata package is a GLib-based library for accessing online service APIs using the GData protocol, most notably, Google's services."
+arch=('x86_64')
+url="http://ftp.gnome.org/pub/gnome/sources/libgdata/0.17"
+license=('GPL')
+groups=('core')
+source=("$url/${pkgname}-${pkgver}.tar.xz")
+md5sums=('3a1506d2bbdd68a98378312953a02b06')
+depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+}
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+
+   ./configure --prefix=/usr --disable-static
+   
+   make
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   make DESTDIR="$pkgdir" install
+}
+
