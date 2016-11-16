@@ -1,0 +1,38 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=cogl
+pkgver=1.22.2
+pkgrel=1
+pkgdesc="Cogl is a modern 3D graphics API with associated utility APIs designed to expose the features of 3D graphics hardware using a direct state access API design, as opposed to the state-machine style of OpenGL."
+arch=('x86_64')
+url="http://ftp.gnome.org/pub/gnome/sources/cogl/1.22"
+license=('GPL')
+groups=('core')
+source=("$url/${pkgname}-${pkgver}.tar.xz")
+md5sums=('d53b708ca7c4af03d7254e46945d6b33')
+depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+}
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+
+   ./configure --prefix=/usr                 \
+               --enable-gles1                \
+               --enable-gles2                \
+               --enable-kms-egl-platform     \
+               --enable-wayland-egl-platform \
+               --enable-xlib-egl-platform    \
+               --enable-wayland-egl-server 
+   
+   make
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   make DESTDIR="$pkgdir" install
+}
+
