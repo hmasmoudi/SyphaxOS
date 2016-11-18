@@ -1,0 +1,36 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=xf86-input-wacom
+pkgver=0.33.0
+pkgrel=1
+pkgdesc="The Xorg Wacom Driver package contains the X.Org X11 driver and SDK for Wacom and Wacom-like tablets."
+arch=('x86_64')
+url="http://downloads.sourceforge.net/linuxwacom"
+license=('GPL')
+groups=('core')
+source=("$url/${pkgname}-${pkgver}.tar.bz2")
+md5sums=('4faa1d4bf6eb74f40dba8c5cb3c9c3e4')
+depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+}
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+
+   export XORG_PREFIX=/usr
+   export XORG_CONFIG="--prefix=$XORG_PREFIX --sysconfdir=/etc --localstatedir=/var --disable-static"
+   ./configure $XORG_CONFIG                                \
+               --with-udev-rules-dir=/lib/udev/rules.d     \
+               --with-systemd-unit-dir=/lib/systemd/system
+   
+   make
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   make DESTDIR="$pkgdir" install
+}
+
