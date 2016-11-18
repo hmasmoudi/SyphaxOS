@@ -1,0 +1,45 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=BerkeleyDB
+pkgver=6.2.23
+pkgrel=1
+pkgdesc="The Berkeley DB package contains programs and utilities used by many other applications for database related functions."
+arch=('x86_64')
+url="http://download.oracle.com/berkeley-db"
+license=('GPL')
+groups=('core')
+source=("$url/db-${pkgver}.tar.gz")
+md5sums=('9da126afb937a48171ff1e569ce67cf1')
+depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/db-${pkgver}"
+}
+
+build() {
+   cd "$srcdir/db-${pkgver}"
+   
+   cd build_unix
+
+   ../dist/configure --prefix=/usr      \
+                     --enable-compat185 \
+                     --enable-dbm       \
+                     --disable-static   \
+                     --enable-cxx
+   make
+}
+
+package() {
+   cd "$srcdir/db-${pkgver}"
+   
+   
+   cd build_unix
+   
+   make DESTDIR="${pkgdir}" install 
+   
+   chown -v -R root:root                        \
+         "${pkgdir}"/usr/bin/db_*                          \
+         "${pkgdir}"/usr/include/db{,_185,_cxx}.h          \
+         "${pkgdir}"/usr/lib/libdb*.{so,la}
+}
+
