@@ -1,0 +1,32 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=lcms2
+pkgver=2.8
+pkgrel=1
+pkgdesc="The Little Color Management System is a small-footprint color management engine, with special focus on accuracy and performance."
+arch=('x86_64')
+url="http://downloads.sourceforge.net/lcms"
+license=('GPL')
+groups=('core')
+source=("$url/${pkgname}-${pkgver}.tar.gz")
+md5sums=('87a5913f1a52464190bb655ad230539c')
+depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+}
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   ./configure --prefix=/usr --disable-static
+   
+   make
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   make DESTDIR="$pkgdir" install
+}
+
