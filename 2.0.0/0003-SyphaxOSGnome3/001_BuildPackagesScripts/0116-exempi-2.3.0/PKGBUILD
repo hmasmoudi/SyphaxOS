@@ -1,0 +1,32 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=exempi
+pkgver=2.3.0
+pkgrel=1
+pkgdesc="Exempi is an implementation of XMP (Adobe's Extensible Metadata Platform)."
+arch=('x86_64')
+url="http://libopenraw.freedesktop.org/download"
+license=('GPL')
+groups=('core')
+source=("$url/${pkgname}-${pkgver}.tar.bz2")
+md5sums=('1cc8c7f005fd4ef631e9000b3d5433a8')
+depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+}
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   ./configure --prefix=/usr --disable-static
+   
+   make
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   make DESTDIR="$pkgdir" install
+}
+
