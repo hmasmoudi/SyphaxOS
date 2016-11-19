@@ -1,0 +1,37 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=newt
+pkgver=0.52.19
+pkgrel=1
+pkgdesc="Newt is a programming library for color text mode, widget based user interfaces."
+arch=('x86_64')
+url="http://fedorahosted.org/releases/n/e/newt"
+license=('GPL')
+groups=('core')
+source=("$url/${pkgname}-${pkgver}.tar.gz")
+md5sums=('e4aa0f7943edd39c52481a87f68f412a')
+depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   sed -e 's/^LIBNEWT =/#&/' \
+       -e '/install -m 644 $(LIBNEWT)/ s/^/#/' \
+       -e 's/$(LIBNEWT)/$(LIBNEWTSONAME)/g' \
+       -i Makefile.in
+}
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   ./configure --prefix=/usr --with-gpm-support
+   
+   make
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   make DESTDIR="${pkgdir}" install
+}
+
