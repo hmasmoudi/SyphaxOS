@@ -1,0 +1,48 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=NetworkManager
+pkgver=1.4.2
+pkgrel=1
+pkgdesc="NetworkManager is a set of co-operative tools that make networking simple and straightforward."
+arch=('x86_64')
+url="http://ftp.gnome.org/pub/gnome/sources/NetworkManager/1.4"
+install=${pkgname}.install
+license=('GPL')
+groups=('core')
+source=("$url/${pkgname}-${pkgver}.tar.xz"
+        "${pkgname}.install")
+md5sums=('59b5b5585467756787c6cb535cbd306e'
+         'a1d7238841ede201cb553ffde62e9868')
+depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+}
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   CXXFLAGS="-O2 -fPIC"                                        \
+   ./configure --prefix=/usr                                   \
+               --sysconfdir=/etc                               \
+               --localstatedir=/var                            \
+               --with-nmtui                                    \
+               --disable-ppp                                   \
+               --with-session-tracking=systemd                 \
+               --with-systemdsystemunitdir=/lib/systemd/system \
+               --docdir=/usr/share/doc/network-manager-${pkgver}
+   
+   make
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   mkdir -pv "${pkgdir}"/{var,run}
+   ln -snfv ../run "${pkgdir}"/var/run
+   
+   make DESTDIR="${pkgdir}" install
+   
+   rm -rf "${pkgdir}"/var/run
+}
+
