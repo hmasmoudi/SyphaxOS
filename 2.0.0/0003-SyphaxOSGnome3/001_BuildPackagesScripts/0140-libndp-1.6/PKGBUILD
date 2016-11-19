@@ -1,0 +1,34 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=libndp
+pkgver=1.6
+pkgrel=1
+pkgdesc="The libndp package provides a wrapper for IPv6 Neighbor Discovery Protocol."
+arch=('x86_64')
+url="http://libndp.org/files"
+license=('GPL')
+groups=('core')
+source=("$url/${pkgname}-${pkgver}.tar.gz")
+md5sums=('1e54d26bcb4a4110bc3f90c5dd04f1a7')
+depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+}
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   ./configure --prefix=/usr        \
+               --sysconfdir=/etc    \
+               --localstatedir=/var \
+               --disable-static
+   make
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   make DESTDIR="$pkgdir" install
+}
+
