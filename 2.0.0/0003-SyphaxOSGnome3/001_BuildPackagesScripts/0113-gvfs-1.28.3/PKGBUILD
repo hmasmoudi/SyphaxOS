@@ -1,0 +1,33 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=gvfs
+pkgver=1.28.3
+pkgrel=1
+pkgdesc="The Gvfs package is a userspace virtual filesystem designed to work with the I/O abstractions of GLib's GIO library."
+arch=('x86_64')
+url="http://ftp.gnome.org/pub/gnome/sources/gvfs/1.28"
+license=('GPL')
+groups=('core')
+source=("$url/${pkgname}-${pkgver}.tar.xz")
+md5sums=('d2399a1a217dd5030e8830c7e7c813c2')
+depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+}
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   ./configure --prefix=/usr     \
+               --sysconfdir=/etc \
+               --disable-gphoto2
+   make
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   make DESTDIR="$pkgdir" install
+}
+
