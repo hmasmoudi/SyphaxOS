@@ -1,0 +1,9 @@
+# arg 1:  the new package version
+post_install() {
+   useradd -c "SyphaxOS Print Service" -d /var/spool/cups -g lp -s /bin/false -u 9 lp
+   groupadd -g 19 lpadmin
+   usermod -a -G lpadmin root
+   rm -rf /tmp/cupsinit
+   gtk-update-icon-cache
+   systemctl enable org.cups.cupsd
+}
