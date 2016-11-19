@@ -1,0 +1,38 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=slang
+pkgver=2.2.4
+pkgrel=1
+pkgdesc="S-Lang is an interpreted language that may be embedded into an application to make the application extensible."
+arch=('x86_64')
+url="ftp://space.mit.edu/pub/davis/slang/v2.2"
+license=('GPL')
+groups=('core')
+source=("$url/${pkgname}-${pkgver}.tar.bz2")
+md5sums=('7fcfd447e378f07dd0c0bae671fe6487')
+depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+}
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   ./configure --prefix=/usr \
+               --sysconfdir=/etc \
+               --with-readline=gnu
+   make -j1
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   make DESTDIR="${pkgdir}" install_doc_dir="${pkgdir}"/usr/share/doc/slang-${pkgver}   \
+        SLSH_DOC_DIR="${pkgdir}"/usr/share/doc/slang-${pkgver}/slsh \
+        install-all
+
+   chmod -v 755 "${pkgdir}"/usr/lib/libslang.so.${pkgver} \
+                "${pkgdir}"/usr/lib/slang/v2/modules/*.so
+}
+
