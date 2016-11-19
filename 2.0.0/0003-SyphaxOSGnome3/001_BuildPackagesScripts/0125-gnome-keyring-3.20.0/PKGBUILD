@@ -1,0 +1,35 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=gnome-keyring
+pkgver=3.20.0
+pkgrel=1
+pkgdesc="The GNOME Keyring package contains a daemon that keeps passwords and other secrets for users."
+arch=('x86_64')
+url="http://ftp.gnome.org/pub/gnome/sources/gnome-keyring/3.20"
+license=('GPL')
+groups=('core')
+source=("$url/${pkgname}-${pkgver}.tar.xz")
+md5sums=('e09efe8021944dae404736b5a2adb98e')
+depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   sed -i -r 's:"(/desktop):"/org/gnome\1:' schema/*.xml
+}
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   ./configure --prefix=/usr     \
+               --sysconfdir=/etc \
+               --with-pam-dir=/lib/security
+   make
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   make DESTDIR="$pkgdir" install
+}
+
