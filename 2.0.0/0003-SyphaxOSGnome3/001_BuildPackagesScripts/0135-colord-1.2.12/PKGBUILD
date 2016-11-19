@@ -1,0 +1,41 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=colord
+pkgver=1.2.12
+pkgrel=1
+pkgdesc="Colord is a system activated daemon that maps devices to color profiles."
+arch=('x86_64')
+url="http://www.freedesktop.org/software/colord/releases"
+install=${pkgname}.install
+license=('GPL')
+groups=('core')
+source=("$url/${pkgname}-${pkgver}.tar.xz"
+        "colord.install")
+md5sums=('80b106ba18a43c7eeaf2d9a2b8c5725b'
+         'a4ae67e04991044dd9a499ccfe163776')
+depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+}
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   ./configure --prefix=/usr              \
+               --sysconfdir=/etc          \
+               --localstatedir=/var       \
+               --with-daemon-user=colord  \
+               --enable-vala              \
+               --disable-argyllcms-sensor \
+               --disable-bash-completion  \
+               --disable-static
+   make
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   make DESTDIR="$pkgdir" install
+}
+
