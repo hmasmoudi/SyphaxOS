@@ -1,0 +1,33 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=libexif
+pkgver=0.6.21
+pkgrel=1
+pkgdesc="The libexif package contains a library for parsing, editing, and saving EXIF data."
+arch=('x86_64')
+url="http://downloads.sourceforge.net/libexif"
+license=('GPL')
+groups=('core')
+source=("$url/${pkgname}-${pkgver}.tar.bz2")
+md5sums=('27339b89850f28c8f1c237f233e05b27')
+depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+}
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   ./configure --prefix=/usr \
+               --with-doc-dir=/usr/share/doc/libexif-0.6.21 \
+               --disable-static
+   make
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   make DESTDIR="$pkgdir" install
+}
+
