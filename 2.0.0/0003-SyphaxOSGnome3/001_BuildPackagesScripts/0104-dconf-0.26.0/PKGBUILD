@@ -3,9 +3,9 @@
 pkgname=dconf
 pkgver=0.26.0
 pkgrel=1
-pkgdesc="http://ftp.gnome.org/pub/gnome/sources/dconf/0.26"
+pkgdesc="The DConf package contains a low-level configuration system."
 arch=('x86_64')
-url="http://ftp.gnome.org/pub/gnome/sources/caribou/0.4"
+url="http://ftp.gnome.org/pub/gnome/sources/dconf/0.26"
 license=('GPL')
 groups=('core')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
