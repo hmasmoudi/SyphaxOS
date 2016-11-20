@@ -1,0 +1,79 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=krb5
+pkgver=1.14.3
+pkgrel=1
+pkgdesc="MIT Kerberos V5 is a free implementation of Kerberos 5. Kerberos is a network authentication protocol."
+arch=('x86_64')
+url="http://web.mit.edu/kerberos/dist/krb5/1.14"
+license=('GPL')
+groups=('core')
+source=("$url/${pkgname}-${pkgver}.tar.gz")
+md5sums=('f76e4f8a3c95bb59980dd5ef4b48aea9')
+depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   cd src
+   
+   sed -e "s@python2.5/Python.h@& python2.7/Python.h@g" \
+       -e "s@-lpython2.5]@&,\n  AC_CHECK_LIB(python2.7,main,[PYTHON_LIB=-lpython2.7])@g" \
+       -i configure.in &&
+
+   sed -e 's@\^u}@^u cols 300}@' \
+       -i tests/dejagnu/config/default.exp &&
+
+   sed -e '/eq 0/{N;s/12 //}' \
+       -i plugins/kdb/db2/libdb2/test/run.test
+       
+   autoconf
+}
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   cd src
+   
+   ./configure --prefix=/usr            \
+               --sysconfdir=/etc        \
+               --localstatedir=/var/lib \
+               --with-system-et         \
+               --with-system-ss         \
+               --with-system-verto=no   \
+               --enable-dns-for-realm
+   make
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   cd src
+      
+   make DESTDIR="${pkgdir}" install
+   
+   for f in gssapi_krb5 gssrpc k5crypto kadm5clnt kadm5srv \
+            kdb5 kdb_ldap krad krb5 krb5support verto ; do
+
+       find ${pkgdir}/usr/lib -type f -name "lib$f*.so*" -exec chmod -v 755 {} \;    
+   done          &&
+
+   mkdir -pv ${pkgdir}/lib
+   
+   mv -v ${pkgdir}/usr/lib/libkrb5.so.3*        ${pkgdir}/lib &&
+   mv -v ${pkgdir}/usr/lib/libk5crypto.so.3*    ${pkgdir}/lib &&
+   mv -v ${pkgdir}/usr/lib/libkrb5support.so.0* ${pkgdir}/lib &&
+
+   ln -v -sf ../../lib/libkrb5.so.3.3        ${pkgdir}/usr/lib/libkrb5.so        &&
+   ln -v -sf ../../lib/libk5crypto.so.3.1    ${pkgdir}/usr/lib/libk5crypto.so    &&
+   ln -v -sf ../../lib/libkrb5support.so.0.1 ${pkgdir}/usr/lib/libkrb5support.so &&
+
+   mkdir -pv ${pkgdir}/bin
+   
+   mv -v ${pkgdir}/usr/bin/ksu ${pkgdir}/bin &&
+   chmod -v 755 ${pkgdir}/bin/ksu   &&
+
+   install -v -dm755 ${pkgdir}/usr/share/doc/${pkgname}-${pkgver} &&
+   cp -vfr ../doc/*  ${pkgdir}/usr/share/doc/${pkgname}-${pkgver}
+}
+
