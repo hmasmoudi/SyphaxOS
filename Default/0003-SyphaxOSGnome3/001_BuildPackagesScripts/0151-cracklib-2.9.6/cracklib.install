@@ -1,0 +1,5 @@
+# arg 1:  the new package version
+post_install() {
+   bash create-cracklib-dict /usr/share/dict/*
+}
+
