@@ -19,7 +19,7 @@ prepare() {
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"
    
-   ./configure --prefix=/usr--disable-compile-warnings
+   ./configure --prefix=/usr --disable-compile-warnings
 
    make
 }
