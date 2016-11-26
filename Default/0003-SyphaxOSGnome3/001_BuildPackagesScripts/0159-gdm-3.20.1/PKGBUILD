@@ -45,10 +45,17 @@ package() {
    
    mkdir -pv $pkgdir/{run,var}
    ln -snfv ../run $pkgdir/var/run
+   mkdir -pv "${pkgdir}"/etc/X11/xorg.conf.d/
+   mkdir -pv "${pkgdir}"/etc/pam.d/
    
    make DESTDIR="${pkgdir}" install
    
    install -v -m644 data/gdm.service "${pkgdir}"/lib/systemd/system/gdm.service
+   
+   cp ../../00-keyboard.conf         "${pkgdir}"/etc/X11/xorg.conf.d/00-keyboard.conf
+   cp ../../gdm                      "${pkgdir}"/etc/pam.d/gdm 
+   cp ../../gdm-launch-environment   "${pkgdir}"/etc/pam.d/gdm-launch-environment
+   cp ../../gdm-password             "${pkgdir}"/etc/pam.d/gdm-password
    
    rm -rf $pkgdir/var/run
 }
