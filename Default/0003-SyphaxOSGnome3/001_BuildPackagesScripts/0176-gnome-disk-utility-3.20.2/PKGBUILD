@@ -1,0 +1,32 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=gnome-disk-utility
+pkgver=3.20.2
+pkgrel=1
+pkgdesc="The GNOME Disk Utility package provides applications used for dealing with storage devices."
+arch=('x86_64')
+url="http://ftp.gnome.org/pub/gnome/sources/${pkgname}-/3.20"
+license=('GPL')
+groups=('core')
+source=("$url/${pkgname}-${pkgver}.tar.xz")
+md5sums=('4cae57c846d451644e796f3ea496b07f')
+depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+}
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   ./configure --prefix=/usr --disable-static
+   
+   make
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   make DESTDIR="${pkgdir}" install
+}
+
