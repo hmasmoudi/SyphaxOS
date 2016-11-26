@@ -1,0 +1,58 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=wpa_supplicant
+pkgver=2.5
+pkgrel=1
+pkgdesc="WPA Supplicant is a Wi-Fi Protected Access (WPA) client and IEEE 802.1X supplicant."
+arch=('x86_64')
+url="http://hostap.epitest.fi/releases/"
+install=${pkgname}.install
+license=('GPL')
+groups=('core')
+source=("$url/${pkgname}-${pkgver}.tar.gz"
+        "config"
+        "wpa_supplicant.install")
+md5sums=('96ff75c3a514f1f324560a2376f13110'
+         '3124d9a6958b0c83c83bd03a72aee89b'
+         '7e18fa9c8cb316d5eef84b52b0bda56c')
+depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+}
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   cp ../../config wpa_supplicant/.config    
+   
+   cd wpa_supplicant
+   
+   make BINDIR=/sbin LIBDIR=/lib
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   cd wpa_supplicant
+   
+   mkdir -pv ${pkgdir}/sbin
+   mkdir -pv ${pkgdir}/usr/share/man/{man5,man8}
+   mkdir -pv ${pkgdir}/lib/systemd/system/
+   mkdir -pv ${pkgdir}/usr/share/dbus-1/system-services/
+   mkdir -pv ${pkgdir}/etc/dbus-1/system.d/
+   
+   install -v -m755 wpa_{cli,passphrase,supplicant} ${pkgdir}/sbin/
+   install -v -m644 doc/docbook/wpa_supplicant.conf.5 ${pkgdir}/usr/share/man/man5/
+   install -v -m644 doc/docbook/wpa_{cli,passphrase,supplicant}.8 ${pkgdir}/usr/share/man/man8/
+
+   install -v -m644 systemd/*.service ${pkgdir}/lib/systemd/system/
+
+   install -v -m644 dbus/fi.{epitest.hostap.WPASupplicant,w1.wpa_supplicant1}.service \
+                    ${pkgdir}/usr/share/dbus-1/system-services/
+   install -v -m644 dbus/dbus-wpa_supplicant.conf \
+                    ${pkgdir}/etc/dbus-1/system.d/wpa_supplicant.conf
+                    
+   install -v -m644 doc/docbook/wpa_gui.8 ${pkgdir}/usr/share/man/man8/
+}
+
