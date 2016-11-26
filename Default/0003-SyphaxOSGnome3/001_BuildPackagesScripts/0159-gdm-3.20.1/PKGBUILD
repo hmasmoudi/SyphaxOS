@@ -1,0 +1,55 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=gdm
+pkgver=3.20.1
+pkgrel=1
+pkgdesc="The GNOME Shell Extensions package contains a collection of extensions providing additional and optional functionality to the GNOME Shell."
+arch=('x86_64')
+url="http://ftp.gnome.org/pub/gnome/sources/${pkgname}-/3.20"
+install=${pkgname}.install
+license=('GPL')
+groups=('core')
+source=("$url/${pkgname}-${pkgver}.tar.xz"
+        "${pkgname}.install"
+        "00-keyboard.conf"
+        "gdm"
+        "gdm-launch-environment"
+        "gdm-password"
+        )
+md5sums=('5ce6722e298aae7e18d5007be9c2a4fb'
+         '35c56547f2c209efd15a383ec57358e8'
+         '0b7ad65320fc2e33694ccc40312df7ee'
+         '8b36398f1bca5c7fc89c07428c4084e7'
+         '8f580b55ca9b645ea6ebf9836378eada'
+         'e2ec0a45769ba56f8695624902357341')
+depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+}
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   ./configure --prefix=/usr         \
+               --sysconfdir=/etc     \
+               --localstatedir=/var  \
+               --without-plymouth    \
+               --disable-static      \
+               --enable-gdm-xsession
+   make
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   mkdir -pv $pkgdir/{run,var}
+   ln -snfv ../run $pkgdir/var/run
+   
+   make DESTDIR="${pkgdir}" install
+   
+   install -v -m644 data/gdm.service "${pkgdir}"/lib/systemd/system/gdm.service
+   
+   rm -rf $pkgdir/var/run
+}
+
