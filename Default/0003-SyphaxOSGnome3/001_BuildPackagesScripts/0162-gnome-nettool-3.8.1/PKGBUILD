@@ -1,0 +1,32 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=gnome-nettool
+pkgver=3.8.1
+pkgrel=1
+pkgdesc="The GNOME Nettool package is a network information tool which provides GUI interface for some of the most common command line network tools."
+arch=('x86_64')
+url="http://ftp.gnome.org/pub/gnome/sources/${pkgname}-/3.8"
+license=('GPL')
+groups=('core')
+source=("$url/${pkgname}-${pkgver}.tar.xz")
+md5sums=('d4fc944b7ba8fd5f49f04a73e0d37e80')
+depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+}
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   ./configure --prefix=/usr
+
+   make
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   make DESTDIR="${pkgdir}" install
+}
+
