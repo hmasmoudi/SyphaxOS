@@ -3,10 +3,14 @@
 pkgname=rootfs
 pkgver=2.0.0
 pkgrel=1
-pkgdesc="SyphaxOS Root File System"
+pkgdesc="SyphaxOS 2.0.0 Root File System"
 arch=('x86_64')
 license=('GPL')
 groups=('core')
+source=("group"
+        "passwd")
+md5sums=('40012975de69c90c68aefeb8bc5eecb3'
+         'ca2b6f93f0f43a1c42cf6c7fd2c50f76')
 
 build() {
    echo "Building rootfs Package"
