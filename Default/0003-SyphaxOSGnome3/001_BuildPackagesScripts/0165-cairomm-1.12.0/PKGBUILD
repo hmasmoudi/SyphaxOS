@@ -1,0 +1,35 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=cairomm
+pkgver=1.12.0
+pkgrel=1
+pkgdesc="The Cairomm package provides a C++ interface to Cairo."
+arch=('x86_64')
+url="http://cairographics.org/releases"
+license=('GPL')
+groups=('core')
+source=("$url/${pkgname}-${pkgver}.tar.gz")
+md5sums=('481501be65bcc34a605d6bc0f57a0023')
+depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   sed -e '/^libdocdir =/ s/$(book_name)/cairomm-1.12.0/' \
+       -i docs/Makefile.in
+}
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   ./configure --prefix=/usr
+
+   make
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   make DESTDIR="${pkgdir}" install
+}
+
