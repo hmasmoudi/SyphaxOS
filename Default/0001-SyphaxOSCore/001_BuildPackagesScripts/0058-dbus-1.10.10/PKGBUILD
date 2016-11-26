@@ -3,46 +3,56 @@
 pkgname=dbus
 pkgver=1.10.10
 pkgrel=1
-pkgdesc="D-Bus is a message bus system, a simple way for applications to talk to one another."
+pkgdesc="D-Bus is a message bus system, a simple way for applications to talk to one another"
 arch=('x86_64')
 url="http://dbus.freedesktop.org/releases/dbus"
+install=${pkgname}.install
 license=('GPL')
 groups=('core')
-source=("$url/$pkgname-$pkgver.tar.gz")
-md5sums=('495676d240eb982921b3ad1343526849')
+source=("$url/${pkgname}-${pkgver}.tar.gz"
+        "session-local.conf"
+        "${pkgname}.install")
+        
+md5sums=('495676d240eb982921b3ad1343526849'
+         'f78a3655ff83e4e991f5679840fe1b0b'
+         '77d9c14d87f14eccaf8e0803f0001ac2')
 depends=('rootfs>=2.0.0')
 
 prepare() {
-   cd "$srcdir/$pkgname-$pkgver"
+   cd "$srcdir/${pkgname}-${pkgver}"
 }
 
 build() {
-   cd "$srcdir/$pkgname-$pkgver"
-
-   ./configure --prefix=/usr                        \
-               --sysconfdir=/etc                    \
-               --localstatedir=/var                 \
-               --disable-static                     \
-               --disable-doxygen-docs               \
-               --disable-xml-docs                   \
-               --docdir=/usr/share/doc/dbus-$pkgver \
-               --with-console-auth-dir=/run/console
-
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   ./configure --prefix=/usr                  \
+               --sysconfdir=/etc              \
+               --localstatedir=/var           \
+               --disable-doxygen-docs         \
+               --disable-xml-docs             \
+               --disable-static               \
+               --with-console-auth-dir=/run/console/ \
+               --docdir=/usr/share/doc/${pkgname}-${pkgver}
    make
 }
 
 package() {
-   cd "$srcdir/$pkgname-$pkgver"
-
-   make DESTDIR="$pkgdir" install
-
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   make DESTDIR="${pkgdir}" install
+   
    mkdir -pv $pkgdir/{lib,run,var}
    ln -snfv ../run $pkgdir/var/run
+   
+   mv -v "${pkgdir}"/usr/lib/libdbus-1.so.* "${pkgdir}"/lib
+   ln -sfv ../../lib/$(readlink "${pkgdir}"/usr/lib/libdbus-1.so) "${pkgdir}"/usr/lib/libdbus-1.so
 
-   mv -v $pkgdir/usr/lib/libdbus-1.so.* $pkgdir/lib
-   ln -sfv ../../lib/$(readlink /usr/lib/libdbus-1.so) $pkgdir/usr/lib/libdbus-1.so
    ln -sfv /etc/machine-id $pkgdir/var/lib/dbus
+   
+   chown -v root:messagebus "${pkgdir}"/usr/libexec/dbus-daemon-launch-helper &&
+   chmod -v      4750       "${pkgdir}"/usr/libexec/dbus-daemon-launch-helper
 
+   cp ../../session-local.conf "${pkgdir}"/etc/dbus-1/session-local.conf
    rm -rf $pkgdir/var/run
 }
 
