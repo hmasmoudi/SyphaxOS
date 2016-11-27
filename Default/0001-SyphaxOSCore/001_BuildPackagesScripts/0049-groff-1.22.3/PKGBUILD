@@ -21,7 +21,7 @@ build() {
 
    PAGE=A4 ./configure --prefix=/usr
 
-   make
+   make -j 1
 }
 
 package() {
