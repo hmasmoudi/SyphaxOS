@@ -8,7 +8,7 @@ arch=('x86_64')
 url="http://www.docbook.org/xml/4.5"
 install=${pkgname}.install
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.zip")
 md5sums=('03083e288e87a7e829e437358da7ef9e')
 depends=('rootfs>=2.0.0')

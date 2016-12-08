@@ -7,7 +7,7 @@ pkgdesc="MIT Kerberos V5 is a free implementation of Kerberos 5. Kerberos is a n
 arch=('x86_64')
 url="http://web.mit.edu/kerberos/dist/krb5/1.14"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.gz")
 md5sums=('f76e4f8a3c95bb59980dd5ef4b48aea9')
 depends=('rootfs>=2.0.0')

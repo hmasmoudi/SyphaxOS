@@ -7,7 +7,7 @@ pkgdesc="The Little Color Management System is a small-footprint color managemen
 arch=('x86_64')
 url="http://downloads.sourceforge.net/lcms"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.gz")
 md5sums=('87a5913f1a52464190bb655ad230539c')
 depends=('rootfs>=2.0.0')

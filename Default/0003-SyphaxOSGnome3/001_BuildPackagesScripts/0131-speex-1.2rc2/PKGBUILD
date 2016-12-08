@@ -7,7 +7,7 @@ pkgdesc="Speex is an audio compression format designed especially for speech. It
 arch=('x86_64')
 url="http://downloads.us.xiph.org/releases/speex"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.gz")
 md5sums=('6ae7db3bab01e1d4b86bacfa8ca33e81')
 depends=('rootfs>=2.0.0')

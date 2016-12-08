@@ -5,9 +5,9 @@ pkgver=3.20.1
 pkgrel=1
 pkgdesc="The GNOME System Monitor package contains GNOME's replacement for gtop."
 arch=('x86_64')
-url="http://ftp.gnome.org/pub/gnome/sources/${pkgname}-/3.20"
+url="http://ftp.gnome.org/pub/gnome/sources/${pkgname}/3.20"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('cdc5b7fdf694d07f0b23f7e97e1f3f21')
 depends=('rootfs>=2.0.0')

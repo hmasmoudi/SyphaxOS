@@ -7,7 +7,7 @@ pkgdesc="The Xorg ATI Driver package contains the X.Org Video Driver for ATI Rad
 arch=('x86_64')
 url="http://ftp.x.org/pub/individual/driver"
 license=('GPL')
-groups=('core')
+groups=('graphicslayer')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
 md5sums=('59bfe0feba875c5cd28b03766aaa3b98')
 depends=('rootfs>=2.0.0')

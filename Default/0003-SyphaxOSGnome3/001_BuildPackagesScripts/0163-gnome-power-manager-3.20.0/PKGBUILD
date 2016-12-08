@@ -5,9 +5,9 @@ pkgver=3.20.0
 pkgrel=1
 pkgdesc="The GNOME Power Manager package contains a tool used to report on power management on the system."
 arch=('x86_64')
-url="http://ftp.gnome.org/pub/gnome/sources/${pkgname}-/3.20"
+url="http://ftp.gnome.org/pub/gnome/sources/${pkgname}/3.20"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('ea81d7e93acfdeb37f6627e3b3f6bdfc')
 depends=('rootfs>=2.0.0')

@@ -7,7 +7,7 @@ pkgdesc="The Python 3 package contains the Python development environment."
 arch=('x86_64')
 url="https://www.python.org/ftp/python/$pkgver"
 license=('GPL')
-groups=('core')
+groups=('graphicslayer')
 source=("$url/Python-${pkgver}.tar.xz")
 md5sums=('8906efbacfcdc7c3c9198aeefafd159e')
 depends=('rootfs>=2.0.0')

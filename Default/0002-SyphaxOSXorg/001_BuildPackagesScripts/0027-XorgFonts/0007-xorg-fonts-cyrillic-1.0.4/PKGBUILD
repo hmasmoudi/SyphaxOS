@@ -7,7 +7,7 @@ pkgdesc="The Xorg font cyrillic packages provide needed fonts to the Xorg applic
 arch=('x86_64')
 url="http://ftp.x.org/pub/individual/font"
 license=('GPL')
-groups=('core')
+groups=('graphicslayer')
 source=("$url/font-cronyx-cyrillic-1.0.3.tar.bz2"
         "$url/font-misc-cyrillic-1.0.3.tar.bz2"
         "$url/font-screen-cyrillic-1.0.4.tar.bz2"

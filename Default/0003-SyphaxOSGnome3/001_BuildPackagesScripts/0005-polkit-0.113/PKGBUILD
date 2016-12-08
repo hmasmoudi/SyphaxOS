@@ -8,7 +8,7 @@ arch=('x86_64')
 url="http://www.freedesktop.org/software/polkit/releases"
 install=$pkgname.install
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/$pkgname-$pkgver.tar.gz")
 md5sums=('4b77776c9e4f897dcfe03b2c34198edf')
 depends=('rootfs>=2.0.0')

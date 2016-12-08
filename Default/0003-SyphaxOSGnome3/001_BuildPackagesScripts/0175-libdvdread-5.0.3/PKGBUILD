@@ -7,7 +7,7 @@ pkgdesc="libdvdread is a library which provides a simple foundation for reading 
 arch=('x86_64')
 url="http://download.videolan.org/videolan/libdvdread/5.0.3"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
 md5sums=('b7b7d2a782087ed2a913263087083715')
 depends=('rootfs>=2.0.0')

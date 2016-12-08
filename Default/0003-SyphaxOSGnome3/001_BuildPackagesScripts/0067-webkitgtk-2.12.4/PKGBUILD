@@ -7,7 +7,7 @@ pkgdesc="The WebKitGTK+ package is a port of the portable web rendering engine W
 arch=('x86_64')
 url="http://webkitgtk.org/releases"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('0331ac714fd1a0587ffea470ef1afb20')
 depends=('rootfs>=2.0.0')

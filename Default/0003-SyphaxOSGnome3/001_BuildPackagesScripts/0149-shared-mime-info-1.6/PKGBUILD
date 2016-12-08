@@ -7,7 +7,7 @@ pkgdesc="The Shared Mime Info package contains a MIME database. This allows cent
 arch=('x86_64')
 url="http://freedesktop.org/~hadess"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('10abc5c4e6b22223ff05c3bd70ff9e8f')
 depends=('rootfs>=2.0.0')

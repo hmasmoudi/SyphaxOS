@@ -7,7 +7,7 @@ pkgdesc="The Telepathy GLib contains a library used by GLib based Telepathy comp
 arch=('x86_64')
 url="http://telepathy.freedesktop.org/releases/telepathy-glib"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.gz")
 md5sums=('cbeb0a24acc26e7f095be281c324da69')
 depends=('rootfs>=2.0.0')

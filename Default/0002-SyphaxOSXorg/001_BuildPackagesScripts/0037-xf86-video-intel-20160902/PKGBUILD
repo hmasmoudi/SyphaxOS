@@ -7,7 +7,7 @@ pkgdesc="The Xorg Intel Driver package contains the X.Org Video Driver for Intel
 arch=('x86_64')
 url="http://anduin.linuxfromscratch.org/BLFS/xf86-video-intel/"
 license=('GPL')
-groups=('core')
+groups=('graphicslayer')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
 md5sums=('aff145a655f96761d2ad1935c0d10ab4')
 depends=('rootfs>=2.0.0')

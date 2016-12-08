@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="The Xorg fonts configuration Package"
 arch=('x86_64')
 license=('GPL')
-groups=('core')
+groups=('graphicslayer')
 depends=('rootfs>=2.0.0')
 
 package() {   

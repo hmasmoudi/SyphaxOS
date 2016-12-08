@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="Xorg profile configuration file."
 arch=('x86_64')
 license=('GPL')
-groups=('core')
+groups=('graphicslayer')
 
 build() {
    echo "Xorg profile configuration file Package"

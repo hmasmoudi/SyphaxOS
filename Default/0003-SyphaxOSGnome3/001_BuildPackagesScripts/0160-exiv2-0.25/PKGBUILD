@@ -7,7 +7,7 @@ pkgdesc="Exiv2 is a C++ library and a command line utility for managing image an
 arch=('x86_64')
 url="http://www.exiv2.org"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.gz")
 md5sums=('258d4831b30f75a01e0234065c6c2806')
 depends=('rootfs>=2.0.0')

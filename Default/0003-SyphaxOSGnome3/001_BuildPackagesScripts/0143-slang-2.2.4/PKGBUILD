@@ -7,7 +7,7 @@ pkgdesc="S-Lang is an interpreted language that may be embedded into an applicat
 arch=('x86_64')
 url="ftp://space.mit.edu/pub/davis/slang/v2.2"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
 md5sums=('7fcfd447e378f07dd0c0bae671fe6487')
 depends=('rootfs>=2.0.0')

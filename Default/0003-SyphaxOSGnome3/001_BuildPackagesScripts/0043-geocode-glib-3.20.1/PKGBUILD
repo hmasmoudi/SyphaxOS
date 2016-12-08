@@ -7,7 +7,7 @@ pkgdesc=" The Geocode GLib is a convenience library for the Yahoo! Place Finder 
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/geocode-glib/3.20"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('4d9a4c666f525b8ae534be865c8b7681')
 depends=('rootfs>=2.0.0')

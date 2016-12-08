@@ -7,7 +7,7 @@ pkgdesc="The Pangomm package provides a C++ interface to Pango."
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/${pkgname}/2.40"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('874eadd9434613dbacf0272c82c3ac23')
 depends=('rootfs>=2.0.0')

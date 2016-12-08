@@ -7,7 +7,7 @@ pkgdesc="Wayland is a project to define a protocol for a compositor to talk to i
 arch=('x86_64')
 url="http://wayland.freedesktop.org/releases"
 license=('GPL')
-groups=('core')
+groups=('graphicslayer')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('fccf680be066e234729d5b69e0bd0fa9')
 depends=('rootfs>=2.0.0')

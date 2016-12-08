@@ -7,7 +7,7 @@ pkgdesc="The libxslt package contains XSLT libraries used for extending libxml2 
 arch=('x86_64')
 url="http://xmlsoft.org/sources"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.gz")
 md5sums=('a129d3c44c022de3b9dcf6d6f288d72e')
 depends=('rootfs>=2.0.0')

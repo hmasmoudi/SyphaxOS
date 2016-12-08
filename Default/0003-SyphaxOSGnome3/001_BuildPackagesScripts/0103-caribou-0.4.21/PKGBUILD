@@ -7,7 +7,7 @@ pkgdesc="Caribou is an input assistive technology intended for switch and pointe
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/caribou/0.4"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('16b76cd7453b99e2871e8d4da88bf976')
 depends=('rootfs>=2.0.0')

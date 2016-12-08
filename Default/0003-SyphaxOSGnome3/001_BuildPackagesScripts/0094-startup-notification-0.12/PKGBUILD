@@ -7,7 +7,7 @@ pkgdesc="The startup-notification package contains startup-notification librarie
 arch=('x86_64')
 url="http://www.freedesktop.org/software/startup-notification/releases"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.gz")
 md5sums=('2cd77326d4dcaed9a5a23a1232fb38e9')
 depends=('rootfs>=2.0.0')

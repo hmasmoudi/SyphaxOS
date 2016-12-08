@@ -7,7 +7,7 @@ pkgdesc="Cairo is a 2D graphics library with support for multiple output devices
 arch=('x86_64')
 url="http://cairographics.org/releases"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/$pkgname-$pkgver.tar.xz")
 md5sums=('23a0b2f0235431d35238df1d3a517fdb')
 depends=('rootfs>=2.0.0')

@@ -7,7 +7,7 @@ pkgdesc="The Xorg protocol headers provide the header files required to build th
 arch=('x86_64')
 url="http://ftp.x.org/pub/individual/proto"
 license=('GPL')
-groups=('core')
+groups=('graphicslayer')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
 md5sums=('cfdb57dae221b71b2703f8e2980eaaf4')
 depends=('rootfs>=2.0.0')

@@ -7,7 +7,7 @@ pkgdesc="The twm package contains a very minimal window manager."
 arch=('x86_64')
 url="http://ftp.x.org/pub/individual/app"
 license=('GPL')
-groups=('core')
+groups=('graphicslayer')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
 md5sums=('59a6f076cdacb5f6945dac809bcf4906')
 depends=('rootfs>=2.0.0')

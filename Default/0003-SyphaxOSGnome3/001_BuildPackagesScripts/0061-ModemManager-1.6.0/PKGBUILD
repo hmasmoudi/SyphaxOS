@@ -7,7 +7,7 @@ pkgdesc="ModemManager provides a unified high level API for communicating with m
 arch=('x86_64')
 url="http://www.freedesktop.org/software/ModemManager"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('d9d93d2961ee35b4cd8a75a6a8631cb4')
 depends=('rootfs>=2.0.0')

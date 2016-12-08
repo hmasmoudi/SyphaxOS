@@ -7,7 +7,7 @@ pkgdesc="The UDisks package provides a daemon, tools and libraries to access and
 arch=('x86_64')
 url="http://udisks.freedesktop.org/releases"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
 md5sums=('8bccd36573b75286538bd5bd2c424f45')
 depends=('rootfs>=2.0.0')

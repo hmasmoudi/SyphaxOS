@@ -7,7 +7,7 @@ pkgdesc="Vala is a new programming language that aims to bring modern programmin
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/vala/0.32"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('755881770bffac020b5ea5f625fbe528')
 depends=('rootfs>=2.0.0')

@@ -7,7 +7,7 @@ pkgdesc="The Network Security Services (NSS) package is a set of libraries desig
 arch=('x86_64')
 url="https://ftp.mozilla.org/pub/mozilla.org/security/nss/releases/NSS_3_26_RTM/src"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.gz"
         "nss-3.26-standalone-1.patch")
 md5sums=('b71ab412cf07af436726679b204b0777'

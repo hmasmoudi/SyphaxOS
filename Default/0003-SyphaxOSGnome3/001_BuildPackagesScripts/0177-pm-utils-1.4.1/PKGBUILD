@@ -7,7 +7,7 @@ pkgdesc="The Power Management Utilities is a small collection of scripts to susp
 arch=('x86_64')
 url="http://pm-utils.freedesktop.org/releases"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.gz")
 md5sums=('1742a556089c36c3a89eb1b957da5a60')
 depends=('rootfs>=2.0.0')

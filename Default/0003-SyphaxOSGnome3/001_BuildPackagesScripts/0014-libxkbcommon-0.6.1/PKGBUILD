@@ -7,7 +7,7 @@ pkgdesc="libxkbcommon is a keymap compiler and support library which processes a
 arch=('x86_64')
 url="http://xkbcommon.org/download"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/$pkgname-$pkgver.tar.xz")
 md5sums=('67a8f322b5fa32352272e811bb90dd73')
 depends=('rootfs>=2.0.0')

@@ -8,7 +8,7 @@ arch=('x86_64')
 url="ftp://invisible-island.net/xterm"
 install=$pkgname.install
 license=('GPL')
-groups=('core')
+groups=('graphicslayer')
 source=("$url/${pkgname}-${pkgver}.tgz")
 md5sums=('e78a0bbc4d5fa3780917e447ae8ebc6b')
 depends=('rootfs>=2.0.0')

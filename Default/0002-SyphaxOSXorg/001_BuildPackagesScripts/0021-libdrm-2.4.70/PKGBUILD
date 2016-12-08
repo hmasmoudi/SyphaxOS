@@ -7,7 +7,7 @@ pkgdesc="libdrm provides a user space library for accessing the DRM, direct rend
 arch=('x86_64')
 url="http://dri.freedesktop.org/libdrm"
 license=('GPL')
-groups=('core')
+groups=('graphicslayer')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
 md5sums=('920957cfe25a80efb02be9bd90bf3c1e')
 depends=('rootfs>=2.0.0')

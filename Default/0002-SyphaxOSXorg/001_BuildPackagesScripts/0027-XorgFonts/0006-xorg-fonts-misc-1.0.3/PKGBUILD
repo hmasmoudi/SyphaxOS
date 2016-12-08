@@ -7,7 +7,7 @@ pkgdesc="The Xorg font misc packages provide needed fonts to the Xorg applicatio
 arch=('x86_64')
 url="http://ftp.x.org/pub/individual/font"
 license=('GPL')
-groups=('core')
+groups=('graphicslayer')
 source=("$url/font-arabic-misc-1.0.3.tar.bz2"
         "$url/font-cursor-misc-1.0.3.tar.bz2"
         "$url/font-daewoo-misc-1.0.3.tar.bz2"

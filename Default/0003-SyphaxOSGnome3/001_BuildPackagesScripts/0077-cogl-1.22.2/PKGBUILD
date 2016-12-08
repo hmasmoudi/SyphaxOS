@@ -7,7 +7,7 @@ pkgdesc="Cogl is a modern 3D graphics API with associated utility APIs designed 
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/cogl/1.22"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('d53b708ca7c4af03d7254e46945d6b33')
 depends=('rootfs>=2.0.0')

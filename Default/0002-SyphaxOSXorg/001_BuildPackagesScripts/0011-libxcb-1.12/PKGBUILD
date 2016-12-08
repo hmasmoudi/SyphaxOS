@@ -7,7 +7,7 @@ pkgdesc="The libxcb package provides an interface to the X Window System protoco
 arch=('x86_64')
 url="http://xcb.freedesktop.org/dist"
 license=('GPL')
-groups=('core')
+groups=('graphicslayer')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
 md5sums=('28e552bd78bc1050b6b26ca1db0e5bb6')
 depends=('rootfs>=2.0.0')

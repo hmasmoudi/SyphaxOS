@@ -7,7 +7,7 @@ pkgdesc="The libcroco package contains a standalone CSS2 parsing and manipulatio
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/libcroco/0.6"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('dabc1911dfbfa85f8e6859ca47863168')
 depends=('rootfs>=2.0.0')

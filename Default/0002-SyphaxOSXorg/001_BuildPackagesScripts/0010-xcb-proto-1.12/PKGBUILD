@@ -7,7 +7,7 @@ pkgdesc="The libXdmcp package contains a library implementing the X Display Mana
 arch=('x86_64')
 url="http://xcb.freedesktop.org/dist"
 license=('GPL')
-groups=('core')
+groups=('graphicslayer')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
 md5sums=('14e60919f859560f28426a685a555962')
 depends=('rootfs>=2.0.0')

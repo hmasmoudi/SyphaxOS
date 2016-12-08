@@ -7,7 +7,7 @@ pkgdesc="The Nautilus package contains the GNOME file manager."
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/nautilus/3.20"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('857637cc3f992686060b051141810774')
 depends=('rootfs>=2.0.0')

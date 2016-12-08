@@ -3,11 +3,11 @@
 pkgname=xcb-util
 pkgver=0.4.0
 pkgrel=1
-pkgdesc="The xcb-util package provides additional extensions to the XCB library, many that were previously found in Xlib, but are not part of core X protocol."
+pkgdesc="The xcb-util package provides additional extensions to the XCB library, many that were previously found in Xlib, but are not part of graphicslayer X protocol."
 arch=('x86_64')
 url="http://xcb.freedesktop.org/dist"
 license=('GPL')
-groups=('core')
+groups=('graphicslayer')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
 md5sums=('2e97feed81919465a04ccc71e4073313')
 depends=('rootfs>=2.0.0')

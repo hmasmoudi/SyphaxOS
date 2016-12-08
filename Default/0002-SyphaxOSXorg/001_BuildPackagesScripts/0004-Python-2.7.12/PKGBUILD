@@ -7,7 +7,7 @@ pkgdesc="The Python 2 package contains the Python development environment."
 arch=('x86_64')
 url="https://www.python.org/ftp/python/$pkgver"
 license=('GPL')
-groups=('core')
+groups=('graphicslayer')
 source=("$url/Python-${pkgver}.tar.xz")
 md5sums=('57dffcee9cee8bb2ab5f82af1d8e9a69')
 depends=('rootfs>=2.0.0')

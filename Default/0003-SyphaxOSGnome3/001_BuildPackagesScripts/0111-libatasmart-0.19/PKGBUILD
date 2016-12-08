@@ -7,7 +7,7 @@ pkgdesc="The libatasmart package is a disk reporting library. It only supports a
 arch=('x86_64')
 url="http://0pointer.de/public"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('53afe2b155c36f658e121fe6def33e77')
 depends=('rootfs>=2.0.0')

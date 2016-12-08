@@ -7,7 +7,7 @@ pkgdesc="The xcb-util-image package provides additional extensions to the XCB li
 arch=('x86_64')
 url="http://xcb.freedesktop.org/dist"
 license=('GPL')
-groups=('core')
+groups=('graphicslayer')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
 md5sums=('08fe8ffecc8d4e37c0ade7906b3f4c87')
 depends=('rootfs>=2.0.0')

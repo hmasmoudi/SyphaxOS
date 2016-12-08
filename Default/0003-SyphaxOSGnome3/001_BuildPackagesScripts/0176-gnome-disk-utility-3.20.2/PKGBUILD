@@ -5,9 +5,9 @@ pkgver=3.20.2
 pkgrel=1
 pkgdesc="The GNOME Disk Utility package provides applications used for dealing with storage devices."
 arch=('x86_64')
-url="http://ftp.gnome.org/pub/gnome/sources/${pkgname}-/3.20"
+url="http://ftp.gnome.org/pub/gnome/sources/${pkgname}/3.20"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('4cae57c846d451644e796f3ea496b07f')
 depends=('rootfs>=2.0.0')

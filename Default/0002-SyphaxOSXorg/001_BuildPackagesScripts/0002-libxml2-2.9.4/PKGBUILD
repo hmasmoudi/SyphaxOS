@@ -7,7 +7,7 @@ pkgdesc="The libxml2 package contains libraries and utilities used for parsing X
 arch=('x86_64')
 url="http://xmlsoft.org/sources"
 license=('GPL')
-groups=('core')
+groups=('graphicslayer')
 source=("$url/${pkgname}-${pkgver}.tar.gz")
 md5sums=('ae249165c173b1ff386ee8ad676815f5')
 depends=('rootfs>=2.0.0')

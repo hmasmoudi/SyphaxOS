@@ -7,7 +7,7 @@ pkgdesc="GNU which package."
 arch=('x86_64')
 url="http://ftp.gnu.org/gnu/which"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.gz")
 md5sums=('097ff1a324ae02e0a3b0369f07a7544a')
 depends=('rootfs>=2.0.0')

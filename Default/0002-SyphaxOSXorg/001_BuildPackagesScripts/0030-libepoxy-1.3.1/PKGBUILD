@@ -7,7 +7,7 @@ pkgdesc="libepoxy is a library for handling OpenGL function pointer management."
 arch=('x86_64')
 url="https://github.com/anholt/libepoxy/releases/download/v${pkgver}"
 license=('GPL')
-groups=('core')
+groups=('graphicslayer')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
 md5sums=('96f6620a9b005a503e7b44b0b528287d')
 depends=('rootfs>=2.0.0')

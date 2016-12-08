@@ -7,7 +7,7 @@ pkgdesc="GStreamer is a streaming media framework that enables applications to s
 arch=('x86_64')
 url="http://gstreamer.freedesktop.org/src/gstreamer"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('e88dad542df9d986822e982105d2b530')
 depends=('rootfs>=2.0.0')

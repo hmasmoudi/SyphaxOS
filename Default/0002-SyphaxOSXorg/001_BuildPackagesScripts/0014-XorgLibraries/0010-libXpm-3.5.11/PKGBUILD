@@ -8,7 +8,7 @@ arch=('x86_64')
 url="http://ftp.x.org/pub/individual/lib"
 install=$pkgname.install
 license=('GPL')
-groups=('core')
+groups=('graphicslayer')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
 md5sums=('769ee12a43611cdebd38094eaf83f3f0')
 depends=('rootfs>=2.0.0')

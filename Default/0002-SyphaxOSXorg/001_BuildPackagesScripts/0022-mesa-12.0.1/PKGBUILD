@@ -7,7 +7,7 @@ pkgdesc="Mesa is an OpenGL compatible 3D graphics library."
 arch=('x86_64')
 url="ftp://ftp.freedesktop.org/pub/$pkgname/$pkgver"
 license=('GPL')
-groups=('core')
+groups=('graphicslayer')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('972fd5ad5a63aeabf173fb9adefc6522')
 depends=('rootfs>=2.0.0')

@@ -7,7 +7,7 @@ pkgdesc="The GnuTLS package contains libraries and userspace tools which provide
 arch=('x86_64')
 url="ftp://ftp.gnutls.org/gcrypt/gnutls/v3.5"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('6c2c7f40ddf52933ee3ca474cb8cb63c')
 depends=('rootfs>=2.0.0')

@@ -7,7 +7,7 @@ pkgdesc="Netscape Portable Runtime (NSPR) provides a platform-neutral API for sy
 arch=('x86_64')
 url="https://ftp.mozilla.org/pub/mozilla.org/nspr/releases/v4.12/src"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/$pkgname-$pkgver.tar.gz")
 md5sums=('0de760c1e00a92e180e611cf06ce9589')
 depends=('rootfs>=2.0.0')

@@ -7,7 +7,7 @@ pkgdesc="ATK provides the set of accessibility interfaces that are implemented b
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/atk/2.20"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/$pkgname-$pkgver.tar.xz")
 md5sums=('5187b0972f4d3905f285540b31395e20')
 depends=('rootfs>=2.0.0')

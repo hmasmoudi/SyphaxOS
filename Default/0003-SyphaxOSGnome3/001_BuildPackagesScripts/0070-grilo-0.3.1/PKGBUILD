@@ -7,7 +7,7 @@ pkgdesc="Grilo is a framework focused on making media discovery and browsing eas
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/grilo/0.3"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('3b6733633e42143ff90fac1fef34cf42')
 depends=('rootfs>=2.0.0')

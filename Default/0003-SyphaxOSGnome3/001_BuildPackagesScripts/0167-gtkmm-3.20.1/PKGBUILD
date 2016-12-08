@@ -5,9 +5,9 @@ pkgver=3.20.1
 pkgrel=1
 pkgdesc="The Gtkmm package provides a C++ interface to GTK+ 3."
 arch=('x86_64')
-url="http://ftp.gnome.org/pub/gnome/sources/${pkgname}-/3.20"
+url="http://ftp.gnome.org/pub/gnome/sources/${pkgname}/3.20"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('c08b2548f4e900e7a0299b76d6c86a13')
 depends=('rootfs>=2.0.0')

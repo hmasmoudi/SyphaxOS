@@ -7,7 +7,7 @@ pkgdesc="Libsndfile is a library of C routines for reading and writing files con
 arch=('x86_64')
 url="http://www.mega-nerd.com/libsndfile/files"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.gz")
 md5sums=('fd1d97c6077f03b5d984d7956ffedb7a')
 depends=('rootfs>=2.0.0')

@@ -7,7 +7,7 @@ pkgdesc="Mutter is the window manager for GNOME. It is not invoked directly, but
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/mutter/3.20"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('7b847d952a108be4c4096e8842db00eb')
 depends=('rootfs>=2.0.0')

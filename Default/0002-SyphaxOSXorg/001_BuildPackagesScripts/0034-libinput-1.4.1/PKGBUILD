@@ -7,7 +7,7 @@ pkgdesc="libinput is a library that handles input devices for display servers an
 arch=('x86_64')
 url="http://www.freedesktop.org/software/libinput"
 license=('GPL')
-groups=('core')
+groups=('graphicslayer')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('2e7ba577ed74d8d1baeb07dbd4fb912a')
 depends=('rootfs>=2.0.0')

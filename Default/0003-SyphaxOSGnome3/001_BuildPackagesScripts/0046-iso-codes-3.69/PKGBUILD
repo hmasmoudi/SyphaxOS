@@ -7,7 +7,7 @@ pkgdesc="The ISO Codes package contains a list of country, language and currency
 arch=('x86_64')
 url="https://pkg-isocodes.alioth.debian.org/downloads"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('33ed5ea7eed84a7609f041c838fc96d7')
 depends=('rootfs>=2.0.0')

@@ -8,7 +8,7 @@ arch=('x86_64')
 url="http://www.kernel.org/pub/linux/bluetooth"
 install=${pkgname}.install
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz"
         "${pkgname}.install"
         "bluez-5.41-obexd_without_systemd-1.patch"

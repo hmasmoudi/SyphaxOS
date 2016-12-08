@@ -7,7 +7,7 @@ pkgdesc="The GConf package contains a configuration database system used by many
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/GConf/3.2"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('2b16996d0e4b112856ee5c59130e822c')
 depends=('rootfs>=2.0.0')

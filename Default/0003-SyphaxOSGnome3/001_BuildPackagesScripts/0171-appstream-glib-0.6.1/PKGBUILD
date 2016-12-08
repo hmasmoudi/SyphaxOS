@@ -7,7 +7,7 @@ pkgdesc="The Appstream-GLib package contains a library that provides GObjects an
 arch=('x86_64')
 url="http://people.freedesktop.org/~hughsient/appstream-glib/releases"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('65192dc4bd499bae9e695df99ea7d5cd')
 depends=('rootfs>=2.0.0')

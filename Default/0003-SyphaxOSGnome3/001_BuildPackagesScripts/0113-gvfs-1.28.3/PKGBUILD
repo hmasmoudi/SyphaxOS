@@ -7,7 +7,7 @@ pkgdesc="The Gvfs package is a userspace virtual filesystem designed to work wit
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/gvfs/1.28"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('d2399a1a217dd5030e8830c7e7c813c2')
 depends=('rootfs>=2.0.0')

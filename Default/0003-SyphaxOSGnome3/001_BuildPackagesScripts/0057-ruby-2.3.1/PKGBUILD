@@ -7,7 +7,7 @@ pkgdesc="The Ruby package contains the Ruby development environment. This is use
 arch=('x86_64')
 url="http://cache.ruby-lang.org/pub/ruby/2.3"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('01e9d172a5c33b385e92fc0cc2899766')
 depends=('rootfs>=2.0.0')

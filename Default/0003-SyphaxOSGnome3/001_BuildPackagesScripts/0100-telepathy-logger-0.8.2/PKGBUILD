@@ -7,7 +7,7 @@ pkgdesc="The Telepathy Logger package is a headless observer client that logs in
 arch=('x86_64')
 url="http://telepathy.freedesktop.org/releases/telepathy-logger"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
 md5sums=('c2f6a31c76cbdf8790500cf4f872ba71')
 depends=('rootfs>=2.0.0')

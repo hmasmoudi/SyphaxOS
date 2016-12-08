@@ -7,7 +7,7 @@ pkgdesc="The libchamplain is a Clutter based widget used to display rich, eye-ca
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/libchamplain/0.12"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('faf30aa4444c8404e76518a266157447')
 depends=('rootfs>=2.0.0')

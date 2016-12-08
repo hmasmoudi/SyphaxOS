@@ -7,7 +7,7 @@ pkgdesc="The Xorg Evdev Driver package contains Generic Linux input driver for t
 arch=('x86_64')
 url="http://ftp.x.org/pub/individual/driver"
 license=('GPL')
-groups=('core')
+groups=('graphicslayer')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
 md5sums=('aa3363ce5061d0c4d1e7f7019b99716d')
 depends=('rootfs>=2.0.0')

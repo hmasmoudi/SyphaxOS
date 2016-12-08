@@ -7,7 +7,7 @@ pkgdesc="The OpenSSL package contains management tools and libraries relating to
 arch=('x86_64')
 url="https://openssl.org/source"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.gz")
 md5sums=('96322138f0b69e61b7212bc53d5e912b')
 depends=('rootfs>=2.0.0')

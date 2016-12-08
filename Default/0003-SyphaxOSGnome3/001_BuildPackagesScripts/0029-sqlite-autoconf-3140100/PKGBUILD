@@ -7,7 +7,7 @@ pkgdesc="The SQLite package is a software library that implements a self-contain
 arch=('x86_64')
 url="http://sqlite.org/2016"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-autoconf-${pkgver}.tar.gz")
 md5sums=('3634a90a3f49541462bcaed3474b2684')
 depends=('rootfs>=2.0.0')

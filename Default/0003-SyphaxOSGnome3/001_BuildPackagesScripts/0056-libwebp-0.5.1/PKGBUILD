@@ -7,7 +7,7 @@ pkgdesc="The libwebp package contains a library and support programs to encode a
 arch=('x86_64')
 url="http://downloads.webmproject.org/releases/webp"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.gz")
 md5sums=('3d7db92ebba5b4f679413d25c6040881')
 depends=('rootfs>=2.0.0')

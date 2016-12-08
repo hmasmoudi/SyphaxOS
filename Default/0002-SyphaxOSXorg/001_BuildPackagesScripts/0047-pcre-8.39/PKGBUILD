@@ -7,7 +7,7 @@ pkgdesc="The PCRE package contains Perl Compatible Regular Expression libraries.
 arch=('x86_64')
 url="ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre"
 license=('GPL')
-groups=('core')
+groups=('graphicslayer')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
 md5sums=('e3fca7650a0556a2647821679d81f585')
 depends=('rootfs>=2.0.0')

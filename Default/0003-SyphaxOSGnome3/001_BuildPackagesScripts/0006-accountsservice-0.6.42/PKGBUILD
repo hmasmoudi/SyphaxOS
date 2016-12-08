@@ -8,7 +8,7 @@ arch=('x86_64')
 url="http://www.freedesktop.org/software/accountsservice"
 install=$pkgname.install
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/$pkgname-$pkgver.tar.xz")
 md5sums=('77a38325c82effa976cc1a03fbcd5117')
 depends=('rootfs>=2.0.0')

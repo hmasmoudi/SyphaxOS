@@ -7,7 +7,7 @@ pkgdesc="The HarfBuzz package contains an OpenType text shaping engine."
 arch=('x86_64')
 url="http://www.freedesktop.org/software/harfbuzz/release"
 license=('GPL')
-groups=('core')
+groups=('graphicslayer')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
 md5sums=('a82d49ff67197bc3c96ea34b98880c52')
 depends=('rootfs>=2.0.0')

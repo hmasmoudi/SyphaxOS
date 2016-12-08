@@ -7,7 +7,7 @@ pkgdesc="The Clutter Gtk package is a library providing facilities to integrate 
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/clutter-gtk/1.8"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('351cf9229cf941d36b441ede2236d742')
 depends=('rootfs>=2.0.0')

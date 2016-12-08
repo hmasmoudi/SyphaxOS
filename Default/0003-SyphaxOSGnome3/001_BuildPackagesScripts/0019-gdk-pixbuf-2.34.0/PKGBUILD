@@ -7,7 +7,7 @@ pkgdesc="The Gdk Pixbuf is a toolkit for image loading and pixel buffer manipula
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/gdk-pixbuf/2.34"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/$pkgname-$pkgver.tar.xz")
 md5sums=('63cb19f92cf7709ccf44bbb6fe1ff70c')
 depends=('rootfs>=2.0.0')

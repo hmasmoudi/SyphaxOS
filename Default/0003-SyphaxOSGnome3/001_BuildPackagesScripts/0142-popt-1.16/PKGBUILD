@@ -7,7 +7,7 @@ pkgdesc="The popt package contains the popt libraries which are used by some pro
 arch=('x86_64')
 url="http://rpm5.org/files/popt"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.gz")
 md5sums=('3743beefa3dd6247a73f8f7a32c14c33')
 depends=('rootfs>=2.0.0')

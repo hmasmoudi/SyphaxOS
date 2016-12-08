@@ -7,7 +7,7 @@ pkgdesc="The mtdev package contains Multitouch Protocol Translation Library whic
 arch=('x86_64')
 url="http://bitmath.org/code/mtdev"
 license=('GPL')
-groups=('core')
+groups=('graphicslayer')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
 md5sums=('52c9610b6002f71d1642dc1a1cca5ec1')
 depends=('rootfs>=2.0.0')

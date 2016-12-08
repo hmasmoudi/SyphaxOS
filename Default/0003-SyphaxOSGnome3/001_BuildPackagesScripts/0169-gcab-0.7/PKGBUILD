@@ -5,9 +5,9 @@ pkgver=0.7
 pkgrel=1
 pkgdesc="The Gcab package contains a program and a library used to create Microsoft cabinet (.cab) archives."
 arch=('x86_64')
-url="http://ftp.gnome.org/pub/gnome/sources/${pkgname}-/0.7"
+url="http://ftp.gnome.org/pub/gnome/sources/${pkgname}/0.7"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('d8c54c340e56d0b6a8fe082fd04d8090')
 depends=('rootfs>=2.0.0')

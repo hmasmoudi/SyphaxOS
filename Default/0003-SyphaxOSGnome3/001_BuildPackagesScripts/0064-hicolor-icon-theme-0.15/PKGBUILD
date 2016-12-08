@@ -7,7 +7,7 @@ pkgdesc="The hicolor-icon-theme package contains a default fallback theme for im
 arch=('x86_64')
 url="http://icon-theme.freedesktop.org/releases"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('6aa2b3993a883d85017c7cc0cfc0fb73')
 depends=('rootfs>=2.0.0')

@@ -7,7 +7,7 @@ pkgdesc="The libwnck package contains the Window Navigator Construction Kit."
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/libwnck/3.20"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('487938d65d4bfae1f2501052b1bd7492')
 depends=('rootfs>=2.0.0')

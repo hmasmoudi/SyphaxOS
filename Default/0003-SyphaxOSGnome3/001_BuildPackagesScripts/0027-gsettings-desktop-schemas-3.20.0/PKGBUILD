@@ -8,7 +8,7 @@ arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/gsettings-desktop-schemas/3.20"
 install=$pkgname.install
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('c5d87ea480aa9bf66b134ddb5b8ea0f8')
 depends=('rootfs>=2.0.0')

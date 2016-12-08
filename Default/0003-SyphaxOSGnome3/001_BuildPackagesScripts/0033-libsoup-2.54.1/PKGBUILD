@@ -7,7 +7,7 @@ pkgdesc="The libsoup is HTTP client/server library for GNOME."
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/libsoup/2.54"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('73b1fb774de16c29b380f87016f9f9dd')
 depends=('rootfs>=2.0.0')

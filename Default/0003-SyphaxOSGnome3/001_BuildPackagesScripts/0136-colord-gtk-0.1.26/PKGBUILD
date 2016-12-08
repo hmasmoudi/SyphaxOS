@@ -7,7 +7,7 @@ pkgdesc="The Colord GTK package contains GTK+ bindings for Colord."
 arch=('x86_64')
 url="http://www.freedesktop.org/software/colord/releases"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('bb9d6f3c037152ad791003375aa6c16c')
 depends=('rootfs>=2.0.0')

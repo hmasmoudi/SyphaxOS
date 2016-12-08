@@ -7,7 +7,7 @@ pkgdesc="The GLib package contains low-level libraries useful for providing data
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/glib/2.48"
 license=('GPL')
-groups=('core')
+groups=('graphicslayer')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('f4ac1aa2efd4f5798c37625ea697ac57')
 depends=('rootfs>=2.0.0')

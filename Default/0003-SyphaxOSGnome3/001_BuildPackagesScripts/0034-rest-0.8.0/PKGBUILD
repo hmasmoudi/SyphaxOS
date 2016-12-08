@@ -7,7 +7,7 @@ pkgdesc="The rest package contains a library that was designed to make it easier
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/rest/0.8"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('07ae736561aab03ee9bdd451445926ba')
 depends=('rootfs>=2.0.0')

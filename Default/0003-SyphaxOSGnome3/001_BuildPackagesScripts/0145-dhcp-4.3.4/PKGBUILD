@@ -7,7 +7,7 @@ pkgdesc="The ISC DHCP package contains both the client and server programs for D
 arch=('x86_64')
 url="ftp://ftp.isc.org/isc/dhcp/${pkgver}"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.gz"
         "dhcp-4.3.4-client_script-1.patch"
         "dhclient.conf"

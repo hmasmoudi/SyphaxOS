@@ -7,7 +7,7 @@ pkgdesc="Pango is a library for laying out and rendering of text, with an emphas
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/pango/1.40"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/$pkgname-$pkgver.tar.xz")
 md5sums=('6fc88c6529890d6c8e03074d57a3eceb')
 depends=('rootfs>=2.0.0')

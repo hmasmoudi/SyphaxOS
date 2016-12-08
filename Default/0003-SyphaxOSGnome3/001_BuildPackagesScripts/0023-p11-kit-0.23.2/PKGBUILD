@@ -7,7 +7,7 @@ pkgdesc="The p11-kit package provides a way to load and enumerate PKCS #11 (a Cr
 arch=('x86_64')
 url="http://p11-glue.freedesktop.org/releases"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.gz")
 md5sums=('738af2442331fc22f440df9bee9b062a')
 depends=('rootfs>=2.0.0')

@@ -7,7 +7,7 @@ pkgdesc="The Yelp XSL package contains XSL stylesheets that are used by the Yelp
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/yelp-xsl/3.20"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('2332716e6e39125a942bc761a6f94211')
 depends=('rootfs>=2.0.0')

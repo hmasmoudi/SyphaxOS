@@ -7,7 +7,7 @@ pkgdesc="The At-Spi2 Core package is a part of the GNOME Accessibility Project."
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/at-spi2-core/2.20"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/$pkgname-$pkgver.tar.xz")
 md5sums=('f6f6303da2e72317f881703f40bf0c62')
 depends=('rootfs>=2.0.0')

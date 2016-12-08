@@ -7,7 +7,7 @@ pkgdesc="Yasm is a complete rewrite of the NASM-2.12.02 assembler."
 arch=('x86_64')
 url="http://www.tortall.net/projects/yasm/releases"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/$pkgname-$pkgver.tar.gz")
 md5sums=('fc9e586751ff789b34b1f21d572d96af')
 depends=('rootfs>=2.0.0')

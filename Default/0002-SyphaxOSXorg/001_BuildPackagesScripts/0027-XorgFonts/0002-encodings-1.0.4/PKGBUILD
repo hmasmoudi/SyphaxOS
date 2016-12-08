@@ -7,7 +7,7 @@ pkgdesc="The Xorg font packages provide needed fonts to the Xorg applications."
 arch=('x86_64')
 url="http://ftp.x.org/pub/individual/font"
 license=('GPL')
-groups=('core')
+groups=('graphicslayer')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
 md5sums=('0f2d6546d514c5cc4ecf78a60657a5c1')
 depends=('rootfs>=2.0.0')

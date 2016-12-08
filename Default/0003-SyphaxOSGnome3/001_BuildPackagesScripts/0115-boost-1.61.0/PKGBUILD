@@ -7,7 +7,7 @@ pkgdesc="Boost provides a set of free peer-reviewed portable C++ source librarie
 arch=('x86_64')
 url="http://downloads.sourceforge.net/boost"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}_1_61_0.tar.bz2")
 md5sums=('6095876341956f65f9d35939ccea1a9f')
 depends=('rootfs>=2.0.0')

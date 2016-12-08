@@ -7,7 +7,7 @@ pkgdesc="The libgdata package is a GLib-based library for accessing online servi
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/libgdata/0.17"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('3a1506d2bbdd68a98378312953a02b06')
 depends=('rootfs>=2.0.0')

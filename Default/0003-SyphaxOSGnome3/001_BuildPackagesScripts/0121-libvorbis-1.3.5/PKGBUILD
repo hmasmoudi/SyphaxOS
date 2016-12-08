@@ -7,7 +7,7 @@ pkgdesc="The libvorbis package contains a general purpose audio and music encodi
 arch=('x86_64')
 url="http://downloads.xiph.org/releases/vorbis"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('28cb28097c07a735d6af56e598e1c90f')
 depends=('rootfs>=2.0.0')

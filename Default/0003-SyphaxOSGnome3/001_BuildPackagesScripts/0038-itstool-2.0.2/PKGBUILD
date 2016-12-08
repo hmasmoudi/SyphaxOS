@@ -7,7 +7,7 @@ pkgdesc="Itstool extracts messages from XML files and outputs PO template files,
 arch=('x86_64')
 url="http://files.itstool.org/itstool"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
 md5sums=('d472d877a7bc49899a73d442085b2f93')
 depends=('rootfs>=2.0.0')

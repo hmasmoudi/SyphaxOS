@@ -7,7 +7,7 @@ pkgdesc="The xinit package contains a usable script to start the xserver."
 arch=('x86_64')
 url="http://ftp.x.org/pub/individual/app"
 license=('GPL')
-groups=('core')
+groups=('graphicslayer')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
 md5sums=('4e928452dfaf73851413a2d8b8c76388')
 depends=('rootfs>=2.0.0')

@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/apple/cups/releases/download/release-${pkgver}"
 install=${pkgname}.install
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}-source.tar.gz"
         "${pkgname}.install"
         "${pkgname}")

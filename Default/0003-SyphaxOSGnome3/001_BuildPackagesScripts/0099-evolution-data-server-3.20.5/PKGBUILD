@@ -7,7 +7,7 @@ pkgdesc="Evolution Data Server package provides a unified backend for programs t
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/evolution-data-server/3.20"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('e29d5813e7d633b163eeb16dec4de1db')
 depends=('rootfs>=2.0.0')

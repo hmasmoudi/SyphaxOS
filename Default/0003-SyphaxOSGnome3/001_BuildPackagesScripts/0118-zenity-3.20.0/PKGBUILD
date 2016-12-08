@@ -7,7 +7,7 @@ pkgdesc="Zenity is a rewrite of gdialog, the GNOME port of dialog which allows y
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/zenity/3.20"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('23f84cd3807da36455525357385f7586')
 depends=('rootfs>=2.0.0')

@@ -7,7 +7,7 @@ pkgdesc="The Samba package provides file and print services to SMB/CIFS clients 
 arch=('x86_64')
 url="https://download.samba.org/pub/samba/stable"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.gz")
 md5sums=('6950c5e9f7bdeb8a610c2ca957a15be4')
 depends=('rootfs>=2.0.0')

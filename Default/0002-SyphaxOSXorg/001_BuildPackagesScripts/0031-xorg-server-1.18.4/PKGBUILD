@@ -3,11 +3,11 @@
 pkgname=xorg-server
 pkgver=1.18.4
 pkgrel=1
-pkgdesc="The Xorg Server is the core of the X Window system. "
+pkgdesc="The Xorg Server is the graphicslayer of the X Window system. "
 arch=('x86_64')
 url="http://ftp.x.org/pub/individual/xserver"
 license=('GPL')
-groups=('core')
+groups=('graphicslayer')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
 md5sums=('d4842dfe3bd9a9d062f2fa1df9104a46')
 depends=('rootfs>=2.0.0')

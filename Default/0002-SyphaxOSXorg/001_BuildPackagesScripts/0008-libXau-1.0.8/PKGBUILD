@@ -7,7 +7,7 @@ pkgdesc="The libXau package contains a library implementing the X11 Authorizatio
 arch=('x86_64')
 url="http://ftp.x.org/pub/individual/lib"
 license=('GPL')
-groups=('core')
+groups=('graphicslayer')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
 md5sums=('685f8abbffa6d145c0f930f00703b21b')
 depends=('rootfs>=2.0.0')

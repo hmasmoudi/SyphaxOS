@@ -7,7 +7,7 @@ pkgdesc="IBus is an Intelligent Input Bus. It is a new input framework for Linux
 arch=('x86_64')
 url="https://github.com/ibus/ibus/releases/download/1.5.14"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.gz")
 md5sums=('debfafff1823952b69b248462f7a89a5')
 depends=('rootfs>=2.0.0')

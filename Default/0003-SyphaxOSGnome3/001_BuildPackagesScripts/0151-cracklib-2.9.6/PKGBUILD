@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/cracklib/cracklib/releases/download/${pkgname}-${pkgver}"
 install=${pkgname}.install
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.gz"
         "$url/${pkgname}-words-${pkgver}.gz"
         "${pkgname}.install")

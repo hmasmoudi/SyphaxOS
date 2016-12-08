@@ -7,7 +7,7 @@ pkgdesc="The xcb-util-cursor package provides a module that implements the XCB c
 arch=('x86_64')
 url="http://xcb.freedesktop.org/dist"
 license=('GPL')
-groups=('core')
+groups=('graphicslayer')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
 md5sums=('6ac3b17cba51aaaa36ba035a53527214')
 depends=('rootfs>=2.0.0')

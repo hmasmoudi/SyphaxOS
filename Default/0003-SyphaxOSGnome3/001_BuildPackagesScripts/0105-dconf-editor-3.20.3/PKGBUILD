@@ -7,7 +7,7 @@ pkgdesc="The DConf-Editor, as the name suggests, is a graphical editor for the D
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/dconf-editor/3.20"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('953ca060e35e755470b56644be92610d')
 depends=('rootfs>=2.0.0')

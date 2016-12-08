@@ -7,7 +7,7 @@ pkgdesc="The libgusb package contains the GObject wrappers for libusb-1.0 that m
 arch=('x86_64')
 url="http://people.freedesktop.org/~hughsient/releases"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('d4251e958aee7d19e39f8021e457942f')
 depends=('rootfs>=2.0.0')

@@ -7,7 +7,7 @@ pkgdesc="The enchant package provide a generic interface into various existing s
 arch=('x86_64')
 url="http://www.abisource.com/downloads/enchant/1.6.0"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.gz")
 md5sums=('de11011aff801dc61042828041fb59c7')
 depends=('rootfs>=2.0.0')

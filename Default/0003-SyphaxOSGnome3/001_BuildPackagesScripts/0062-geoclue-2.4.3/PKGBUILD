@@ -7,7 +7,7 @@ pkgdesc="GeoClue is a modular geoinformation service built on top of the D-Bus m
 arch=('x86_64')
 url="http://www.freedesktop.org/software/geoclue/releases/2.4"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('86381eeff164a890eb2178ceb5823cfe')
 depends=('rootfs>=2.0.0')

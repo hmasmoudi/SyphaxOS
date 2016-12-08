@@ -7,7 +7,7 @@ pkgdesc="The xcb-util-renderutil package provides additional extensions to the X
 arch=('x86_64')
 url="http://xcb.freedesktop.org/dist"
 license=('GPL')
-groups=('core')
+groups=('graphicslayer')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
 md5sums=('468b119c94da910e1291f3ffab91019a')
 depends=('rootfs>=2.0.0')

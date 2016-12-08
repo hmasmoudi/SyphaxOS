@@ -5,9 +5,9 @@ pkgver=3.20.2
 pkgrel=1
 pkgdesc="The GNOME Terminal package contains the terminal emulator for GNOME Desktop."
 arch=('x86_64')
-url="http://ftp.gnome.org/pub/gnome/sources/${pkgname}-/3.20"
+url="http://ftp.gnome.org/pub/gnome/sources/${pkgname}/3.20"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('8a450458cb833741cf52267d4a208f9a')
 depends=('rootfs>=2.0.0')

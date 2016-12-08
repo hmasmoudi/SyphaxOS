@@ -5,9 +5,9 @@ pkgver=1.1.2
 pkgrel=1
 pkgdesc="The ALSA Library package contains the ALSA library used by programs (including ALSA Utilities) requiring access to the ALSA sound interface."
 arch=('x86_64')
-url="http://alsa.cybermirror.org/lib"
+url="ftp://ftp.alsa-project.org/pub/lib/"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
 md5sums=('1946e6438b8262a7b8fdadacd0e06ba7')
 depends=('rootfs>=2.0.0')

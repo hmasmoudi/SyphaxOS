@@ -7,7 +7,7 @@ pkgdesc="PyCairo provides Python 3 bindings to Cairo."
 arch=('x86_64')
 url="http://cairographics.org/releases"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.bz2"
         "pycairo-1.10.0-waf_unpack-1.patch"
         "pycairo-1.10.0-waf_python_3_4-1.patch")

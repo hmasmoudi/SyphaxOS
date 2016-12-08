@@ -7,7 +7,7 @@ pkgdesc="The UnZip package contains ZIP extraction utilities. These are useful f
 arch=('x86_64')
 url="http://downloads.sourceforge.net/infozip"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}60.tar.gz")
 md5sums=('62b490407489521db863b523a7f86375')
 depends=('rootfs>=2.0.0')

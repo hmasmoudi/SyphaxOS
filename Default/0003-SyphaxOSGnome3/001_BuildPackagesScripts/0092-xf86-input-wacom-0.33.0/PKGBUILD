@@ -7,7 +7,7 @@ pkgdesc="The Xorg Wacom Driver package contains the X.Org X11 driver and SDK for
 arch=('x86_64')
 url="http://downloads.sourceforge.net/linuxwacom"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
 md5sums=('4faa1d4bf6eb74f40dba8c5cb3c9c3e4')
 depends=('rootfs>=2.0.0')

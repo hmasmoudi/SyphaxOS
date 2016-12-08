@@ -7,7 +7,7 @@ pkgdesc="The GTK-Doc package contains a code documenter. This is useful for extr
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/gtk-doc/1.25"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('0dc6570953112a464a409fb99258ccbc')
 depends=('rootfs>=2.0.0')

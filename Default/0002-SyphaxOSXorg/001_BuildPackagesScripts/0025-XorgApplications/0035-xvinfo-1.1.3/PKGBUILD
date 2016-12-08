@@ -7,7 +7,7 @@ pkgdesc="The Xorg applications provide the expected applications available in pr
 arch=('x86_64')
 url="http://ftp.x.org/pub/individual/app"
 license=('GPL')
-groups=('core')
+groups=('graphicslayer')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
 md5sums=('558360176b718dee3c39bc0648c0d10c')
 depends=('rootfs>=2.0.0')

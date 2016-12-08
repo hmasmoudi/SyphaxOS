@@ -7,7 +7,7 @@ pkgdesc="The GNOME Video Effects package contains a collection of GStreamer effe
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/gnome-video-effects/0.4"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('aa0838f5be12f524ba5622e1b61d21b1')
 depends=('rootfs>=2.0.0')

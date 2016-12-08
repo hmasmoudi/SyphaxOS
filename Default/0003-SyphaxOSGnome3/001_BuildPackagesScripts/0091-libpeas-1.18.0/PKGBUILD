@@ -7,7 +7,7 @@ pkgdesc="libpeas is a GObject based plugins engine, and is targeted at giving ev
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/libpeas/1.18"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('9f081834c5a9047f4aefcd3c8dc7101a')
 depends=('rootfs>=2.0.0')

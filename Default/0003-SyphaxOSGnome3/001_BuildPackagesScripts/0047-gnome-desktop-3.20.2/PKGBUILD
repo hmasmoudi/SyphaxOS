@@ -7,7 +7,7 @@ pkgdesc="The GNOME Desktop package contains a library that provides an API share
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/gnome-desktop/3.20"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('8354ed38624f5eb6b5d34267b658a9c9')
 depends=('rootfs>=2.0.0')

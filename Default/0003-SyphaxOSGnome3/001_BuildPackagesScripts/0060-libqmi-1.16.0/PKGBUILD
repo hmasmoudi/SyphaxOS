@@ -7,7 +7,7 @@ pkgdesc="The libqmi package contains a GLib-based library for talking to WWAN mo
 arch=('x86_64')
 url="http://www.freedesktop.org/software/libqmi"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('4970c110f160b33637a3515004c637b2')
 depends=('rootfs>=2.0.0')

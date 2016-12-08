@@ -7,7 +7,7 @@ pkgdesc="The GNOME Control Center package contains the GNOME settings manager."
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/gnome-control-center/3.20"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('0f2297bc4eebfaccf8898dd3d1e38f15')
 depends=('rootfs>=2.0.0')

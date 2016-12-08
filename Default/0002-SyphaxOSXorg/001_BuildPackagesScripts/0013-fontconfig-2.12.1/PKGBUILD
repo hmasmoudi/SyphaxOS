@@ -7,7 +7,7 @@ pkgdesc="The Fontconfig package contains a library and support programs used for
 arch=('x86_64')
 url="http://www.freedesktop.org/software/fontconfig/release"
 license=('GPL')
-groups=('core')
+groups=('graphicslayer')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
 md5sums=('b5af5a423ee3b5cfc34846838963c058')
 depends=('rootfs>=2.0.0')

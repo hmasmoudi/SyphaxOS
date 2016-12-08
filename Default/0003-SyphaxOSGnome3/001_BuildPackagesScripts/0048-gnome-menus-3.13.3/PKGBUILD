@@ -7,7 +7,7 @@ pkgdesc="The GNOME Menus package contains an implementation of the draft Desktop
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/gnome-menus/3.13"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('eef5ef2308d7afc56119d7248f2aa6db')
 depends=('rootfs>=2.0.0')

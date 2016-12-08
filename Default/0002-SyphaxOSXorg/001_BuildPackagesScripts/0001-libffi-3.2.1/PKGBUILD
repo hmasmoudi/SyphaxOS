@@ -7,7 +7,7 @@ pkgdesc="The libffi library provides a portable, high level programming interfac
 arch=('x86_64')
 url="ftp://sourceware.org/pub/$pkgname"
 license=('GPL')
-groups=('core')
+groups=('graphicslayer')
 source=("$url/${pkgname}-${pkgver}.tar.gz")
 md5sums=('83b89587607e3eb65c70d361f13bab43')
 depends=('rootfs>=2.0.0')

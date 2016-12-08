@@ -7,7 +7,7 @@ pkgdesc="The libevdev package contains common functions for Xorg input drivers."
 arch=('x86_64')
 url="http://www.freedesktop.org/software/libevdev"
 license=('GPL')
-groups=('core')
+groups=('graphicslayer')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('8f22027bd7a7ba19e6f2695f78e672b6')
 depends=('rootfs>=2.0.0')

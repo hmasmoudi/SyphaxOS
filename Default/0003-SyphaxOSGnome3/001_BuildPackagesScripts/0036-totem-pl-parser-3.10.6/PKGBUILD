@@ -7,7 +7,7 @@ pkgdesc="The Totem PL Parser package contains a simple GObject-based library use
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/totem-pl-parser/3.10"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('b8a691c30632bb2f2df3b33e4998bbcb')
 depends=('rootfs>=2.0.0')

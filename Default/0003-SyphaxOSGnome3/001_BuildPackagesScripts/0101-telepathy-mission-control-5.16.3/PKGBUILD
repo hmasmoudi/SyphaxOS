@@ -7,7 +7,7 @@ pkgdesc="Telepathy Mission Control is an account manager and channel dispatcher 
 arch=('x86_64')
 url="http://telepathy.freedesktop.org/releases/telepathy-mission-control"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.gz")
 md5sums=('af583c41b97c649c37eebba1f2113427')
 depends=('rootfs>=2.0.0')

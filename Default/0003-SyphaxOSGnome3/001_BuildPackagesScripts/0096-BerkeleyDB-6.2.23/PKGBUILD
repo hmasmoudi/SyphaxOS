@@ -7,7 +7,7 @@ pkgdesc="The Berkeley DB package contains programs and utilities used by many ot
 arch=('x86_64')
 url="http://download.oracle.com/berkeley-db"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/db-${pkgver}.tar.gz")
 md5sums=('9da126afb937a48171ff1e569ce67cf1')
 depends=('rootfs>=2.0.0')

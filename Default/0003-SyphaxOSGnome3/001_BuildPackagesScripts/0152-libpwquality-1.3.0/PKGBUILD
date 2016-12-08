@@ -7,7 +7,7 @@ pkgdesc="The libpwquality package provides common functions for password quality
 arch=('x86_64')
 url="https://fedorahosted.org/releases/l/i/libpwquality"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
 md5sums=('2a3d4ba1d11b52b4f6a7f39622ebf736')
 depends=('rootfs>=2.0.0')

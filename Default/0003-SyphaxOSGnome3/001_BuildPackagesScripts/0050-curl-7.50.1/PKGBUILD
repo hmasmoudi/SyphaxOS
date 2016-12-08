@@ -7,7 +7,7 @@ pkgdesc="The cURL package contains a utility and a library used for transferring
 arch=('x86_64')
 url="https://curl.haxx.se/download"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.lzma")
 md5sums=('01ac668b9f78266d72bdb86aa9db0849')
 depends=('rootfs>=2.0.0')

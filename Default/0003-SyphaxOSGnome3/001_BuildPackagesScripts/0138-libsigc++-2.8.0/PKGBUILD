@@ -7,7 +7,7 @@ pkgdesc="The libsigc++ package implements a typesafe callback system for standar
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/libsigc++/2.8"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('3d26acbc813fa54edd4401ce1a981677')
 depends=('rootfs>=2.0.0')

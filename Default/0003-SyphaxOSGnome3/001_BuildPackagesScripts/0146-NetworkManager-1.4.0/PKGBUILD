@@ -8,7 +8,7 @@ arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/NetworkManager/1.4"
 install=${pkgname}.install
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz"
         "${pkgname}.install")
 md5sums=('59b5b5585467756787c6cb535cbd306e'

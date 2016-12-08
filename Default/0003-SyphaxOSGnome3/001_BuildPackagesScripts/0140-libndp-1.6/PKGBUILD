@@ -7,7 +7,7 @@ pkgdesc="The libndp package provides a wrapper for IPv6 Neighbor Discovery Proto
 arch=('x86_64')
 url="http://libndp.org/files"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.gz")
 md5sums=('1e54d26bcb4a4110bc3f90c5dd04f1a7')
 depends=('rootfs>=2.0.0')

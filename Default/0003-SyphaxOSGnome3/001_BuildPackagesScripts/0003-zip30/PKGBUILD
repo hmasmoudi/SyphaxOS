@@ -7,7 +7,7 @@ pkgdesc="The Zip package contains Zip utilities. These are useful for compressin
 arch=('x86_64')
 url="http://downloads.sourceforge.net/infozip"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/$pkgname$pkgver.tar.gz")
 md5sums=('7b74551e63f8ee6aab6fbc86676c0d37')
 depends=('rootfs>=2.0.0')

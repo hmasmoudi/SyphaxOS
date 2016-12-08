@@ -7,7 +7,7 @@ pkgdesc="The CMake package contains a modern toolset used for generating Makefil
 arch=('x86_64')
 url="http://www.cmake.org/files/v3.6"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.gz")
 md5sums=('d6dd661380adacdb12f41b926ec99545')
 depends=('rootfs>=2.0.0')

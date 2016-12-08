@@ -7,7 +7,7 @@ pkgdesc="The GLib Networking package contains Network related gio modules for GL
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/glib-networking/2.48"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('d7cf81d52c856b0c66f7821021f40e08')
 depends=('rootfs>=2.0.0')

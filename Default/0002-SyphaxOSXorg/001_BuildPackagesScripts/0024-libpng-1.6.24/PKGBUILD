@@ -7,7 +7,7 @@ pkgdesc="The libpng package contains libraries used by other programs for readin
 arch=('x86_64')
 url="http://downloads.sourceforge.net/libpng"
 license=('GPL')
-groups=('core')
+groups=('graphicslayer')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('ffcdbd549814787fa8010c372e35ff25')
 depends=('rootfs>=2.0.0')

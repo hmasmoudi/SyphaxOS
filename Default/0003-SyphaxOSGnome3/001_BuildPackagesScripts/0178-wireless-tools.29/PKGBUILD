@@ -7,7 +7,7 @@ pkgdesc="The Wireless Extension (WE) is a generic API in the Linux kernel allowi
 arch=('x86_64')
 url="http://www.hpl.hp.com/personal/Jean_Tourrilhes/Linux"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/wireless_tools.${pkgver}.tar.gz"
         "wireless_tools-29-fix_iwlist_scanning-1.patch")
 md5sums=('e06c222e186f7cc013fd272d023710cb'

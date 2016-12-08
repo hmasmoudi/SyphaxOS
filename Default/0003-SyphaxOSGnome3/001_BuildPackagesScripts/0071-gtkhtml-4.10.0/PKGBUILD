@@ -7,7 +7,7 @@ pkgdesc="The GtkHTML package contains a lightweight HTML rendering/printing/edit
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/gtkhtml/4.10"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('a8538daed73de3fb5c7747d05139ef79')
 depends=('rootfs>=2.0.0')

@@ -7,7 +7,7 @@ pkgdesc="The libnotify library is used to send desktop notifications to a notifi
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/libnotify/0.7"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('a4997019d08f46f3bf57b78e6f795a59')
 depends=('rootfs>=2.0.0')

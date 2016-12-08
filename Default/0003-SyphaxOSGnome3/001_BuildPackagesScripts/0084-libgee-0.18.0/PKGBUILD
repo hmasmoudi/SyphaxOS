@@ -7,7 +7,7 @@ pkgdesc="The libgee package is a collection library providing GObject based inte
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/libgee/0.18"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('29ea6125e653d7e60b49a9a9544abc96')
 depends=('rootfs>=2.0.0')

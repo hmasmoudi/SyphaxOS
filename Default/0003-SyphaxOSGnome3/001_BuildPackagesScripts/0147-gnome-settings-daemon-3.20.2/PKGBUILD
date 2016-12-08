@@ -7,7 +7,7 @@ pkgdesc="The GNOME Settings Daemon is responsible for setting various parameters
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/gnome-settings-daemon/3.20"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('6e5c8429f4915aec5849319877123be6')
 depends=('rootfs>=2.0.0')

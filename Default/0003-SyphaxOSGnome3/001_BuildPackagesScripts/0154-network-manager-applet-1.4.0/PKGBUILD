@@ -7,7 +7,7 @@ pkgdesc="The NetworkManager Applet provides a tool and a panel applet used to co
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/network-manager-applet/1.4"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('30155703e3a82394bb0276c8ce23a5f7')
 depends=('rootfs>=2.0.0')

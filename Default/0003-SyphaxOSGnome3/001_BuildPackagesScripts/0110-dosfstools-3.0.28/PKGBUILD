@@ -7,7 +7,7 @@ pkgdesc="dosfstools consists of the programs mkfs.fat, fsck.fat and fatlabel to 
 arch=('x86_64')
 url="https://github.com/dosfstools/dosfstools/releases/download/v${pkgver}"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('6a047a6c65186b9ebb1853709adb36db')
 depends=('rootfs>=2.0.0')

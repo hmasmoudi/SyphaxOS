@@ -7,7 +7,7 @@ pkgdesc="The VTE package contains a termcap file implementation for terminal emu
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/vte/0.44"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('eca8f8a9d9f9bb8e9d592d0acfeec015')
 depends=('rootfs>=2.0.0')

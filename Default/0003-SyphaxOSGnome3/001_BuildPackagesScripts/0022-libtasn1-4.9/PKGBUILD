@@ -7,7 +7,7 @@ pkgdesc="libtasn1 is a highly portable C library that encodes and decodes DER/BE
 arch=('x86_64')
 url="http://ftp.gnu.org/gnu/libtasn1"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.gz")
 md5sums=('3018d0f466a32b66dde41bb122e6cab6')
 depends=('rootfs>=2.0.0')

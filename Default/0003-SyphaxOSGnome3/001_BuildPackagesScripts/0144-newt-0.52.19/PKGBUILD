@@ -5,9 +5,9 @@ pkgver=0.52.19
 pkgrel=1
 pkgdesc="Newt is a programming library for color text mode, widget based user interfaces."
 arch=('x86_64')
-url="http://fedorahosted.org/releases/n/e/newt"
+url="https://distfiles.macports.org/libnewt"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.gz")
 md5sums=('e4aa0f7943edd39c52481a87f68f412a')
 depends=('rootfs>=2.0.0')

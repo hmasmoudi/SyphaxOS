@@ -7,7 +7,7 @@ pkgdesc="The uhttpmock package contains a library for mocking web service APIs w
 arch=('x86_64')
 url="http://tecnocode.co.uk/downloads/uhttpmock"
 license=('GPL')
-groups=('core')
+groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('ebc54cbbe9b6695282a179af223fe374')
 depends=('rootfs>=2.0.0')
