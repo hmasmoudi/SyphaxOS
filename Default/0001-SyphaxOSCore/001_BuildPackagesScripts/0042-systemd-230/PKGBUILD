@@ -58,5 +58,6 @@ package() {
    done
    ln -sfv ../lib/systemd/systemd $pkgdir/sbin/init
 
+   cp ../../systemd-user $pkgdir/etc/pam.d/systemd-user
    cd $pkgdir/etc && ln -snf ../run/systemd/resolve/resolv.conf
 }
