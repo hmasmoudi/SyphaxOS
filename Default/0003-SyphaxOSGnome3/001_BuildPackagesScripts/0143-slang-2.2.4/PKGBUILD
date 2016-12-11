@@ -28,11 +28,11 @@ build() {
 package() {
    cd "$srcdir/${pkgname}-${pkgver}"
    
-   make DESTDIR="${pkgdir}" install_doc_dir="${pkgdir}"/usr/share/doc/slang-${pkgver}   \
-        SLSH_DOC_DIR="${pkgdir}"/usr/share/doc/slang-${pkgver}/slsh \
+   make DESTDIR="${pkgdir}" \
+        SLSH_DOC_DIR=/usr/share/doc/slang-2.2.4/slsh \
         install-all
 
-   chmod -v 755 "${pkgdir}"/usr/lib/libslang.so.${pkgver} \
+   chmod -v 755 "${pkgdir}"/usr/lib/libslang.so.2.2.4 \
                 "${pkgdir}"/usr/lib/slang/v2/modules/*.so
 }
 
