@@ -48,5 +48,7 @@ package() {
    cp ../../system-auth $pkgdir/etc/pam.d/system-auth
    cp ../../system-session $pkgdir/etc/pam.d/system-session
    cp ../../system-password $pkgdir/etc/pam.d/system-password
+   cp ../../systemd-user $pkgdir/etc/pam.d/systemd-user
+   
 }
 
