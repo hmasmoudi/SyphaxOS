@@ -27,6 +27,6 @@ build() {
 package() {
    cd "$srcdir/${pkgname}-${pkgver}"
    
-   make DESTDIR="$pkgdir" docdir=${pkgdir}/usr/share/doc/${pkgname}-${pkgver} install
+   make DESTDIR="$pkgdir" install
 }
 
