@@ -1,0 +1,32 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=pinentry
+pkgver=0.9.7
+pkgrel=1
+pkgdesc="The PIN-Entry package contains a collection of simple PIN or pass-phrase entry dialogs."
+arch=('x86_64')
+url="ftp://ftp.gnupg.org/gcrypt/pinentry"
+license=('GPL')
+groups=('desktop')
+source=("$url/${pkgname}-${pkgver}.tar.bz2")
+md5sums=('9510b2de013e818dab619e468298703a')
+depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+}
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   ./configure --prefix=/usr
+   
+   make
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   make DESTDIR="${pkgdir}" install
+}
+
