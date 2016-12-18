@@ -7,9 +7,14 @@ pkgdesc="SyphaxOS Package Manager."
 arch=('x86_64')
 url="https://git.archlinux.org/pacman.git/snapshot"
 license=('GPL')
-groups=('desktop')
-source=("$url/${pkgname}-${pkgver}.tar.xz")
-md5sums=('79d1418d4dff1c2903329ad61d989324')
+groups=('applications')
+install=${pkgname}.install
+source=("$url/${pkgname}-${pkgver}.tar.xz"
+        "pacman.install"
+        "pub.key")
+md5sums=('79d1418d4dff1c2903329ad61d989324'
+         '4baafba8044fb0c62d636e29147e2762'
+         'afae51776eeb25edb91ec4b1b5aa5219')
 depends=('rootfs>=2.0.0'
          'asciidoc-8.6.9'
          'npth>=1.2'
@@ -37,5 +42,7 @@ package() {
    cd "$srcdir/${pkgname}-${pkgver}"
    
    make DESTDIR="${pkgdir}" install
+   
+   cp ../../pub.key ${pkgdir}/usr/etc/pub.key
 }
 
