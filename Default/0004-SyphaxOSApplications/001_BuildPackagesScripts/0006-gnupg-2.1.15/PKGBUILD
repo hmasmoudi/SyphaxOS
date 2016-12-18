@@ -1,0 +1,50 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=gnupg
+pkgver=2.1.15
+pkgrel=1
+pkgdesc="The GnuPG package is GNU's tool for secure communication and data storage."
+arch=('x86_64')
+url="ftp://ftp.gnupg.org/gcrypt/gnupg"
+license=('GPL')
+groups=('desktop')
+source=("$url/${pkgname}-${pkgver}.tar.bz2")
+md5sums=('808d10b89c1f0de8d4d2a556aa36b623')
+depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+}
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   ./configure --prefix=/usr \
+               --enable-symcryptrun \
+               --docdir=/usr/share/doc/gnupg-2.1.15
+   make
+   
+   makeinfo --html --no-split \
+            -o doc/gnupg_nochunks.html doc/gnupg.texi
+   makeinfo --plaintext       \
+            -o doc/gnupg.txt           doc/gnupg.texi
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   make DESTDIR="${pkgdir}" install
+   
+   install -v -m755 -d ${pkgdir}/usr/share/doc/gnupg-2.1.15/html
+   install -v -m644    doc/gnupg_nochunks.html \
+                       ${pkgdir}/usr/share/doc/gnupg-2.1.15/html/gnupg.html
+   install -v -m644    doc/*.texi doc/gnupg.txt \
+                       ${pkgdir}/usr/share/doc/gnupg-2.1.15
+   for f in gpg gpgv
+   do
+     ln -svf ${f}2.1 ${pkgdir}/usr/share/man/man1/$f.1 &&
+     ln -svf ${f}2   ${pkgdir}/usr/bin/$f
+   done
+   unset f
+}
+
