@@ -49,8 +49,8 @@ init() {
 check_connection() {
 	
 	op_title="$connection_op_msg"
-	test_pkg=core
-	test_pkg_ver=2.0.0-1
+	test_pkg=util-linux
+	test_pkg_ver=2.28.1-1
 	test_link="https://bintray.com/syphaxos/Cockatiel/download_file?file_path=${test_pkg}-${test_pkg_ver}-x86_64.pkg.tar.xz"
 	wget --append-output=/tmp/wget.log -O /dev/null "${test_link}" &
 	pid=$! pri=0.3 msg="\n$connection_load \n\n \Z1> \Z2${test_pkg}-${test_pkg_ver}-x86_64.pkg.tar.xz \Z1<\Zn" load

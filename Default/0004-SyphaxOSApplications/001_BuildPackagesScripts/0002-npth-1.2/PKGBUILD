@@ -7,7 +7,7 @@ pkgdesc="The NPth package contains a very portable POSIX/ANSI-C based library fo
 arch=('x86_64')
 url="ftp://ftp.gnupg.org/gcrypt/npth"
 license=('GPL')
-groups=('desktop')
+groups=('applications')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
 md5sums=('226bac7374b9466c6ec26b1c34dab844')
 depends=('rootfs>=2.0.0')

@@ -2,4 +2,5 @@
 post_install() {
    pacman-key --init
    pacman-key -a /usr/etc/pub.key
+   cp -rf /usr/etc/trustdb.gpg /usr/etc/pacman.d/gnupg/trustdb.gpg
 }
