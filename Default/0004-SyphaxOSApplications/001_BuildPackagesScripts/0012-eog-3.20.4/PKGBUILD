@@ -1,0 +1,32 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=eog
+pkgver=3.20.4
+pkgrel=1
+pkgdesc="EOG is an application used for viewing and cataloging image files on the GNOME Desktop."
+arch=('x86_64')
+url="http://ftp.gnome.org/pub/gnome/sources/${pkgname}/3.20"
+license=('GPL')
+groups=('applications')
+source=("$url/${pkgname}-${pkgver}.tar.xz")
+md5sums=('687864ea424e751f2d8b5e5c0d7325e2')
+depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+}
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   ./configure --prefix=/usr --disable-static
+   
+   make
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   make DESTDIR="${pkgdir}" install
+}
+
