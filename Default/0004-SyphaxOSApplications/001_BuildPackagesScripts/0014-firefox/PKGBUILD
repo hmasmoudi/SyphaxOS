@@ -1,0 +1,32 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=firefox
+pkgver=50.1.0
+pkgrel=1
+pkgdesc="Firefox is a stand-alone browser based on the Mozilla codebase."
+arch=('x86_64')
+url="https://ftp.mozilla.org/pub/firefox/releases/50.1.0/linux-x86_64/fr"
+license=('GPL')
+groups=('applications')
+source=("$url/${pkgname}-${pkgver}.tar.bz2"
+        "firefox.desktop")
+md5sums=('6380ba6d9cce83b52f9564f212515122'
+         '614cf5eda9b607bf557062945bef253d')
+depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/${pkgname}"
+}
+
+build() {
+   cd "$srcdir/${pkgname}"
+}
+
+package() {   
+   mkdir -pv "${pkgdir}"/opt/
+   mkdir -pv "${pkgdir}"/usr/share/applications
+   
+   cp -rf "$srcdir/${pkgname}" "${pkgdir}"/opt/
+   cp -rf firefox.desktop "${pkgdir}"/usr/share/applications/firefox.desktop
+}
+
