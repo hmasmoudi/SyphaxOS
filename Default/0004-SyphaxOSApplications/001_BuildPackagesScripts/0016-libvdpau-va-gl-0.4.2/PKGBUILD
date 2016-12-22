@@ -1,0 +1,34 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=libvdpau-va-gl
+pkgver=0.4.2
+pkgrel=1
+pkgdesc="The libvdpau-va-gl package contains a library which implements the VDPAU library."
+arch=('x86_64')
+url="https://github.com/i-rinat/libvdpau-va-gl/releases/download/v${pkgver}"
+license=('GPL')
+groups=('applications')
+source=("$url/${pkgname}-${pkgver}.tar.gz")
+md5sums=('8db21dcfd5cd14c6ec51b992e20369dc')
+depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+}
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   mkdir build &&
+   cd    build &&
+   cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr .. &&
+   make
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   cd    build &&
+   make DESTDIR="${pkgdir}" install
+}
+

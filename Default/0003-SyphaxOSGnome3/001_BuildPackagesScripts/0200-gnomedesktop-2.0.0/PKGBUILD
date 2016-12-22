@@ -190,6 +190,7 @@ depends=(
          'pm-utils>=1.4.1'
          'wireless-tools>=29'
          'wpa_supplicant>=2.5'
+         'dejavu-fonts-ttf>=2.37'
          )
 
 prepare() {

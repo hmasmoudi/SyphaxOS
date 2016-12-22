@@ -1,0 +1,31 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=dejavu-fonts-ttf
+pkgver=2.37
+pkgrel=1
+pkgdesc="The DejaVu fonts are a font family based on the Vera Fonts."
+arch=('x86_64')
+url="http://sourceforge.net/projects/dejavu/files/dejavu/${pkgver}"
+install=${pkgname}.install
+license=('GPL')
+groups=('desktop')
+source=("$url/${pkgname}-${pkgver}.tar.bz2")
+md5sums=('d0efec10b9f110a32e9b8f796e21782c')
+depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+}
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   cd ttf
+
+   install -v -d -m755 "${pkgdir}"/usr/share/fonts/dejavu
+   install -v -m644 *.ttf "${pkgdir}"/usr/share/fonts/dejavu
+}
+

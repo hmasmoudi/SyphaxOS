@@ -49,8 +49,8 @@ init() {
 check_connection() {
 	
 	op_title="$connection_op_msg"
-	test_pkg=util-linux
-	test_pkg_ver=2.28.1-1
+	test_pkg=iproute2
+	test_pkg_ver=4.7.0-1
 	test_link="https://bintray.com/syphaxos/Cockatiel/download_file?file_path=${test_pkg}-${test_pkg_ver}-x86_64.pkg.tar.xz"
 	wget --append-output=/tmp/wget.log -O /dev/null "${test_link}" &
 	pid=$! pri=0.3 msg="\n$connection_load \n\n \Z1> \Z2${test_pkg}-${test_pkg_ver}-x86_64.pkg.tar.xz \Z1<\Zn" load
@@ -148,7 +148,7 @@ set_zone() {
 		fi
 	fi
 
-	prepare_base
+	prepare_core
 	#prepare_drives
 }
 
@@ -181,7 +181,7 @@ prepare_drives() {
 		prepare_drives
 	
 	else
-		prepare_base
+		prepare_core
 	fi
 
 }
@@ -537,7 +537,7 @@ part_class() {
 				
 				sleep 1
 				pid=$! pri=0.1 msg="$wait_load \n\n \Z1> \Z2Finalize...\Zn" load
-				prepare_base
+				prepare_core
 			else
 				part_menu
 			fi
@@ -615,12 +615,12 @@ fs_select() {
 
 }
 
-prepare_base() {
+prepare_core() {
 	
 	op_title="$install_op_msg"
 	mounted=true
 	if "$mounted" ; then
-		base_install="gnomedesktop"
+		base_install="SyphaxOS-Desktop"
       sh="/bin/bash"
 
 		while (true)
@@ -677,7 +677,7 @@ install_base() {
 	
 	if (dialog --yes-button "$install" --no-button "$cancel" --yesno "\n$install_var" "$x" 60); then
 		tmpfile=$(mktemp)
-		mkdir -p "$ARCH"/usr/var/lib/pacman/
+		mkdir -p "$ARCH"/usr/var/lib/pacman
 		( pacman -r "$ARCH" -Sy --noconfirm $(echo "$base_install") ; echo "$?" > /tmp/ex_status) &> "$tmpfile" &
 		pid=$! pri=$(echo "$down" | sed 's/\..*$//') msg="\n$install_load_var" load_log
 		genfstab -U -p "$ARCH" >> "$ARCH"/etc/fstab
@@ -1222,7 +1222,7 @@ main_menu() {
 		;;
 		"$menu4") 	update_mirrors
 		;;
-		"$menu5")	prepare_base
+		"$menu5")	prepare_core
 		;;
 		"$menu11") 	reboot_system
 		;;

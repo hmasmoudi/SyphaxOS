@@ -22,11 +22,13 @@ build() {
    cd "$srcdir/${pkgname}"
 }
 
-package() {   
+package() {
+   cd "$srcdir/${pkgname}"
+    
    mkdir -pv "${pkgdir}"/opt/
-   mkdir -pv "${pkgdir}"/usr/share/applications
+   mkdir -pv "${pkgdir}"/usr/share/applications/
    
    cp -rf "$srcdir/${pkgname}" "${pkgdir}"/opt/
-   cp -rf firefox.desktop "${pkgdir}"/usr/share/applications/firefox.desktop
+   cp -rf ../../firefox.desktop "${pkgdir}"/usr/share/applications/firefox.desktop
 }
 

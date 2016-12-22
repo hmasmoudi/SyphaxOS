@@ -1,0 +1,34 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=SyphaxOS-Desktop
+pkgver=2.0.0
+pkgrel=1
+pkgdesc="SyphaxOS 2.0.0 Default Desktop Package based on Gnome Desktop."
+arch=('x86_64')
+install=${pkgname}.install
+license=('GPL')
+groups=('desktop')
+depends=(
+         'gnomedesktop>=2.0.0'
+         'pacman>=5.0'
+         'gnome-calculator>=3.20.2'
+         'gedit>=3.20.2'
+         'eog>=3.20.4'
+         'gnome-screenshot>=3.20.1'
+         'firefox>=50.1.0'
+         'flashplayer>=24.0.0.186'
+         'file-roller>=3.20.3'
+         )
+
+prepare() {
+   mkdir -pv "$srcdir/$pkgname-$pkgver"
+}
+
+build() {
+   cd "$srcdir/$pkgname-$pkgver"
+}
+
+package() {
+   cd "$srcdir/$pkgname-$pkgver"
+}
+
