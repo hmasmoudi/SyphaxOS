@@ -1,0 +1,4 @@
+# arg 1:  the new package version
+post_install() {
+   echo "export VDPAU_DRIVER=va_gl" >> /etc/profile.d/xorg.sh
+}

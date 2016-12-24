@@ -6,6 +6,7 @@ pkgrel=1
 pkgdesc="The libvdpau-va-gl package contains a library which implements the VDPAU library."
 arch=('x86_64')
 url="https://github.com/i-rinat/libvdpau-va-gl/releases/download/v${pkgver}"
+install=${pkgname}.install
 license=('GPL')
 groups=('applications')
 source=("$url/${pkgname}-${pkgver}.tar.gz")

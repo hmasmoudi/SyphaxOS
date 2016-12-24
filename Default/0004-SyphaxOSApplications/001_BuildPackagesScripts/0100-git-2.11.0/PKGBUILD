@@ -1,0 +1,34 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=git
+pkgver=2.11.0
+pkgrel=1
+pkgdesc="The Git feature that really makes it stand apart from nearly every other SCM out there is its branching model."
+arch=('x86_64')
+url="https://www.kernel.org/pub/software/scm/git"
+license=('GPL')
+groups=('applications')
+source=("$url/${pkgname}-${pkgver}.tar.xz")
+md5sums=('dd4e3360e28aec5bb902fb34dd7fce3b')
+depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   make configure
+}
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   ./configure --prefix=/usr
+   
+   make all
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   make DESTDIR="${pkgdir}" install
+}
+

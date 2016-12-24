@@ -18,6 +18,8 @@ depends=(
          'firefox>=50.1.0'
          'flashplayer>=24.0.0.186'
          'file-roller>=3.20.3'
+         'totem>=3.20.1'
+         'wps-office>=10.1.0.5672'
          )
 
 prepare() {
