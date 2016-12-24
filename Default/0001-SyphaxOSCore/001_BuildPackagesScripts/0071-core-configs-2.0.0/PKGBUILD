@@ -21,8 +21,10 @@ build() {
 package() {
    cd "$srcdir/$pkgname-$pkgver"
    
-   mkdir -pv $pkgdir/etc/modprobe.d
-   mkdir -pv $pkgdir/etc/systemd/network/
+   mkdir -p $pkgdir/sbin
+   mkdir -p $pkgdir/etc/modprobe.d
+   mkdir -p $pkgdir/etc/systemd/network
+   mkdir -p $pkgdir/usr/share/mkinitramfs
    
    #7_2_GeneralNetworkConfiguration        
    cp ../../10-eth0-dhcp.network $pkgdir/etc/systemd/network/
@@ -63,8 +65,12 @@ package() {
    cp ../../skel_gtkrc-2.0 $pkgdir/etc/skel/.gtkrc-2.0
    cp ../../skel_asoundrc $pkgdir/etc/skel/.asoundrc
    
+   
+   cp ../../mkinitramfs $pkgdir/sbin/
+   cp ../../init.in $pkgdir/usr/share/mkinitramfs/
+   
    cp ../../lsb-release $pkgdir/etc/
    cp ../../os-release $pkgdir/etc/
-   cp ../../issue $pkgdir/etc/   
+   cp ../../issue $pkgdir/etc/
 }
 
