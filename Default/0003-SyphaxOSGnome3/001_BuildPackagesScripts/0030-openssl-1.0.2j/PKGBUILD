@@ -14,33 +14,39 @@ depends=('rootfs>=2.0.0')
 
 prepare() {
    cd "$srcdir/$pkgname-$pkgver"
+   
+   sed -i 's# libcrypto.a##;s# libssl.a##' Makefile
 }
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"
 
-   ./config --prefix=$pkgdir/usr         \
-            --openssldir=$pkgdir/etc/ssl \
-            --libdir=lib                 \
-            shared                       \
+   ./config --prefix=/usr \
+            --openssldir=/etc/ssl \
+            --libdir=lib \
+            shared \
             zlib-dynamic
    make depend
    make
-   sed -i 's# libcrypto.a##;s# libssl.a##' Makefile
 }
 
 package() {
    cd "$srcdir/$pkgname-$pkgver"
-
-   make DESTDIR="$pkgdir" install
    
-   make DESTDIR="$pkgdir" MANDIR=${pkgdir}/usr/share/man MANSUFFIX=ssl install
+   install -dv -m755 $pkgdir/usr/share/man
+   
+   make INSTALL_PREFIX=$pkgdir MANDIR=/usr/share/man MANSUFFIX=ssl install
+   
    install -dv -m755 $pkgdir/usr/share/doc/$pkgname-$pkgver
    cp -vfr doc/*     $pkgdir/usr/share/doc/$pkgname-$pkgver
    
    cp ../../certdata.txt $srcdir/$pkgname-$pkgver
    cp ../../remove-expired-certs.sh $srcdir/$pkgname-$pkgver
-   make-ca.sh
+   cp ../../make-ca.sh $srcdir/$pkgname-$pkgver
+   cp ../../make-cert.pl $srcdir/$pkgname-$pkgver
+   
+   sh make-ca.sh
+   
    SSLDIR=$pkgdir/etc/ssl
    sh remove-expired-certs.sh certs
    install -d ${SSLDIR}/certs
