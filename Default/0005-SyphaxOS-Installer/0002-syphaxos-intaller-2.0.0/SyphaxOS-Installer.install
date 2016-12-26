@@ -1,0 +1,5 @@
+# arg 1:  the new package version
+post_install() {
+   systemctl enable syphaxos-installer
+   systemctl disable gdm  
+}

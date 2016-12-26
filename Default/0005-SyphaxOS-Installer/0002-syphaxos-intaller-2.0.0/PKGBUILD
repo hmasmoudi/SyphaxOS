@@ -1,0 +1,31 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=SyphaxOS-Installer
+pkgver=2.0.0
+pkgrel=1
+pkgdesc="SyphaxOS 2.0.0 Installer Scripts"
+arch=('x86_64')
+install=${pkgname}.install
+license=('GPL')
+groups=('applications')
+depends=('SyphaxOS-Desktop>=2.0.0'
+         'dialog>=1.3_20160828')
+
+prepare() {
+   mkdir -p "$srcdir/${pkgname}-${pkgver}"
+}
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   mkdir -p "${pkgdir}"/opt
+   mkdir -p "${pkgdir}"/lib/systemd/system/
+   
+   cp -r ../../"${pkgname}" "${pkgdir}"/opt/
+   cp -r ../../syphaxos-installer.service "${pkgdir}"/lib/systemd/system/
+}
+
