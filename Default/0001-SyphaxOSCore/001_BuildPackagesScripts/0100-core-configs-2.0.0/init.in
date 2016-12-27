@@ -114,9 +114,9 @@ mount -n -t tmpfs    tmpfs    /.root/run
 mount -n -t tmpfs    tmpfs    /.root/tmp
 
 mkdir /livecdhome
-cp -rfp /.root/home/syphaxos /livecdhome/
+cp -rfp /.root/home/syphaxos  /livecdhome/
 mount -n -t tmpfs    tmpfs    /.root/home
-cp -rfp /livecdhome/syphaxos /.root/home/
+cp -rfp /livecdhome/syphaxos  /.root/home/
 
 mkdir /livecdvar
 cp -rfp /.root/var/* /livecdvar/
@@ -125,7 +125,6 @@ cp -rfp /livecdvar/* /.root/var/
 
 cp -rfp /.root/root /livecdroot
 mount -n -t tmpfs tmpfs /.root/root
-cp -rfp /livecdroot/.viminfo /.root/root/
 
 cp -rfp /.root/etc /livecdetc
 mount -n -t tmpfs tmpfs /.root/etc
