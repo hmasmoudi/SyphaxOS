@@ -1,5 +1,6 @@
 # arg 1:  the new package version
 post_install() {
+   cp -rf /opt/SyphaxOS-Installer /usr/etc/pacman.conf
    systemctl enable syphaxos-installer
    systemctl disable gdm  
 }

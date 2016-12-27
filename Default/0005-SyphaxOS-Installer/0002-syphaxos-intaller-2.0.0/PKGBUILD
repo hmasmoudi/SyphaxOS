@@ -23,11 +23,9 @@ package() {
    cd "$srcdir/${pkgname}-${pkgver}"
    
    mkdir -p "${pkgdir}"/opt/
-   mkdir -p "${pkgdir}"/usr/etc/
    mkdir -p "${pkgdir}"/lib/systemd/system/
    
    cp -r ../../"${pkgname}"               "${pkgdir}"/opt/
-   cp -r ../../pacman.conf                "${pkgdir}"/usr/etc/
    cp -r ../../syphaxos-installer.service "${pkgdir}"/lib/systemd/system/
 }
 
