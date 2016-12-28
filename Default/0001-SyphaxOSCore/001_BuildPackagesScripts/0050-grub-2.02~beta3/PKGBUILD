@@ -32,4 +32,5 @@ package() {
    cd "$srcdir/$pkgname-$pkgver"
 
    make DESTDIR="$pkgdir" install
+   install -D -m0644 "../../grub.default" "${pkgdir}/etc/default/grub"
 }
