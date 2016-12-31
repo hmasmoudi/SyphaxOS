@@ -7,6 +7,7 @@ pkgdesc="Brasero is an application used to burn CD/DVD on the GNOME Desktop."
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/brasero/3.12"
 license=('GPL')
+install=${pkgname}.install
 groups=('applications')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('216691249053448a9f2b4ee5e118ce72')
