@@ -23,9 +23,11 @@ package() {
    cd "$srcdir/${pkgname}-${pkgver}"
    
    mkdir -p "${pkgdir}"/opt/
+   mkdir -p "${pkgdir}"/usr/bin/
    mkdir -p "${pkgdir}"/lib/systemd/system/
    
    cp -r ../../"${pkgname}"               "${pkgdir}"/opt/
    cp -r ../../syphaxos-installer.service "${pkgdir}"/lib/systemd/system/
+   cp -r ../../genfstab                   "${pkgdir}"/usr/bin/
 }
 

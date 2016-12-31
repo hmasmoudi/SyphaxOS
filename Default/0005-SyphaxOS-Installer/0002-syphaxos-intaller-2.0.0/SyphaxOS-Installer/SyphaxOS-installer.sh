@@ -1091,4 +1091,5 @@ load_log() {
 opt="$1"
 sleep 2
 chvt 2
+clear
 init

@@ -5,7 +5,8 @@ After=getty@tty2.service
 [Service]
 Type=oneshot
 WorkingDirectory=/opt/SyphaxOS-Installer
-ExecStart=/opt/SyphaxOS-Installer/SyphaxOS-installer.sh
+ExecStart=/opt/SyphaxOS-Installer/SyphaxOS-installer.sh &
+RemainAfterExit=yes
 StandardInput=tty
 TTYPath=/dev/tty2
 TTYReset=yes
