@@ -1,0 +1,53 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=fuse
+pkgver=2.9.7
+pkgrel=1
+pkgdesc="FUSE (Filesystem in Userspace) is a simple interface for userspace programs to export a virtual filesystem to the Linux kernel."
+arch=('x86_64')
+url="https://github.com/libfuse/libfuse/releases/download/${pkgname}-${pkgver}"
+license=('GPL')
+groups=('applications')
+source=("$url/${pkgname}-${pkgver}.tar.gz")
+md5sums=('9bd4ce8184745fd3d000ca2692adacdb')
+depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+}
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+
+   ./configure --prefix=/usr    \
+               --disable-static \
+               INIT_D_PATH=/tmp/init.d
+   make
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   mkdir -p $pkgdir/etc/
+   mkdir -p $pkgdir/lib
+   mkdir -p $pkgdir/usr/lib
+   ln -snfv lib $pkgdir/lib64
+   ln -snfv lib $pkgdir/usr/lib64
+   
+   make DESTDIR="${pkgdir}" install
+
+   mv -v   "${pkgdir}"/usr/lib/libfuse.so.* "${pkgdir}"/lib
+   ln -sfv ../../lib/libfuse.so.2.9.7 "${pkgdir}"/usr/lib/libfuse.so
+   rm -rf  "${pkgdir}"/tmp
+
+   install -v -m755 -d "${pkgdir}"/usr/share/doc/fuse-2.9.7
+   
+   install -v -m644    doc/{how-fuse-works,kernel.txt} \
+                       "${pkgdir}"/usr/share/doc/fuse-2.9.7
+                       
+   install -v -m644    ../../fuse.conf  "${pkgdir}"/etc/fuse.conf
+   
+   rm -rf $pkgdir/lib64
+   rm -rf $pkgdir/usr/lib64
+}
+
