@@ -2,13 +2,14 @@
 
 pkgname=SyphaxOS-Installer
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="SyphaxOS 2.0.0 Installer Scripts"
 arch=('x86_64')
 install=${pkgname}.install
 license=('GPL')
 groups=('applications')
-depends=('SyphaxOS-Desktop>=2.0.0'
+depends=('gnomedesktop>=2.0.0'
+         'pacman>=5.0.1'
          'dialog>=1.3_20160828')
 
 prepare() {
