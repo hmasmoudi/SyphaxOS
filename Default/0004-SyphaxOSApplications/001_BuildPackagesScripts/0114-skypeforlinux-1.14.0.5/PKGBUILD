@@ -1,0 +1,21 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=skypeforlinux
+pkgver=1.14.0.5
+pkgrel=1
+pkgdesc="Skype for Linux Alpha."
+arch=('x86_64')
+url="https://repo.skype.com/latest"
+license=('GPL')
+groups=('applications')
+source=("$url/${pkgname}-64-alpha.deb")
+md5sums=('f134e768d222ffcad8b02ab010b41802')
+depends=('rootfs>=2.0.0')
+
+package() {
+   cd "$srcdir"
+   
+   tar -xJC "${pkgdir}" -f data.tar.xz
+   rm -rf "${pkgdir}/opt"
+}
+
