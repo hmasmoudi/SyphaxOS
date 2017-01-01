@@ -1,0 +1,47 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=ntfs-3g
+pkgver=2016.2.22
+pkgrel=1
+pkgdesc="The Ntfs-3g package contains a stable, read-write open source driver for NTFS partitions."
+arch=('x86_64')
+url="https://tuxera.com/opensource"
+license=('GPL')
+groups=('applications')
+source=("$url/${pkgname}_ntfsprogs-${pkgver}.tgz")
+md5sums=('ccbe8672d0f757bd0c975b50aa4c512e')
+depends=('rootfs>=2.0.0'
+         'fuse>=2.9.7')
+
+prepare() {
+   cd "$srcdir/${pkgname}_ntfsprogs-${pkgver}"
+}
+
+build() {
+   cd "$srcdir/${pkgname}_ntfsprogs-${pkgver}"
+
+   ./configure --prefix=/usr \
+               --disable-static \
+               --disable-ldconfig \
+               --with-fuse=external \
+		         --enable-posix-acls \
+		         --enable-extras
+   make
+}
+
+package() {
+   cd "$srcdir/${pkgname}_ntfsprogs-${pkgver}"
+   
+   mkdir -p $pkgdir/bin
+   mkdir -p $pkgdir/lib
+   ln -snfv lib $pkgdir/lib64
+   
+   make DESTDIR="${pkgdir}" install
+
+   ln -sv ../bin/ntfs-3g "${pkgdir}"/sbin/mount.ntfs
+   ln -sv ntfs-3g.8      "${pkgdir}"/usr/share/man/man8/mount.ntfs.8
+   chmod -v 4755         "${pkgdir}"/sbin/mount.ntfs
+   
+   rm -rf $pkgdir/lib64
+}
+
