@@ -7,3 +7,14 @@ post_install() {
    gtk-query-immodules-2.0 --update-cache
    gtk-query-immodules-3.0 --update-cache   
 }
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+   glib-compile-schemas /usr/share/glib-2.0/schemas
+   gtk-update-icon-cache
+   update-desktop-database
+   gdk-pixbuf-query-loaders --update-cache
+   gtk-query-immodules-2.0 --update-cache
+   gtk-query-immodules-3.0 --update-cache   
+}
