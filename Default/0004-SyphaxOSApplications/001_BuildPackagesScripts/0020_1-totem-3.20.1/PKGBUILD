@@ -1,0 +1,43 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=totem
+pkgver=3.20.1
+pkgrel=2
+pkgdesc="Videos is a video playback application designed to work with GNOME 3"
+arch=('x86_64')
+url="http://ftp.gnome.org/pub/gnome/sources/${pkgname}/3.20"
+license=('GPL')
+groups=('applications')
+source=("$url/${pkgname}-${pkgver}.tar.xz")
+md5sums=('765a0a1d2d2a8fc8d9c44dbaa92d5d7c')
+depends=('rootfs>=2.0.0'
+         'libvdpau-va-gl>=0.4.2'
+         'clutter-gst>=3.0.20'
+         'glu>=9.0.0'
+         'v4l-utils>=1.10.1'
+         'libvpx>=1.6.0'
+         'orc>=0.4.26'
+         'gst-libav>=1.8.3'
+         'gst-plugins-good>=1.8.3'
+         'gst-plugins-bad>=1.8.3')
+
+prepare() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   sed -i "/seems to be moved/s/^/#/" build-aux/ltmain.sh
+}
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   ./configure --prefix=/usr
+   
+   make
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   make DESTDIR="${pkgdir}" install
+}
+

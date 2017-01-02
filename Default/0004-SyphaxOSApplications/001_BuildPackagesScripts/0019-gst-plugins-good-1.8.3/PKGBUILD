@@ -2,7 +2,7 @@
 
 pkgname=gst-plugins-good
 pkgver=1.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc="The GStreamer Good Plug-ins is a set of plug-ins considered by the GStreamer developers to have good quality code, correct functionality, and the preferred license (LGPL for the plug-in code, LGPL or LGPL-compatible for the supporting library)"
 arch=('x86_64')
 url="http://gstreamer.freedesktop.org/src/${pkgname}"
@@ -20,6 +20,8 @@ build() {
    cd "$srcdir/${pkgname}-${pkgver}"
    
    ./configure --prefix=/usr \
+               --with-libv4l2 \
+               --enable-v4l2-probe \
                --with-package-name="GStreamer Good Plugins 1.8.3 SyphaxOS" \
                --with-package-origin="http://gstreamer.freedesktop.org/src/gst-plugins-good"
    

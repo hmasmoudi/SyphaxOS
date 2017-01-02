@@ -1,0 +1,35 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=glu
+pkgver=9.0.0
+pkgrel=1
+pkgdesc="This package provides the Mesa OpenGL Utility library."
+arch=('x86_64')
+url="ftp://ftp.freedesktop.org/pub/mesa/glu"
+license=('GPL')
+groups=('applications')
+source=("$url/${pkgname}-${pkgver}.tar.bz2")
+md5sums=('be9249132ff49275461cf92039083030')
+depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+}
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   source /etc/profile.d/xorg.sh
+   echo "Using XORG_PREFIX ($XORG_PREFIX) & XORG_CONFIG ($XORG_CONFIG)"
+   
+   ./configure --prefix=$XORG_PREFIX --disable-static &&
+   make
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   make DESTDIR="${pkgdir}" install
+}
+

@@ -2,7 +2,7 @@
 
 pkgname=SyphaxOS-Desktop
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="SyphaxOS 2.0.0 Default Desktop Package based on Gnome Desktop."
 arch=('x86_64')
 install=${pkgname}.install
@@ -19,6 +19,10 @@ depends=(
          'flashplayer>=24.0.0.186'
          'file-roller>=3.20.3'
          'totem>=3.20.1'
+         'cheese>=3.20.2'
+         'transmission>=2.92'
+         'evince>=3.20.1'
+         'skypeforlinux>=1.14.0.5'
          'wps-office>=10.1.0.5672'
          )
 
