@@ -2,7 +2,7 @@
 
 pkgname=gnomedesktop
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="SyphaxOS 2.0.0 Gnome 3.20 Desktop Package."
 arch=('x86_64')
 install=${pkgname}.install
@@ -191,6 +191,7 @@ depends=(
          'wireless-tools>=29'
          'wpa_supplicant>=2.5'
          'dejavu-fonts-ttf>=2.37'
+         'sound-theme-freedesktop>=0.8'
          )
 
 prepare() {
