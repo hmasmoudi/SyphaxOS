@@ -1,7 +1,0 @@
-[Desktop Entry]
-Name=WPS Spreadsheets
-Exec=/opt/wps-office/et
-StartupNotify=false
-Terminal=false
-Type=Application
-Icon=/opt/wps-office/resource/icons/hicolor/256x256/apps/wps-office-etmain.png

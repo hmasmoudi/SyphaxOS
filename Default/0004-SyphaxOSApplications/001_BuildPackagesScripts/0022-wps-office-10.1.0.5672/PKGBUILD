@@ -2,25 +2,23 @@
 
 pkgname=wps-office
 pkgver=10.1.0.5672
-pkgrel=1
+pkgrel=2
 pkgdesc="WPS Office 2016 Free The perfect free office software. Compatible avec Microsoft Office."
 arch=('x86_64')
 url="http://kdl.cc.ksosoft.com/wps-community/download/a21"
 license=('GPL')
+install=${pkgname}.install
 groups=('applications')
-source=("$url/${pkgname}_${pkgver}~a21_x86_64.tar.xz"
-        "et.desktop"
-        "wpp.desktop"
-        "wps.desktop")
-md5sums=('a02f199ad317a7a6ac5e2f3c03baa84d'
-         'b6ce57b0d1841408e41f8c9d8adef5b8'
-         '7d0297e6c2a122070bfb4f41b4958037'
-         '061c6dac0b2acdb971aadbe06ae5a013')
+source=("$url/${pkgname}_${pkgver}~a21_x86_64.tar.xz")
+md5sums=('a02f199ad317a7a6ac5e2f3c03baa84d')
 depends=('rootfs>=2.0.0'
-         'libpng12>=1.2.56')
+         'libpng12>=1.2.56'
+         'xdg-utils>=1.1.1')
 
 prepare() {
    cd "$srcdir/${pkgname}_${pkgver}~a21_x86_64"
+   
+     sed -i 's|/opt/kingsoft/wps-office|/usr/lib|' wps wpp et
 }
 
 build() {
@@ -30,12 +28,24 @@ build() {
 package() {
    cd "$srcdir/${pkgname}_${pkgver}~a21_x86_64"
    
-   mkdir -p "${pkgdir}"/opt/
-      
-   install -Dm 644 ../../et.desktop  -t "${pkgdir}"/usr/share/applications
-   install -Dm 644 ../../wpp.desktop -t "${pkgdir}"/usr/share/applications
-   install -Dm 644 ../../wps.desktop -t "${pkgdir}"/usr/share/applications
-   
-   mv $srcdir/${pkgname}_${pkgver}~a21_x86_64 "${pkgdir}"/opt/${pkgname}
+   install -d "$pkgdir/usr/lib"
+   cp -r office6 "$pkgdir/usr/lib"
+
+   install -d "$pkgdir/usr/bin"
+   install -m755 wps wpp et "$pkgdir/usr/bin"
+
+   install -d "$pkgdir/usr/share/applications"
+   cp -r resource/applications/* "$pkgdir/usr/share/applications"
+
+   install -d "$pkgdir/usr/share/icons"
+   cp -r resource/icons/* "$pkgdir/usr/share/icons"
+
+   install -d "$pkgdir/usr/share/mime"
+   cp -r resource/mime/* "$pkgdir/usr/share/mime"
+
+   install -d "$pkgdir/usr/share/fonts/wps-office"
+   cp -r fonts/* "$pkgdir/usr/share/fonts/wps-office"
+
+   install -Dm644 office6/mui/default/EULA.txt "$pkgdir/usr/share/licenses/$pkgname/EULA.txt"
 }
 

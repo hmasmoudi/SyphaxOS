@@ -1,0 +1,33 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=xdg-utils
+pkgver=1.1.1
+pkgrel=1
+pkgdesc="xdg-utils is a a set of command line tools that assist applications with a variety of desktop integration tasks. It is required for Linux Standards Base (LSB) conformance."
+arch=('x86_64')
+url="http://portland.freedesktop.org/download"
+license=('GPL')
+groups=('applications')
+source=("$url/${pkgname}-${pkgver}.tar.gz")
+md5sums=('2d0aec6037769a5f138ff404b1bb4b15')
+depends=('rootfs>=2.0.0'
+         'links>=2.13'
+         'xmlto>=0.0.28')
+
+prepare() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+}
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   ./configure --prefix=/usr --mandir=/usr/share/man &&
+   make
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   make DESTDIR="${pkgdir}" install
+}
+
