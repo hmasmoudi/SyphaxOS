@@ -2,7 +2,7 @@
 
 pkgname=NetworkManager
 pkgver=1.4.2
-pkgrel=1
+pkgrel=3
 pkgdesc="NetworkManager is a set of co-operative tools that make networking simple and straightforward."
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/NetworkManager/1.4"
@@ -12,7 +12,7 @@ groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz"
         "${pkgname}.install")
 md5sums=('59b5b5585467756787c6cb535cbd306e'
-         'a1d7238841ede201cb553ffde62e9868')
+         '12a7287fd12a4a7a3ff117b86b39b6a3')
 depends=('rootfs>=2.0.0')
 
 prepare() {

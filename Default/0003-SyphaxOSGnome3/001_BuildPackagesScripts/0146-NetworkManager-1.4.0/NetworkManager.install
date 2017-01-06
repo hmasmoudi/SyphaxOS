@@ -1,4 +1,7 @@
 # arg 1:  the new package version
 post_install() {
    systemctl enable NetworkManager
+   ln -snf ../run/NetworkManager/resolv.conf /etc/resolv.conf
+   systemctl disable systemd-resolved
 }
+
