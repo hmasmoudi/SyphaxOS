@@ -2,12 +2,13 @@
 
 pkgname=linux
 pkgver=4.8.16
-pkgrel=1
+pkgrel=3
 pkgdesc="The Linux package contains the Linux kernel."
 arch=('x86_64')
 url="https://www.kernel.org/pub/linux/kernel/v4.x"
 license=('GPL')
 groups=('core')
+install=${pkgname}.install
 source=("$url/$pkgname-$pkgver.tar.xz")
 md5sums=('d84bdecf9f33bf2f26f0f1386b3f88f0')
 depends=('rootfs>=2.0.0')
@@ -36,9 +37,9 @@ package() {
    #Create boot directory
    mkdir -pv $pkgdir/boot
 
-   cp -v arch/x86/boot/bzImage $pkgdir/boot/vmlinuz-$pkgver-SyphaxOs
-   cp -v System.map $pkgdir/boot/System.map-$pkgver
-   cp -v .config $pkgdir/boot/config-$pkgver
+   cp -v arch/x86/boot/bzImage $pkgdir/boot/vmlinuz-SyphaxOs
+   cp -v System.map $pkgdir/boot/System.map
+   cp -v .config $pkgdir/boot/config
    install -d $pkgdir/usr/share/doc/linux-$pkgver
    cp -r Documentation/* $pkgdir/usr/share/doc/linux-$pkgver
    install -v -m755 -d $pkgdir/etc/modprobe.d
