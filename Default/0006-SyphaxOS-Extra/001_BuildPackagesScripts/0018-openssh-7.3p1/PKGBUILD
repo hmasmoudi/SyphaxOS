@@ -1,0 +1,42 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=openssh
+pkgver=7.3p1
+pkgrel=2
+pkgdesc="The OpenSSH package contains ssh clients and the sshd daemon."
+arch=('x86_64')
+url="http://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable"
+license=('GPL')
+groups=('applications')
+source=("$url/${pkgname}-${pkgver}.tar.gz")
+md5sums=('dfadd9f035d38ce5d58a3bf130b86d08')
+depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+}
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   ./configure --prefix=/usr                     \
+               --sysconfdir=/etc/ssh             \
+               --with-md5-passwords              \
+               --with-xauth=/usr/bin/xauth       \
+               --with-privsep-path=/var/lib/sshd &&
+   make
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   make DESTDIR="${pkgdir}" install
+   install -v -m755    contrib/ssh-copy-id "${pkgdir}"/usr/bin     &&
+
+   install -v -m644    contrib/ssh-copy-id.1 \
+                       "${pkgdir}"/usr/share/man/man1              &&
+   install -v -m755 -d "${pkgdir}"/usr/share/doc/openssh-7.3p1     &&
+   install -v -m644    INSTALL LICENCE OVERVIEW README* \
+                       "${pkgdir}"/usr/share/doc/openssh-7.3p1
+}
+
