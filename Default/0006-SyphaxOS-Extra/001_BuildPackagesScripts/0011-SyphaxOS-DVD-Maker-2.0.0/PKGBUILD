@@ -1,0 +1,31 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=SyphaxOS-DVD-Maker
+pkgver=2.0.0
+pkgrel=2
+pkgdesc="SyphaxOS 2.0.0 Default DVD Maker. Set of tools to create squashfs and ISO image"
+arch=('x86_64')
+license=('GPL')
+groups=('desktop')
+depends=(
+         'SyphaxOS-Desktop>=2.0.0'
+         'squashfs-tools>=4.3'
+         'libisoburn>=1.4.6'
+         )
+
+prepare() {
+   mkdir -pv "$srcdir/$pkgname-$pkgver"
+}
+
+build() {
+   cd "$srcdir/$pkgname-$pkgver"
+}
+
+package() {
+   cd "$srcdir/$pkgname-$pkgver"
+   
+   mkdir -pv "${pkgdir}"/opt
+   
+   cp -rf ../../SyphaxOS-DVD-Maker "${pkgdir}"/opt/ 
+}
+

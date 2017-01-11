@@ -1,0 +1,31 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=libisoburn
+pkgver=1.4.6
+pkgrel=1
+pkgdesc="rontend for libraries libburn and libisofs"
+arch=('x86_64')
+url="http://files.libburnia-project.org/releases"
+license=('GPL')
+groups=('applications')
+source=("$url/${pkgname}-${pkgver}.tar.gz")
+md5sums=('15d763fd698b9bc8d6fc643a3257505b')
+depends=('rootfs>=2.0.0'
+         'libburn>=1.4.6'
+         'libisofs>=1.4.6')
+
+prepare() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+}
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+  ./configure --prefix=/usr
+  make
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+  make DESTDIR=${pkgdir} install
+}
+
