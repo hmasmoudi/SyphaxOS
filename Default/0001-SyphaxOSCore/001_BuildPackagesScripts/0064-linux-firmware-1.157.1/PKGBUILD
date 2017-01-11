@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=linux-firmware
-pkgver=1.157.5
+pkgver=1.157.6
 pkgrel=1
 pkgdesc="The Linux package contains the Linux kernel firmwares."
 arch=('x86_64')
 url="http://archive.ubuntu.com/ubuntu/pool/main/l/linux-firmware"
 license=('GPL')
 groups=('core')
-source=("$url/linux-firmware_1.157.5.tar.gz")
-md5sums=('682fea3c5ca3b50dd8d7a305e80f735f')
+source=("$url/${pkgname}_${pkgver}.tar.gz")
+md5sums=('9d90501d83a451df169efd7c14d60387')
 depends=('rootfs>=2.0.0')
 
 prepare() {
@@ -23,7 +23,7 @@ build() {
 package() {
    cd "$srcdir/$pkgname"
 
-   mkdir -pv $pkgdir/lib/firmware/
+   mkdir -p $pkgdir/lib/firmware/
 
    cp -rf ../linux-firmware/* $pkgdir/lib/firmware/
 }
