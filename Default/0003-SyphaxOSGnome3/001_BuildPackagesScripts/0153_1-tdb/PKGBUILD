@@ -1,0 +1,39 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=tdb
+pkgver=1.3.12
+pkgrel=1
+pkgdesc="A Trivial Database similar to GDBM but allows simultaneous commits."
+arch=('x86_64')
+url="http://samba.org/ftp/${pkgname}/"
+license=('GPL')
+groups=('applications')
+source=("$url/${pkgname}-${pkgver}.tar.gz")
+md5sums=('d9627e7aacd535a8251401f914bb6924')
+depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   sed -i -e 's#python#python2#g' buildtools/bin/waf
+}
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+      
+   export PYTHON=/usr/bin/python2
+   
+   ./configure --prefix=/usr \
+               --localstatedir=/var \
+               --sysconfdir=/etc/samba
+   make
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   export PYTHON=/usr/bin/python2
+   
+   make DESTDIR="${pkgdir}" install
+}
+
