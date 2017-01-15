@@ -1,0 +1,33 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=bubblewrap
+pkgver=0.1.6
+pkgrel=1
+pkgdesc="Unprivileged sandboxing tool"
+arch=('x86_64')
+url="https://github.com/projectatomic/bubblewrap/releases/download/v$pkgver"
+license=('GPL')
+groups=('applications')
+source=("$url/${pkgname}-${pkgver}.tar.xz")
+md5sums=('e17b332492f8fb73e89b7efd608f7942')
+depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+}
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   ./configure --prefix=/usr \
+               --with-priv-mode=setuid
+   
+   make
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   make DESTDIR="${pkgdir}" install
+}
+
