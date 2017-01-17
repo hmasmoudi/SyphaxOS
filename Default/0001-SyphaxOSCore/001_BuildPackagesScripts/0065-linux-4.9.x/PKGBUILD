@@ -1,8 +1,8 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=linux
-pkgver=4.9.3
-pkgrel=2
+pkgver=4.9.4
+pkgrel=1
 pkgdesc="The Linux package contains the Linux kernel."
 arch=('x86_64')
 url="https://www.kernel.org/pub/linux/kernel/v4.x"
@@ -10,7 +10,7 @@ license=('GPL')
 groups=('core')
 install=${pkgname}.install
 source=("$url/$pkgname-$pkgver.tar.xz")
-md5sums=('fb562e4e2ee68cf8be28814735860938')
+md5sums=('e653110b26e52bf34b286d87a219bb71')
 depends=('rootfs>=2.0.0')
 
 prepare() {
