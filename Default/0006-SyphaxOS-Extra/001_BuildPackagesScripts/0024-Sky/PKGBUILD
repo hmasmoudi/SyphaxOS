@@ -1,0 +1,30 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=sky
+pkgver=2.1.6428
+pkgrel=1
+pkgdesc="THE FUTURE OF APPLICATION DISTRIBUTION. Flatpak is the new framework for desktop applications on Linux."
+arch=('x86_64')
+url="https://tel.red/linux"
+license=('GPL')
+groups=('applications')
+instal=${pkgname}.install
+source=("$url/${pkgname}-latest-x86_64.AppImage")
+md5sums=('0e5d6a78cff4b2e34c3ab4f736b40536')
+depends=('rootfs>=2.0.0')
+
+package() {
+   install -d "${pkgdir}"/opt/sky/usr/
+   install -d "${pkgdir}"/usr/bin
+   
+   cp -rf "$srcdir"/usr/* "${pkgdir}"/opt/sky/usr/
+   
+   install -Dm755 "$srcdir"/AppRun "${pkgdir}"/opt/sky/sky
+   install -Dm644 "$srcdir"/sky.desktop "$pkgdir"/opt/sky/sky.desktop
+   
+   install -Dm644 "$srcdir"/sky.desktop "$pkgdir"/usr/share/applications/sky.desktop
+   install -Dm644 "$srcdir"/sky.png "$pkgdir"/usr/share/icons/hicolor/256x256/apps/sky.png
+   
+   ln -snf /opt/sky/sky "${pkgdir}"/usr/bin/sky
+}
+
