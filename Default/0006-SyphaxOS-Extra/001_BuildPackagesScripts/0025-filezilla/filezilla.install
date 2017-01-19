@@ -1,0 +1,7 @@
+# arg 1:  the new package version
+post_install() {
+	update-desktop-database -q /usr/share/applications
+	touch -c /usr/share/icons/hicolor
+	gtk-update-icon-cache -tq /usr/share/icons/hicolor
+}
+
