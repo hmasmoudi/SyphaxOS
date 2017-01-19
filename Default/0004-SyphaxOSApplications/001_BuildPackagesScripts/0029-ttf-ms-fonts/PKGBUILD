@@ -1,39 +1,84 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
+# Please note, that usage of Microsoft fonts outside running Windows
+# system is prohibited by EULA (although in certain countries EULA is invalid).
+# Please consult Microsoft license before using fonts.
+#
+# You can acquire fonts either from an installed and up-to-date Windows 10
+# system or the most recent install medium.
+
 pkgname=ttf-ms-fonts
-pkgver=2.0
+pkgver=10.0.14393
 pkgrel=1
-pkgdesc="Core TTF Fonts from Microsoft"
 arch=('x86_64')
-url="http://downloads.sourceforge.net/corefonts"
-install=$pkgname.install
-license=('GPL')
-groups=('applications')
-source=( $url/andale32.exe $url/arial32.exe  $url/arialb32.exe
-         $url/comic32.exe  $url/courie32.exe $url/georgi32.exe
-         $url/impact32.exe $url/times32.exe  $url/trebuc32.exe
-         $url/verdan32.exe $url/webdin32.exe
-       )
-md5sums=('cbdc2fdd7d2ed0832795e86a8b9ee19a'
-         '9637df0e91703179f0723ec095a36cb5'
-         'c9089ae0c3b3d0d8c4b0a95979bb9ff0'
-         '2b30de40bb5e803a0452c7715fc835d1'
-         '4e412c772294403ab62fb2d247d85c60'
-         '4d90016026e2da447593b41a8d8fa8bd'
-         '7907c7dd6684e9bade91cff82683d9d7'
-         'ed39c8ef91b9fb80f76f702568291bd5'
-         '0d7ea16cac6261f8513a061fbfcdb2b5'
-         '12d2a75f8156e10607be1eaa8e8ef120'
-         '230a1d13a365b22815f502eb24d9149b')
+url='http://www.microsoft.com/typography/fonts/product.aspx?PID=164'
+license=(custom)
 depends=('rootfs>=2.0.0')
+install=$pkgname.install
 
-package() {   
-   install -dm755 "$pkgdir/usr/share/fonts/TTF"
+_ttf_ms_fonts=(
+#########################################################################################
+# Normal         Bold          Italic        Bold+Italic    #  Full name                #
+#########################################################################################
+arial.ttf      arialbd.ttf    ariali.ttf     arialbi.ttf    # Arial
+ariblk.ttf                                                  # Arial Black
+calibri.ttf    calibrib.ttf   calibrii.ttf   calibriz.ttf   # Calibri
+calibril.ttf                  calibrili.ttf                 # Calibri Light
+cambria.ttc    cambriab.ttf   cambriai.ttf   cambriaz.ttf   # Cambria
+Candara.ttf    Candarab.ttf   Candarai.ttf   Candaraz.ttf   # Candara
+comic.ttf      comicbd.ttf    comici.ttf     comicz.ttf     # Comic Sans MS
+consola.ttf    consolab.ttf   consolai.ttf   consolaz.ttf   # Consolas
+constan.ttf    constanb.ttf   constani.ttf   constanz.ttf   # Constantia
+cour.ttf       courbd.ttf     couri.ttf      courbi.ttf     # Courier New
+corbel.ttf     corbelb.ttf    corbeli.ttf    corbelz.ttf    # Corbel
+ebrima.ttf     ebrimabd.ttf                                 # Ebrima
+framd.ttf                     framdit.ttf                   # Franklin Gothic Medium
+Gabriola.ttf                                                # Gabriola
+gadugi.ttf     gadugib.ttf                                  # Gadugi
+georgia.ttf    georgiab.ttf   georgiai.ttf   georgiaz.ttf   # Georgia
+impact.ttf                                                  # Impact
+lucon.ttf                                                   # Lucida Console
+l_10646.ttf                                                 # Lucida Sans Unicode
+marlett.ttf                                                 # Marlett
+micross.ttf                                                 # Microsoft Sans Serifc
+mvboli.ttf                                                  # MV Boli
+pala.ttf       palab.ttf      palai.ttf      palabi.ttf     # Palatino Linotype
+segoepr.ttf    segoeprb.ttf                                 # Segoe Print
+segoesc.ttf    segoescb.ttf                                 # Segoe Script
+segmdl2.ttf                                                 # Segoe MDL2 Assets
+segoeui.ttf    segoeuib.ttf   segoeuii.ttf   segoeuiz.ttf   # Segoe UI
+seguibl.ttf                   seguibli.ttf                  # Segoe UI Black
+seguiemj.ttf                                                # Segoe UI Emoji
+seguihis.ttf                                                # Segoe UI Historic
+segoeuil.ttf                  seguili.ttf                   # Segoe UI Light
+seguisb.ttf                   seguisbi.ttf                  # Segoe UI Semibold
+segoeuisl.ttf                 seguisli.ttf                  # Segoe UI Semilight
+seguisym.ttf                                                # Segoe UI Symbol
+Sitka.ttc      SitkaB.ttc     SitkaI.ttc     SitkaZ.ttc     # Sitka
+sylfaen.ttf                                                 # Sylfaen
+symbol.ttf                                                  # Symbol
+tahoma.ttf     tahomabd.ttf                                 # Tahoma
+times.ttf      timesbd.ttf    timesi.ttf     timesbi.ttf    # Times New Roman
+trebuc.ttf     trebucbd.ttf   trebucit.ttf   trebucbi.ttf   # Trebuchet MS
+verdana.ttf    verdanab.ttf   verdanai.ttf   verdanaz.ttf   # Verdana
+webdings.ttf                                                # Webdings
+wingding.ttf                                                # Wingdings
+)
+
+source=(file://ttf-ms-fonts.tar.gz)
+
+md5sums=(SKIP)
+        
+_package() {
+   cd "$srcdir"/ttf-ms-fonts
+
+   install -Dm644 $@ -t "$pkgdir/usr/share/fonts/TTF"
+   install -Dm644 license.rtf -t "$pkgdir/usr/share/licenses/$pkgname"
+}
+
+package_ttf-ms-fonts() {
+   pkgdesc='Microsoft Windows TrueType fonts'
    
-   for font in *.{ttf,TTF}; do
-      install -m644 $font "$pkgdir/usr/share/fonts/TTF/$(echo $font|tr A-Z a-z)"
-   done
-
-   install -Dm644 Licen.TXT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+   _package ${_ttf_ms_fonts[@]}
 }
 
