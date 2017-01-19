@@ -1,0 +1,33 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=serf
+pkgver=1.3.9
+pkgrel=1
+pkgdesc="High-performance asynchronous HTTP client library."
+arch=('x86_64')
+url="https://www.apache.org/dist/serf"
+license=('APACHE')
+groups=('applications')
+source=("$url/${pkgname}-${pkgver}.tar.bz2")
+md5sums=('370a6340ff20366ab088012cd13f2b57')
+depends=('rootfs>=2.0.0'
+         'apr-util>=1.5.4'
+         'scons>=2.5.1')
+
+prepare() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+}
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   scons PREFIX=/usr GSSAPI=/usr/bin/krb5-config
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   install -d "${pkgdir}/usr"
+   scons PREFIX="${pkgdir}/usr" install
+}
+
