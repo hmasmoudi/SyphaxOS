@@ -22,9 +22,9 @@ build() {
    ./configure --prefix=/usr          \
                --sbindir=/sbin        \
                --sysconfdir=/etc      \
+               --disable-grub-mount   \
                --disable-efiemu       \
                --disable-werror
-
    make
 }
 
@@ -32,5 +32,6 @@ package() {
    cd "$srcdir/$pkgname-$pkgver"
 
    make DESTDIR="$pkgdir" install
+   
    install -D -m0644 "../../grub.default" "${pkgdir}/etc/default/grub"
 }
