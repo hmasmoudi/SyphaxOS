@@ -9,7 +9,7 @@ url="https://tel.red/linux"
 license=('GPL')
 groups=('applications')
 instal=${pkgname}.install
-source=("$url/${pkgname}-latest-x86_64.AppImage")
+source=("$url/${pkgname}-${pkgver}-${pkgrel}-x86_64.AppImage")
 md5sums=('0e5d6a78cff4b2e34c3ab4f736b40536')
 depends=('rootfs>=2.0.0')
 
