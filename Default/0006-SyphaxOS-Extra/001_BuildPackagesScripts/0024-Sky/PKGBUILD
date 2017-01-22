@@ -3,7 +3,7 @@
 pkgname=sky
 pkgver=2.1.6428
 pkgrel=1
-pkgdesc="THE FUTURE OF APPLICATION DISTRIBUTION. Flatpak is the new framework for desktop applications on Linux."
+pkgdesc="LYNC & SKYPE FOR BUSINESS ON LINUX. Packaged using appImage: For any distro. Can solve dependency problems, etc."
 arch=('x86_64')
 url="https://tel.red/linux"
 license=('GPL')
