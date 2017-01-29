@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=opera
-pkgver=42.0.2393.137
+pkgver=42.0.2393.517
 pkgrel=1
 pkgdesc="A fast and secure web browser"
 install=${pkgname}.install
@@ -12,7 +12,7 @@ groups=('applications')
 source=("$url/${pkgname}-stable_${pkgver}_amd64.deb"
         "opera"
         "default")
-md5sums=('34504e79016821f63d77a0983c02aa1a'
+md5sums=('c042e47e32791355b89e61f5e00ea7ab'
          'c8150bcdead9465aa9b815062eecbbdc'
          'df0f13b3985dd9e0be360a7a496cd142')
 depends=('rootfs>=2.0.0'
