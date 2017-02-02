@@ -1,0 +1,36 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=libjpeg-turbo
+pkgver=1.5.1
+pkgrel=2
+pkgdesc="libjpeg-turbo is a fork of the original IJG libjpeg which uses SIMD to accelerate baseline JPEG compression and decompression."
+arch=('x86_64')
+url="http://downloads.sourceforge.net/libjpeg-turbo"
+license=('GPL')
+groups=('desktop')
+source=("$url/$pkgname-$pkgver.tar.gz")
+md5sums=('55deb139b0cac3c8200b75d485fc13f3')
+depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/$pkgname-$pkgver"
+}
+
+build() {
+   cd "$srcdir/$pkgname-$pkgver"
+
+   ./configure --prefix=/usr           \
+               --mandir=/usr/share/man \
+               --with-jpeg8            \
+               --without-simd          \
+               --disable-static
+
+   make
+}
+
+package() {
+   cd "$srcdir/$pkgname-$pkgver"
+
+   make DESTDIR="$pkgdir" install
+}
+
