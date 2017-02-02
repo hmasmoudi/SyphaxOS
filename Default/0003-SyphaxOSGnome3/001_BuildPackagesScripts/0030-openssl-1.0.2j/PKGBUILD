@@ -1,21 +1,36 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=openssl
-pkgver=1.0.2j
+pkgver=1.0.2k
 pkgrel=1
 pkgdesc="The OpenSSL package contains management tools and libraries relating to cryptography."
 arch=('x86_64')
 url="https://openssl.org/source"
 license=('GPL')
 groups=('desktop')
-source=("$url/${pkgname}-${pkgver}.tar.gz")
-md5sums=('96322138f0b69e61b7212bc53d5e912b')
+source=("$url/${pkgname}-${pkgver}.tar.gz"
+        "https://hg.mozilla.org/mozilla-central/raw-file/tip/security/nss/lib/ckfw/builtins/certdata.txt"
+        "remove-expired-certs.sh"
+        "make-ca.sh"
+        "make-cert.pl")
+sha1sums=('5f26a624479c51847ebd2f22bb9f84b3b44dcb44'
+          'SKIP'
+          '0c5c4a49307ee52ba328a14cd003d8d670648adf'
+          '93e4634b66b08a4f0da949b26972dad1c079ad06'
+          'afc80928c9d07471583043bb897e60cbe5375c4c')
 depends=('rootfs>=2.0.0')
 
 prepare() {
    cd "$srcdir/$pkgname-$pkgver"
    
    sed -i 's# libcrypto.a##;s# libssl.a##' Makefile
+ 
+   cp "${srcdir}"/certdata.txt            "${srcdir}"/$pkgname-$pkgver
+   cp "${srcdir}"/remove-expired-certs.sh "${srcdir}"/$pkgname-$pkgver
+   cp "${srcdir}"/make-ca.sh              "${srcdir}"/$pkgname-$pkgver
+   cp "${srcdir}"/make-cert.pl            "${srcdir}"/$pkgname-$pkgver
+   
+   sed -i '1 i #CVS_ID @# $ RCSfile: certdata.txt $ $Revision: 20170201 $ $Date: $' certdata.txt
 }
 
 build() {
@@ -39,12 +54,7 @@ package() {
    
    install -dv -m755 $pkgdir/usr/share/doc/$pkgname-$pkgver
    cp -vfr doc/*     $pkgdir/usr/share/doc/$pkgname-$pkgver
-   
-   cp ../../certdata.txt $srcdir/$pkgname-$pkgver
-   cp ../../remove-expired-certs.sh $srcdir/$pkgname-$pkgver
-   cp ../../make-ca.sh $srcdir/$pkgname-$pkgver
-   cp ../../make-cert.pl $srcdir/$pkgname-$pkgver
-   
+ 
    sh make-ca.sh
    
    SSLDIR=$pkgdir/etc/ssl
