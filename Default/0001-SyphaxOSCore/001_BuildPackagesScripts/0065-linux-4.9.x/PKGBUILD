@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=linux
-pkgver=4.9.6
+pkgver=4.9.7
 pkgrel=1
 pkgdesc="The Linux package contains the Linux kernel."
 arch=('x86_64')
@@ -10,14 +10,14 @@ license=('GPL')
 groups=('core')
 install=${pkgname}.install
 source=("$url/$pkgname-$pkgver.tar.xz")
-md5sums=('3d41fdbd6caccf91088d95670d714bb1')
+md5sums=('e6c699041f27081fa09b534469f32543')
 depends=('rootfs>=2.0.0')
 
 prepare() {
    cd "$srcdir/$pkgname-$pkgver"
 
    make mrproper
-   cp -rf ../../linux-$pkgver.config .config
+   cp -rf ../../linux.config .config
 }
 
 build() {
