@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=vte
-pkgver=0.44.2
+pkgver=0.44.3
 pkgrel=1
 pkgdesc="The VTE package contains a termcap file implementation for terminal emulators."
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="http://ftp.gnome.org/pub/gnome/sources/vte/0.44"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-md5sums=('eca8f8a9d9f9bb8e9d592d0acfeec015')
+sha256sums=('e6dd09d9497aa899d06439272a641d19f0024abaa7e177de88a2ef4d3d0ccffe')
 depends=('rootfs>=2.0.0')
 
 prepare() {
