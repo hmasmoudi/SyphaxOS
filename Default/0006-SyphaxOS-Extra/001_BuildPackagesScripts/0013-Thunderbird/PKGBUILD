@@ -1,16 +1,16 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=thunderbird
-pkgver=45.7.0
+pkgver=45.7.1
 pkgrel=1
 pkgdesc="Thunderbird is a free email application that’s easy to set up and customize - and it’s loaded with great features!"
 arch=('x86_64')
-url="https://ftp.mozilla.org/pub/thunderbird/releases/45.7.0/linux-x86_64/fr"
+url="https://ftp.mozilla.org/pub/thunderbird/releases/${pkgver}/linux-x86_64/fr"
 license=('GPL')
 groups=('applications')
 source=("$url/${pkgname}-${pkgver}.tar.bz2"
         "thunderbird.desktop")
-md5sums=('ccbf6b395145b8943b6e181dee432658'
+md5sums=('24a60953f233d62ed40b3cb448b2dd8e'
          'be5d447b8bbbc35cfef203a53f7b72d6')
 depends=('rootfs>=2.0.0')
 
@@ -25,8 +25,8 @@ build() {
 package() {
    cd "$srcdir/${pkgname}"
     
-   mkdir -pv "${pkgdir}"/opt/
-   mkdir -pv "${pkgdir}"/usr/share/applications/
+   mkdir -p "${pkgdir}"/opt/
+   mkdir -p "${pkgdir}"/usr/share/applications/
    
    cp -rf "$srcdir/${pkgname}" "${pkgdir}"/opt/
    cp -rf ../../thunderbird.desktop "${pkgdir}"/usr/share/applications/thunderbird.desktop
