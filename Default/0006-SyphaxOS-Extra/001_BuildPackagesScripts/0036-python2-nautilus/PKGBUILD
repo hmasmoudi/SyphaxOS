@@ -1,0 +1,27 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=Python2-nautilus
+_pkgname=nautilus-python
+pkgver=1.1
+pkgrel=4
+pkgdesc="Python bindings for the Nautilus Extension API"
+arch=('x86_64')
+url="https://wiki.gnome.org/Projects/NautilusPython"
+license=('GPL')
+depends=('rootfs>=2.0.0' 'nautilus')
+source=(https://download.gnome.org/sources/$_pkgname/$pkgver/$_pkgname-$pkgver.tar.xz)
+sha256sums=('7825e08ada8e131f829d0e7d4144dcfac9fad7bfd7c0600bf3985349c20c496b')
+
+build() {
+  cd "$srcdir/$_pkgname-$pkgver"
+
+  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
+              PYTHON=python2
+  make
+}
+
+package() {
+  cd "$srcdir/$_pkgname-$pkgver"
+
+  make DESTDIR="$pkgdir/" install
+}
