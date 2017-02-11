@@ -2,7 +2,7 @@
 
 pkgname=ncurses
 pkgver=6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The Ncurses package contains libraries for terminal-independent handling of character screens."
 arch=('x86_64')
 url="http://ftp.gnu.org/gnu/ncurses"
@@ -10,7 +10,9 @@ license=('GPL')
 groups=('core')
 source=("$url/$pkgname-$pkgver.tar.gz")
 md5sums=('ee13d052e1ead260d7c28071f46eefb1')
-depends=('rootfs>=2.0.0')
+depends=('rootfs>=2.0.0'
+         'glibc'
+         'gcc')
 
 prepare() {
    cd "$srcdir/$pkgname-$pkgver"

@@ -2,7 +2,7 @@
 
 pkgname=gcc
 pkgver=6.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The GCC package contains the GNU compiler collection, which includes the C and C++ compilers."
 arch=('x86_64')
 url="http://ftp.gnu.org/gnu/gcc/gcc-$pkgver"
@@ -10,7 +10,9 @@ license=('GPL')
 groups=('core')
 source=("$url/$pkgname-$pkgver.tar.bz2")
 md5sums=('9768625159663b300ae4de2f4745fcc4')
-depends=('rootfs>=2.0.0')
+depends=('rootfs>=2.0.0'
+         'binutils>=2.27'
+         'mpc')
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"
@@ -23,7 +25,6 @@ build() {
                 --disable-multilib       \
                 --disable-bootstrap      \
                 --with-system-zlib
-
    make
 }
 
