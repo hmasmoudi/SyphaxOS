@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=file
-pkgver=5.28
+pkgver=5.29
 pkgrel=1
 pkgdesc="The File package contains a utility for determining the type of a given file or files."
 arch=('x86_64')
@@ -9,8 +9,10 @@ url="ftp://ftp.astron.com/pub/file"
 license=('GPL')
 groups=('core')
 source=("$url/$pkgname-$pkgver.tar.gz")
-md5sums=('3f7771424aa855f32094b49571e19b33')
-depends=('rootfs>=2.0.0')
+md5sums=('b7b57b36b577c9cede2f2d1342203302')
+depends=('rootfs>=2.0.0'
+         'glibc'
+         'zlib')
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"
