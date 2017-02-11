@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=zlib
-pkgver=1.2.8
+pkgver=1.2.11
 pkgrel=1
 pkgdesc="The Zlib package contains compression and decompression routines used by some programs."
 arch=('x86_64')
@@ -9,8 +9,9 @@ url="http://www.zlib.net"
 license=('GPL')
 groups=('core')
 source=("$url/$pkgname-$pkgver.tar.xz")
-md5sums=('28f1205d8dd2001f26fec1e8c2cebe37')
-depends=('rootfs>=2.0.0')
+md5sums=('85adef240c5f370b308da8c938951a68')
+depends=('rootfs>=2.0.0'
+         'glibc')
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"
@@ -27,6 +28,6 @@ package() {
 
    mkdir -p $pkgdir/lib
 
-   mv -v $pkgdir/usr/lib/libz.so.* $pkgdir/lib
-   ln -sfv ../../lib/$(readlink $pkgdir/usr/lib/libz.so) $pkgdir/usr/lib/libz.so
+   mv $pkgdir/usr/lib/libz.so.* $pkgdir/lib
+   ln -sf ../../lib/$(readlink $pkgdir/usr/lib/libz.so) $pkgdir/usr/lib/libz.so
 }
