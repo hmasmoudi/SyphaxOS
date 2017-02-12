@@ -2,7 +2,7 @@
 
 pkgname=budgie-desktop
 pkgver=10.2.9
-pkgrel=2
+pkgrel=3
 pkgdesc="The Budgie Desktop a modern desktop designed to keep out the way of the user."
 arch=('x86_64')
 install=${pkgname}.install
@@ -11,7 +11,7 @@ license=('APACHE')
 groups=('applications')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('b2bbedd7dd97868ab9162563798e9888')
-depends=('gnomedesktop>=2.0.0')
+depends=('gnomedesktop>=2.0.0' 'gnome-screensaver>=3.6.1')
 
 prepare() {
    cd "$srcdir/${pkgname}-${pkgver}"
