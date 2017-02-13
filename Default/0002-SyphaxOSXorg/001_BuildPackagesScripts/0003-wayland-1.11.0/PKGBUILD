@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=wayland
-pkgver=1.11.0
+pkgver=1.11.1
 pkgrel=1
 pkgdesc="Wayland is a project to define a protocol for a compositor to talk to its clients as well as a library implementation of the protocol."
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="http://wayland.freedesktop.org/releases"
 license=('GPL')
 groups=('graphicslayer')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-md5sums=('fccf680be066e234729d5b69e0bd0fa9')
+md5sums=('82f227c65faec3df0335847626811303')
 depends=('rootfs>=2.0.0')
 
 prepare() {
