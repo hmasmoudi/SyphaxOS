@@ -2,7 +2,7 @@
 
 pkgname=network-manager-applet
 pkgver=1.4.4
-pkgrel=1
+pkgrel=3
 pkgdesc="The NetworkManager Applet provides a tool and a panel applet used to configure wired and wireless network connections through GUI."
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/network-manager-applet/1.4"
@@ -14,6 +14,10 @@ depends=('rootfs>=2.0.0')
 
 prepare() {
    cd "$srcdir/${pkgname}-${pkgver}"
+   
+   sed -i "/seems to be moved/s/^/#/" ltmain.sh
+   
+   sed -ie 's/KDE;GNOME;/KDE;/g' nm-applet.desktop.in
 }
 
 build() {
