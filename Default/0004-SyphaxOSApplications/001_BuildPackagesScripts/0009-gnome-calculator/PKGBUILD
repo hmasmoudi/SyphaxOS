@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
-pkgname=gnome-calendar
-pkgver=3.22.2
+pkgname=gnome-calculator
+pkgver=3.22.3
 pkgrel=1
-pkgdesc="The GNOME calendar package contains the GNOME calendar."
+pkgdesc="GNOME Calculator is a powerful graphical calculator with financial, logical and scientific modes."
 arch=('x86_64')
-url="http://ftp.gnome.org/pub/gnome/sources/gnome-calendar/3.22"
+url="http://ftp.gnome.org/pub/gnome/sources/gnome-calculator/3.22"
 license=('GPL')
-groups=('desktop')
+groups=('applications')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('3096278eb4ccfee326262808451111236023bba8e0c9d332c319fb05cfdc910f')
+sha256sums=('8dba14b449a6a141aaf86b2ce8d8722bd03b3c398892ba583127d2a2995e52ca')
 depends=('rootfs>=2.0.0')
 
 prepare() {
@@ -20,7 +20,7 @@ build() {
    cd "$srcdir/${pkgname}-${pkgver}"
    
    ./configure --prefix=/usr
-
+      
    make
 }
 

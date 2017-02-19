@@ -1,0 +1,42 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=pygobject
+pkgver=3.22.0
+pkgrel=1
+pkgdesc="PyGObject 2 and 3 provides Python bindings to the GObject class from GLib"
+arch=('x86_64')
+url="http://ftp.gnome.org/pub/gnome/sources/pygobject/3.22"
+license=('GPL')
+groups=('desktop')
+source=("$url/${pkgname}-${pkgver}.tar.xz")
+sha256sums=('08b29cfb08efc80f7a8630a2734dec65a99c1b59f1e5771c671d2e4ed8a5cbe7')
+depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   mkdir python2
+   mkdir python3
+}
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+
+   pushd python2
+   ../configure --prefix=/usr --with-python=/usr/bin/python
+   make
+   popd
+   
+   pushd python3
+   ../configure --prefix=/usr --with-python=/usr/bin/python3
+   make
+   popd
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   make -C python2 DESTDIR="$pkgdir" install
+   make -C python3 DESTDIR="$pkgdir" install
+}
+

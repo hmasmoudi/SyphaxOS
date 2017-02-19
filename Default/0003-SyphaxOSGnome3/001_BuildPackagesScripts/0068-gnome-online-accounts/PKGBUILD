@@ -1,0 +1,34 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=gnome-online-accounts
+pkgver=3.22.4
+pkgrel=1
+pkgdesc="The GNOME Online Accounts package contains a framework used to access the user's online accounts."
+arch=('x86_64')
+url="http://ftp.gnome.org/pub/gnome/sources/gnome-online-accounts/3.22"
+license=('GPL')
+groups=('desktop')
+source=("$url/${pkgname}-${pkgver}.tar.xz")
+sha256sums=('5415d6dd7babf1371f79ba4f6c031003c7d991aaaa784d58f42fd9b4792b09b9')
+depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/$pkgname-$pkgver"
+   
+   sed -i "/seems to be moved/s/^/#/" ltmain.sh
+}
+
+build() {
+   cd "$srcdir/$pkgname-$pkgver"
+
+   ./configure --prefix=/usr --disable-static  --disable-documentation
+   
+   make
+}
+
+package() {
+   cd "$srcdir/$pkgname-$pkgver"
+   
+   make DESTDIR="$pkgdir" install
+}
+

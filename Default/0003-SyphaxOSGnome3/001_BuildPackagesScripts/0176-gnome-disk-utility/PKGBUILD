@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
-pkgname=notification-daemon
-pkgver=3.20.0
+pkgname=gnome-disk-utility
+pkgver=3.22.1
 pkgrel=1
-pkgdesc="The Notification Daemon package contains a daemon that displays passive pop-up notifications."
+pkgdesc="The GNOME Disk Utility package provides applications used for dealing with storage devices."
 arch=('x86_64')
-url="http://ftp.gnome.org/pub/gnome/sources/notification-daemon/3.22"
+url="http://ftp.gnome.org/pub/gnome/sources/gnome-disk-utility/3.22"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-md5sums=('2de7f4075352831f1d98d8851b642124')
+sha256sums=('a3a4a187549f812e3837ae17dd9fa60afcacd84389d696058de254fe18b51ec3')
 depends=('rootfs>=2.0.0')
 
 prepare() {
@@ -19,9 +19,8 @@ prepare() {
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"
    
-   ./configure --prefix=/usr     \
-               --sysconfdir=/etc \
-               --disable-static
+   ./configure --prefix=/usr --disable-static
+   
    make
 }
 

@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
-pkgname=gnome-calendar
-pkgver=3.22.2
+pkgname=clutter-gtk
+pkgver=1.8.2
 pkgrel=1
-pkgdesc="The GNOME calendar package contains the GNOME calendar."
+pkgdesc="The Clutter Gtk package is a library providing facilities to integrate Clutter into GTK+ applications."
 arch=('x86_64')
-url="http://ftp.gnome.org/pub/gnome/sources/gnome-calendar/3.22"
+url="http://ftp.gnome.org/pub/gnome/sources/clutter-gtk/1.8"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('3096278eb4ccfee326262808451111236023bba8e0c9d332c319fb05cfdc910f')
+sha256sums=('da27d486325490ad3f65d2abf9413aeb8b4a8f7b559e4b2f73567a5344a26b94')
 depends=('rootfs>=2.0.0')
 
 prepare() {
@@ -18,15 +18,15 @@ prepare() {
 
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"
-   
-   ./configure --prefix=/usr
 
+   ./configure --prefix=/usr
+   
    make
 }
 
 package() {
    cd "$srcdir/${pkgname}-${pkgver}"
    
-   make DESTDIR="${pkgdir}" install
+   make DESTDIR="$pkgdir" install
 }
 

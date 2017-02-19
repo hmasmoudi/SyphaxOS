@@ -1,0 +1,205 @@
+Submitted by:                 Douglas R. Reno <renodr at linuxfromscratch dot org>
+Date:                         2017-01-02
+Initial Package Version:      3.22.2
+Upstream Status:              Pending
+Origin:                       Upstream bug report with comments by myself. See
+                              https://bugzilla.gnome.org/show_bug.cgi?id=775935
+Description:                  Fixes a build issue due to the batch rename
+                              support which unconditionally requires
+                              Tracker. Add an option to disable batch rename
+                              support and make the code honor it.
+
+diff -Naurp nautilus-3.22.2.orig/configure.ac nautilus-3.22.2/configure.ac
+--- nautilus-3.22.2.orig/configure.ac	2016-12-09 17:41:01.000000000 -0600
++++ nautilus-3.22.2/configure.ac	2017-01-02 14:16:27.526235120 -0600
+@@ -263,6 +263,25 @@ fi
+ 
+ AM_CONDITIONAL(ENABLE_TRACKER, test "x$enable_tracker" = "xyes")
+ 
++dnl If we don't have tracker, we must disable batch rename.
++dnl Add this option for BLFS.
++dnl =========================================================================
++dnl Enable batch rename
++
++AC_ARG_ENABLE(batch_rename,
++        [AS_HELP_STRING([--enable-batch-rename],
++                        [turn on the batch rename function])],
++        , enable_batch_rename=yes)
++
++if test "x$enable_tracker" != "xyes"; then
++   enable_batch_rename=no
++fi
++if test "x$enable_batch_rename" = "xyes"; then
++   AC_DEFINE(ENABLE_BATCH_RENAME,1,[enable batch rename])
++fi
++
++AM_CONDITIONAL(ENABLE_BATCH_RENAME, test "x$enable_batch_rename" = "xyes")
++
+ dnl ==========================================================================
+ 	
+ dnl base libs
+@@ -352,6 +371,7 @@ nautilus-$VERSION:
+ 	PackageKit support:     $msg_packagekit
+ 	nautilus-sendto ext:	$enable_nst_extension
+ 	Tracker support:	$enable_tracker
++   Batch rename support: $enable_batch_rename
+ 	desktop support:	$enable_desktop
+ 
+         profiling support:      ${enable_profiling}
+diff -Naurp nautilus-3.22.2.orig/src/Makefile.am nautilus-3.22.2/src/Makefile.am
+--- nautilus-3.22.2.orig/src/Makefile.am	2016-12-08 09:14:05.000000000 -0600
++++ nautilus-3.22.2/src/Makefile.am	2017-01-02 14:17:08.182448846 -0600
+@@ -119,7 +119,7 @@ nautilus_tracker_engine_sources = \
+ 	nautilus-search-engine-tracker.h
+ endif
+ 
+-if ENABLE_TRACKER
++if ENABLE_BATCH_RENAME
+ nautilus_batch_renaming_tracker_sources = \
+ 	nautilus-batch-rename-dialog.c \
+ 	nautilus-batch-rename-dialog.h \
+diff -Naurp nautilus-3.22.2.orig/src/nautilus-file.c nautilus-3.22.2/src/nautilus-file.c
+--- nautilus-3.22.2.orig/src/nautilus-file.c	2016-12-09 17:34:22.000000000 -0600
++++ nautilus-3.22.2/src/nautilus-file.c	2017-01-02 14:22:48.249683565 -0600
+@@ -1990,6 +1990,11 @@ rename_get_info_callback (GObject      *
+     }
+ }
+ 
++/*
++ * Since we have to disable Tracker in BLFS, we must get rid of batch-rename functionality.
++ * We will do this here by ifdefing it out.
++ */
++#ifdef ENABLE_BATCH_RENAME
+ typedef struct
+ {
+     NautilusFileOperation *op;
+@@ -2077,6 +2082,7 @@ batch_rename_get_info_callback (GObject
+         g_error_free (error);
+     }
+ }
++#endif /* ENABLE_BATCH_RENAME */
+ 
+ static void
+ rename_callback (GObject      *source_object,
+@@ -2272,6 +2278,12 @@ nautilus_file_can_rename_file (NautilusF
+     return new_file_name;
+ }
+ 
++/*
++ * Since we disable tracker in BLFS, we need to IFDEF it out
++ * for the real_batch_rename function.
++ * Use the ENABLE_BATCH_RENAME function that we added earlier.
++ */
++#ifdef ENABLE_BATCH_RENAME
+ static void
+ real_batch_rename (GList                         *files,
+                    GList                         *new_names,
+@@ -2380,6 +2392,7 @@ real_batch_rename (GList
+         nautilus_file_operation_complete (op, NULL, error);
+     }
+ }
++#endif /* ENABLE_BATCH_RENAME */
+ 
+ gboolean
+ nautilus_file_rename_handle_file_gone (NautilusFile                  *file,
+@@ -2407,6 +2420,11 @@ nautilus_file_rename_handle_file_gone (N
+     return FALSE;
+ }
+ 
++/* Disable nautilus_file_batch_rename unless Tracker support is enabled.
++ * We disable it in BLFS.
++ * Use the function that we defined earlier.
++ */
++#ifdef ENABLE_BATCH_RENAME
+ void
+ nautilus_file_batch_rename (GList                         *files,
+                             GList                         *new_names,
+@@ -2418,6 +2436,7 @@ nautilus_file_batch_rename (GList
+                        callback,
+                        callback_data);
+ }
++#endif /* ENABLE_BATCH_RENAME */
+ 
+ static void
+ real_rename (NautilusFile                  *file,
+diff -Naurp nautilus-3.22.2.orig/src/nautilus-file.h nautilus-3.22.2/src/nautilus-file.h
+--- nautilus-3.22.2.orig/src/nautilus-file.h	2016-12-09 17:34:22.000000000 -0600
++++ nautilus-3.22.2/src/nautilus-file.h	2017-01-02 14:23:20.866671138 -0600
+@@ -326,10 +326,16 @@ void                    nautilus_file_re
+ 									 const char                     *new_name,
+ 									 NautilusFileOperationCallback   callback,
+ 									 gpointer                        callback_data);
++/* Since we have to disable tracker in BLFS,
++ * We must disable the file_batch_rename support.
++ * Use the flag that we defined earlier/
++ */
++#ifdef ENABLE_BATCH_RENAME
+ void                    nautilus_file_batch_rename                      (GList                          *files,
+                                                                          GList                          *new_names,
+                                                                          NautilusFileOperationCallback   callback,
+                                                                          gpointer                        callback_data);
++#endif /* ENABLE_BATCH_RENAME */
+ void                    nautilus_file_cancel                            (NautilusFile                   *file,
+ 									 NautilusFileOperationCallback   callback,
+ 									 gpointer                        callback_data);
+diff -Naurp nautilus-3.22.2.orig/src/nautilus-files-view.c nautilus-3.22.2/src/nautilus-files-view.c
+--- nautilus-3.22.2.orig/src/nautilus-files-view.c	2016-12-09 17:34:22.000000000 -0600
++++ nautilus-3.22.2/src/nautilus-files-view.c	2017-01-02 14:24:22.346534722 -0600
+@@ -28,7 +28,7 @@
+ #include "nautilus-files-view.h"
+ 
+ #include "nautilus-application.h"
+-#ifdef ENABLE_TRACKER
++#ifdef ENABLE_BATCH_RENAME
+ #include "nautilus-batch-rename-dialog.h"
+ #include "nautilus-batch-rename-utilities.h"
+ #endif
+@@ -5925,7 +5925,7 @@ real_action_rename (NautilusFilesView *v
+             {
+                 invoke_external_bulk_rename_utility (view, selection);
+             }
+-#ifdef ENABLE_TRACKER
++#ifdef ENABLE_BATCH_RENAME
+             else
+             {
+                 GdkCursor *cursor;
+diff -Naurp nautilus-3.22.2.orig/src/nautilus-file-undo-operations.c nautilus-3.22.2/src/nautilus-file-undo-operations.c
+--- nautilus-3.22.2.orig/src/nautilus-file-undo-operations.c	2016-12-09 17:23:29.000000000 -0600
++++ nautilus-3.22.2/src/nautilus-file-undo-operations.c	2017-01-02 14:19:47.657232381 -0600
+@@ -31,9 +31,16 @@
+ #include "nautilus-file-operations.h"
+ #include "nautilus-file.h"
+ #include "nautilus-file-undo-manager.h"
++
++/* The Nautilus Batch Rename functionality requires Tracker.
++ * We do not have that capability in BLFS, as we do not have Tracker.
++ * Regardless of whether or not we disable it, we must now remove the functionality.
++ * We are doing this through IFDEFing for whether or not Batch Rename Support is enabled.
++ */
++#ifdef ENABLE_BATCH_RENAME
+ #include "nautilus-batch-rename-dialog.h"
+ #include "nautilus-batch-rename-utilities.h"
+-
++#endif /* ENABLE_BATCH_RENAME */
+ 
+ /* Since we use g_get_current_time for setting "orig_trash_time" in the undo
+  * info, there are situations where the difference between this value and the
+@@ -1086,6 +1093,10 @@ nautilus_file_undo_info_rename_set_data_
+     self->priv->new_file = g_object_ref (new_file);
+ }
+ 
++/* This functionality will only work if tracker is enabled. We disable it in BLFS. 
++ * Use the option that we added to configure earlier.
++ */
++#ifdef ENABLE_BATCH_RENAME
+ /* batch rename */
+ G_DEFINE_TYPE (NautilusFileUndoInfoBatchRename, nautilus_file_undo_info_batch_rename, NAUTILUS_TYPE_FILE_UNDO_INFO);
+ 
+@@ -1303,6 +1314,7 @@ nautilus_file_undo_info_batch_rename_set
+ 
+     self->priv->new_display_names = g_list_reverse (self->priv->new_display_names);
+ }
++#endif /* ENABLE_BATCH_RENAME */
+ 
+ /* trash */
+ G_DEFINE_TYPE (NautilusFileUndoInfoTrash, nautilus_file_undo_info_trash, NAUTILUS_TYPE_FILE_UNDO_INFO)

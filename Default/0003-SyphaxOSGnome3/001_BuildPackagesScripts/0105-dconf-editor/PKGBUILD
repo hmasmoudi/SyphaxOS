@@ -1,0 +1,32 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=dconf-editor
+pkgver=3.22.3
+pkgrel=1
+pkgdesc="The DConf-Editor, as the name suggests, is a graphical editor for the DConf database."
+arch=('x86_64')
+url="http://ftp.gnome.org/pub/gnome/sources/dconf-editor/3.22"
+license=('GPL')
+groups=('desktop')
+source=("$url/${pkgname}-${pkgver}.tar.xz")
+sha256sums=('55f167d7e61714766406b23d7222d509f7bb98b9df1a367113ac14ea06f669a4')
+depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+}
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+
+   ./configure --prefix=/usr --sysconfdir=/etc
+
+   make
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   make DESTDIR="$pkgdir" install
+}
+

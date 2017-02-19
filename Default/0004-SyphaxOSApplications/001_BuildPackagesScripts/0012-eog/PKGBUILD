@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
-pkgname=gnome-calendar
-pkgver=3.22.2
+pkgname=eog
+pkgver=3.20.5
 pkgrel=1
-pkgdesc="The GNOME calendar package contains the GNOME calendar."
+pkgdesc="EOG is an application used for viewing and cataloging image files on the GNOME Desktop."
 arch=('x86_64')
-url="http://ftp.gnome.org/pub/gnome/sources/gnome-calendar/3.22"
+url="http://ftp.gnome.org/pub/gnome/sources/eog/3.20"
 license=('GPL')
-groups=('desktop')
+groups=('applications')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('3096278eb4ccfee326262808451111236023bba8e0c9d332c319fb05cfdc910f')
+sha256sums=('e6e7c5a1aaf2508065e19f0669eb6c1028e8e04c7d3504b9027bd1e009731b3b')
 depends=('rootfs>=2.0.0')
 
 prepare() {
@@ -19,8 +19,8 @@ prepare() {
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"
    
-   ./configure --prefix=/usr
-
+   ./configure --prefix=/usr --disable-static
+   
    make
 }
 

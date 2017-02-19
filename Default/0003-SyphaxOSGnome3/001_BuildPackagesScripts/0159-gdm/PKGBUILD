@@ -1,0 +1,65 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=gdm
+pkgver=3.22.1
+pkgrel=1
+pkgdesc="The GNOME Shell Extensions package contains a collection of extensions providing additional and optional functionality to the GNOME Shell."
+arch=('x86_64')
+url="http://ftp.gnome.org/pub/gnome/sources/gdm/3.22"
+install=${pkgname}.install
+license=('GPL')
+groups=('desktop')
+source=("$url/${pkgname}-${pkgver}.tar.xz"
+        "gdm.install"
+        "00-keyboard.conf"
+        "gdm"
+        "gdm-launch-environment"
+        "gdm-password"
+        )
+sha256sums=('6a43e623f563c2e366297c2ee8d160526a285e102c73936e27a1d79076d6969f'
+            '72b4e1a2d2da221414ca19586a3079a5a27f083573daadca4bd5ba69e5a2a0aa'
+            '59b0e9ee9a2dab4a6ec26d8888b5de686dfd1bc71dacdee4a067305a92ebb333'
+            '0f70b0c3c37888b723f4ea5dadbd3f072ae69be4832a00b6befa8b3ddaf95d31'
+            'd14c108f24b49808b02563e67462378cf4b28622d7ad74870a2eb9addb5df19f'
+            '5d916229372a3ae9f4f2d988c6b84339e4a36363b58e8d66d7a8d578570ba5be')
+depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+}
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   ./configure --prefix=/usr         \
+               --sysconfdir=/etc     \
+               --localstatedir=/var  \
+               --without-plymouth    \
+               --disable-static      \
+               --enable-gdm-xsession
+   make
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   mkdir -pv $pkgdir/{run,var}
+   ln -snfv ../run $pkgdir/var/run
+   mkdir -pv "${pkgdir}"/etc/X11/xorg.conf.d/
+   mkdir -pv "${pkgdir}"/etc/pam.d/
+   
+   make DESTDIR="${pkgdir}" install
+   
+   install -v -m644 data/gdm.service "${pkgdir}"/lib/systemd/system/gdm.service
+   
+   cp ../../00-keyboard.conf         "${pkgdir}"/etc/X11/xorg.conf.d/00-keyboard.conf
+   cp ../../gdm                      "${pkgdir}"/etc/pam.d/gdm 
+   cp ../../gdm-launch-environment   "${pkgdir}"/etc/pam.d/gdm-launch-environment
+   cp ../../gdm-password             "${pkgdir}"/etc/pam.d/gdm-password
+   
+   rm -rf $pkgdir/var/run
+   
+   chmod 700 "${pkgdir}"/run/gdm/greeter
+   chmod 711 "${pkgdir}"/var/log/gdm
+}
+

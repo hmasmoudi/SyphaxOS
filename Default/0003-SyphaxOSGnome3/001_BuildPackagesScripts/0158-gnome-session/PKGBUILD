@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
-pkgname=notification-daemon
-pkgver=3.20.0
+pkgname=gnome-session
+pkgver=3.22.2
 pkgrel=1
-pkgdesc="The Notification Daemon package contains a daemon that displays passive pop-up notifications."
+pkgdesc="The GNOME Session package contains the GNOME session manager."
 arch=('x86_64')
-url="http://ftp.gnome.org/pub/gnome/sources/notification-daemon/3.22"
+url="http://ftp.gnome.org/pub/gnome/sources/gnome-session/3.22"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-md5sums=('2de7f4075352831f1d98d8851b642124')
+sha256sums=('361a31edb4f8c6d410f1029eee089422e25a2da6c287ead40fccdea5bda450f5')
 depends=('rootfs>=2.0.0')
 
 prepare() {
@@ -19,9 +19,8 @@ prepare() {
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"
    
-   ./configure --prefix=/usr     \
-               --sysconfdir=/etc \
-               --disable-static
+   ./configure --prefix=/usr --docdir=/usr/share/doc/gnome-session-3.22.2
+
    make
 }
 

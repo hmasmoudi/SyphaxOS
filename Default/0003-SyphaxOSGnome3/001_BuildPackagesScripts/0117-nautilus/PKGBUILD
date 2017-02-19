@@ -1,0 +1,40 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=nautilus
+pkgver=3.22.2
+pkgrel=1
+pkgdesc="The Nautilus package contains the GNOME file manager."
+arch=('x86_64')
+url="http://ftp.gnome.org/pub/gnome/sources/nautilus/3.22"
+license=('GPL')
+groups=('desktop')
+source=("$url/${pkgname}-${pkgver}.tar.xz")
+sha256sums=('ce1c9e97173b51750521971a26943593b397a08a2736b340ef5b130095ee65b3')
+depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   patch -Np1 -i ../../nautilus-3.22.2-disable_batch_rename_support-1.patch &&
+   autoreconf -fiv
+   
+   sed -i "/seems to be moved/s/^/#/" ltmain.sh
+}
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   ./configure --prefix=/usr        \
+               --sysconfdir=/etc    \
+               --disable-selinux    \
+               --disable-tracker    \
+               --disable-packagekit
+   make
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   make DESTDIR="$pkgdir" install
+}
+

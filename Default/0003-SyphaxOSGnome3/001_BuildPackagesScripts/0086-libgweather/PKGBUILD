@@ -1,0 +1,32 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=libgweather
+pkgver=3.20.4
+pkgrel=1
+pkgdesc="The libgweather package is a library used to access weather information from online services for numerous locations."
+arch=('x86_64')
+url="http://ftp.gnome.org/pub/gnome/sources/libgweather/3.20"
+license=('GPL')
+groups=('desktop')
+source=("$url/${pkgname}-${pkgver}.tar.xz")
+sha256sums=('7dcdc555c48461d07a198bc44e0e6ed39105d8513b12fa97c4590f5b2d912fc2')
+depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+}
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+
+   ./configure --prefix=/usr
+   
+   make
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   make DESTDIR="$pkgdir" install
+}
+

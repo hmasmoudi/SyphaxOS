@@ -1,0 +1,38 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=vte
+pkgver=0.46.1
+pkgrel=1
+pkgdesc="The VTE package contains a termcap file implementation for terminal emulators."
+arch=('x86_64')
+url="http://ftp.gnome.org/pub/gnome/sources/vte/0.46"
+license=('GPL')
+groups=('desktop')
+source=("$url/${pkgname}-${pkgver}.tar.xz")
+sha256sums=('8800cf8bc259704a12ad1853fb0eb43bfe3857af15242e6fb9f2c3fd95b3f5c6')
+depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/$pkgname-$pkgver"
+   
+   sed -i '/Werror/d' configure.ac
+   autoreconf
+}
+
+build() {
+   cd "$srcdir/$pkgname-$pkgver"
+
+   ./configure --prefix=/usr          \
+               --sysconfdir=/etc      \
+               --disable-static       \
+               --enable-introspection
+
+   make
+}
+
+package() {
+   cd "$srcdir/$pkgname-$pkgver"
+
+   make DESTDIR="$pkgdir" install
+}
+

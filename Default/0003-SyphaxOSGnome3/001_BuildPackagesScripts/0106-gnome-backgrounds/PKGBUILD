@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
-pkgname=gnome-calendar
-pkgver=3.22.2
+pkgname=gnome-backgrounds
+pkgver=3.22.1
 pkgrel=1
-pkgdesc="The GNOME calendar package contains the GNOME calendar."
+pkgdesc="The GNOME Backgrounds package contains a collection of graphics files which can be used as backgrounds in the GNOME Desktop environment."
 arch=('x86_64')
-url="http://ftp.gnome.org/pub/gnome/sources/gnome-calendar/3.22"
+url="http://ftp.gnome.org/pub/gnome/sources/gnome-backgrounds/3.22"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('3096278eb4ccfee326262808451111236023bba8e0c9d332c319fb05cfdc910f')
+sha256sums=('bfc89812b26383b74062c43f6c175b8fce19d4044b42f8bc9de2ab196a6eee25')
 depends=('rootfs>=2.0.0')
 
 prepare() {
@@ -18,7 +18,7 @@ prepare() {
 
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"
-   
+
    ./configure --prefix=/usr
 
    make
@@ -27,6 +27,6 @@ build() {
 package() {
    cd "$srcdir/${pkgname}-${pkgver}"
    
-   make DESTDIR="${pkgdir}" install
+   make DESTDIR="$pkgdir" install
 }
 

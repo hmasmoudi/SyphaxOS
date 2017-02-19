@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
-pkgname=gnome-calendar
-pkgver=3.22.2
+pkgname=gnome-screenshot
+pkgver=3.22.0
 pkgrel=1
-pkgdesc="The GNOME calendar package contains the GNOME calendar."
+pkgdesc="The GNOME Screenshot is a utility used for taking screenshots of the entire screen, a window or a user-defined area of the screen, with optional beautifying border effects."
 arch=('x86_64')
-url="http://ftp.gnome.org/pub/gnome/sources/gnome-calendar/3.22"
+url="http://ftp.gnome.org/pub/gnome/sources/gnome-screenshot/3.22"
 license=('GPL')
-groups=('desktop')
+groups=('applications')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('3096278eb4ccfee326262808451111236023bba8e0c9d332c319fb05cfdc910f')
+sha256sums=('8a05f14b3c7c6cb42f9848ad0332034c7fe5c34a69742910203588fd60b00230')
 depends=('rootfs>=2.0.0')
 
 prepare() {
@@ -20,7 +20,7 @@ build() {
    cd "$srcdir/${pkgname}-${pkgver}"
    
    ./configure --prefix=/usr
-
+   
    make
 }
 

@@ -1,0 +1,36 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=evolution-data-server
+pkgver=3.22.5
+pkgrel=1
+pkgdesc="Evolution Data Server package provides a unified backend for programs that work with contacts, tasks, and calendar information."
+arch=('x86_64')
+url="http://ftp.gnome.org/pub/gnome/sources/evolution-data-server/3.22"
+license=('GPL')
+groups=('desktop')
+source=("$url/${pkgname}-${pkgver}.tar.xz")
+sha256sums=('53d53b3618c238ec9d77f3866743a4b8db7e4153c5f14c5cf3eca2b21e91d392')
+depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   sed -i "/seems to be moved/s/^/#/" ltmain.sh
+}
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+
+   ./configure --prefix=/usr \
+               --disable-uoa \
+               --disable-google-auth \
+               --enable-vala-bindings        
+   make
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   make DESTDIR="$pkgdir" install
+}
+

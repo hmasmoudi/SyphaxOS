@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
-pkgname=notification-daemon
-pkgver=3.20.0
+pkgname=gnome-shell-extensions
+pkgver=3.22.2
 pkgrel=1
-pkgdesc="The Notification Daemon package contains a daemon that displays passive pop-up notifications."
+pkgdesc="The GNOME Shell Extensions package contains a collection of extensions providing additional and optional functionality to the GNOME Shell."
 arch=('x86_64')
-url="http://ftp.gnome.org/pub/gnome/sources/notification-daemon/3.22"
+url="http://ftp.gnome.org/pub/gnome/sources/gnome-shell-extensions/3.22"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-md5sums=('2de7f4075352831f1d98d8851b642124')
+sha256sums=('df7c22c69e29162bc1a7018b25b9a2fc37546451746b8b3c5109e5ac92238a87')
 depends=('rootfs>=2.0.0')
 
 prepare() {
@@ -19,9 +19,8 @@ prepare() {
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"
    
-   ./configure --prefix=/usr     \
-               --sysconfdir=/etc \
-               --disable-static
+   ./configure --prefix=/usr
+
    make
 }
 

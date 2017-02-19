@@ -1,0 +1,36 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=mutter
+pkgver=3.22.2
+pkgrel=1
+pkgdesc="Mutter is the window manager for GNOME. It is not invoked directly, but from GNOME Session (on a machine with a hardware accelerated video driver)."
+arch=('x86_64')
+url="http://ftp.gnome.org/pub/gnome/sources/mutter/3.22"
+license=('GPL')
+groups=('desktop')
+source=("$url/${pkgname}-${pkgver}.tar.xz")
+sha256sums=('d59b58356cba1165ef69a98f43e50777fded768860a9b118807c5a47274092a2')
+depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   sed -i "/seems to be moved/s/^/#/" build-aux/ltmain.sh
+   sed -i "/seems to be moved/s/^/#/" clutter/build/ltmain.sh
+   sed -i "/seems to be moved/s/^/#/" cogl/build/ltmain.sh
+}
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   ./configure --prefix=/usr --disable-static --disable-compile-warnings
+
+   make
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   make DESTDIR="${pkgdir}" install
+}
+

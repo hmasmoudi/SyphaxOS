@@ -1,0 +1,32 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=gnome-desktop
+pkgver=3.22.2
+pkgrel=1
+pkgdesc="The GNOME Desktop package contains a library that provides an API shared by several applications on the GNOME Desktop."
+arch=('x86_64')
+url="http://ftp.gnome.org/pub/gnome/sources/gnome-desktop/3.22"
+license=('GPL')
+groups=('desktop')
+source=("$url/${pkgname}-${pkgver}.tar.xz")
+sha256sums=('51d7ebf7a6c359be14c3dd7a022213e931484653815eb10b0131bef4c8979e1c')
+depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/$pkgname-$pkgver"
+}
+
+build() {
+   cd "$srcdir/$pkgname-$pkgver"
+
+   ./configure --prefix=/usr --with-gnome-distributor="SyphaxOS"
+   
+   make
+}
+
+package() {
+   cd "$srcdir/$pkgname-$pkgver"
+
+   make DESTDIR="$pkgdir" install
+}
+

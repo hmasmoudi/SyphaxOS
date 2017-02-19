@@ -1,27 +1,28 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
-pkgname=notification-daemon
-pkgver=3.20.0
+pkgname=gnome-shell
+pkgver=3.22.2
 pkgrel=1
-pkgdesc="The Notification Daemon package contains a daemon that displays passive pop-up notifications."
+pkgdesc="The GNOME Shell is the desktop user interface of the GNOME Desktop environment."
 arch=('x86_64')
-url="http://ftp.gnome.org/pub/gnome/sources/notification-daemon/3.22"
+url="http://ftp.gnome.org/pub/gnome/sources/gnome-shell/3.22"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-md5sums=('2de7f4075352831f1d98d8851b642124')
+sha256sums=('d80f4eb662ada325165b066112e924f4c16044f153c274c886d7f99b9ddc559b')
 depends=('rootfs>=2.0.0')
 
 prepare() {
    cd "$srcdir/${pkgname}-${pkgver}"
+   
+   sed -i "/seems to be moved/s/^/#/" config/ltmain.sh
 }
 
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"
    
-   ./configure --prefix=/usr     \
-               --sysconfdir=/etc \
-               --disable-static
+   ./configure --prefix=/usr --disable-compile-warnings
+
    make
 }
 

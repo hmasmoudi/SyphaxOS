@@ -1,0 +1,39 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=pcre2
+pkgver=10.22
+pkgrel=1
+pkgdesc="The PCRE2 package contains a new generation of the Perl Compatible Regular Expression libraries."
+arch=('x86_64')
+url="ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre"
+license=('GPL')
+groups=('desktop')
+source=("$url/${pkgname}-${pkgver}.tar.bz2")
+md5sums=('c0c02517938ee2b0d350d53edf450664')
+depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/$pkgname-$pkgver"
+}
+
+build() {
+   cd "$srcdir/$pkgname-$pkgver"
+
+   ./configure --prefix=/usr                       \
+               --docdir=/usr/share/doc/pcre2-10.22 \
+               --enable-unicode                    \
+               --enable-pcre2-16                   \
+               --enable-pcre2-32                   \
+               --enable-pcre2grep-libz             \
+               --enable-pcre2grep-libbz2           \
+               --enable-pcre2test-libreadline      \
+               --disable-static                    &&
+   make
+}
+
+package() {
+   cd "$srcdir/$pkgname-$pkgver"
+
+   make DESTDIR="$pkgdir" install
+}
+

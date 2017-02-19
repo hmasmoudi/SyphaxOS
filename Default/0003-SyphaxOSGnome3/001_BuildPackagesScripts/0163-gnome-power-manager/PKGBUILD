@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
-pkgname=notification-daemon
-pkgver=3.20.0
+pkgname=gnome-power-manager
+pkgver=3.22.2
 pkgrel=1
-pkgdesc="The Notification Daemon package contains a daemon that displays passive pop-up notifications."
+pkgdesc="The GNOME Power Manager package contains a tool used to report on power management on the system."
 arch=('x86_64')
-url="http://ftp.gnome.org/pub/gnome/sources/notification-daemon/3.22"
+url="http://ftp.gnome.org/pub/gnome/sources/gnome-power-manager/3.22"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-md5sums=('2de7f4075352831f1d98d8851b642124')
+sha256sums=('4f02d101d768fc4da52b7a294b233f7e4e1fbc09515d144bf2040bab9e0724e0')
 depends=('rootfs>=2.0.0')
 
 prepare() {
@@ -19,9 +19,8 @@ prepare() {
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"
    
-   ./configure --prefix=/usr     \
-               --sysconfdir=/etc \
-               --disable-static
+   ./configure --prefix=/usr
+
    make
 }
 

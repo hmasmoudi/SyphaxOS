@@ -2,7 +2,7 @@
 
 pkgname=SyphaxOS-Desktop
 pkgver=2.0.0
-pkgrel=8
+pkgrel=10
 pkgdesc="SyphaxOS 2.0.0 Default Desktop Package based on Gnome Desktop."
 arch=('x86_64')
 install=${pkgname}.install
@@ -26,6 +26,7 @@ depends=(
          'rhythmbox>=3.4.1'
          'ttf-ms-fonts>=10.0.14393'
          'wps-office>=10.1.0.5672'
+         'budgie-desktop>=10.2.9'
          )
 
 prepare() {

@@ -1,0 +1,32 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=libpeas
+pkgver=1.20.0
+pkgrel=1
+pkgdesc="libpeas is a GObject based plugins engine, and is targeted at giving every application the chance to assume its own extensibility."
+arch=('x86_64')
+url="http://ftp.gnome.org/pub/gnome/sources/libpeas/1.20"
+license=('GPL')
+groups=('desktop')
+source=("$url/${pkgname}-${pkgver}.tar.xz")
+sha256sums=('f392fffe2dc00072a51bb2a1b274224a06bdc5f9c3b3c0ac4816909e9933d354')
+depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+}
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+
+   ./configure --prefix=/usr
+   
+   make
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   make DESTDIR="$pkgdir" install
+}
+

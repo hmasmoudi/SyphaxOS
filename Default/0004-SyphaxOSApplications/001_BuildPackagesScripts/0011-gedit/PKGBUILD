@@ -1,0 +1,33 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=gedit
+pkgver=3.22.0
+pkgrel=1
+pkgdesc="The Gedit package contains a lightweight UTF-8 text editor for the GNOME Desktop."
+arch=('x86_64')
+url="http://ftp.gnome.org/pub/gnome/sources/gedit/3.22"
+license=('GPL')
+groups=('applications')
+source=("$url/${pkgname}-${pkgver}.tar.xz")
+sha256sums=('063b5a0b5dcc8f540f6e8c3ea1c22cf8a3a19edffc25315a1b6bc51d462b3f45')
+depends=('rootfs>=2.0.0'
+         'gtksourceview>=3.22.0')
+
+prepare() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+}
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   ./configure --prefix=/usr --disable-spell
+   
+   make
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   make DESTDIR="${pkgdir}" install
+}
+

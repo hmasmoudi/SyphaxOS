@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
-pkgname=notification-daemon
-pkgver=3.20.0
+pkgname=gnome-system-monitor
+pkgver=3.22.2
 pkgrel=1
-pkgdesc="The Notification Daemon package contains a daemon that displays passive pop-up notifications."
+pkgdesc="The GNOME System Monitor package contains GNOME's replacement for gtop."
 arch=('x86_64')
-url="http://ftp.gnome.org/pub/gnome/sources/notification-daemon/3.22"
+url="http://ftp.gnome.org/pub/gnome/sources/gnome-system-monitor/3.22"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-md5sums=('2de7f4075352831f1d98d8851b642124')
+sha256sums=('68a5b097157a6e445fc2467cbaecfede77d00b774c93e8aa69b6f784055dc982')
 depends=('rootfs>=2.0.0')
 
 prepare() {
@@ -19,9 +19,10 @@ prepare() {
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"
    
-   ./configure --prefix=/usr     \
-               --sysconfdir=/etc \
+   ./configure --prefix=/usr    \
+               --enable-systemd \
                --disable-static
+
    make
 }
 
