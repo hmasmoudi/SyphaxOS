@@ -1,0 +1,16 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=paper-icon-theme
+pkgver=1.4
+pkgrel=674
+pkgdesc="Paper is a modern freedesktop icon theme whose design is based around the use of bold colours and simple geometric shapes to compose icons. By Sam Hewitt is licensed under CC-SA-4.0"
+url="https://github.com/snwh/paper-icon-theme"
+license=('CUSTOM')
+arch=('x86_64')
+source=("https://launchpad.net/~snwh/+archive/ubuntu/pulp/+files/paper-icon-theme_${pkgver}+r${pkgrel}~daily~ubuntu16.04.1_all.deb")
+sha256sums=('0f4c520c9b1143ead191f1497984627948534a0bce2330a6ef7157b41f00eb07')
+
+package() {
+   tar xf data.tar.xz
+   cp -rp usr $pkgdir
+}
