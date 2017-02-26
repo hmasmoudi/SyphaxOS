@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=Python3
-pkgver=3.5.2
+pkgver=3.5.3
 pkgrel=1
 pkgdesc="The Python 3 package contains the Python development environment."
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://www.python.org/ftp/python/$pkgver"
 license=('GPL')
 groups=('graphicslayer')
 source=("$url/Python-${pkgver}.tar.xz")
-md5sums=('8906efbacfcdc7c3c9198aeefafd159e')
+md5sums=('57d1f8bfbabf4f2500273fb0706e6f21')
 depends=('rootfs>=2.0.0')
 
 prepare() {
