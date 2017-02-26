@@ -2,7 +2,7 @@
 
 pkgname=gvfs
 pkgver=1.30.3
-pkgrel=1
+pkgrel=2
 pkgdesc="The Gvfs package is a userspace virtual filesystem designed to work with the I/O abstractions of GLib's GIO library."
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/gvfs/1.30"
@@ -14,6 +14,8 @@ depends=('rootfs>=2.0.0')
 
 prepare() {
    cd "$srcdir/${pkgname}-${pkgver}"
+   
+   sed -i "/seems to be moved/s/^/#/" ltmain.sh
 }
 
 build() {
@@ -29,5 +31,7 @@ package() {
    cd "$srcdir/${pkgname}-${pkgver}"
    
    make DESTDIR="$pkgdir" install
+   
+   chmod 700 "$pkgdir"/usr/share/polkit-1/rules.d
 }
 
