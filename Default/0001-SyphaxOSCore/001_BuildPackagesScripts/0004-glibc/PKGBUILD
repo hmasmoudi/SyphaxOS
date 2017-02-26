@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=glibc
-pkgver=2.24
+pkgver=2.25
 pkgrel=1
 pkgdesc="The Glibc package contains the main C library."
 arch=('x86_64')
@@ -9,12 +9,12 @@ url="http://ftp.gnu.org/gnu/glibc"
 license=('GPL')
 groups=('core')
 source=("$url/$pkgname-$pkgver.tar.xz")
-md5sums=('97dc5517f92016f3d70d83e3162ad318')
+md5sums=('1496c3bf41adf9db0ebd0af01f202eed')
 depends=('rootfs>=2.0.0')
 
 prepare() {
    cd "$srcdir/$pkgname-$pkgver"
-   patch -Np1 -i ../../glibc-2.24-fhs-1.patch
+   patch -Np1 -i ../../glibc-2.25-fhs-1.patch
    mkdir -v build
 }
 
@@ -24,7 +24,9 @@ build() {
 
    CC=gcc ../configure --prefix=/usr          \
                        --enable-kernel=2.6.32 \
-                       --enable-obsolete-rpc
+                       --enable-obsolete-rpc  \
+                       --enable-stack-protector=strong \
+                       libc_cv_slibdir=/lib
    make
 }
 
