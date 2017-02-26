@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=Python2
-pkgver=2.7.12
+pkgver=2.7.13
 pkgrel=1
 pkgdesc="The Python 2 package contains the Python development environment."
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://www.python.org/ftp/python/$pkgver"
 license=('GPL')
 groups=('graphicslayer')
 source=("$url/Python-${pkgver}.tar.xz")
-md5sums=('57dffcee9cee8bb2ab5f82af1d8e9a69')
+md5sums=('53b43534153bb2a0363f08bae8b9d990')
 depends=('rootfs>=2.0.0')
 
 prepare() {
@@ -23,6 +23,7 @@ build() {
                --enable-shared     \
                --with-system-expat \
                --with-system-ffi   \
+               --with-ensurepip=yes \
                --enable-unicode=ucs4
    make
 }
