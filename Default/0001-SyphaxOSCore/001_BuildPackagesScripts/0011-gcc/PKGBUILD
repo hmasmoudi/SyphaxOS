@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=gcc
-pkgver=6.2.0
-pkgrel=2
+pkgver=6.3.0
+pkgrel=1
 pkgdesc="The GCC package contains the GNU compiler collection, which includes the C and C++ compilers."
 arch=('x86_64')
 url="http://ftp.gnu.org/gnu/gcc/gcc-$pkgver"
 license=('GPL')
 groups=('core')
 source=("$url/$pkgname-$pkgver.tar.bz2")
-md5sums=('9768625159663b300ae4de2f4745fcc4')
+md5sums=('677a7623c7ef6ab99881bc4e048debb6')
 depends=('rootfs>=2.0.0'
          'binutils>=2.27'
          'mpc')
