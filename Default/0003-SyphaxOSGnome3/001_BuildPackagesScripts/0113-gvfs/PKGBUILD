@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=gvfs
-pkgver=1.28.3
+pkgver=1.30.3
 pkgrel=1
 pkgdesc="The Gvfs package is a userspace virtual filesystem designed to work with the I/O abstractions of GLib's GIO library."
 arch=('x86_64')
-url="http://ftp.gnome.org/pub/gnome/sources/gvfs/1.28"
+url="http://ftp.gnome.org/pub/gnome/sources/gvfs/1.30"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-md5sums=('d2399a1a217dd5030e8830c7e7c813c2')
+sha256sums=('b824a29489cae7f39e1a0fc0d154ac7b7bf43d8edd98ba83ffcad2f766d0f175')
 depends=('rootfs>=2.0.0')
 
 prepare() {
