@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=skypeforlinux
-pkgver=1.17.0.1
+pkgver=5.0.0.5
 pkgrel=1
 pkgdesc="Skype for Linux Alpha."
 arch=('x86_64')
 url="https://repo.skype.com/latest"
 license=('GPL')
 groups=('applications')
-source=("$url/${pkgname}-64-alpha.deb")
-md5sums=('004945897ba1d0bbb0707fff2c99d3ad')
+source=("$url/${pkgname}-64.deb")
+md5sums=('ac0c07a5b285a22ef0414dd5cd33d13f')
 depends=('rootfs>=2.0.0')
 
 package() {
