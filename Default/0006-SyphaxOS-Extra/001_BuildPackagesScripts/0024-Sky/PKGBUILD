@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=sky
-pkgver=2.1.6566
+pkgver=2.1.6571
 pkgrel=1
 pkgdesc="LYNC & SKYPE FOR BUSINESS ON LINUX. Packaged using appImage: For any distro."
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL')
 groups=('applications')
 instal=${pkgname}.install
 source=("$url/${pkgname}-${pkgver}-${pkgrel}-x86_64.AppImage")
-md5sums=('8715b46e1dc2109fbbb089cd0d420c86')
+md5sums=('2f9d52ca7a562182e3a8da30ba33739b')
 depends=('rootfs>=2.0.0')
 
 package() {
