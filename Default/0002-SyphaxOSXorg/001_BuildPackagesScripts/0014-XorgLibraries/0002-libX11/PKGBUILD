@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=libX11
-pkgver=1.6.3
+pkgver=1.6.5
 pkgrel=1
 pkgdesc="The Xorg libraries provide library routines that are used within all X Window applications."
 arch=('x86_64')
@@ -10,7 +10,7 @@ install=$pkgname.install
 license=('GPL')
 groups=('graphicslayer')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
-md5sums=('2e36b73f8a42143142dda8129f02e4e0')
+md5sums=('0f618db70c4054ca67cee0cc156a4255')
 depends=('rootfs>=2.0.0')
 
 prepare() {
