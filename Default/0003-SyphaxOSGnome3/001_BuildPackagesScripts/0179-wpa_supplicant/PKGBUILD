@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=wpa_supplicant
-pkgver=2.5
+pkgver=2.6
 pkgrel=1
 pkgdesc="WPA Supplicant is a Wi-Fi Protected Access (WPA) client and IEEE 802.1X supplicant."
 arch=('x86_64')
@@ -12,7 +12,7 @@ groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.gz"
         "config"
         "wpa_supplicant.install")
-md5sums=('96ff75c3a514f1f324560a2376f13110'
+md5sums=('091569eb4440b7d7f2b4276dbfc03c3c'
          '3124d9a6958b0c83c83bd03a72aee89b'
          '7e18fa9c8cb316d5eef84b52b0bda56c')
 depends=('rootfs>=2.0.0')
