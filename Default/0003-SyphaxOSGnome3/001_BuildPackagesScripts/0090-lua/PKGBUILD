@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=lua
-pkgver=5.3.3
+pkgver=5.3.4
 pkgrel=1
 pkgdesc="Lua is a powerful light-weight programming language designed for extending applications."
 arch=('x86_64')
@@ -9,9 +9,9 @@ url="http://www.lua.org/ftp"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.gz"
-        "lua-5.3.3-shared_library-1.patch"
+        "lua-5.3.4-shared_library-1.patch"
         "lua.pc")
-md5sums=('703f75caa4fdf4a911c1a72e67a27498'
+md5sums=('53a9c68bcc0eda58bdc2095ad5cdfc63'
          '63ecacd3ff6552537a73f8c30c396caf'
          'e37fb17483c9300c25e93699caa29c6c')
 depends=('rootfs>=2.0.0')
@@ -19,7 +19,7 @@ depends=('rootfs>=2.0.0')
 prepare() {
    cd "$srcdir/${pkgname}-${pkgver}"
    
-   patch -Np1 -i ../../lua-5.3.3-shared_library-1.patch &&
+   patch -Np1 -i ../../lua-5.3.4-shared_library-1.patch &&
 
    sed -i '/#define LUA_ROOT/s:/usr/local/:/usr/:' src/luaconf.h
 }
@@ -33,11 +33,11 @@ build() {
 package() {
    cd "$srcdir/${pkgname}-${pkgver}"
       
-   make INSTALL_TOP="$pkgdir"/usr TO_LIB="liblua.so liblua.so.5.3 liblua.so.5.3.3" \
+   make INSTALL_TOP="$pkgdir"/usr TO_LIB="liblua.so liblua.so.5.3 liblua.so.5.3.4" \
         INSTALL_DATA="cp -d" INSTALL_MAN="$pkgdir"/usr/share/man/man1 install
      
-   mkdir -pv "$pkgdir"/usr/share/doc/lua-5.3.3
-   cp -v doc/*.{html,css,gif,png} "$pkgdir"/usr/share/doc/lua-5.3.3
+   mkdir -pv "$pkgdir"/usr/share/doc/lua-5.3.4
+   cp -v doc/*.{html,css,gif,png} "$pkgdir"/usr/share/doc/lua-5.3.4
 
    install -v -m644 -D ../../lua.pc "$pkgdir"/usr/lib/pkgconfig/lua.pc
 }
