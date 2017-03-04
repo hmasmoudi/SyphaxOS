@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=gnupg
-pkgver=2.1.15
+pkgver=2.1.19
 pkgrel=1
 pkgdesc="The GnuPG package is GNU's tool for secure communication and data storage."
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="ftp://ftp.gnupg.org/gcrypt/gnupg"
 license=('GPL')
 groups=('applications')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
-md5sums=('808d10b89c1f0de8d4d2a556aa36b623')
+md5sums=('57b16a11951d408ce995e34dd8852285')
 depends=('rootfs>=2.0.0')
 
 prepare() {
