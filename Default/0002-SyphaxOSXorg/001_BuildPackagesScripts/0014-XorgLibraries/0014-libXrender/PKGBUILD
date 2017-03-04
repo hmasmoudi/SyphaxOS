@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=libXrender
-pkgver=0.9.9
+pkgver=0.9.10
 pkgrel=1
 pkgdesc="The Xorg libraries provide library routines that are used within all X Window applications."
 arch=('x86_64')
@@ -10,7 +10,7 @@ install=$pkgname.install
 license=('GPL')
 groups=('graphicslayer')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
-md5sums=('5db92962b124ca3a8147daae4adbd622')
+md5sums=('802179a76bded0b658f4e9ec5e1830a4')
 depends=('rootfs>=2.0.0')
 
 prepare() {
