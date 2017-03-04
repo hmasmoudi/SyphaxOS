@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=libXfixes
-pkgver=5.0.2
+pkgver=5.0.3
 pkgrel=1
 pkgdesc="The Xorg libraries provide library routines that are used within all X Window applications."
 arch=('x86_64')
@@ -10,7 +10,7 @@ install=$pkgname.install
 license=('GPL')
 groups=('graphicslayer')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
-md5sums=('544d73df94e638ba7b64147be416e576')
+md5sums=('07e01e046a0215574f36a3aacb148be0')
 depends=('rootfs>=2.0.0')
 
 prepare() {
