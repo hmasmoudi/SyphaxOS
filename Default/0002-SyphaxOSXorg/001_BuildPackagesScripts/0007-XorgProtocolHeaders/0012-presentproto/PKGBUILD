@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=presentproto
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="The Xorg protocol headers provide the header files required to build the system, and to allow other applications to build against the installed X Window system."
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="http://ftp.x.org/pub/individual/proto"
 license=('GPL')
 groups=('graphicslayer')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
-md5sums=('2d569c75884455c7148d133d341e8fd6')
+md5sums=('92f9dda9c870d78a1d93f366bcb0e6cd')
 depends=('rootfs>=2.0.0')
 
 prepare() {
