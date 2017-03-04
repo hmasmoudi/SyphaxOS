@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=libXpm
-pkgver=3.5.11
+pkgver=3.5.12
 pkgrel=1
 pkgdesc="The Xorg libraries provide library routines that are used within all X Window applications."
 arch=('x86_64')
@@ -10,7 +10,7 @@ install=$pkgname.install
 license=('GPL')
 groups=('graphicslayer')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
-md5sums=('769ee12a43611cdebd38094eaf83f3f0')
+md5sums=('20f4627672edb2bd06a749f11aa97302')
 depends=('rootfs>=2.0.0')
 
 prepare() {
