@@ -2,10 +2,10 @@
 
 pkgname=mozjs24
 pkgver=24.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="JS is Mozilla's JavaScript engine written in C/C++."
 arch=('x86_64')
-url="http://ftp.mozilla.org/pub/mozilla.org/js"
+url="https://ftp.mozilla.org/pub/js"
 license=('GPL')
 groups=('desktop')
 source=("$url/mozjs-${pkgver}.tar.bz2")

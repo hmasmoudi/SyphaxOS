@@ -2,7 +2,7 @@
 
 pkgname=samba
 pkgver=4.4.5
-pkgrel=2
+pkgrel=3
 pkgdesc="The Samba package provides file and print services to SMB/CIFS clients and Windows networking to Linux clients."
 arch=('x86_64')
 url="https://download.samba.org/pub/samba/stable"

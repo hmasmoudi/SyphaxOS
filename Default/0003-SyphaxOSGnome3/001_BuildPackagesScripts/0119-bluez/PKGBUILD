@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=bluez
-pkgver=5.41
+pkgver=5.44
 pkgrel=1
 pkgdesc="The BlueZ package contains the Bluetooth protocol stack for Linux."
 arch=('x86_64')
@@ -11,21 +11,13 @@ license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz"
         "${pkgname}.install"
-        "bluez-5.41-obexd_without_systemd-1.patch"
         "rfcomm.conf"
         "uart.conf")
-md5sums=('318341b2188698130adb73236ee69244'
+md5sums=('94273617129ced06612fcb9f5273d14c'
          'ca9fbb33443bb00fe030c4f5545df121'
-         'ed5071c4a89231f23cbb341f533ac1b6'
          'e323bb72541a7f1c9c288a9e12c5bb95'
          'aea7d77ee22d0d354765a639f9c75d41')
 depends=('rootfs>=2.0.0')
-
-prepare() {
-   cd "$srcdir/${pkgname}-${pkgver}"
-   
-   patch -Np1 -i ../../bluez-5.41-obexd_without_systemd-1.patch
-}
 
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"
