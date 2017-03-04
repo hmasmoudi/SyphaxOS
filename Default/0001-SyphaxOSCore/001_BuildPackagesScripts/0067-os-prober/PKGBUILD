@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=os-prober
-pkgver=1.71
+pkgver=1.74
 pkgrel=1
 pkgdesc="Detect OSes and linux variants."
 arch=('x86_64')
@@ -9,21 +9,17 @@ url="http://http.debian.net/debian/pool/main/o/$pkgname"
 license=('GPL')
 groups=('core')
 source=("$url/${pkgname}_${pkgver}.tar.xz")
-md5sums=('7c1a149d076ac10af31043ffb33ba658')
+md5sums=('3010a4b20c81da2a4ac25c59a1c090d3')
 depends=('rootfs>=2.0.0')
 
-prepare() {
-   cd "$srcdir/$pkgname-$pkgver"
-}
-
 build() {
-   cd "$srcdir/$pkgname-$pkgver"
+   cd "$srcdir/$pkgname"
 
    make
 }
 
 package() {
-   cd "$srcdir/$pkgname-$pkgver"
+   cd "$srcdir/$pkgname"
 
    mkdir -p $pkgdir/var/lib/os-prober
    mkdir -p $pkgdir/usr/bin
