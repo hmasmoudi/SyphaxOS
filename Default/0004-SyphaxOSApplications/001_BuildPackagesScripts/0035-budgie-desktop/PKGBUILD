@@ -2,7 +2,7 @@
 
 pkgname=budgie-desktop
 pkgver=10.2.9
-pkgrel=6
+pkgrel=7
 pkgdesc="The Budgie Desktop a modern desktop designed to keep out the way of the user."
 arch=('x86_64')
 install=${pkgname}.install
