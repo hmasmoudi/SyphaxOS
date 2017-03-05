@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=libXtst
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="The Xorg libraries provide library routines that are used within all X Window applications."
 arch=('x86_64')
@@ -10,7 +10,7 @@ install=$pkgname.install
 license=('GPL')
 groups=('graphicslayer')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
-md5sums=('25c6b366ac3dc7a12c5d79816ce96a59')
+md5sums=('ef8c2c1d16a00bd95b9fdcef63b8a2ca')
 depends=('rootfs>=2.0.0')
 
 prepare() {
