@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=libXvMC
-pkgver=1.0.9
+pkgver=1.0.10
 pkgrel=1
 pkgdesc="The Xorg libraries provide library routines that are used within all X Window applications."
 arch=('x86_64')
@@ -10,7 +10,7 @@ install=$pkgname.install
 license=('GPL')
 groups=('graphicslayer')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
-md5sums=('eba6b738ed5fdcd8f4203d7c8a470c79')
+md5sums=('4cbe1c1def7a5e1b0ed5fce8e512f4c6')
 depends=('rootfs>=2.0.0')
 
 prepare() {
