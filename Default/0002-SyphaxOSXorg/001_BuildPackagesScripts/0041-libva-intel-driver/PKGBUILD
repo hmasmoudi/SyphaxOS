@@ -1,19 +1,21 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
-pkgname=xf86-input-evdev
-pkgver=2.10.3
-pkgrel=1
-pkgdesc="The Xorg Evdev Driver package contains Generic Linux input driver for the Xorg X server."
+pkgname=libva-intel-driver
+pkgver=1.7.3
+pkgrel=3
+pkgdesc="The libva-intel-driver is designed specifically for video cards based on an Intel GPU."
 arch=('x86_64')
-url="http://ftp.x.org/pub/individual/driver"
+url="http://www.freedesktop.org/software/vaapi/releases/libva-intel-driver"
 license=('GPL')
 groups=('graphicslayer')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
-md5sums=('aa3363ce5061d0c4d1e7f7019b99716d')
+md5sums=('5b266e605905a3676b63b8bc93a2ffc8')
 depends=('rootfs>=2.0.0')
 
 prepare() {
    cd "$srcdir/$pkgname-$pkgver"
+   
+   autoreconf -fi
 }
 
 build() {

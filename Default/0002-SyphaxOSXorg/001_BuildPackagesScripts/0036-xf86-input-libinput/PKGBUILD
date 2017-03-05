@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
-pkgname=libevdev
-pkgver=1.5.4
+pkgname=xf86-input-libinput
+pkgver=0.24.0
 pkgrel=1
-pkgdesc="The libevdev package contains common functions for Xorg input drivers."
+pkgdesc="Generic input driver for the X.Org server based on libinput"
 arch=('x86_64')
-url="http://www.freedesktop.org/software/libevdev"
+url="http://ftp.x.org/pub/individual/driver"
 license=('GPL')
 groups=('graphicslayer')
-source=("$url/${pkgname}-${pkgver}.tar.xz")
-md5sums=('8f22027bd7a7ba19e6f2695f78e672b6')
+source=("$url/${pkgname}-${pkgver}.tar.bz2")
+md5sums=('bd3fa118e4abadb8804dc6a099bb4ab3')
 depends=('rootfs>=2.0.0')
 
 prepare() {

@@ -1,21 +1,19 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
-pkgname=libva
-pkgver=1.7.3
+pkgname=libinput
+pkgver=1.6.2
 pkgrel=1
-pkgdesc="The libva package contains a library which provides access to hardware accelerated video processing."
+pkgdesc="libinput is a library that handles input devices for display servers and other applications that need to directly deal with input devices."
 arch=('x86_64')
-url="http://www.freedesktop.org/software/vaapi/releases/libva"
+url="http://www.freedesktop.org/software/libinput"
 license=('GPL')
 groups=('graphicslayer')
-source=("$url/${pkgname}-${pkgver}.tar.bz2")
-md5sums=('dafb1d7d6449e850e9eb1a099895c683')
+source=("$url/${pkgname}-${pkgver}.tar.xz")
+md5sums=('f497894a06ce76bcfcd0dc2312ec9f17')
 depends=('rootfs>=2.0.0')
 
 prepare() {
    cd "$srcdir/$pkgname-$pkgver"
-   
-   sed -i "/seems to be moved/s/^/#/" ltmain.sh
 }
 
 build() {
@@ -24,8 +22,10 @@ build() {
    source /etc/profile.d/xorg.sh
    echo "Using XORG_PREFIX ($XORG_PREFIX) & XORG_CONFIG ($XORG_CONFIG)"
 
-   ./configure $XORG_CONFIG
-   
+   ./configure --prefix=/usr      \
+               --disable-static   \
+               --disable-libwacom \
+               --with-udev-dir=/lib/udev
    make
 }
 

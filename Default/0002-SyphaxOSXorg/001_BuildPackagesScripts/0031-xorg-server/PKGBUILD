@@ -1,19 +1,23 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=xorg-server
-pkgver=1.18.4
-pkgrel=2
+pkgver=1.19.2
+pkgrel=1
 pkgdesc="The Xorg Server is the graphicslayer of the X Window system. "
 arch=('x86_64')
 url="http://ftp.x.org/pub/individual/xserver"
 license=('GPL')
 groups=('graphicslayer')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
-md5sums=('d4842dfe3bd9a9d062f2fa1df9104a46')
+md5sums=('d9f9e9f216d29f8220e76f8294507d85')
 depends=('rootfs>=2.0.0')
 
 prepare() {
    cd "$srcdir/$pkgname-$pkgver"
+   
+   ./autogen.sh
+   
+   sed -i "/seems to be moved/s/^/#/" ltmain.sh
 }
 
 build() {

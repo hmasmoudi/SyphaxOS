@@ -1,23 +1,23 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=xf86-video-intel
-pkgver=20160902
-pkgrel=1
+pkgver=20170216
+pkgrel=2
 pkgdesc="The Xorg Intel Driver package contains the X.Org Video Driver for Intel integrated video cards"
 arch=('x86_64')
 url="http://anduin.linuxfromscratch.org/BLFS/xf86-video-intel/"
 license=('GPL')
 groups=('graphicslayer')
-source=("$url/${pkgname}-${pkgver}.tar.bz2")
-md5sums=('aff145a655f96761d2ad1935c0d10ab4')
+source=("$url/${pkgname}-${pkgver}.tar.xz")
+md5sums=('797c06a33bd1b3fb5a33468fbc84518d')
 depends=('rootfs>=2.0.0')
 
 prepare() {
-   cd "$srcdir/$pkgname"
+   cd "$srcdir/$pkgname-$pkgver"
 }
 
 build() {
-   cd "$srcdir/$pkgname"
+   cd "$srcdir/$pkgname-$pkgver"
    
    source /etc/profile.d/xorg.sh
    echo "Using XORG_PREFIX ($XORG_PREFIX) & XORG_CONFIG ($XORG_CONFIG)"
@@ -28,7 +28,7 @@ build() {
 }
 
 package() {
-   cd "$srcdir/$pkgname"
+   cd "$srcdir/$pkgname-$pkgver"
    
    #Make the package
    make DESTDIR="$pkgdir" install
