@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=libXrandr
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="The Xorg libraries provide library routines that are used within all X Window applications."
 arch=('x86_64')
@@ -10,7 +10,7 @@ install=$pkgname.install
 license=('GPL')
 groups=('graphicslayer')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
-md5sums=('309762867e41c6fd813da880d8a1bc93')
+md5sums=('28e486f1d491b757173dd85ba34ee884')
 depends=('rootfs>=2.0.0')
 
 prepare() {
