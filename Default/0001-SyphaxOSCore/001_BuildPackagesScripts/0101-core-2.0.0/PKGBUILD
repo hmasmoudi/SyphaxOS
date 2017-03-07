@@ -2,7 +2,7 @@
 
 pkgname=core
 pkgver=2.0.0
-pkgrel=3
+pkgrel=6
 pkgdesc="SyphaxOS 2.0.0 Core Package."
 arch=('x86_64')
 license=('GPL')
@@ -50,7 +50,12 @@ depends=(
          'xz'
          'kmod'
          'gettext'
+         'lzo'
+         'lz4'
+         'libgpg-error'
+         'libgcrypt'
          'libseccomp'
+         'util-linux'
          'systemd'
          'procps-ng'
          'e2fsprogs'
@@ -67,10 +72,7 @@ depends=(
          'libpipeline'
          'make'
          'patch'
-         'libgpg-error'
-         'libgcrypt'
          'dbus'
-         'util-linux'
          'man-db'
          'tar'
          'texinfo'
