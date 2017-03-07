@@ -2,7 +2,7 @@
 
 pkgname=lz4
 pkgver=1.7.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Extremely fast compression algorithm"
 arch=('x86_64')
 url="https://github.com/lz4/lz4/archive"
@@ -11,10 +11,6 @@ groups=('core')
 source=($pkgname-$pkgver::"$url/v${pkgver}.tar.gz")
 md5sums=('c9610c5ce97eb431dddddf0073d919b9')
 depends=('rootfs>=2.0.0')
-
-prepare() {
-   cd "$srcdir/${pkgname}-${pkgver}"
-}
 
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"
