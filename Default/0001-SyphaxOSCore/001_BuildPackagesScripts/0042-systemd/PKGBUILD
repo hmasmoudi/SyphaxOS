@@ -1,21 +1,22 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=systemd
-pkgver=232
-pkgrel=6
+pkgver=233
+pkgrel=4
 pkgdesc="The systemd package contains programs for controlling the startup, running, and shutdown of the system."
 arch=('x86_64')
 install=$pkgname.install
-url="http://anduin.linuxfromscratch.org/sources/other/systemd"
+url="https://github.com/systemd/systemd/archive"
 license=('GPL')
 groups=('core')
-source=("$url/$pkgname-$pkgver.tar.xz")
-md5sums=('281604885d5a87f0359244f6f84037cb')
+source=($pkgname-$pkgver.tar.gz::"$url/v$pkgver.tar.gz")
+md5sums=('11d3ff48f3361b8bdcfcdc076a31b537')
 depends=('rootfs>=2.0.0')
 
 prepare() {
    cd "$srcdir/$pkgname-$pkgver"
 
+   ./autogen.sh
    sed -i "/seems to be moved/s/^/#/" build-aux/ltmain.sh
 }
 
@@ -36,7 +37,7 @@ build() {
                --without-python         \
                --with-default-dnssec=no \
                --disable-tests          \
-               --docdir=/usr/share/doc/systemd-232
+               --docdir=/usr/share/doc/systemd-$pkgver
    make
 }
 
@@ -62,8 +63,7 @@ package() {
    
    cp ../../system.conf $pkgdir/etc/systemd/system.conf
    cp ../../systemd-user $pkgdir/etc/pam.d/systemd-user
-   
-   cd $pkgdir/etc && ln -snf ../run/systemd/resolve/resolv.conf
-   
+     
    chmod 2755 $pkgdir/var/log/journal
+   chmod 700  $pkgdir/usr/share/polkit-1/rules.d
 }
