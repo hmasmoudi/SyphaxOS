@@ -2,7 +2,7 @@
 
 pkgname=libcap
 pkgver=2.25
-pkgrel=1
+pkgrel=2
 pkgdesc="The Libcap package implements the user-space interfaces to the POSIX 1003.1e capabilities available in Linux kernels. These capabilities are a partitioning of the all powerful root privilege into a set of distinct privileges."
 arch=('x86_64')
 url="https://www.kernel.org/pub/linux/libs/security/linux-privs/libcap2"
