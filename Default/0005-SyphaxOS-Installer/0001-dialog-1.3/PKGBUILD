@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=dialog
-pkgver=1.3_20160828
+pkgver=1.3_20170131
 pkgrel=1
 pkgdesc="A tool to display dialog boxes from shell scripts."
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="ftp://invisible-island.net/dialog"
 license=('GPL')
 groups=('applications')
 source=("$url/$pkgname-${pkgver/_/-}.tgz")
-md5sums=('a39ec183517bc1feaff017d067300b8c')
+md5sums=('4e2b623dae67351c8483149a30019d49')
 depends=('rootfs>=2.0.0')
 
 prepare() {
