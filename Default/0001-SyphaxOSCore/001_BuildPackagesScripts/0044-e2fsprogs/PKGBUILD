@@ -1,20 +1,16 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=e2fsprogs
-pkgver=1.43.1
-pkgrel=1
+pkgver=1.43.4
+pkgrel=2
 pkgdesc="The E2fsprogs package contains the utilities for handling the ext2, ext3 and ext4 file system."
 arch=('x86_64')
 url="https://www.kernel.org/pub/linux/kernel/people/tytso/e2fsprogs/v$pkgver"
 license=('GPL')
 groups=('core')
 source=("$url/$pkgname-$pkgver.tar.gz")
-md5sums=('1775f3f0eed9dee1c5f39e08d1964a97')
+md5sums=('23f65b573835967cecb8325a0e26693c')
 depends=('rootfs>=2.0.0')
-
-prepare() {
-   cd "$srcdir/$pkgname-$pkgver"
-}
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"
