@@ -2,7 +2,7 @@
 
 pkgname=SyphaxOS-Desktop
 pkgver=2.0.0
-pkgrel=10
+pkgrel=12
 pkgdesc="SyphaxOS 2.0.0 Default Desktop Package based on Gnome Desktop."
 arch=('x86_64')
 install=${pkgname}.install
@@ -11,30 +11,26 @@ groups=('desktop')
 depends=(
          'gnomedesktop>=2.0.0'
          'pacman>=5.0'
-         'gnome-calculator>=3.20.2'
-         'gedit>=3.20.2'
-         'eog>=3.20.4'
-         'gnome-screenshot>=3.20.1'
-         'opera>=42.0.2393.94'
-         'file-roller>=3.20.3'
-         'p7zip>=16.02'
-         'totem>=3.20.1'
-         'cheese>=3.20.2'
-         'transmission>=2.92'
-         'evince>=3.20.1'
-         'skypeforlinux>=1.15.0.1'
-         'rhythmbox>=3.4.1'
-         'ttf-ms-fonts>=10.0.14393'
-         'wps-office>=10.1.0.5672'
-         'budgie-desktop>=10.2.9'
+         'gnome-calculator'
+         'gedit'
+         'eog'
+         'gnome-screenshot'
+         'file-roller'
+         'p7zip'
+         'totem'
+         'cheese'
+         'transmission'
+         'evince'
+         'skypeforlinux'
+         'rhythmbox'
+         'ttf-ms-fonts'
+         'wps-office'
+         'budgie-desktop'
+         'google-chrome'
          )
 
 prepare() {
    mkdir -pv "$srcdir/$pkgname-$pkgver"
-}
-
-build() {
-   cd "$srcdir/$pkgname-$pkgver"
 }
 
 package() {
