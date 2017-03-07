@@ -2,7 +2,7 @@
 
 pkgname=shadow
 pkgver=4.4
-pkgrel=1
+pkgrel=2
 pkgdesc="The Shadow package contains programs for handling passwords in a secure way."
 arch=('x86_64')
 url="https://github.com/shadow-maint/shadow/releases/download/4.4"
