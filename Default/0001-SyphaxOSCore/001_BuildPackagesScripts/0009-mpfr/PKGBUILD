@@ -2,7 +2,7 @@
 
 pkgname=mpfr
 pkgver=3.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="The MPFR package contains functions for multiple precision math."
 arch=('x86_64')
 url="http://www.mpfr.org/mpfr-$pkgver"
