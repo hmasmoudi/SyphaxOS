@@ -2,7 +2,7 @@
 
 pkgname=grep
 pkgver=2.28
-pkgrel=1
+pkgrel=2
 pkgdesc="The Grep package contains programs for searching through files."
 arch=('x86_64')
 url="http://ftp.gnu.org/gnu/grep"
