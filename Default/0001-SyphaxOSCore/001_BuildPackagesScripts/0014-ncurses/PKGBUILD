@@ -2,7 +2,7 @@
 
 pkgname=ncurses
 pkgver=6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="The Ncurses package contains libraries for terminal-independent handling of character screens."
 arch=('x86_64')
 url="http://ftp.gnu.org/gnu/ncurses"
