@@ -2,7 +2,7 @@
 
 pkgname=libva
 pkgver=1.7.3
-pkgrel=2
+pkgrel=3
 pkgdesc="The libva package contains a library which provides access to hardware accelerated video processing."
 arch=('x86_64')
 url="http://www.freedesktop.org/software/vaapi/releases/libva"

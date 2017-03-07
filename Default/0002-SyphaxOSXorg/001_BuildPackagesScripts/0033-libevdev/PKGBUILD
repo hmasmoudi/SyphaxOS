@@ -2,7 +2,7 @@
 
 pkgname=libevdev
 pkgver=1.5.6
-pkgrel=1
+pkgrel=2
 pkgdesc="The libevdev package contains common functions for Xorg input drivers."
 arch=('x86_64')
 url="http://www.freedesktop.org/software/libevdev"

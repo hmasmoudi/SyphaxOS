@@ -2,7 +2,7 @@
 
 pkgname=libvdpau
 pkgver=1.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="The libvdpau package contains a library which implements the VDPAU library."
 arch=('x86_64')
 url="http://people.freedesktop.org/~aplattner/vdpau"

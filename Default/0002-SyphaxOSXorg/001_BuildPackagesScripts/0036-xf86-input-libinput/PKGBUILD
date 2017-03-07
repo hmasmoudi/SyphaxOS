@@ -2,7 +2,7 @@
 
 pkgname=xf86-input-libinput
 pkgver=0.24.0
-pkgrel=1
+pkgrel=3
 pkgdesc="Generic input driver for the X.Org server based on libinput"
 arch=('x86_64')
 url="http://ftp.x.org/pub/individual/driver"

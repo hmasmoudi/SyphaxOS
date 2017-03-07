@@ -2,7 +2,7 @@
 
 pkgname=xf86-input-evdev
 pkgver=2.10.5
-pkgrel=1
+pkgrel=2
 pkgdesc="The Xorg Evdev Driver package contains Generic Linux input driver for the Xorg X server."
 arch=('x86_64')
 url="http://ftp.x.org/pub/individual/driver"

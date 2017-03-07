@@ -2,7 +2,7 @@
 
 pkgname=xf86-video-intel
 pkgver=20170216
-pkgrel=2
+pkgrel=3
 pkgdesc="The Xorg Intel Driver package contains the X.Org Video Driver for Intel integrated video cards"
 arch=('x86_64')
 url="http://anduin.linuxfromscratch.org/BLFS/xf86-video-intel/"

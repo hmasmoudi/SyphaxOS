@@ -2,7 +2,7 @@
 
 pkgname=gnome-control-center
 pkgver=3.22.1
-pkgrel=1
+pkgrel=3
 pkgdesc="The GNOME Control Center package contains the GNOME settings manager."
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/gnome-control-center/3.22"
@@ -14,6 +14,8 @@ depends=('rootfs>=2.0.0')
 
 prepare() {
    cd "$srcdir/${pkgname}-${pkgver}"
+   
+   sed -i "/seems to be moved/s/^/#/" ltmain.sh
 }
 
 build() {

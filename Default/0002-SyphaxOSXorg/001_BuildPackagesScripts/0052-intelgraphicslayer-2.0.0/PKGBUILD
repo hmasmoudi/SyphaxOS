@@ -2,7 +2,7 @@
 
 pkgname=intelgraphicslayer
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="SyphaxOS 2.0.0 Intel Graphics Layer Package."
 arch=('x86_64')
 license=('GPL')
@@ -46,7 +46,6 @@ depends=(
          'libinput>=1.4.1'
          'xf86-input-evdev>=2.10.3'
          'xf86-input-libinput>=0.16.0'
-         'xf86-input-synaptics>=1.8.3'
          'xf86-video-intel>=20160902'
          'libva>=1.7.1'
          'libva-intel-driver>=1.7.1'
