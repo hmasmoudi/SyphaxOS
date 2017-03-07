@@ -2,7 +2,7 @@
 
 pkgname=bash
 pkgver=4.4
-pkgrel=2
+pkgrel=3
 pkgdesc="The Bash package contains the Bourne-Again SHell."
 arch=('x86_64')
 url="http://ftp.gnu.org/gnu/bash"
