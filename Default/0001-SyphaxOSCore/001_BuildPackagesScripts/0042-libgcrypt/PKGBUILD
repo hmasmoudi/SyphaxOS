@@ -2,7 +2,7 @@
 
 pkgname=libgcrypt
 pkgver=1.7.3
-pkgrel=1
+pkgrel=2
 pkgdesc="The Linux package contains a general purpose crypto library based on the code used in GnuPG."
 arch=('x86_64')
 url="ftp://ftp.gnupg.org/gcrypt/libgcrypt"
@@ -11,10 +11,6 @@ groups=('core')
 source=("$url/$pkgname-$pkgver.tar.bz2")
 md5sums=('c869e542cc13a1c28d8055487bf7f5c4')
 depends=('rootfs>=2.0.0')
-
-prepare() {
-   cd "$srcdir/$pkgname-$pkgver"
-}
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"
