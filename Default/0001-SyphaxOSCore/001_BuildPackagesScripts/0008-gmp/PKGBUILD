@@ -2,7 +2,7 @@
 
 pkgname=gmp
 pkgver=6.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The GMP package contains math libraries. These have useful functions for arbitrary precision arithmetic."
 arch=('x86_64')
 url="http://ftp.gnu.org/gnu/gmp"
