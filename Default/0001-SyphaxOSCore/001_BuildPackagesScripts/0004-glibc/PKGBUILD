@@ -2,7 +2,7 @@
 
 pkgname=glibc
 pkgver=2.25
-pkgrel=1
+pkgrel=2
 pkgdesc="The Glibc package contains the main C library."
 arch=('x86_64')
 url="http://ftp.gnu.org/gnu/glibc"
@@ -14,6 +14,7 @@ depends=('rootfs>=2.0.0')
 
 prepare() {
    cd "$srcdir/$pkgname-$pkgver"
+   
    patch -Np1 -i ../../glibc-2.25-fhs-1.patch
    mkdir -v build
 }
