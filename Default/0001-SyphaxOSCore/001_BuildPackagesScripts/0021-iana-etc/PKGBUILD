@@ -2,7 +2,7 @@
 
 pkgname=iana-etc
 pkgver=2.30
-pkgrel=1
+pkgrel=2
 pkgdesc="The Iana-Etc package provides data for network services and protocols."
 arch=('x86_64')
 url="http://anduin.linuxfromscratch.org/LFS"
@@ -11,10 +11,6 @@ groups=('core')
 source=("$url/$pkgname-$pkgver.tar.bz2")
 md5sums=('3ba3afb1d1b261383d247f46cb135ee8')
 depends=('rootfs>=2.0.0')
-
-prepare() {
-   cd "$srcdir/$pkgname-$pkgver"
-}
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"
