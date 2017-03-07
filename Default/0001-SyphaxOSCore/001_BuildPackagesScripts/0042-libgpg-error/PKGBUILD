@@ -2,7 +2,7 @@
 
 pkgname=libgpg-error
 pkgver=1.27
-pkgrel=1
+pkgrel=2
 pkgdesc="The libgpg-error package contains a library that defines common error values for all GnuPG components."
 arch=('x86_64')
 url="ftp://ftp.gnupg.org/gcrypt/${pkgname}"
@@ -11,10 +11,6 @@ groups=('core')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
 md5sums=('5217ef3e76a7275a2a3b569a12ddc989')
 depends=('rootfs>=2.0.0')
-
-prepare() {
-   cd "$srcdir/$pkgname-$pkgver"
-}
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"
