@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=man-pages
-pkgver=4.07
+pkgver=4.09
 pkgrel=1
 pkgdesc="The Man-pages package contains over 2,200 man pages."
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://www.kernel.org/pub/linux/docs/man-pages"
 license=('GPL')
 groups=('core')
 source=("$url/$pkgname-$pkgver.tar.xz")
-md5sums=('6d6c59b83431852ba44930785def30d4')
+md5sums=('91c721409bbf823d8f62bee3a1fe8ae3')
 depends=('rootfs>=2.0.0')
 
 package() {
