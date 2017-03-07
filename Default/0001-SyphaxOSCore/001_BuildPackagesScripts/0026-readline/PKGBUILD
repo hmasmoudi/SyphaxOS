@@ -2,7 +2,7 @@
 
 pkgname=readline
 pkgver=7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="The Readline package is a set of libraries that offers command-line editing and history capabilities."
 arch=('x86_64')
 url="http://ftp.gnu.org/gnu/readline"
