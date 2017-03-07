@@ -2,7 +2,7 @@
 
 pkgname=automake
 pkgver=1.15
-pkgrel=1
+pkgrel=2
 pkgdesc="The Automake package contains programs for generating Makefiles for use with Autoconf."
 arch=('x86_64')
 url="http://ftp.gnu.org/gnu/automake"
