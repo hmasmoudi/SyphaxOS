@@ -2,7 +2,7 @@
 
 pkgname=core
 pkgver=2.0.0
-pkgrel=6
+pkgrel=7
 pkgdesc="SyphaxOS 2.0.0 Core Package."
 arch=('x86_64')
 license=('GPL')
@@ -83,8 +83,10 @@ depends=(
          'os-prober'
          'Linux-PAM'
          'cpio'
-         'ntfs-3g'
          'lsb-release'
+         'fuse'
+         'ntfs-3g'
+         'bash-completion'
          'core-configs'
          )
 
