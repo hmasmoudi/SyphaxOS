@@ -2,7 +2,7 @@
 
 pkgname=util-linux
 pkgver=2.29.2
-pkgrel=2
+pkgrel=3
 pkgdesc="The Util-linux package contains miscellaneous utility programs. Among them are utilities for handling file systems, consoles, partitions, and messages."
 arch=('x86_64')
 url="https://www.kernel.org/pub/linux/utils/util-linux/v2.29"
@@ -11,10 +11,6 @@ groups=('core')
 source=("$url/$pkgname-$pkgver.tar.xz")
 sha256sums=('accea4d678209f97f634f40a93b7e9fcad5915d1f4749f6c47bee6bf110fe8e3')
 depends=('rootfs>=2.0.0')
-
-prepare() {
-   cd "$srcdir/$pkgname-$pkgver"
-}
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"
