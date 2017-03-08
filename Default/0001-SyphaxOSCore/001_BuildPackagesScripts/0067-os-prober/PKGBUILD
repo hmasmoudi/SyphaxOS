@@ -2,7 +2,7 @@
 
 pkgname=os-prober
 pkgver=1.74
-pkgrel=1
+pkgrel=2
 pkgdesc="Detect OSes and linux variants."
 arch=('x86_64')
 url="http://http.debian.net/debian/pool/main/o/$pkgname"
