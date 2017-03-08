@@ -2,7 +2,7 @@
 
 pkgname=linux-firmware
 pkgver=1.157.8
-pkgrel=1
+pkgrel=2
 pkgdesc="The Linux package contains the Linux kernel firmwares."
 arch=('x86_64')
 url="http://archive.ubuntu.com/ubuntu/pool/main/l/linux-firmware"
@@ -11,10 +11,6 @@ groups=('core')
 source=("$url/${pkgname}_${pkgver}.tar.gz")
 md5sums=('0916bfcb89812d7f6f04530e6e8c5ffb')
 depends=('rootfs>=2.0.0')
-
-prepare() {
-   cd "$srcdir/$pkgname"
-}
 
 build() {
    cd "$srcdir/$pkgname"
