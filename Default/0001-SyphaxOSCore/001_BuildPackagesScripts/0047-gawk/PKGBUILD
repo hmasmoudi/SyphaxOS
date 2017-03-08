@@ -2,7 +2,7 @@
 
 pkgname=gawk
 pkgver=4.1.4
-pkgrel=2
+pkgrel=3
 pkgdesc="The Gawk package contains programs for manipulating text files."
 arch=('x86_64')
 url="http://ftp.gnu.org/gnu/gawk"
@@ -11,10 +11,6 @@ groups=('core')
 source=("$url/$pkgname-$pkgver.tar.xz")
 md5sums=('4e7dbc81163e60fd4f0b52496e7542c9')
 depends=('rootfs>=2.0.0')
-
-prepare() {
-   cd "$srcdir/$pkgname-$pkgver"
-}
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"
