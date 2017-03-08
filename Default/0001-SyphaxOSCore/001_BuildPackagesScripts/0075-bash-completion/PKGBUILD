@@ -2,13 +2,12 @@
 
 pkgname=bash-completion
 pkgver=2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Programmable completion for the bash shell"
 arch=('any')
 url="https://github.com/scop/bash-completion"
 license=('GPL2')
 depends=('bash')
-options=('!emptydirs' '!makeflags')
 source=("https://github.com/scop/bash-completion/releases/download/$pkgver/$pkgname-$pkgver.tar.xz")
 sha1sums=('5bcd2c6b47bd147eda51eb4570e8926c40dba1f7')
 
