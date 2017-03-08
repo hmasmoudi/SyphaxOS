@@ -2,7 +2,7 @@
 
 pkgname=findutils
 pkgver=4.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The Findutils package contains programs to find files."
 arch=('x86_64')
 url="http://ftp.gnu.org/gnu/findutils"
@@ -11,10 +11,6 @@ groups=('core')
 source=("$url/$pkgname-$pkgver.tar.gz")
 md5sums=('9936aa8009438ce185bea2694a997fc1')
 depends=('rootfs>=2.0.0')
-
-prepare() {
-   cd "$srcdir/$pkgname-$pkgver"
-}
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"
