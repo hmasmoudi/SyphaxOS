@@ -2,7 +2,7 @@
 
 pkgname=os-prober
 pkgver=1.74
-pkgrel=2
+pkgrel=8
 pkgdesc="Detect OSes and linux variants."
 arch=('x86_64')
 url="http://http.debian.net/debian/pool/main/o/$pkgname"
@@ -12,33 +12,38 @@ source=("$url/${pkgname}_${pkgver}.tar.xz")
 md5sums=('3010a4b20c81da2a4ac25c59a1c090d3')
 depends=('rootfs>=2.0.0')
 
+prepare() {
+   cd "$srcdir/$pkgname"
+
+   # adjust lib dir to allow detection of 64-bit distros
+   sed -i -e "s:/lib/ld\*\.so\*:/lib*/ld*.so*:g" os-probes/mounted/common/90linux-distro
+
+   rm -f Makefile
+}
+
+
 build() {
    cd "$srcdir/$pkgname"
 
-   make
+   make newns
 }
 
 package() {
    cd "$srcdir/$pkgname"
 
-   mkdir -p $pkgdir/var/lib/os-prober
-   mkdir -p $pkgdir/usr/bin
-   cp -r linux-boot-prober $pkgdir/usr/bin
-   cp -r os-prober $pkgdir/usr/bin
-   mkdir -p $pkgdir/usr/lib/os-prober
-   cp -r newns $pkgdir/usr/lib/os-prober
-   mkdir -p $pkgdir/usr/lib/linux-boot-probes/mounted
-   cp -r linux-boot-probes/common/* $pkgdir/usr/lib/linux-boot-probes
-   cp -r linux-boot-probes/mounted/common/* $pkgdir/usr/lib/linux-boot-probes/mounted
-   cp -r linux-boot-probes/mounted/x86/* $pkgdir/usr/lib/linux-boot-probes/mounted
-   mkdir -p $pkgdir/usr/lib/os-probes/mounted
-   cp -r os-probes/common/* $pkgdir/usr/lib/os-probes
-   cp -r os-probes/mounted/common/* $pkgdir/usr/lib/os-probes/mounted
-   cp -r os-probes/mounted/x86/* $pkgdir/usr/lib/os-probes/mounted
-   mkdir $pkgdir/usr/lib/os-probes/init
-   cp -r os-probes/init/common/* $pkgdir/usr/lib/os-probes/init
-   mkdir -p $pkgdir/usr/share/os-prober
-   cp -r common.sh $pkgdir/usr/share/os-prober
-   chmod +x $pkgdir/usr/share/os-prober/common.sh
+   install -Dm755 linux-boot-prober "$pkgdir"/usr/bin/linux-boot-prober
+   install -Dm755 os-prober "$pkgdir"/usr/bin/os-prober
+   install -Dm755 newns "$pkgdir"/usr/lib/os-prober/newns
+   install -Dm755 common.sh $pkgdir/usr/share/os-prober/common.sh  
+
+   for dir in os-probes os-probes/mounted os-probes/init linux-boot-probes linux-boot-probes/mounted; do
+      install -dm755 "$pkgdir/usr/lib/$dir"
+      install -m755 -t "$pkgdir/usr/lib/$dir" "$dir"/common/*
+      [[ -d "$dir"/x86 ]] && cp -r "$dir"/x86/* "$pkgdir/usr/lib/$dir"
+   done
+
+   install -Dm755 os-probes/mounted/powerpc/20macosx "$pkgdir"/usr/lib/os-probes/mounted/20macosx
+
+   install -dm755 "$pkgdir"/var/lib/os-prober
 }
 

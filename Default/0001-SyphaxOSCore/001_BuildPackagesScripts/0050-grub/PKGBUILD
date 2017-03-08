@@ -2,7 +2,7 @@
 
 pkgname=grub
 pkgver=2.02~rc1
-pkgrel=1
+pkgrel=6
 pkgdesc="The GRUB package contains the GRand Unified Bootloader."
 arch=('x86_64')
 url="http://alpha.gnu.org/gnu/grub"
@@ -15,11 +15,14 @@ depends=('rootfs>=2.0.0')
 build() {
    cd "$srcdir/$pkgname-$pkgver"
 
-   ./configure --prefix=/usr          \
-               --sbindir=/sbin        \
-               --sysconfdir=/etc      \
-               --disable-grub-mount   \
-               --disable-efiemu       \
+   ./configure --prefix=/usr           \
+               --sbindir=/sbin         \
+               --sysconfdir=/etc       \
+               --with-bootdir="/boot"  \
+               --with-grubdir="grub"   \
+               --enable-device-mapper  \
+               --enable-grub-mount     \
+               --disable-efiemu        \
                --disable-werror
    make
 }
