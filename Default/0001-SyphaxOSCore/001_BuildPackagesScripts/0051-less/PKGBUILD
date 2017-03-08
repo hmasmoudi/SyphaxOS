@@ -2,7 +2,7 @@
 
 pkgname=less
 pkgver=481
-pkgrel=1
+pkgrel=2
 pkgdesc="The Less package contains a text file viewer."
 arch=('x86_64')
 url="http://www.greenwoodsoftware.com/less"
@@ -11,10 +11,6 @@ groups=('core')
 source=("$url/$pkgname-$pkgver.tar.gz")
 md5sums=('50ef46065c65257141a7340123527767')
 depends=('rootfs>=2.0.0')
-
-prepare() {
-   cd "$srcdir/$pkgname-$pkgver"
-}
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"
