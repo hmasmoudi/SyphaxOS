@@ -1,0 +1,39 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=cpio
+pkgver=2.12
+pkgrel=2
+pkgdesc="The cpio package contains tools for archiving."
+arch=('x86_64')
+url="http://ftp.gnu.org/pub/gnu/cpio"
+license=('GPL')
+groups=('applications')
+source=("$url/${pkgname}-${pkgver}.tar.bz2")
+md5sums=('93eea9f07c0058c097891c73e4955456')
+depends=('rootfs>=2.0.0')
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   ./configure --prefix=/usr \
+               --bindir=/bin \
+               --enable-mt   \
+               --with-rmt=/usr/libexec/rmt
+               
+   make &&
+   makeinfo --html            -o doc/html      doc/cpio.texi &&
+   makeinfo --html --no-split -o doc/cpio.html doc/cpio.texi &&
+   makeinfo --plaintext       -o doc/cpio.txt  doc/cpio.texi
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   make DESTDIR="${pkgdir}" install
+   
+   install -v -m755 -d "${pkgdir}"/usr/share/doc/cpio-2.12/html &&
+   install -v -m644    doc/html/* \
+                       "${pkgdir}"/usr/share/doc/cpio-2.12/html &&
+   install -v -m644    doc/cpio.{html,txt} \
+                       "${pkgdir}"/usr/share/doc/cpio-2.12
+}
+
