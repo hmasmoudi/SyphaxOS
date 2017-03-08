@@ -2,9 +2,9 @@
 
 pkgname=bash-completion
 pkgver=2.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Programmable completion for the bash shell"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/scop/bash-completion"
 license=('GPL2')
 depends=('bash')
