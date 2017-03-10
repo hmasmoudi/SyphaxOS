@@ -2,19 +2,15 @@
 
 pkgname=gtkhtml
 pkgver=4.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The GtkHTML package contains a lightweight HTML rendering/printing/editing engine."
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/gtkhtml/4.10"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-md5sums=('a8538daed73de3fb5c7747d05139ef79')
+sha256sums=('ca3b6424fb2c7ac5d9cb8fdafb69318fa2e825c9cf6ed17d1e38d9b29e5606c3')
 depends=('rootfs>=2.0.0')
-
-prepare() {
-   cd "$srcdir/$pkgname-$pkgver"
-}
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"
