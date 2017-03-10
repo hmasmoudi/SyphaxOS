@@ -2,7 +2,7 @@
 
 pkgname=gtk3
 pkgver=3.22.9
-pkgrel=1
+pkgrel=2
 pkgdesc="The GTK+ 3 package contains libraries used for creating graphical user interfaces for applications."
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/gtk+/3.22"

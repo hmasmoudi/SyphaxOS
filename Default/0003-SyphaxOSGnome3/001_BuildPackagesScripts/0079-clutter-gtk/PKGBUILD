@@ -2,7 +2,7 @@
 
 pkgname=clutter-gtk
 pkgver=1.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The Clutter Gtk package is a library providing facilities to integrate Clutter into GTK+ applications."
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/clutter-gtk/1.8"
@@ -11,10 +11,6 @@ groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 sha256sums=('da27d486325490ad3f65d2abf9413aeb8b4a8f7b559e4b2f73567a5344a26b94')
 depends=('rootfs>=2.0.0')
-
-prepare() {
-   cd "$srcdir/${pkgname}-${pkgver}"
-}
 
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"
