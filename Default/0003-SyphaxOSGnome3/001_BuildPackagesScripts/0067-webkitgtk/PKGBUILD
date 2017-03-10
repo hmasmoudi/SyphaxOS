@@ -2,7 +2,7 @@
 
 pkgname=webkitgtk
 pkgver=2.14.5
-pkgrel=1
+pkgrel=2
 pkgdesc="GTK+ Web content engine library"
 arch=('x86_64')
 url="https://webkitgtk.org/"
