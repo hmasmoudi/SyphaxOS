@@ -1,20 +1,16 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=libsigc++
-pkgver=2.8.0
+pkgver=2.10.0
 pkgrel=1
 pkgdesc="The libsigc++ package implements a typesafe callback system for standard C++."
 arch=('x86_64')
-url="http://ftp.gnome.org/pub/gnome/sources/libsigc++/2.8"
+url="http://ftp.gnome.org/pub/gnome/sources/libsigc++/2.10"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-md5sums=('3d26acbc813fa54edd4401ce1a981677')
+sha256sums=('f843d6346260bfcb4426259e314512b99e296e8ca241d771d21ac64f28298d81')
 depends=('rootfs>=2.0.0')
-
-prepare() {
-   cd "$srcdir/${pkgname}-${pkgver}"
-}
 
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"
