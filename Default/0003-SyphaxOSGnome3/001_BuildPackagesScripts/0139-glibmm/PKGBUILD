@@ -1,21 +1,21 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=glibmm
-pkgver=2.48.1
+pkgver=2.49.7
 pkgrel=1
 pkgdesc="The GLibmm package is a set of C++ bindings for GLib. "
 arch=('x86_64')
-url="http://ftp.gnome.org/pub/gnome/sources/glibmm/2.48"
+url="http://ftp.gnome.org/pub/gnome/sources/glibmm/2.49"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-md5sums=('f08b2c7f09b984b0df05f0bf4d20ad11')
+sha256sums=('571d8ecd082a66fa7248f500063409c1f478edc36f553d0eb27cf6199dee0b25')
 depends=('rootfs>=2.0.0')
 
 prepare() {
    cd "$srcdir/${pkgname}-${pkgver}"
    
-   sed -e '/^libdocdir =/ s/$(book_name)/glibmm-2.48.1/' \
+   sed -e '/^libdocdir =/ s/$(book_name)/glibmm-2.49.7/' \
        -i docs/Makefile.in
 }
 
