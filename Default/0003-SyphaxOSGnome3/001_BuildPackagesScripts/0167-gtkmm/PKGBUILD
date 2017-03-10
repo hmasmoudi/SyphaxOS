@@ -1,21 +1,21 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=gtkmm
-pkgver=3.20.1
+pkgver=3.22.0
 pkgrel=1
 pkgdesc="The Gtkmm package provides a C++ interface to GTK+ 3."
 arch=('x86_64')
-url="http://ftp.gnome.org/pub/gnome/sources/${pkgname}/3.20"
+url="http://ftp.gnome.org/pub/gnome/sources/${pkgname}/3.22"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-md5sums=('c08b2548f4e900e7a0299b76d6c86a13')
+sha256sums=('05da4d4b628fb20c8384630ddf478a3b5562952b2d6181fe28d58f6cbc0514f5')
 depends=('rootfs>=2.0.0')
 
 prepare() {
    cd "$srcdir/${pkgname}-${pkgver}"
    
-   sed -e '/^libdocdir =/ s/$(book_name)/gtkmm-3.20.1/' \
+   sed -e '/^libdocdir =/ s/$(book_name)/gtkmm-3.22.0/' \
        -i docs/Makefile.in
 }
 
