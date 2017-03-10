@@ -1,16 +1,16 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=gdk-pixbuf
-pkgver=2.34.0
+pkgver=2.36.5
 pkgrel=1
 pkgdesc="The Gdk Pixbuf is a toolkit for image loading and pixel buffer manipulation."
 arch=('x86_64')
-url="http://ftp.gnome.org/pub/gnome/sources/gdk-pixbuf/2.34"
+url="http://ftp.gnome.org/pub/gnome/sources/gdk-pixbuf/2.36"
 license=('GPL')
 groups=('desktop')
 install=${pkgname}.install
 source=("$url/$pkgname-$pkgver.tar.xz")
-md5sums=('63cb19f92cf7709ccf44bbb6fe1ff70c')
+sha256sums=('7ace06170291a1f21771552768bace072ecdea9bd4a02f7658939b9a314c40fc')
 depends=('rootfs>=2.0.0')
 
 prepare() {
