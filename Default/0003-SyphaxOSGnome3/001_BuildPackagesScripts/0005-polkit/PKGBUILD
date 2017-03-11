@@ -2,7 +2,7 @@
 
 pkgname=polkit
 pkgver=0.113
-pkgrel=1
+pkgrel=2
 pkgdesc="Polkit is a toolkit for defining and handling authorizations."
 arch=('x86_64')
 url="http://www.freedesktop.org/software/polkit/releases"
