@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=clutter-gst
-pkgver=3.0.20
+pkgver=3.0.22
 pkgrel=1
 pkgdesc="The Clutter Gst is an integration library for using GStreamer with Clutter."
 arch=('x86_64')
@@ -9,12 +9,8 @@ url="http://ftp.gnome.org/pub/gnome/sources/${pkgname}/3.0"
 license=('GPL')
 groups=('applications')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-md5sums=('e6de3afcf82fcddab8193665f1a1667e')
+sha256sums=('f1fc57fb32ea7e3d9234b58db35eb9ef3028cf0b266d85235f959edc0fe3dfd4')
 depends=('rootfs>=2.0.0')
-
-prepare() {
-   cd "$srcdir/${pkgname}-${pkgver}"
-}
 
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"
