@@ -2,8 +2,8 @@
 
 pkgname=gnomedesktop
 pkgver=2.0.0
-pkgrel=6
-pkgdesc="SyphaxOS 2.0.0 Gnome 3.20 Desktop Package."
+pkgrel=7
+pkgdesc="SyphaxOS 2.0.0 Gnome 3.22 Desktop Package."
 arch=('x86_64')
 install=${pkgname}.install
 license=('GPL')
@@ -169,6 +169,7 @@ depends=(
          'network-manager-applet'
          'gnome-control-center'
          'mutter'
+         'elfutils'
          'gnome-shell'
          'gnome-shell-extensions'
          'gnome-session'
