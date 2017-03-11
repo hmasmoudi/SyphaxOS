@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=thunderbird
-pkgver=45.7.1
+pkgver=45.8.0
 pkgrel=1
 pkgdesc="Thunderbird is a free email application that’s easy to set up and customize - and it’s loaded with great features!"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL')
 groups=('applications')
 source=("$url/${pkgname}-${pkgver}.tar.bz2"
         "thunderbird.desktop")
-md5sums=('24a60953f233d62ed40b3cb448b2dd8e'
+md5sums=('c054d6011912482a51bc67a05b005be7'
          'be5d447b8bbbc35cfef203a53f7b72d6')
 depends=('rootfs>=2.0.0')
 
