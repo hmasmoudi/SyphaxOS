@@ -2,7 +2,7 @@
 
 pkgname=elfutils
 pkgver=0.168
-pkgrel=1
+pkgrel=2
 pkgdesc="a free ELF object file access library."
 arch=('x86_64')
 url="https://sourceware.org/elfutils/ftp/${pkgver}"
@@ -11,10 +11,6 @@ groups=('applications')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
 md5sums=('52adfa40758d0d39e5d5c57689bf38d6')
 depends=('rootfs>=2.0.0')
-
-prepare() {
-   cd "$srcdir/${pkgname}-${pkgver}"
-}
 
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"
