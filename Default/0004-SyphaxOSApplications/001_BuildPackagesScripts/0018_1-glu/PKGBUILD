@@ -2,7 +2,7 @@
 
 pkgname=glu
 pkgver=9.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="This package provides the Mesa OpenGL Utility library."
 arch=('x86_64')
 url="ftp://ftp.freedesktop.org/pub/mesa/glu"
@@ -11,11 +11,6 @@ groups=('applications')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
 md5sums=('be9249132ff49275461cf92039083030')
 depends=('rootfs>=2.0.0')
-
-prepare() {
-   cd "$srcdir/${pkgname}-${pkgver}"
-   
-}
 
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"
