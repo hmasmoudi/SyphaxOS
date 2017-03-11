@@ -1,26 +1,26 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
-pkgname=libxkbcommon
-pkgver=0.6.1
+pkgname=at-spi2-atk
+pkgver=2.22.0
 pkgrel=1
-pkgdesc="libxkbcommon is a keymap compiler and support library which processes a reduced subset of keymaps as defined by the XKB specification."
+pkgdesc="The At-Spi2 Atk package contains a library that bridges ATK to At-Spi2 D-Bus service."
 arch=('x86_64')
-url="http://xkbcommon.org/download"
+url="http://ftp.gnome.org/pub/gnome/sources/at-spi2-atk/2.22"
 license=('GPL')
 groups=('desktop')
 source=("$url/$pkgname-$pkgver.tar.xz")
-md5sums=('67a8f322b5fa32352272e811bb90dd73')
+sha256sums=('e8bdedbeb873eb229eb08c88e11d07713ec25ae175251648ad1a9da6c21113c1')
 depends=('rootfs>=2.0.0')
 
 prepare() {
    cd "$srcdir/$pkgname-$pkgver"
+   sed -i "/seems to be moved/s/^/#/" config/ltmain.sh
 }
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"
 
-   ./configure --prefix=/usr    \
-               --docdir=/usr/share/doc/$pkgname-$pkgver
+   ./configure --prefix=/usr
 
    make
 }

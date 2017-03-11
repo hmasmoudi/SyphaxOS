@@ -2,7 +2,7 @@
 
 pkgname=nasm
 pkgver=2.12.02
-pkgrel=1
+pkgrel=2
 pkgdesc="NASM (Netwide Assembler) is an 80x86 assembler designed for portability and modularity."
 arch=('x86_64')
 url="http://www.nasm.us/pub/nasm/releasebuilds/${pkgver}"
@@ -11,10 +11,6 @@ groups=('desktop')
 source=("$url/$pkgname-$pkgver.tar.xz")
 md5sums=('b90a3d85b93e51a7fa5a67e2a8fccfef')
 depends=('rootfs>=2.0.0')
-
-prepare() {
-   cd "$srcdir/$pkgname-$pkgver"
-}
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"

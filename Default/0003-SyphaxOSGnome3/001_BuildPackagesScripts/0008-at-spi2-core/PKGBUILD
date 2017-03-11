@@ -1,0 +1,28 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=at-spi2-core
+pkgver=2.23.4
+pkgrel=1
+pkgdesc="The At-Spi2 Core package is a part of the GNOME Accessibility Project."
+arch=('x86_64')
+url="http://ftp.gnome.org/pub/gnome/sources/at-spi2-core/2.23"
+license=('GPL')
+groups=('desktop')
+source=("$url/$pkgname-$pkgver.tar.xz")
+sha256sums=('6f81c9a74c7abec42ddb85873eace3ea565b9d1f4c1d983ceada79493bbec9e3')
+depends=('rootfs>=2.0.0')
+
+build() {
+   cd "$srcdir/$pkgname-$pkgver"
+
+   ./configure --prefix=/usr --sysconfdir=/etc
+
+   make
+}
+
+package() {
+   cd "$srcdir/$pkgname-$pkgver"
+
+   make DESTDIR="$pkgdir" install
+}
+

@@ -1,21 +1,16 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
-pkgname=at-spi2-atk
-pkgver=2.20.1
+pkgname=atk
+pkgver=2.23.4
 pkgrel=1
-pkgdesc="The At-Spi2 Atk package contains a library that bridges ATK to At-Spi2 D-Bus service."
+pkgdesc="ATK provides the set of accessibility interfaces that are implemented by other toolkits and applications."
 arch=('x86_64')
-url="http://ftp.gnome.org/pub/gnome/sources/at-spi2-atk/2.20"
+url="http://ftp.gnome.org/pub/gnome/sources/atk/2.23"
 license=('GPL')
 groups=('desktop')
 source=("$url/$pkgname-$pkgver.tar.xz")
-md5sums=('23309b6f8e1623871ace6347fb734dce')
+sha256sums=('6888f4e902fc4727b1687ff512d5d087050f4c0d11035566484988cf698c2c1a')
 depends=('rootfs>=2.0.0')
-
-prepare() {
-   cd "$srcdir/$pkgname-$pkgver"
-   sed -i "/seems to be moved/s/^/#/" config/ltmain.sh
-}
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"
