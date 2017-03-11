@@ -2,7 +2,7 @@
 
 pkgname=pygobject
 pkgver=3.22.0
-pkgrel=1
+pkgrel=2
 pkgdesc="PyGObject 2 and 3 provides Python bindings to the GObject class from GLib"
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/pygobject/3.22"

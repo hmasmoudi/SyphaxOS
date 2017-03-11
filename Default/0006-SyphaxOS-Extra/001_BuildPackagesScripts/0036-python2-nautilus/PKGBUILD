@@ -3,7 +3,7 @@
 pkgname=Python2-nautilus
 _pkgname=nautilus-python
 pkgver=1.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Python bindings for the Nautilus Extension API"
 arch=('x86_64')
 url="https://wiki.gnome.org/Projects/NautilusPython"
