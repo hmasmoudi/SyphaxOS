@@ -2,7 +2,7 @@
 
 pkgname=nspr
 pkgver=4.12
-pkgrel=1
+pkgrel=2
 pkgdesc="Netscape Portable Runtime (NSPR) provides a platform-neutral API for system level and libc like functions."
 arch=('x86_64')
 url="https://ftp.mozilla.org/pub/mozilla.org/nspr/releases/v4.12/src"
