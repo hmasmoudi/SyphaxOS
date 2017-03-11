@@ -2,7 +2,7 @@
 
 pkgname=evolution
 pkgver=3.22.5
-pkgrel=1
+pkgrel=3
 pkgdesc="Evolution. Evolution is a personal information management application that provides integrated mail, calendaring and address book functionality."
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/evolution/3.22"
@@ -12,7 +12,13 @@ groups=('applications')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('64cce71e42ed61f0a955c2e1f8d2272f')
 depends=('rootfs>=2.0.0'
-         'hyphen')
+         'hyphen'
+         'gtkspell3'
+         'hunspell'
+         'hunspell-en'
+         'hunspell-en_GB'
+         'hunspell-en_US'
+         'hunspell-fr')
 
 prepare() {
    cd "$srcdir/${pkgname}-${pkgver}"
@@ -24,8 +30,8 @@ build() {
    cd "$srcdir/${pkgname}-${pkgver}"
    
    ./configure --prefix=/usr \
+               --enable-gtkspell \
                --disable-libcryptui \
-               --disable-gtkspell \
                --disable-text-highlight \
                --disable-pst-import
 
