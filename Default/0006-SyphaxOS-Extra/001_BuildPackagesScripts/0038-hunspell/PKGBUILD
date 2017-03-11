@@ -1,0 +1,39 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=hunspell
+pkgver=1.6.0
+pkgrel=1
+pkgdesc="Spell checker and morphological analyzer library and program"
+arch=('x86_64')
+url="http://hunspell.github.io/"
+license=('GPL' 'LGPL' 'MPL')
+depends=('rootfs')
+source=($pkgname-$pkgver.tar.gz::https://github.com/hunspell/hunspell/archive/v${pkgver}.tar.gz)
+sha256sums=('512e7d2ee69dad0b35ca011076405e56e0f10963a02d4859dbcc4faf53ca68e2')
+
+prepare() {
+  cd hunspell-$pkgver
+  autoreconf -vfi
+}
+
+build() {
+  cd hunspell-$pkgver
+  ./configure --prefix=/usr --disable-static \
+	--with-ui --with-readline # --with-experimental breaks build in this release
+  make
+}
+
+check() {
+  cd hunspell-$pkgver
+  make check
+}
+
+package() {
+  cd hunspell-$pkgver
+  make DESTDIR="$pkgdir" install
+  
+  # add generic hunspell.so for development and projects not using pkgconfig flags - FS#30592
+  pushd $pkgdir/usr/lib
+  ln -s libhunspell-?.?.so libhunspell.so
+  popd
+}
