@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=gstreamer
-pkgver=1.8.3
+pkgver=1.11.2
 pkgrel=1
 pkgdesc="GStreamer is a streaming media framework that enables applications to share a common set of plugins for things like video encoding and decoding, audio encoding and decoding, audio and video filters, audio visualisation, web streaming and anything else that streams in real-time or otherwise."
 arch=('x86_64')
@@ -9,18 +9,14 @@ url="http://gstreamer.freedesktop.org/src/gstreamer"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-md5sums=('e88dad542df9d986822e982105d2b530')
+sha256sums=('baa27e761e9d2e1770a8e311b2a61397edd6a288b2ff188940ea001615883305')
 depends=('rootfs>=2.0.0')
-
-prepare() {
-   cd "$srcdir/$pkgname-$pkgver"
-}
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"
 
    ./configure --prefix=/usr \
-            --with-package-name="GStreamer 1.8.3 SyphaxOS" \
+            --with-package-name="GStreamer 1.11.2 SyphaxOS" \
             --with-package-origin="http://gstreamer.freedesktop.org/src/gstreamer"
             
    make

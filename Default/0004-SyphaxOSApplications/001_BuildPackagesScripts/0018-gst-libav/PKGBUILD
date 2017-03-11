@@ -1,26 +1,22 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=gst-libav
-pkgver=1.8.3
-pkgrel=2
+pkgver=1.11.2
+pkgrel=1
 pkgdesc="The GStreamer Libav package contains GStreamer plugins for Libav (a fork of FFmpeg)."
 arch=('x86_64')
 url="http://gstreamer.freedesktop.org/src/gst-libav"
 license=('GPL')
 groups=('applications')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-md5sums=('b51a736147bacb40f85827a4e0ae0d2c')
+sha256sums=('b4798dc916a9ce7cdbbab1b9ecfb5170113b8fc1ba6db440c37d603621ae7fda')
 depends=('rootfs>=2.0.0')
-
-prepare() {
-   cd "$srcdir/${pkgname}-${pkgver}"
-}
 
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"
    
    ./configure --prefix=/usr \
-               --with-package-name="GStreamer Libav Plugins 1.8.3 SyphaxOS" \
+               --with-package-name="GStreamer Libav Plugins 1.11.2 SyphaxOS" \
                --with-package-origin="http://gstreamer.freedesktop.org/src/gst-libav"
    
    make
