@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=libvpx
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="This package, from the WebM project, provides the reference implementations of the VP8 Codec, used in most current html5 video, and of the next-generation VP9 Codec."
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="http://storage.googleapis.com/downloads.webmproject.org/releases/webm"
 license=('GPL')
 groups=('applications')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
-md5sums=('f95a176768a0e1bb4fe42742e27a41af')
+md5sums=('a19518c8111fa93bdabdd85259162611')
 depends=('rootfs>=2.0.0')
 
 prepare() {
