@@ -2,7 +2,7 @@
 
 pkgname=enchant
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The enchant package provide a generic interface into various existing spell checking libraries."
 arch=('x86_64')
 url="http://www.abisource.com/downloads/enchant/1.6.0"
@@ -12,14 +12,10 @@ source=("$url/${pkgname}-${pkgver}.tar.gz")
 md5sums=('de11011aff801dc61042828041fb59c7')
 depends=('rootfs>=2.0.0')
 
-prepare() {
-   cd "$srcdir/$pkgname-$pkgver"
-}
-
 build() {
    cd "$srcdir/$pkgname-$pkgver"
 
-   ./configure --prefix=/usr --disable-static
+   ./configure --prefix=/usr --disable-static --with-myspell-dir=/usr/share/myspell
    
    make
 }
