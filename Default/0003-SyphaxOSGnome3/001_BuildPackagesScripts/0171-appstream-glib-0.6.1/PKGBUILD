@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=appstream-glib
-pkgver=0.6.1
+pkgver=0.6.10
 pkgrel=1
 pkgdesc="The Appstream-GLib package contains a library that provides GObjects and helper methods to make it easy to read and write AppStream metadata."
 arch=('x86_64')
@@ -9,12 +9,8 @@ url="http://people.freedesktop.org/~hughsient/appstream-glib/releases"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-md5sums=('65192dc4bd499bae9e695df99ea7d5cd')
+md5sums=('75a10157057059a9e97438ef58e1ade9')
 depends=('rootfs>=2.0.0')
-
-prepare() {
-   cd "$srcdir/${pkgname}-${pkgver}"
-}
 
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"
