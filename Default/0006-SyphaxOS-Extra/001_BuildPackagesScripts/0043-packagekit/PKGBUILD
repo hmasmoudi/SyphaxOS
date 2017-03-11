@@ -1,0 +1,52 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname='packagekit'
+pkgver=1.1.5
+pkgrel=1
+pkgdesc='A system designed to make installation and updates of packages easier'
+arch=('x86_64')
+url='http://www.packagekit.org/'
+license=('GPL')
+depends=('dbus-glib' 'pacman>=5.0.0' 'polkit' 'shared-mime-info' 'sqlite')
+
+backup=('var/lib/PackageKit/transactions.db'
+	'etc/PackageKit/alpm.d/pacman.conf'
+	'etc/PackageKit/alpm.d/repos.list')
+
+source=("https://www.freedesktop.org/software/PackageKit/releases/PackageKit-${pkgver}.tar.xz")
+sha256sums=('50f448ced5b460bd79ba0c97e9fe080153eaeecad909eee108284e3f5fc7b70c')
+
+build() {
+	cd "${srcdir}/PackageKit-${pkgver}"
+
+	./configure \
+	   --prefix=/usr \
+		--sysconfdir=/etc \
+		--localstatedir=/var \
+		--libexecdir=/usr/lib/PackageKit \
+		--with-dbus-sys=/usr/share/dbus-1/system.d \
+		--disable-static \
+		--disable-gtk-doc \
+		--disable-local \
+		--disable-browser-plugin \
+		--disable-gstreamer-plugin \
+		--disable-gtk-module \
+		--disable-command-not-found \
+		--disable-cron \
+		--disable-dummy \
+		--disable-nix \
+		--disable-aptcc \
+		--enable-alpm
+	make
+}
+
+package() {
+	cd "${srcdir}/PackageKit-${pkgver}"
+
+	# install directory with root owner, polkit group and
+	# correct permission
+	install -d -o root -g 102 -m 700 "${pkgdir}/usr/share/polkit-1/rules.d"
+
+	make DESTDIR="${pkgdir}" install
+}
+
