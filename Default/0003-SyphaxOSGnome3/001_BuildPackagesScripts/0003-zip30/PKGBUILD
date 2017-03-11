@@ -2,7 +2,7 @@
 
 pkgname=zip
 pkgver=30
-pkgrel=1
+pkgrel=2
 pkgdesc="The Zip package contains Zip utilities. These are useful for compressing files into ZIP archives."
 arch=('x86_64')
 url="http://downloads.sourceforge.net/infozip"
