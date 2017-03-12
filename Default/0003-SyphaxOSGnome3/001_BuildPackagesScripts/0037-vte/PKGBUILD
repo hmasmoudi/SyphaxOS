@@ -2,7 +2,7 @@
 
 pkgname=vte
 pkgver=0.46.1
-pkgrel=1
+pkgrel=3
 pkgdesc="The VTE package contains a termcap file implementation for terminal emulators."
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/vte/0.46"
@@ -15,8 +15,9 @@ depends=('rootfs>=2.0.0')
 prepare() {
    cd "$srcdir/$pkgname-$pkgver"
    
+   NOCONFIGURE=1 ./autogen.sh
+   
    sed -i '/Werror/d' configure.ac
-   autoreconf
 }
 
 build() {
