@@ -1,0 +1,16 @@
+# https://specifications.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html
+[Desktop Entry]
+Type=Application
+Version=2.0.0
+Name=SyphaxOS-Installer
+Name[en_US]=SyphaxOS-Installer
+GenericName=SyphaxOS Installer
+Comment=Install SyphaxOS on hard disk
+Comment[en_US]=Install SyphaxOS on hard disk
+Icon=gnome-disks.png
+Path=/opt/SyphaxOS-Installer
+Exec=su -c opt/SyphaxOS-Installer/SyphaxOS-Installer.sh
+Encoding=UTF-8
+Terminal=true
+Categories=System;
+StartupNotify=false

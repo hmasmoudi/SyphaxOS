@@ -2,22 +2,18 @@
 
 pkgname=SyphaxOS-Installer
 pkgver=2.0.0
-pkgrel=5
+pkgrel=9
 pkgdesc="SyphaxOS 2.0.0 Installer Scripts"
 arch=('x86_64')
 install=${pkgname}.install
 license=('GPL')
 groups=('applications')
-depends=('gnomedesktop>=2.0.0'
-         'pacman>=5.0.1'
-         'dialog>=1.3_20160828')
+depends=('SyphaxOS-Desktop'
+         'pacman'
+         'dialog')
 
 prepare() {
    mkdir -p "$srcdir/${pkgname}-${pkgver}"
-}
-
-build() {
-   cd "$srcdir/${pkgname}-${pkgver}"
 }
 
 package() {
@@ -25,10 +21,10 @@ package() {
    
    mkdir -p "${pkgdir}"/opt/
    mkdir -p "${pkgdir}"/usr/bin/
-   mkdir -p "${pkgdir}"/lib/systemd/system/
+   mkdir -p "${pkgdir}"/usr/share/applications/
    
    cp -r ../../"${pkgname}"               "${pkgdir}"/opt/
-   cp -r ../../syphaxos-installer.service "${pkgdir}"/lib/systemd/system/
    cp -r ../../genfstab                   "${pkgdir}"/usr/bin/
+   cp -r ../../SyphaxOS-Installer.desktop "${pkgdir}"/usr/share/applications/
 }
 
