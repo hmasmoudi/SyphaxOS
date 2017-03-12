@@ -2,7 +2,7 @@
 
 pkgname=SyphaxOS-Desktop
 pkgver=2.0.0
-pkgrel=12
+pkgrel=13
 pkgdesc="SyphaxOS 2.0.0 Default Desktop Package based on Gnome Desktop."
 arch=('x86_64')
 install=${pkgname}.install
@@ -35,5 +35,9 @@ prepare() {
 
 package() {
    cd "$srcdir/$pkgname-$pkgver"
+   
+   mkdir -p "${pkgdir}"/usr/share/xsessions/
+   
+   cp -f ../../default.desktop   "${pkgdir}"/usr/share/xsessions/
 }
 
