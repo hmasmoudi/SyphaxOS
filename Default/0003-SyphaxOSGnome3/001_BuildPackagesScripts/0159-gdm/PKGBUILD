@@ -2,7 +2,7 @@
 
 pkgname=gdm
 pkgver=3.22.3
-pkgrel=2
+pkgrel=3
 pkgdesc="The GNOME Shell Extensions package contains a collection of extensions providing additional and optional functionality to the GNOME Shell."
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/gdm/3.22"
