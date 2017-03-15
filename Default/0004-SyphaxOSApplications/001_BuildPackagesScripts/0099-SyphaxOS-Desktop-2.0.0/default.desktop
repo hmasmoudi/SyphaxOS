@@ -1,7 +1,0 @@
-[Desktop Entry]
-Name=SyphaxosOS Desktop
-Comment=This session logs you into the Budgie Desktop
-Exec=/usr/bin/budgie-desktop
-TryExec=/usr/bin/budgie-desktop
-Type=Application
-DesktopNames=Budgie;GNOME
