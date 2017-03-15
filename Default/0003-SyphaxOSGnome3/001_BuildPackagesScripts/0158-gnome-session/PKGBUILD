@@ -1,25 +1,21 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=gnome-session
-pkgver=3.22.2
-pkgrel=1
+pkgver=3.22.3
+pkgrel=3
 pkgdesc="The GNOME Session package contains the GNOME session manager."
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/gnome-session/3.22"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('361a31edb4f8c6d410f1029eee089422e25a2da6c287ead40fccdea5bda450f5')
+sha256sums=('cc486fc84d892fa744a382b5ea8b9b40fc5045bc0d5feccfb02e80137eab77e5')
 depends=('rootfs>=2.0.0')
-
-prepare() {
-   cd "$srcdir/${pkgname}-${pkgver}"
-}
 
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"
    
-   ./configure --prefix=/usr --docdir=/usr/share/doc/gnome-session-3.22.2
+   ./configure --prefix=/usr --docdir=/usr/share/doc/gnome-session-3.22.3 --disable-session-selector
 
    make
 }

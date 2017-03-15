@@ -1,8 +1,8 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=evolution
-pkgver=3.22.5
-pkgrel=3
+pkgver=3.22.6
+pkgrel=1
 pkgdesc="Evolution. Evolution is a personal information management application that provides integrated mail, calendaring and address book functionality."
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/evolution/3.22"
@@ -10,7 +10,7 @@ license=('GPL')
 install=${pkgname}.install
 groups=('applications')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-md5sums=('64cce71e42ed61f0a955c2e1f8d2272f')
+sha256sums=('9f4be4a1d5ee4d5eb9b132cf751ba3afc833025aa6dc7baa1f9483489d8a943e')
 depends=('rootfs>=2.0.0'
          'hyphen'
          'gtkspell3'
