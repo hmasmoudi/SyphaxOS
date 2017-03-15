@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=flashplayer
-pkgver=24.0.0.186
+pkgver=25.0.0.127
 pkgrel=1
 pkgdesc="Flash Player for Linux"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://fpdownload.adobe.com/get/${pkgname}/pdc/${pkgver}"
 license=('GPL')
 groups=('applications')
 source=("$url/flash_player_npapi_linux.x86_64.tar.gz")
-md5sums=('a618a20ef0bf4f463960134486a2ed7b')
+md5sums=('dd8a19ea0aaa0e532d5c72f4309a67ae')
 depends=('rootfs>=2.0.0')
 
 prepare() {

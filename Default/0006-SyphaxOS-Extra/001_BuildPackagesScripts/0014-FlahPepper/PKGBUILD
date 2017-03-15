@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=pepper-flash
-pkgver=24.0.0.221
+pkgver=25.0.0.127
 pkgrel=1
 pkgdesc="Adobe's Pepper Flash plugin"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://fpdownload.adobe.com/pub/flashplayer/pdc/$pkgver"
 license=('GPL')
 groups=('applications')
 source=("$url/flash_player_ppapi_linux.x86_64.tar.gz")
-md5sums=('d5e90e296dbd0b8362df2fa4f418d667')
+md5sums=('623b0453d8854b575e7d5848629d4152')
 depends=('rootfs>=2.0.0')
 
 package() {
