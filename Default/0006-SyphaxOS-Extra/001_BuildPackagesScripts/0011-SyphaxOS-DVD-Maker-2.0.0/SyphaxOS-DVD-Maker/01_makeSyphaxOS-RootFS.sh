@@ -19,3 +19,7 @@ pacman -r "$SOS_DVD" -Syu SyphaxOS-Installer --cachedir="$DEST_PKG" --noconfirm
 printf "toor\ntoor" | chroot "$SOS_DVD" passwd ; chroot "$SOS_DVD" chsh -s "/bin/bash"
 chroot "$SOS_DVD" useradd -m -g users "syphaxos"
 printf "toor\ntoor" | chroot "$SOS_DVD" passwd "syphaxos"
+
+cp -rf ./AccountServiceUsers.conf "$SOS_DVD"/var/lib/AccountsService/users/syphaxos
+chown root:root "$SOS_DVD"/var/lib/AccountsService/users/syphaxos
+

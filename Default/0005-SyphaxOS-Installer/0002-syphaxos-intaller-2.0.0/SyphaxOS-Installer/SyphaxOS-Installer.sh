@@ -774,6 +774,9 @@ add_user() {
 	chroot "$ARCH" useradd -m -g users "$user" &>/dev/null &
 	pid=$! pri=0.1 msg="$wait_load \n\n \Z1> \Z2useradd -m -g users -G ... -s $sh $user\Zn" load
 
+   cp -rf AccountServiceUsers.conf "$ARCH"/var/lib/AccountsService/users/"$user"
+   chown root:root "$ARCH"/var/lib/AccountsService/users/"$user"
+
 	source "$lang_file"
 	op_title="$passwd_op_msg"
 	while [ "$input" != "$input_chk" ]
