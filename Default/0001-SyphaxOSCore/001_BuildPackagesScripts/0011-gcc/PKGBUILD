@@ -2,7 +2,7 @@
 
 pkgname=gcc
 pkgver=6.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc="The GCC package contains the GNU compiler collection, which includes the C and C++ compilers."
 arch=('x86_64')
 url="http://ftp.gnu.org/gnu/gcc/gcc-$pkgver"
@@ -17,7 +17,8 @@ depends=('rootfs>=2.0.0'
 prepare() {
    cd "$srcdir/$pkgname-$pkgver"
 
-   sed -e '/m64=/s/lib64/lib/' -i.orig gcc/config/i386/t-linux64
+   sed -e '/m64=/s/lib64/lib/' \
+       -i.orig gcc/config/i386/t-linux64
 }
 
 build() {
@@ -25,13 +26,12 @@ build() {
 
    mkdir -v build
    cd build
-   SED=sed                                  \
-   ../configure --prefix=/usr               \
-                --enable-languages=c,c++,go \
-                --enable-shared             \
-                --disable-multilib          \
-                --disable-bootstrap         \
-                --enable-checking=release   \
+   
+   SED=sed                                   \
+   ../configure --prefix=/usr                \
+                --enable-languages=c,c++,go  \
+                --disable-multilib           \
+                --disable-bootstrap          \
                 --with-system-zlib
    make
 }

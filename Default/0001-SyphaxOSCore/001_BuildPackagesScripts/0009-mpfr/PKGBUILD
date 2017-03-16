@@ -2,7 +2,7 @@
 
 pkgname=mpfr
 pkgver=3.1.5
-pkgrel=2
+pkgrel=3
 pkgdesc="The MPFR package contains functions for multiple precision math."
 arch=('x86_64')
 url="http://www.mpfr.org/mpfr-$pkgver"
@@ -13,17 +13,13 @@ md5sums=('c4ac246cf9795a4491e7766002cd528f')
 depends=('rootfs>=2.0.0'
          'gmp>=6.1.2')
 
-prepare() {
-   cd "$srcdir/$pkgname-$pkgver"
-}
-
 build() {
    cd "$srcdir/$pkgname-$pkgver"
 
    ./configure --prefix=/usr        \
                --disable-static     \
                --enable-thread-safe \
-               --docdir=/usr/share/doc/mpfr-$pkgver
+               --docdir=/usr/share/doc/mpfr-3.1.5
 
    make
    make html

@@ -2,7 +2,7 @@
 
 pkgname=mpc
 pkgver=1.0.3
-pkgrel=3
+pkgrel=4
 pkgdesc="The MPC package contains a library for the arithmetic of complex numbers with arbitrarily high precision and correct rounding of the result."
 arch=('x86_64')
 url="http://www.multiprecision.org/mpc/download"
@@ -19,7 +19,7 @@ build() {
 
    ./configure --prefix=/usr    \
                --disable-static \
-               --docdir=/usr/share/doc/mpc-$pkgver
+               --docdir=/usr/share/doc/mpc-1.0.3
 
    make
    make html

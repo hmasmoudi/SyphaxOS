@@ -2,7 +2,7 @@
 
 pkgname=binutils
 pkgver=2.28
-pkgrel=1
+pkgrel=2
 pkgdesc="The Binutils package contains a linker, an assembler, and other tools for handling object files."
 arch=('x86_64')
 url="ftp://ftp.gnu.org/gnu/binutils"
@@ -16,20 +16,28 @@ depends=('rootfs>=2.0.0'
 
 prepare() {
    cd "$srcdir/$pkgname-$pkgver"
+   
+   mkdir -v build
 }
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"
+   cd       build
 
-   CC=gcc ./configure --prefix=/usr     \
-                      --enable-shared  \
-                      --disable-werror
+   ../configure --prefix=/usr       \
+                --enable-gold       \
+                --enable-ld=default \
+                --enable-plugins    \
+                --enable-shared     \
+                --disable-werror    \
+                --with-system-zlib
 
    make tooldir=/usr
 }
 
 package() {
    cd "$srcdir/$pkgname-$pkgver"
+   cd       build
 
    make DESTDIR="$pkgdir" tooldir=/usr install
 }
