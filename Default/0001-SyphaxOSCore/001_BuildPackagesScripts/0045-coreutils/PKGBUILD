@@ -1,31 +1,32 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=coreutils
-pkgver=8.25
-pkgrel=2
+pkgver=8.26
+pkgrel=1
 pkgdesc="The Coreutils package contains utilities for showing and setting the basic system characteristics."
 arch=('x86_64')
 url="http://ftp.gnu.org/gnu/coreutils"
 license=('GPL')
 groups=('core')
 source=("$url/$pkgname-$pkgver.tar.xz")
-md5sums=('070e43ba7f618d747414ef56ab248a48')
+md5sums=('d5aa2072f662d4118b9f4c63b94601a6')
 depends=('rootfs>=2.0.0')
 
 prepare() {
    cd "$srcdir/$pkgname-$pkgver"
 
-   patch -Np1 -i ../../coreutils-8.25-i18n-2.patch
+   patch -Np1 -i ../../coreutils-8.26-i18n-1.patch
+   sed -i '/test.lock/s/^/#/' gnulib-tests/gnulib.mk
 }
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"
 
-   FORCE_UNSAFE_CONFIGURE=1 ./configure \
+   ./configure \
                --prefix=/usr            \
                --enable-no-install-program=kill,uptime
 
-   FORCE_UNSAFE_CONFIGURE=1 make
+   make
 }
 
 package() {
