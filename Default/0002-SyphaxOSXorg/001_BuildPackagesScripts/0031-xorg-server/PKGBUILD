@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=xorg-server
-pkgver=1.19.2
+pkgver=1.19.3
 pkgrel=1
 pkgdesc="The Xorg Server is the graphicslayer of the X Window system. "
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="http://ftp.x.org/pub/individual/xserver"
 license=('GPL')
 groups=('graphicslayer')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
-md5sums=('d9f9e9f216d29f8220e76f8294507d85')
+md5sums=('015d2fc4b9f2bfe7a626edb63a62c65e')
 depends=('rootfs>=2.0.0')
 
 prepare() {
