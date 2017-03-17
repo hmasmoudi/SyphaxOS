@@ -2,7 +2,7 @@
 
 pkgname=glibc
 pkgver=2.25
-pkgrel=2
+pkgrel=3
 pkgdesc="The Glibc package contains the main C library."
 arch=('x86_64')
 url="http://ftp.gnu.org/gnu/glibc"

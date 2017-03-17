@@ -2,7 +2,7 @@
 
 pkgname=file
 pkgver=5.30
-pkgrel=2
+pkgrel=3
 pkgdesc="The File package contains a utility for determining the type of a given file or files."
 arch=('x86_64')
 url="ftp://ftp.astron.com/pub/file"
