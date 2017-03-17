@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=flatpak
-pkgver=0.8.4
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="THE FUTURE OF APPLICATION DISTRIBUTION. Flatpak is the new framework for desktop applications on Linux."
 arch=('x86_64')
@@ -9,12 +9,17 @@ url="https://github.com/flatpak/flatpak/releases/download/${pkgver}"
 license=('GPL')
 groups=('applications')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-md5sums=('8119daf2bdacb271b7b3bdff22b5bf25')
+md5sums=('d661acb9dd3a237df25b271b55f5b456')
 depends=('rootfs>=2.0.0'
          'ostree>=2016.15'
          'elfutils>=0.168'
          'bubblewrap>=0.1.6')
 
+prepare() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   sed -i "/seems to be moved/s/^/#/" ltmain.sh
+}
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"
    
