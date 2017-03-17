@@ -2,7 +2,7 @@
 
 pkgname=evolution
 pkgver=3.22.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Evolution. Evolution is a personal information management application that provides integrated mail, calendaring and address book functionality."
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/evolution/3.22"
