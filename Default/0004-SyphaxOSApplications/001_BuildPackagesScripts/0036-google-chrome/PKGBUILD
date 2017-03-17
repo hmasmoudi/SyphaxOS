@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=google-chrome
-pkgver=57.0.2987.98
+pkgver=57.0.2987.110
 pkgrel=1
 pkgdesc="An attempt at creating a safer, faster, and more stable browser (Stable Channel)"
 arch=('x86_64')
@@ -14,7 +14,7 @@ _channel=stable
 source=("google-chrome-${_channel}_${pkgver}_amd64.deb::https://dl.google.com/linux/direct/google-chrome-${_channel}_current_amd64.deb"
         "$url/browser/privacy/eula_text.html"
         'google-chrome-stable.sh')
-md5sums=('94fca0b7e96f2cce5d421ecebad04cbf'
+md5sums=('ba137093ddd19e643988e66d5821eb3d'
          'SKIP'
          '99fa93d5e7fb5d622cef0f9621f3ffa3')
 
