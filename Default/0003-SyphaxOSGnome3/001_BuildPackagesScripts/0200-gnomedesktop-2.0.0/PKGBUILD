@@ -2,7 +2,7 @@
 
 pkgname=gnomedesktop
 pkgver=2.0.0
-pkgrel=7
+pkgrel=8
 pkgdesc="SyphaxOS 2.0.0 Gnome 3.22 Desktop Package."
 arch=('x86_64')
 install=${pkgname}.install
@@ -197,6 +197,7 @@ depends=(
          'dejavu-fonts-ttf'
          'sound-theme-freedesktop'
          'gnome-calendar'
+         'parted'
          )
 
 package() {
