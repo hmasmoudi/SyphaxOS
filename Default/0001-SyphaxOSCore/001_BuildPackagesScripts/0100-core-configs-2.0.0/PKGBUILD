@@ -63,8 +63,6 @@ package() {
    cp ../../skel_bash_logout $pkgdir/etc/skel/.bash_logout
    cp ../../skel_vimrc $pkgdir/etc/skel/.vimrc
    cp ../../skel_gtkrc-2.0 $pkgdir/etc/skel/.gtkrc-2.0
-   cp ../../skel_asoundrc $pkgdir/etc/skel/.asoundrc
-   
    
    cp ../../mkinitramfs $pkgdir/sbin/
    cp ../../init.in $pkgdir/usr/share/mkinitramfs/
