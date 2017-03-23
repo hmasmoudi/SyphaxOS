@@ -2,7 +2,7 @@
 
 pkgname=fontconfig
 pkgver=2.12.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The Fontconfig package contains a library and support programs used for configuring and customizing font access."
 arch=('x86_64')
 url="http://www.freedesktop.org/software/fontconfig/release"
@@ -14,6 +14,13 @@ depends=('rootfs>=2.0.0')
 
 prepare() {
    cd "$srcdir/$pkgname-$pkgver"
+   
+   sed -e '/FC_CHAR_WIDTH/s/CHAR_WIDTH/CHARWIDTH/'             \
+       -e '/FC_CHARWIDTH/a #define FC_CHAR_WIDTH FC_CHARWIDTH' \
+       -i fontconfig/fontconfig.h                &&
+   sed 's/CHAR_WIDTH/CHARWIDTH/' -i src/fcobjs.h
+   
+   patch src/fcobjs.c -i ../../fonctconfig-2.12.1-fcobjs.patch
 }
 
 build() {
@@ -26,7 +33,8 @@ build() {
                --sysconfdir=/etc    \
                --localstatedir=/var \
                --disable-docs       \
-               --docdir=/usr/share/doc/$pkgname-$pkgver
+               --disable-static     \
+               --docdir=/usr/share/doc/$pkgname-${pkgver}
    
    make
 }
