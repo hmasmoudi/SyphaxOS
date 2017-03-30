@@ -2,14 +2,14 @@
 
 pkgname=subversion
 pkgver=1.9.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Subversion is a version control system that is designed to be a compelling replacement for CVS in the open source community."
 arch=('x86_64')
 url="https://www.apache.org/dist/subversion"
 license=('APACHE')
 groups=('applications')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
-md5sums=('9fcbae352a5efe73d46a88c97c6bba14')
+sha1sums=('8bd6a44a1aed30c4c6b6b068488dafb44eaa6adf')
 depends=('rootfs>=2.0.0'
          'apr>=1.5.2'
          'apr-util>=1.5.4'
@@ -35,8 +35,8 @@ package() {
    
    make DESTDIR="${pkgdir}" install
 
-   install -v -m755 -d "${pkgdir}"/usr/share/doc/subversion-1.9.4 &&
+   install -v -m755 -d "${pkgdir}"/usr/share/doc/subversion-1.9.5 &&
    cp      -v -R       doc/* \
-                       "${pkgdir}"/usr/share/doc/subversion-1.9.4
+                       "${pkgdir}"/usr/share/doc/subversion-1.9.5
 }
 
