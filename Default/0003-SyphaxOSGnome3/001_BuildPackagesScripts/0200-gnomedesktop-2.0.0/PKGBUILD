@@ -2,14 +2,14 @@
 
 pkgname=gnomedesktop
 pkgver=2.0.0
-pkgrel=8
+pkgrel=9
 pkgdesc="SyphaxOS 2.0.0 Gnome 3.22 Desktop Package."
 arch=('x86_64')
 install=${pkgname}.install
 license=('GPL')
 groups=('desktop')
 depends=(
-         'intelgraphicslayer'
+         'graphicslayer'
          'gobject-introspection'
          'nspr'
          'zip'
@@ -201,6 +201,5 @@ depends=(
          )
 
 package() {
-
    echo 'Packaging Gnome Desktop for SyphaxOS'
 }
