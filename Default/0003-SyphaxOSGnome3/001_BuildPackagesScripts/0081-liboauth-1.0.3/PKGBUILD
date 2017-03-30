@@ -2,7 +2,7 @@
 
 pkgname=liboauth
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="liboauth is a collection of POSIX-C functions implementing the OAuth Core RFC 5849 standard."
 arch=('x86_64')
 url="http://sourceforge.net/projects/liboauth/files"
@@ -12,21 +12,17 @@ source=("$url/${pkgname}-${pkgver}.tar.gz")
 md5sums=('689b46c2b3ab1a39735ac33f714c4f7f')
 depends=('rootfs>=2.0.0')
 
-prepare() {
-   cd "$srcdir/${pkgname}-${pkgver}"
-}
-
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"
 
-   ./configure --prefix=/usr --disable-static
+   ./configure --prefix=/usr --disable-static  --enable-nss
    
-   make
+   make -j1
 }
 
 package() {
    cd "$srcdir/${pkgname}-${pkgver}"
    
-   make DESTDIR="$pkgdir" install
+   make -j1 DESTDIR="$pkgdir" install
 }
 

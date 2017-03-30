@@ -1,0 +1,15 @@
+--- src/fcobjs.ORIG.c	2016-07-11 03:41:06.000000000 +0100
++++ src/fcobjs.c	2017-03-23 08:00:21.323048203 +0100
+@@ -24,12 +24,6 @@
+ 
+ #include "fcint.h"
+ 
+-static unsigned int
+-FcObjectTypeHash (register const char *str, register unsigned int len);
+-
+-static const struct FcObjectTypeInfo *
+-FcObjectTypeLookup (register const char *str, register unsigned int len);
+-
+ #include "fcobjshash.h"
+ 
+ #include <string.h>

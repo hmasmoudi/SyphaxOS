@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=gnome-themes-standard
-pkgver=3.22.2
+pkgver=3.22.3
 pkgrel=1
 pkgdesc="The GNOME Themes Standard package contains various components of the default GNOME theme."
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="http://ftp.gnome.org/pub/gnome/sources/gnome-themes-standard/3.22"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('b34516cd59b873c187c1897c25bac3b9ce2d30a472f1fd7ae9d7105d93e17da5')
+sha256sums=('61dc87c52261cfd5b94d65e8ffd923ddeb5d3944562f84942eeeb197ab8ab56a')
 depends=('rootfs>=2.0.0')
 
 prepare() {

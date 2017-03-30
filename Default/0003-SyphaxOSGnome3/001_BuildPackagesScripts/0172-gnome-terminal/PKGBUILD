@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=gnome-terminal
-pkgver=3.22.1
+pkgver=3.22.2
 pkgrel=1
 pkgdesc="The GNOME Terminal package contains the terminal emulator for GNOME Desktop."
 arch=('x86_64')
@@ -9,12 +9,8 @@ url="http://ftp.gnome.org/pub/gnome/sources/gnome-terminal/3.22"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('b00752336eb22d6d9f10c863c166ac73dcbb2ce4b280abdc0c78337e261bb0d4')
+sha256sums=('9a5fa5ecad5ac74e8e125bbd201e15e03c794df4cf4a662eab53eaa3523dfc58')
 depends=('rootfs>=2.0.0')
-
-prepare() {
-   cd "$srcdir/${pkgname}-${pkgver}"
-}
 
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"

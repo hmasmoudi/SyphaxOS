@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=samba
-pkgver=4.4.5
+pkgver=4.4.12
 pkgrel=3
 pkgdesc="The Samba package provides file and print services to SMB/CIFS clients and Windows networking to Linux clients."
 arch=('x86_64')
@@ -9,18 +9,16 @@ url="https://download.samba.org/pub/samba/stable"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.gz")
-md5sums=('6950c5e9f7bdeb8a610c2ca957a15be4')
+md5sums=('dd0d7feac27fccd5c646ce4a36acdfd2')
 depends=('rootfs>=2.0.0')
-
-prepare() {
-   cd "$srcdir/${pkgname}-${pkgver}"
-}
 
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"
    
    ./configure                            \
-       --prefix=/usr                      \
+      --prefix=/usr                       \
+      --libdir=/usr/lib                   \
+      --libexecdir=/usr/lib/samba         \
        --sysconfdir=/etc                  \
        --localstatedir=/var               \
        --with-piddir=/run/samba           \
@@ -41,13 +39,15 @@ package() {
    mkdir -pv "${pkgdir}"/lib
    mkdir -pv "${pkgdir}"/{var,run}
    ln -snfv ../run "${pkgdir}"/var/run
+   
    mkdir -pv "${pkgdir}"/run/lock/
    ln -snfv ../run/lock "${pkgdir}"/var/lock
    
-   mv -v "${pkgdir}"/usr/lib/libnss_win{s,bind}.so*   "${pkgdir}"/lib                       &&
-   ln -v -sf ../../lib/libnss_winbind.so.2            "${pkgdir}"/usr/lib/libnss_winbind.so &&
-   ln -v -sf ../../lib/libnss_wins.so.2               "${pkgdir}"/usr/lib/libnss_wins.so    &&
-
+   mv -v "${pkgdir}"/usr/lib/libnss_win{s,bind}.so*   "${pkgdir}"/lib                          &&
+   ln -v -sf ../../lib/libnss_winbind.so.2            "${pkgdir}"/usr/lib/libnss_winbind.so    &&
+   ln -v -sf ../../lib/libnss_wins.so.2               "${pkgdir}"/usr/lib/libnss_wins.so       &&
+   ln -v -sf ../../usr/lib/samba/libreplace-samba4.so "${pkgdir}"/usr/lib/libreplace-samba4.so &&
+   
    install -v -m644    examples/smb.conf.default      "${pkgdir}"/etc/samba
    
    rm -rf "${pkgdir}"/var/run

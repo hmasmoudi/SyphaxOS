@@ -2,7 +2,7 @@
 
 pkgname=libevent
 pkgver=2.0.22
-pkgrel=1
+pkgrel=2
 pkgdesc="libevent is an asynchronous event notification software library. "
 arch=('x86_64')
 url="http://downloads.sourceforge.net/levent"
@@ -14,8 +14,9 @@ depends=('rootfs>=2.0.0')
 
 prepare() {
    cd "$srcdir/${pkgname}-${pkgver}-stable"
+   
+   patch -Np1 -i ../../openssl_1.1.patch
 }
-
 build() {
    cd "$srcdir/${pkgname}-${pkgver}-stable"
    

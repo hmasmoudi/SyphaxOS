@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=gobject-introspection
-pkgver=1.50.0
+pkgver=1.52.0
 pkgrel=1
 pkgdesc="The GObject Introspection is used to describe the program APIs and collect them in a uniform, machine readable format."
 arch=('x86_64')
-url="http://ftp.gnome.org/pub/gnome/sources/gobject-introspection/1.50"
+url="http://ftp.gnome.org/pub/gnome/sources/gobject-introspection/1.52"
 license=('GPL')
 groups=('desktop')
 source=("$url/$pkgname-$pkgver.tar.xz")
-sha256sums=('1c6597c666f543c70ef3d7c893ab052968afae620efdc080c36657f4226337c5')
+sha256sums=('9fc6d1ebce5ad98942cb21e2fe8dd67b722dcc01981840632a1b233f7d0e2c1e')
 depends=('rootfs>=2.0.0')
 
 build() {

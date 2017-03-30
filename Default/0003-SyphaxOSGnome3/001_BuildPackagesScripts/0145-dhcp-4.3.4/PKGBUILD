@@ -2,7 +2,7 @@
 
 pkgname=dhcp
 pkgver=4.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="The ISC DHCP package contains both the client and server programs for DHCP. dhclient (the client) is used for connecting to a network which uses DHCP to assign network addresses. dhcpd (the server) is used for assigning network addresses on private networks."
 arch=('x86_64')
 url="ftp://ftp.isc.org/isc/dhcp/${pkgver}"
@@ -51,7 +51,7 @@ package() {
    install -v -m755 client/scripts/linux "${pkgdir}"/sbin/dhclient-script
    
    cp ../../dhclient.conf "${pkgdir}"/etc/dhcp/dhclient.conf
-   install -v -dm 755 /var/lib/dhclient
+   install -v -dm 755 "${pkgdir}"/var/lib/dhclient
    
    DESTDIR="${pkgdir}"
    EXTDIR=${DESTDIR}/etc

@@ -1,17 +1,17 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=libpng12
-pkgver=1.2.56
-pkgrel=1
+pkgver=1.2.57
+pkgrel=2
 pkgdesc="A collection of routines used to create PNG format graphics files"
 arch=('x86_64')
 url="https://sourceforge.net/projects/libpng/files"
 license=('GPL')
 groups=('applications')
-source=("$url/libpng-${pkgver}.tar.xz"
-        "libpng-1.2.56-apng.patch")
-md5sums=('868562bd1c58b76ed8703f135a2e439a'
-         '5ba30446f3c9d494b6ca50bee438a1d7')
+source=("https://sourceforge.net/projects/libpng/files/libpng-${pkgver}.tar.xz"
+        "https://sourceforge.net/projects/apng/files/libpng/libpng12/libpng-${pkgver}-apng.patch.gz")
+sha256sums=('0f4620e11fa283fedafb474427c8e96bf149511a1804bdc47350963ae5cf54d8'
+            '7cae56ef3b8101d2106fc9c487c53ac600d8699913422b80e068bb50c41bebb6')
 depends=('rootfs>=2.0.0')
 
 prepare() {
@@ -35,8 +35,10 @@ build() {
 
 package() {
    cd "$srcdir/libpng-${pkgver}"
-   
+
    make DESTDIR="${pkgdir}" install
    rm -rf "${pkgdir}"/usr/{bin,include,lib/{libpng.{a,so,la},pkgconfig},share}
+
+   install -Dm 644 LICENSE -t "${pkgdir}"/usr/share/licenses/libpng12/
 }
 

@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=libpng
-pkgver=1.6.28
-pkgrel=2
+pkgver=1.6.29
+pkgrel=1
 pkgdesc="The libpng package contains libraries used by other programs for reading and writing PNG files."
 arch=('x86_64')
 url="http://downloads.sourceforge.net/libpng"
 license=('GPL')
 groups=('graphicslayer')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-md5sums=('425354f86c392318d31aedca71019372')
+sha256sums=('4245b684e8fe829ebb76186327bb37ce5a639938b219882b53d64bd3cfc5f239')
 depends=('rootfs>=2.0.0')
 
 prepare() {
@@ -32,7 +32,9 @@ package() {
    #Make the package
    make DESTDIR="$pkgdir" install
    
-   mkdir -pv $pkgdir/usr/share/doc/$pkgname-$pkgver
-   cp -v README libpng-manual.txt $pkgdir/usr/share/doc/$pkgname-$pkgver
+   cd contrib/pngminus
+   make PNGLIB="-L$pkgdir/usr/lib -lpng" -f makefile.std png2pnm pnm2png
+   install -m755 png2pnm pnm2png "$pkgdir/usr/bin/"
+   install -D -m644 ../../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 

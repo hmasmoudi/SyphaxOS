@@ -1,14 +1,14 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=adapta-gtk-theme
-pkgver=3.89.5.40
+pkgver=3.89.5.70
 pkgrel=1
 pkgdesc="Adapta gtk theme for SyphaxOS Desktop"
 url="https://github.com/adapta-project/adapta-gtk-theme"
 license=('CUSTOM')
 arch=('x86_64')
 source=("https://launchpad.net/~tista/+archive/ubuntu/adapta/+files/adapta-gtk-theme_${pkgver}-0ubuntu1~zesty1_all.deb")
-sha256sums=('a44e26b994d54ec81ad305bbbbd01b39c52329b22f404ed2cc43ded52e94a437')
+md5sums=('SKIP')
 
 package() {
    tar xf data.tar.xz

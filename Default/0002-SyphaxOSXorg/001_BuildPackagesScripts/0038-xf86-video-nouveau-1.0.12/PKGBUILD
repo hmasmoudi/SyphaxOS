@@ -1,20 +1,16 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=xf86-video-nouveau
-pkgver=1.0.12
-pkgrel=1
+pkgver=1.0.14
+pkgrel=2
 pkgdesc="The Xorg Nouveau Driver package contains the X.Org Video Driver for NVidia Cards"
 arch=('x86_64')
-url="http://ftp.x.org/pub/individual/driver"
+url="https://xorg.freedesktop.org/archive/individual/driver/"
 license=('GPL')
 groups=('graphicslayer')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
-md5sums=('dc79910c7b9e32321cefc7af250c7765')
+sha256sums=('4ddff99b3cc49f16cdcf99f6e1c5856b6f06589ec98376cedb5754100afe31c1')
 depends=('rootfs>=2.0.0')
-
-prepare() {
-   cd "$srcdir/$pkgname-$pkgver"
-}
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"
@@ -32,8 +28,5 @@ package() {
    
    #Make the package
    make DESTDIR="$pkgdir" install
-   
-   mkdir -pv ${pkgdir}/etc/X11/xorg.conf.d/
-   cp ../../nvidia.conf ${pkgdir}/etc/X11/xorg.conf.d/
 }
 

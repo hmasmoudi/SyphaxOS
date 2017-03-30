@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=openssl
-pkgver=1.0.2k
+pkgver=1.1.0e
 pkgrel=1
 pkgdesc="The OpenSSL package contains management tools and libraries relating to cryptography."
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=("$url/${pkgname}-${pkgver}.tar.gz"
         "remove-expired-certs.sh"
         "make-ca.sh"
         "make-cert.pl")
-sha1sums=('5f26a624479c51847ebd2f22bb9f84b3b44dcb44'
+sha1sums=('8bbbaf36feffadd3cb9110912a8192e665ebca4b'
           'SKIP'
           '0c5c4a49307ee52ba328a14cd003d8d670648adf'
           '93e4634b66b08a4f0da949b26972dad1c079ad06'
@@ -22,15 +22,13 @@ depends=('rootfs>=2.0.0')
 
 prepare() {
    cd "$srcdir/$pkgname-$pkgver"
-   
-   sed -i 's# libcrypto.a##;s# libssl.a##' Makefile
- 
+    
    cp "${srcdir}"/certdata.txt            "${srcdir}"/$pkgname-$pkgver
    cp "${srcdir}"/remove-expired-certs.sh "${srcdir}"/$pkgname-$pkgver
    cp "${srcdir}"/make-ca.sh              "${srcdir}"/$pkgname-$pkgver
    cp "${srcdir}"/make-cert.pl            "${srcdir}"/$pkgname-$pkgver
    
-   sed -i '1 i #CVS_ID @# $ RCSfile: certdata.txt $ $Revision: 20170201 $ $Date: $' certdata.txt
+   sed -i '1 i #CVS_ID @# $ RCSfile: certdata.txt $ $Revision: 20170330 $ $Date: $' certdata.txt
 }
 
 build() {
@@ -41,8 +39,12 @@ build() {
             --libdir=lib \
             shared \
             zlib-dynamic
-   make depend
-   make
+   
+   #disable static libraries
+   sed -i 's#=libcrypto.a libssl.a#=#' Makefile
+
+   make depend   
+   make -j1
 }
 
 package() {
@@ -50,7 +52,7 @@ package() {
    
    install -dv -m755 $pkgdir/usr/share/man
    
-   make INSTALL_PREFIX=$pkgdir MANDIR=/usr/share/man MANSUFFIX=ssl install
+   make DESTDIR=$pkgdir MANDIR=/usr/share/man MANSUFFIX=ssl install
    
    install -dv -m755 $pkgdir/usr/share/doc/$pkgname-$pkgver
    cp -vfr doc/*     $pkgdir/usr/share/doc/$pkgname-$pkgver

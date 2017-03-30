@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=atk
-pkgver=2.23.4
+pkgver=2.24.0
 pkgrel=1
 pkgdesc="ATK provides the set of accessibility interfaces that are implemented by other toolkits and applications."
 arch=('x86_64')
-url="http://ftp.gnome.org/pub/gnome/sources/atk/2.23"
+url="http://ftp.gnome.org/pub/gnome/sources/atk/2.24"
 license=('GPL')
 groups=('desktop')
 source=("$url/$pkgname-$pkgver.tar.xz")
-sha256sums=('6888f4e902fc4727b1687ff512d5d087050f4c0d11035566484988cf698c2c1a')
+sha256sums=('bb2daa9a808c73a7a79d2983f333e0ba74be42fc51e3ba1faf2551a636487a49')
 depends=('rootfs>=2.0.0')
 
 build() {

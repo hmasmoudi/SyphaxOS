@@ -2,7 +2,7 @@
 
 pkgname=shared-mime-info
 pkgver=1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="The Shared Mime Info package contains a MIME database. This allows central updates of MIME information for all supporting applications."
 arch=('x86_64')
 url="http://freedesktop.org/~hadess"
@@ -12,21 +12,17 @@ source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('10abc5c4e6b22223ff05c3bd70ff9e8f')
 depends=('rootfs>=2.0.0')
 
-prepare() {
-   cd "$srcdir/${pkgname}-${pkgver}"
-}
-
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"
    
    ./configure --prefix=/usr
    
-   make
+   make -j1
 }
 
 package() {
    cd "$srcdir/${pkgname}-${pkgver}"
       
-   make DESTDIR="${pkgdir}" install
+   make -j1 DESTDIR="${pkgdir}" install
 }
 

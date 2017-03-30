@@ -2,7 +2,7 @@
 
 pkgname=xf86-video-intel
 pkgver=20170216
-pkgrel=3
+pkgrel=5
 pkgdesc="The Xorg Intel Driver package contains the X.Org Video Driver for Intel integrated video cards"
 arch=('x86_64')
 url="http://anduin.linuxfromscratch.org/BLFS/xf86-video-intel/"
@@ -22,7 +22,7 @@ build() {
    source /etc/profile.d/xorg.sh
    echo "Using XORG_PREFIX ($XORG_PREFIX) & XORG_CONFIG ($XORG_CONFIG)"
 
-   ./configure $XORG_CONFIG --enable-kms-only --enable-uxa
+   ./configure $XORG_CONFIG --enable-kms-only --enable-uxa --with-default-dri=3
    
    make
 }
@@ -32,8 +32,5 @@ package() {
    
    #Make the package
    make DESTDIR="$pkgdir" install
-   
-   mkdir -pv ${pkgdir}/etc/X11/xorg.conf.d/
-   cp ../../20-intel.conf ${pkgdir}/etc/X11/xorg.conf.d/
 }
 

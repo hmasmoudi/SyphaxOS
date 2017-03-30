@@ -2,7 +2,7 @@
 
 pkgname=pm-utils
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The Power Management Utilities is a small collection of scripts to suspend and hibernate computer that can be used to run user supplied scripts on suspend and resume."
 arch=('x86_64')
 url="http://pm-utils.freedesktop.org/releases"
@@ -11,10 +11,6 @@ groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.gz")
 md5sums=('1742a556089c36c3a89eb1b957da5a60')
 depends=('rootfs>=2.0.0')
-
-prepare() {
-   cd "$srcdir/${pkgname}-${pkgver}"
-}
 
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"
@@ -32,8 +28,8 @@ package() {
    
    install -v -m644 man/*.1 "${pkgdir}"/usr/share/man/man1
    install -v -m644 man/*.8 "${pkgdir}"/usr/share/man/man8
-   ln -sv pm-action.8 "${pkgdir}"/usr/share/man/man8/pm-suspend.8
-   ln -sv pm-action.8 "${pkgdir}"/usr/share/man/man8/pm-hibernate.8
-   ln -sv pm-action.8 "${pkgdir}"/usr/share/man/man8/pm-suspend-hybrid.8
+   ln -snf pm-action.8 "${pkgdir}"/usr/share/man/man8/pm-suspend.8
+   ln -snf pm-action.8 "${pkgdir}"/usr/share/man/man8/pm-hibernate.8
+   ln -snf pm-action.8 "${pkgdir}"/usr/share/man/man8/pm-suspend-hybrid.8
 }
 

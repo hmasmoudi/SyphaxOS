@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=git
-pkgver=2.12.0
-pkgrel=1
+pkgver=2.12.2
+pkgrel=2
 pkgdesc="The Git feature that really makes it stand apart from nearly every other SCM out there is its branching model."
 arch=('x86_64')
 url="https://www.kernel.org/pub/software/scm/git"
 license=('GPL')
 groups=('applications')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-md5sums=('2f47ac12628d94da397cea54997618a8')
+md5sums=('ad5ae08664c40caf074392abc301cccd')
 depends=('rootfs>=2.0.0')
 
 prepare() {
