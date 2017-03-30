@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=opera
-pkgver=43.0.2442.1144
+pkgver=44.0.2510.857
 pkgrel=1
 pkgdesc="A fast and secure web browser"
 install=${pkgname}.install
@@ -12,11 +12,11 @@ groups=('applications')
 source=("$url/${pkgname}-stable_${pkgver}_amd64.deb"
         "opera"
         "default")
-md5sums=('6684db41445c8bfead6251d455d22ed4'
+md5sums=('2c7dc68ebea5c7f65d711af0d82dbac1'
          'c8150bcdead9465aa9b815062eecbbdc'
          'df0f13b3985dd9e0be360a7a496cd142')
 depends=('rootfs>=2.0.0'
-         'pepper-flash>=24.0.0.194')
+         'pepper-flash>=25.0.0.127')
 
 prepare() {
     sed -e "s/%pkgname%/$pkgname/g" -i "$srcdir/opera"
