@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=vivaldi
-pkgver=1.7.735.46
+pkgver=1.8.770.50
 pkgrel=1
 pkgdesc='An advanced browser made with the power user in mind.'
 url="https://vivaldi.com"
@@ -10,7 +10,7 @@ license=('custom')
 arch=('x86_64')
 depends=('rootfs>=2.0.0')
 source=("https://downloads.vivaldi.com/stable/vivaldi-stable_${pkgver}-1_amd64.deb")
-sha256sums=('bb15313f9d7f17bc135b5a41df0aaf83b1bdc1867bf3fe4fce5757a0bbadebbe')
+sha256sums=('361c6681cd27ce64ffa6f34a98f13e053ce6fd31ac4c84e7c4e40b6de0a6144f')
 
 package() {
     tar -xf data.tar.xz --exclude=usr/share/{lintian,menu} -C "$pkgdir/"
