@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=FileZilla
-pkgver=3.24.1
+pkgver=3.25.1
 pkgrel=1
 pkgdesc="A fast cross-platform FTP client."
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL')
 groups=('applications')
 instal=${pkgname}.install
 source=("$url/${pkgname}_${pkgver}_x86_64-linux-gnu.tar.bz2")
-md5sums=('e5b441f9a2276178c2e2529893b42fb7')
+md5sums=('a94ca306de20523eca24d5426b673dad')
 depends=('rootfs>=2.0.0')
 
 package() {
