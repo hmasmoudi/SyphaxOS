@@ -1,0 +1,25 @@
+# $Id$
+# Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Contributor: Anatol Pomozov <anatol dot pomozov at gmail>
+
+pkgname=meson
+pkgver=0.38.1
+pkgrel=1
+pkgdesc='High productivity build system'
+url='http://mesonbuild.com/'
+arch=('any')
+license=('Apache')
+depends=('ninja')
+source=(https://github.com/mesonbuild/meson/releases/download/${pkgver}/meson-${pkgver}.tar.gz)
+sha256sums=('dcb05349b32427924fa2a258a5e23e40e09c1bf9dd09919198c3a2ae1c38ba53')
+
+package() {
+  cd ${pkgname}-${pkgver}
+  python3 setup.py install --root="${pkgdir}" -O1
+  install -Dm 644 syntax-highlighting/vim/ftdetect/meson.vim -t "${pkgdir}/usr/share/vim/vimfiles/ftdetect"
+  install -Dm 644 syntax-highlighting/vim/indent/meson.vim -t "${pkgdir}/usr/share/vim/vimfiles/indent"
+  install -Dm 644 syntax-highlighting/vim/syntax/meson.vim -t "${pkgdir}/usr/share/vim/vimfiles/syntax"
+}
+
+# vim: ts=2 sw=2 et:
