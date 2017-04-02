@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=linux-headers
-pkgver=4.9.18
+pkgver=4.9.20
 pkgrel=1
 pkgdesc="The Linux API Headers expose the kernel's API for use by Glibc."
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://cdn.kernel.org/pub/linux/kernel/v4.x"
 license=('GPL')
 groups=('core')
 source=("$url/linux-$pkgver.tar.xz")
-md5sums=('40807e59b9609f89a0a6791b34e34416')
+md5sums=('f824815a579334f76b85b2c79893ceb4')
 depends=('rootfs>=2.0.0')
 
 build() {
