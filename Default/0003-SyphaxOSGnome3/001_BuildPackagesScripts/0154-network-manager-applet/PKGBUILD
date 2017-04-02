@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=network-manager-applet
-pkgver=1.4.4
-pkgrel=3
+pkgver=1.4.6
+pkgrel=1
 pkgdesc="The NetworkManager Applet provides a tool and a panel applet used to configure wired and wireless network connections through GUI."
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/network-manager-applet/1.4"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('693846eeae0986e79eb1cedfbc499f132f27a9976ef189a0f16938ac59ec3226')
+sha256sums=('10a6fcfe8c6206cf18ec78a522a716b5ec9d0b7ca1e7d234c638725b316fec76')
 depends=('rootfs>=2.0.0')
 
 prepare() {
