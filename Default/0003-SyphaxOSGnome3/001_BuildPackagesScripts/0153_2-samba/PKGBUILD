@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=samba
-pkgver=4.4.12
-pkgrel=3
+pkgver=4.4.13
+pkgrel=1
 pkgdesc="The Samba package provides file and print services to SMB/CIFS clients and Windows networking to Linux clients."
 arch=('x86_64')
 url="https://download.samba.org/pub/samba/stable"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.gz")
-md5sums=('dd0d7feac27fccd5c646ce4a36acdfd2')
+md5sums=('799ba7ac2e18880ab09c4d3f390c2395')
 depends=('rootfs>=2.0.0')
 
 build() {
