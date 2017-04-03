@@ -2,7 +2,7 @@
 
 pkgname=libpng
 pkgver=1.6.29
-pkgrel=1
+pkgrel=3
 pkgdesc="The libpng package contains libraries used by other programs for reading and writing PNG files."
 arch=('x86_64')
 url="http://downloads.sourceforge.net/libpng"
@@ -21,8 +21,11 @@ prepare() {
 build() {
    cd "$srcdir/$pkgname-$pkgver"
    
-   ./configure --prefix=/usr --disable-static
-   
+   ./configure LIBS="-lpthread" \
+      --prefix=/usr \
+      --disable-static \
+      --enable-intel-sse \
+
    make
 }
 
@@ -30,7 +33,7 @@ package() {
    cd "$srcdir/$pkgname-$pkgver"
    
    #Make the package
-   make DESTDIR="$pkgdir" install
+   make -j1 DESTDIR="$pkgdir" install
    
    cd contrib/pngminus
    make PNGLIB="-L$pkgdir/usr/lib -lpng" -f makefile.std png2pnm pnm2png
