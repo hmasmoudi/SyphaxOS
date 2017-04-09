@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=pkg-config
-pkgver=0.29.1
-pkgrel=2
+pkgver=0.29.2
+pkgrel=1
 pkgdesc="The pkg-config package contains a tool for passing the include path and/or library paths to build tools during the configure and make file execution."
 arch=('x86_64')
 url="http://pkgconfig.freedesktop.org/releases"
 license=('GPL')
 groups=('core')
 source=("$url/$pkgname-$pkgver.tar.gz")
-md5sums=('f739a28cae4e0ca291f82d1d41ef107d')
+md5sums=('f6e931e319531b736fadc017f470e68a')
 depends=('rootfs>=2.0.0')
 
 build() {
