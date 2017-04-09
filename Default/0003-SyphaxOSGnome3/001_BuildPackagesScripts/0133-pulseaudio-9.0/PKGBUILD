@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=pulseaudio
-pkgver=9.0
+pkgver=10.0
 pkgrel=1
 pkgdesc="PulseAudio is a sound system for POSIX OSes, meaning that it is a proxy for sound applications."
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="http://freedesktop.org/software/pulseaudio/releases"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-md5sums=('da7162541b3a9bc20576dbd0d7d1489a')
+md5sums=('4950d2799bf55ab91f6b7f990b7f0971')
 depends=('rootfs>=2.0.0')
 
 prepare() {

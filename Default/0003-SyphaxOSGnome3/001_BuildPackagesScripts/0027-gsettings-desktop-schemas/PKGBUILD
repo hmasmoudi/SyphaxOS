@@ -2,7 +2,7 @@
 
 pkgname=gsettings-desktop-schemas
 pkgver=3.22.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The GSettings Desktop Schemas package contains a collection of GSettings schemas for settings shared by various components of a GNOME Desktop."
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/gsettings-desktop-schemas/3.22"

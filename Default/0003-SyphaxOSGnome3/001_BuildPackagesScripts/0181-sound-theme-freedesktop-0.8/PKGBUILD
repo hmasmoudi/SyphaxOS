@@ -2,7 +2,7 @@
 
 pkgname=sound-theme-freedesktop
 pkgver=0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="The Sound Theme Freedesktop package contains sound themes for the desktop."
 arch=('x86_64')
 url="http://people.freedesktop.org/~mccann/dist"
@@ -11,10 +11,6 @@ groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
 md5sums=('d7387912cfd275282d1ec94483cb2f62')
 depends=('rootfs>=2.0.0')
-
-prepare() {
-   cd "$srcdir/${pkgname}-${pkgver}"
-}
 
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"
