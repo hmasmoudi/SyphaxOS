@@ -2,7 +2,7 @@
 
 pkgname=SyphaxOS-Theme
 pkgver=2.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="SyphaxOS theme based on adapta gtk theme and Paper icons Packs"
 url="https://bintray.com/syphaxos"
 license=('CUSTOM')

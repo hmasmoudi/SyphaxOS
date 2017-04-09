@@ -1,8 +1,8 @@
 # arg 1:  the new package version
 post_install() {
-   glib-compile-schemas /usr/share/glib-2.0/schemas
+   glib-compile-schemas /usr/share/glib-2.0/schemas > /dev/null 2>&1
 	update-desktop-database -q /usr/share/applications
-	update-mime-database /usr/share/mime >/dev/null
+	update-mime-database /usr/share/mime > /dev/null 2>&1
 	touch -c /usr/share/icons/hicolor
 	gtk-update-icon-cache -tq /usr/share/icons/hicolor
 }

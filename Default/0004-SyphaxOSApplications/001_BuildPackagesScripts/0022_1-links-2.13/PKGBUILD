@@ -2,7 +2,7 @@
 
 pkgname=links
 pkgver=2.13
-pkgrel=1
+pkgrel=2
 pkgdesc="Links is a text and graphics mode WWW browser."
 arch=('x86_64')
 url="http://links.twibright.com/download"
@@ -11,10 +11,6 @@ groups=('applications')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
 md5sums=('af418c83909ee73c09b95470bda6e377')
 depends=('rootfs>=2.0.0')
-
-prepare() {
-   cd "$srcdir/${pkgname}-${pkgver}"
-}
 
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"
