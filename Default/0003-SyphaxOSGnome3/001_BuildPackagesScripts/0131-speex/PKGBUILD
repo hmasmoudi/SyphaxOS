@@ -1,0 +1,30 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=speex
+pkgver=1.2.0
+pkgrel=1
+pkgdesc="Speex is an audio compression format designed especially for speech. It is well-adapted to internet applications and provides useful features that are not present in most other CODECs."
+arch=('x86_64')
+url="http://downloads.us.xiph.org/releases/speex"
+license=('GPL')
+groups=('desktop')
+source=("$url/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('eaae8af0ac742dc7d542c9439ac72f1f385ce838392dc849cae4536af9210094')
+depends=('rootfs>=2.0.0')
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   ./configure --prefix=/usr    \
+               --disable-static \
+               --docdir=/usr/share/doc/${pkgname}-${pkgver}
+   
+   make -j1
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   make DESTDIR="$pkgdir" install
+}
+

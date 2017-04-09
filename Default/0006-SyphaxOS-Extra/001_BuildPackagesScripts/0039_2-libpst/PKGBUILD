@@ -1,0 +1,29 @@
+# $Id$
+# Maintainer: Jan de Groot <jgc@archlinux.org>
+
+pkgbase=libpst
+pkgname=('libpst')
+pkgver=0.6.70
+pkgrel=1
+arch=('x86_64')
+url="http://www.five-ten-sg.com/libpst/"
+license=('GPL')
+source=(http://www.five-ten-sg.com/libpst/packages/${pkgbase}-${pkgver}.tar.gz)
+sha256sums=('19981c0661305d093e7df8cf579662c6157ffb38a7873091cfc9e900fb4667d4')
+
+build() {
+  cd $pkgbase-$pkgver
+  ./configure --prefix=/usr --mandir=/usr/share/man \
+      --disable-static --enable-libpst-shared --disable-dii --disable-python
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+  make
+}
+
+package_libpst() {
+  pkgdesc="Outlook .pst file converter"
+  depends=('libgsf')
+
+  cd $pkgbase-$pkgver
+  make DESTDIR="${pkgdir}" install
+}
+
