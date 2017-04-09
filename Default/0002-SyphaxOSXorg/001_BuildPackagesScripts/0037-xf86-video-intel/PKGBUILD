@@ -1,34 +1,36 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=xf86-video-intel
-pkgver=20170216
-pkgrel=5
+pkgver=20170407
+pkgrel=1
+_commit=cb6ba2da056f3298a765b4da5cd626343c00a533  # master
 pkgdesc="The Xorg Intel Driver package contains the X.Org Video Driver for Intel integrated video cards"
 arch=('x86_64')
-url="http://anduin.linuxfromscratch.org/BLFS/xf86-video-intel/"
+url="https://01.org/linuxgraphics"
 license=('GPL')
 groups=('graphicslayer')
-source=("$url/${pkgname}-${pkgver}.tar.xz")
-md5sums=('797c06a33bd1b3fb5a33468fbc84518d')
+source=("git+https://anongit.freedesktop.org/git/xorg/driver/xf86-video-intel#commit=$_commit")
+md5sums=('SKIP')
 depends=('rootfs>=2.0.0')
 
 prepare() {
-   cd "$srcdir/$pkgname-$pkgver"
+   cd "$srcdir/$pkgname"
+   NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-   cd "$srcdir/$pkgname-$pkgver"
+   cd "$srcdir/$pkgname"
    
    source /etc/profile.d/xorg.sh
    echo "Using XORG_PREFIX ($XORG_PREFIX) & XORG_CONFIG ($XORG_CONFIG)"
 
-   ./configure $XORG_CONFIG --enable-kms-only --enable-uxa --with-default-dri=3
+   ./configure $XORG_CONFIG --with-default-dri=3
    
    make
 }
 
 package() {
-   cd "$srcdir/$pkgname-$pkgver"
+   cd "$srcdir/$pkgname"
    
    #Make the package
    make DESTDIR="$pkgdir" install
