@@ -1,30 +1,26 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=evolution-data-server
-pkgver=3.22.7
+pkgver=3.24.0
 pkgrel=1
 pkgdesc="Evolution Data Server package provides a unified backend for programs that work with contacts, tasks, and calendar information."
 arch=('x86_64')
-url="http://ftp.gnome.org/pub/gnome/sources/evolution-data-server/3.22"
+url="http://ftp.gnome.org/pub/gnome/sources/evolution-data-server/3.24"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('43127fe1f190873c73e13a4cada6cfe47870f1cc962e540a682cca123d959203')
+sha256sums=('41ddb60b08ee287e82be52ebbe49b5a336984e52584a5fd34c82d45493f8031b')
 depends=('rootfs>=2.0.0')
 
 prepare() {
    cd "$srcdir/${pkgname}-${pkgver}"
    
-   sed -i "/seems to be moved/s/^/#/" ltmain.sh
+   cmake -DCMAKE_INSTALL_PREFIX=/usr -DLIBEXEC_INSTALL_DIR=/usr/lib/evolution-data-server -DSYSCONF_INSTALL_DIR=/etc -DENABLE_INTROSPECTION=ON -DENABLE_VALA_BINDINGS=ON -DENABLE_UOA=OFF -DENABLE_GOOGLE_AUTH=OFF -DENABLE_GTK_DOC=OFF -DWITH_OPENLDAP=OFF .
 }
 
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"
-
-   ./configure --prefix=/usr \
-               --disable-uoa \
-               --disable-google-auth \
-               --enable-vala-bindings        
+   
    make
 }
 
