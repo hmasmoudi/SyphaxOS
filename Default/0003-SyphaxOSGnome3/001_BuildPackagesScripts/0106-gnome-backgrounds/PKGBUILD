@@ -1,20 +1,16 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=gnome-backgrounds
-pkgver=3.22.1
+pkgver=3.24.0
 pkgrel=1
 pkgdesc="The GNOME Backgrounds package contains a collection of graphics files which can be used as backgrounds in the GNOME Desktop environment."
 arch=('x86_64')
-url="http://ftp.gnome.org/pub/gnome/sources/gnome-backgrounds/3.22"
+url="http://ftp.gnome.org/pub/gnome/sources/gnome-backgrounds/3.24"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('bfc89812b26383b74062c43f6c175b8fce19d4044b42f8bc9de2ab196a6eee25')
+sha256sums=('cbda4c2159292940fa4b972df77379be716590c7b62bb4b2b9fa8e99749c71ca')
 depends=('rootfs>=2.0.0')
-
-prepare() {
-   cd "$srcdir/${pkgname}-${pkgver}"
-}
 
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"
