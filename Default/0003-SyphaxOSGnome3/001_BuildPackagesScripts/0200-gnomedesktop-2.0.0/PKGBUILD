@@ -2,7 +2,7 @@
 
 pkgname=gnomedesktop
 pkgver=2.0.0
-pkgrel=10
+pkgrel=12
 pkgdesc="SyphaxOS 2.0.0 Gnome 3.22 Desktop Package."
 arch=('x86_64')
 install=${pkgname}.install
@@ -40,6 +40,7 @@ depends=(
          'libsecret'
          'sqlite'
          'openssl'
+         'libunistring'
          'gnutls'
          'glib-networking'
          'libsoup'
@@ -55,6 +56,7 @@ depends=(
          'json-glib'
          'geocode-glib'
          'mozjs24'
+         'mozjs38'
          'gjs'
          'iso-codes'
          'gnome-desktop'
