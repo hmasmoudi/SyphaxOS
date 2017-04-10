@@ -2,7 +2,7 @@
 
 pkgname=glib-networking
 pkgver=2.50.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The GLib Networking package contains Network related gio modules for GLib."
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/glib-networking/2.50"
@@ -11,10 +11,6 @@ groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 sha256sums=('3f1a442f3c2a734946983532ce59ed49120319fdb10c938447c373d5e5286bee')
 depends=('rootfs>=2.0.0')
-
-prepare() {
-   cd "$srcdir/$pkgname-$pkgver"
-}
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"
