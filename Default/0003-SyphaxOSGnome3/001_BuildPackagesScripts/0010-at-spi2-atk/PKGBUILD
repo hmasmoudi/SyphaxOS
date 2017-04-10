@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=at-spi2-atk
-pkgver=2.22.0
+pkgver=2.24.0
 pkgrel=1
 pkgdesc="The At-Spi2 Atk package contains a library that bridges ATK to At-Spi2 D-Bus service."
 arch=('x86_64')
-url="http://ftp.gnome.org/pub/gnome/sources/at-spi2-atk/2.22"
+url="http://ftp.gnome.org/pub/gnome/sources/at-spi2-atk/2.24"
 license=('GPL')
 groups=('desktop')
 source=("$url/$pkgname-$pkgver.tar.xz")
-sha256sums=('e8bdedbeb873eb229eb08c88e11d07713ec25ae175251648ad1a9da6c21113c1')
+sha256sums=('022d68497c05cc65ba7cd2b166132de9a160c8d90e9200b5faa473ef7e784c61')
 depends=('rootfs>=2.0.0')
 
 prepare() {
