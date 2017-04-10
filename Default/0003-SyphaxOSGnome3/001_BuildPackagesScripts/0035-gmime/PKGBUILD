@@ -2,7 +2,7 @@
 
 pkgname=gmime
 pkgver=2.6.23
-pkgrel=1
+pkgrel=2
 pkgdesc="The GMime package contains a set of utilities for parsing and creating messages using the Multipurpose Internet Mail Extension (MIME) as defined by the applicable RFCs."
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/gmime/2.6"
@@ -11,10 +11,6 @@ groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 sha256sums=('7149686a71ca42a1390869b6074815106b061aaeaaa8f2ef8c12c191d9a79f6a')
 depends=('rootfs>=2.0.0')
-
-prepare() {
-   cd "$srcdir/$pkgname-$pkgver"
-}
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"
