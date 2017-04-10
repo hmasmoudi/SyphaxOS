@@ -1,0 +1,48 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=mozjs24
+pkgver=24.2.0
+pkgrel=2
+pkgdesc="JS is Mozilla's JavaScript engine written in C/C++."
+arch=('x86_64')
+url="https://ftp.mozilla.org/pub/js"
+license=('GPL')
+groups=('desktop')
+source=("$url/mozjs-${pkgver}.tar.bz2")
+md5sums=('5db79c10e049a2dc117a6e6a3bc78a8e')
+depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/mozjs-$pkgver"
+   
+   cd js/src
+   
+   sed -i 's/(defined\((@TEMPLATE_FILE)\))/\1/' config/milestone.pl
+}
+
+build() {
+   cd "$srcdir/mozjs-$pkgver"
+   
+   cd js/src
+
+   SHELL=/bin/bash ./configure --prefix=/usr       \
+                               --enable-readline   \
+                               --enable-threadsafe \
+                               --with-system-ffi   \
+                               --with-system-nspr
+   make
+}
+
+package() {
+   cd "$srcdir/mozjs-$pkgver"
+   
+   cd js/src
+
+   make DESTDIR="$pkgdir" install
+   
+   find $pkgdir/usr/include/mozjs-24/         \
+        $pkgdir/usr/lib/libmozjs-24.a         \
+        $pkgdir/usr/lib/pkgconfig/mozjs-24.pc \
+               -type f -exec chmod -v 644 {} \;
+}
+
