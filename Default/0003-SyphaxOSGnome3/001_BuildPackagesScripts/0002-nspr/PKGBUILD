@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=nspr
-pkgver=4.12
+pkgver=4.14
 pkgrel=2
 pkgdesc="Netscape Portable Runtime (NSPR) provides a platform-neutral API for system level and libc like functions."
 arch=('x86_64')
-url="https://ftp.mozilla.org/pub/mozilla.org/nspr/releases/v4.12/src"
+url="https://ftp.mozilla.org/pub/mozilla.org/nspr/releases/v${pkgver}/src"
 license=('GPL')
 groups=('desktop')
 source=("$url/$pkgname-$pkgver.tar.gz")
-md5sums=('0de760c1e00a92e180e611cf06ce9589')
+sha256sums=('64fc18826257403a9132240aa3c45193d577a84b08e96f7e7770a97c074d17d5')
 depends=('rootfs>=2.0.0')
 
 prepare() {
@@ -21,10 +21,10 @@ prepare() {
 build() {
    cd "$srcdir/$pkgname-$pkgver/$pkgname"
 
-   ./configure --prefix=/usr \
-            --with-mozilla   \
-            --with-pthreads  \
-            --enable-64bit
+   ./configure --prefix=/usr    \
+               --with-mozilla   \
+               --with-pthreads  \
+               --enable-64bit
 
    make
 }
