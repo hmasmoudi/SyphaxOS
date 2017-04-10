@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=libtasn1
-pkgver=4.9
+pkgver=4.10
 pkgrel=1
 pkgdesc="libtasn1 is a highly portable C library that encodes and decodes DER/BER data following an ASN.1 schema."
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="http://ftp.gnu.org/gnu/libtasn1"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.gz")
-md5sums=('3018d0f466a32b66dde41bb122e6cab6')
+md5sums=('f4faffdf63969d0e4e6df43b9679e8e5')
 depends=('rootfs>=2.0.0')
 
 prepare() {
