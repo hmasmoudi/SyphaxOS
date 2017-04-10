@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=accountsservice
-pkgver=0.6.43
+pkgver=0.6.45
 pkgrel=1
 pkgdesc="The AccountsService package provides a set of D-Bus interfaces for querying and manipulating user account information and an implementation of those interfaces based on the usermod(8), useradd(8) and userdel(8) commands."
 arch=('x86_64')
@@ -10,7 +10,7 @@ install=$pkgname.install
 license=('GPL')
 groups=('desktop')
 source=("$url/$pkgname-$pkgver.tar.xz")
-md5sums=('27a899cdfba9aeae4ba4b0bf2b05810a')
+md5sums=('b4c0a74bb5f8680dda0b7be27b1c02d9')
 depends=('rootfs>=2.0.0')
 
 build() {
