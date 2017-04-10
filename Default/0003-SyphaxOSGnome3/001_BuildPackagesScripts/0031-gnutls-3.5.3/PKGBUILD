@@ -2,14 +2,14 @@
 
 pkgname=gnutls
 pkgver=3.5.10
-pkgrel=1
+pkgrel=2
 pkgdesc="The GnuTLS package contains libraries and userspace tools which provide a secure layer over a reliable transport layer."
 arch=('x86_64')
 url="https://www.gnupg.org/ftp/gcrypt/gnutls/v3.5"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-md5sums=('6c2c7f40ddf52933ee3ca474cb8cb63c')
+md5sums=('336c03a71ba90184ffd0388075dde504')
 depends=('rootfs>=2.0.0')
 
 build() {
