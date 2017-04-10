@@ -1,20 +1,16 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=gnome-power-manager
-pkgver=3.22.2
+pkgver=3.24.0
 pkgrel=1
 pkgdesc="The GNOME Power Manager package contains a tool used to report on power management on the system."
 arch=('x86_64')
-url="http://ftp.gnome.org/pub/gnome/sources/gnome-power-manager/3.22"
+url="http://ftp.gnome.org/pub/gnome/sources/gnome-power-manager/3.24"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('4f02d101d768fc4da52b7a294b233f7e4e1fbc09515d144bf2040bab9e0724e0')
+sha256sums=('135ec3cd01f02e9cc006a2944cb8bd53382b01bb39c871131ee706417c9f0ab7')
 depends=('rootfs>=2.0.0')
-
-prepare() {
-   cd "$srcdir/${pkgname}-${pkgver}"
-}
 
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"
