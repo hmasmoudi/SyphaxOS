@@ -2,36 +2,27 @@
 
 pkgname=glibc
 pkgver=2.25
-pkgrel=4
+pkgrel=6
+_commit=903b77defb6f2ee2552c06472339f33091e3c7b4
 pkgdesc="The Glibc package contains the main C library."
 arch=('x86_64')
 url="http://ftp.gnu.org/gnu/glibc"
 license=('GPL')
 groups=('core')
-source=("$url/$pkgname-$pkgver.tar.xz")
-md5sums=('1496c3bf41adf9db0ebd0af01f202eed')
+source=(git+https://sourceware.org/git/glibc.git#commit=${_commit})
+md5sums=('SKIP')
 depends=('rootfs>=2.0.0')
 
 prepare() {
-   cd "$srcdir/$pkgname-$pkgver"
+   cd "$srcdir/$pkgname"
    
    patch -Np1 -i ../../glibc-2.25-fhs-1.patch
-   patch -Np1 -i ../../glibc.git-58520986c38e34db60e07260c64c563e3efcf353.patch
-   patch -Np1 -i ../../glibc.git-045e368799cd253ddbf8bdec42ed92e8ebb3ce67.patch
-   patch -Np1 -i ../../glibc.git-93cf93e06ce123439e41d3d62790601c313134cb.patch
-   patch -Np1 -i ../../glibc.git-69e0a87cc4c570e3b7218392fc3e743b5bddcce2.patch
-   patch -Np1 -i ../../glibc.git-8b3caa41b9cb82651e72a0c87aa56719c134000e.patch
-   patch -Np1 -i ../../glibc.git-0889003c67f9c2f520a37281c4b5c3b8a9861f46.patch
-   patch -Np1 -i ../../glibc.git-27ab0d9518746dfb59ed2ba59daefc981dc10e38.patch
-   patch -Np1 -i ../../glibc.git-f035c8d055f25eaf6c93772f308afac10ce31ef2.patch
-   patch -Np1 -i ../../glibc.git-74522eeeaa4a39809a28f44171e71d36a69edb58.patch
-   patch -Np1 -i ../../glibc.git-df29db0bec24211cfc917db52024bf8deecac2c9.patch
    
    mkdir -v build
 }
 
 build() {
-   cd "$srcdir/$pkgname-$pkgver"
+   cd "$srcdir/$pkgname"
    cd build
    
    unset LD_LIBRARY_PATH
@@ -44,7 +35,7 @@ build() {
 }
 
 package() {
-   cd "$srcdir/$pkgname-$pkgver"
+   cd "$srcdir/$pkgname"
    cd build
 
    mkdir -p $pkgdir/etc/
