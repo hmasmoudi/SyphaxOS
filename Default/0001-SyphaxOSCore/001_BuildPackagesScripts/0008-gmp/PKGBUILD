@@ -2,7 +2,7 @@
 
 pkgname=gmp
 pkgver=6.1.2
-pkgrel=3
+pkgrel=4
 pkgdesc="The GMP package contains math libraries. These have useful functions for arbitrary precision arithmetic."
 arch=('x86_64')
 url="http://ftp.gnu.org/gnu/gmp"
@@ -17,16 +17,14 @@ build() {
 
    ./configure --prefix=/usr    \
                --enable-cxx     \
-               --disable-static \
-               --docdir=/usr/share/doc/gmp-6.1.2
+               --enable-fat     \
+               --disable-static
 
    make
-   make html
 }
 
 package() {
    cd "$srcdir/$pkgname-$pkgver"
 
    make DESTDIR="$pkgdir" install
-   make DESTDIR="$pkgdir" install-html
 }
