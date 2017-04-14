@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=linux
-pkgver=4.10.9
+pkgver=4.10.10
 pkgrel=1
 pkgdesc="The Linux package contains the Linux kernel."
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL')
 groups=('core')
 install=${pkgname}.install
 source=("$url/$pkgname-$pkgver.tar.xz")
-md5sums=('1b0750c97a9f2913f94692bf1399056f')
+md5sums=('111d8af2a8383f796897105b8f5d5bcb')
 depends=('rootfs>=2.0.0')
 
 prepare() {
