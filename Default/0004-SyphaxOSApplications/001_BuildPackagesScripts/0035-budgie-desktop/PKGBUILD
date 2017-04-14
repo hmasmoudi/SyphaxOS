@@ -1,38 +1,46 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=budgie-desktop
-pkgver=10.2.9
-pkgrel=9
+pkgver=10.3.0
+pkgrel=2
+_commit=cfd4f1939c2862f945b98f4f550d41257e2dbac7  # master
 pkgdesc="The Budgie Desktop a modern desktop designed to keep out the way of the user."
 arch=('x86_64')
 install=${pkgname}.install
-url="https://github.com/budgie-desktop/budgie-desktop/releases/download/v${pkgver}/"
+url="git+https://github.com/budgie-desktop/budgie-desktop#commit=$_commit"
 license=('APACHE')
 groups=('applications')
-source=("$url/${pkgname}-${pkgver}.tar.xz"
+source=("git+https://github.com/budgie-desktop/budgie-desktop#commit=$_commit"
         "panel.ini")
-md5sums=('b2bbedd7dd97868ab9162563798e9888'
+md5sums=('SKIP'
          '90ac453e4ab2095c70525796c7014bfb')
 depends=('gnomedesktop>=2.0.0' 'gnome-screensaver>=3.6.1' 'SyphaxOS-Theme>=2.0.0')
 
 prepare() {
-   cd "$srcdir/${pkgname}-${pkgver}"
+   cd "$srcdir/${pkgname}"
    
-   sed -i "/seems to be moved/s/^/#/" ltmain.sh
+   #Remove old build
+   rm -rf build
    
-   cp "$srcdir"/panel.ini "$srcdir/${pkgname}-${pkgver}"/data/panel.ini
+   #update de get gvc
+   git submodule update --init --recursive
+   
+   meson build --prefix=/usr --sysconfdir=/etc --buildtype release -Dwith-gtk-doc=false
+   
+   cp "$srcdir"/panel.ini "$srcdir/${pkgname}"/src/panel/panel.ini
 }
 
 build() {
-   cd "$srcdir/${pkgname}-${pkgver}"
+   cd "$srcdir/${pkgname}"
    
-   ./configure --prefix=/usr
-   make
+   cd build
+   ninja -j$(($(getconf _NPROCESSORS_ONLN)+1))
 }
 
 package() {
-   cd "$srcdir/${pkgname}-${pkgver}"
+   cd "$srcdir/${pkgname}"
    
-   make DESTDIR="${pkgdir}" install
+   cd build
+   DESTDIR="${pkgdir}" ninja install
 }
 

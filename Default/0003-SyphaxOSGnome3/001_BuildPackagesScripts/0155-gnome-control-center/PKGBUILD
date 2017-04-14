@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=gnome-control-center
-pkgver=3.24.0
+pkgver=3.24.1
 pkgrel=1
 pkgdesc="The GNOME Control Center package contains the GNOME settings manager."
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="http://ftp.gnome.org/pub/gnome/sources/gnome-control-center/3.24"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('8de5ea79068e2d6b441db8c41a64bd983dedaeba71c2351505a71b527e77d9e2')
+sha256sums=('30cc8e19fdddf4bde7607fa3897bbba837659e1df9db0de8741723053889a53c')
 depends=('rootfs>=2.0.0')
 
 prepare() {

@@ -2,7 +2,7 @@
 
 pkgname=graphicslayer
 pkgver=2.0.0
-pkgrel=1
+pkgrel=3
 pkgdesc="SyphaxOS 2.0.0 Intel, ATI and Nouveau Graphics Layer Packages."
 arch=('x86_64')
 license=('GPL')
@@ -50,8 +50,10 @@ depends=(
          'xf86-video-nouveau'
          'xf86-video-ati'
          'xf86-video-vmware'
-         'libva'
+         'xf86-video-fbdev'
+         'xf86-video-vesa'
          'libva-intel-driver'
+         'libva'
          'libvdpau'
          'twm'
          'xterm'

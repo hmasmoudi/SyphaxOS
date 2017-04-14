@@ -1,14 +1,10 @@
-# $Id$
-# Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
-# Contributor: Filip Brcic <brcha@gna.org>
-# Contributor: Mika Fischer <mika.fischer@zoopnet.de>
-# Contributor: Gergely Imreh <imrehgATgmailDOTcom>
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=ninja
 pkgver=1.7.2
 pkgrel=1
 pkgdesc='Small build system with a focus on speed'
-arch=(i686 x86_64)
+arch=(x86_64)
 url='https://ninja-build.org/'
 license=(Apache)
 depends=(gcc)
@@ -20,14 +16,6 @@ build() {
 
   python2 configure.py --bootstrap
   emacs -Q --batch -f batch-byte-compile misc/ninja-mode.el
-}
-
-check() {
-  cd ninja-$pkgver
-
-  python2 ./configure.py
-  ./ninja ninja_test
-  ./ninja_test --gtest_filter=-SubprocessTest.SetWithLots
 }
 
 package() {

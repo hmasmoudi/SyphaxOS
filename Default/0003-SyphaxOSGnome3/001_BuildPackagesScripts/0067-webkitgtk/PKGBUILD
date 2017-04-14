@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=webkitgtk
-pkgver=2.14.5
-pkgrel=2
+pkgver=2.14.6
+pkgrel=1
 pkgdesc="GTK+ Web content engine library"
 arch=('x86_64')
 url="https://webkitgtk.org/"
 license=(custom)
 depends=('hyphen')
 source=(https://webkitgtk.org/releases/${pkgname}-${pkgver}.tar.xz)
-sha256sums=('3ca8f1c33a9b43d6c753dcac1c0788656930e06382b10fdf5c2805ea8f96369f')
+sha256sums=('a54c91e34fe1ade4d77524a1148fcb3d22b129a0b0e3f5ddc72dc46390241b31')
 
 prepare() {
   mkdir build

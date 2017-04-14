@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=eog
-pkgver=3.24.0
+pkgver=3.24.1
 pkgrel=1
 pkgdesc="EOG is an application used for viewing and cataloging image files on the GNOME Desktop."
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="http://ftp.gnome.org/pub/gnome/sources/eog/3.24"
 license=('GPL')
 groups=('applications')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('c640bb76f202d06858e4d82be626d83256326f9cedfb46ae3b450a82ff3f11cc')
+sha256sums=('f51ee116e2c159fac1719e003a32e1cb6cbff51914fd1f6409f461a790ff27e7')
 depends=('rootfs>=2.0.0')
 
 build() {

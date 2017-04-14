@@ -1,14 +1,11 @@
-# $Id$
-# Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
-# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
-# Contributor: Anatol Pomozov <anatol dot pomozov at gmail>
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=meson
 pkgver=0.38.1
 pkgrel=1
 pkgdesc='High productivity build system'
 url='http://mesonbuild.com/'
-arch=('any')
+arch=('x86_64')
 license=('Apache')
 depends=('ninja')
 source=(https://github.com/mesonbuild/meson/releases/download/${pkgver}/meson-${pkgver}.tar.gz)
@@ -22,4 +19,3 @@ package() {
   install -Dm 644 syntax-highlighting/vim/syntax/meson.vim -t "${pkgdir}/usr/share/vim/vimfiles/syntax"
 }
 
-# vim: ts=2 sw=2 et:

@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=gnome-terminal
-pkgver=3.24.0
+pkgver=3.24.1
 pkgrel=1
 pkgdesc="The GNOME Terminal package contains the terminal emulator for GNOME Desktop."
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="http://ftp.gnome.org/pub/gnome/sources/gnome-terminal/3.24"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('77698e5c8dec545737c98befc806ae34884cf2be5eb6743332895315f811fb17')
+sha256sums=('a7bf26e6fcc335ca7b8fb94e13262f44357961c0f38ca3f2e0066426e91a60e0')
 depends=('rootfs>=2.0.0')
 
 build() {
@@ -17,6 +17,8 @@ build() {
    
    ./configure --prefix=/usr       \
                --disable-migration \
+               --with-nautilus-extension \
+               --enable-distro-packaging \
                --disable-static 
    make
 }

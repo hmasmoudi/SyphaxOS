@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=file-roller
-pkgver=3.22.3
+pkgver=3.24.0
 pkgrel=1
 pkgdesc="File Roller is an archive manager for GNOME with support for tar, bzip2, gzip, zip, jar, compress, lzop and many other archive formats."
 arch=('x86_64')
-url="http://ftp.gnome.org/pub/gnome/sources/file-roller/3.22"
+url="http://ftp.gnome.org/pub/gnome/sources/file-roller/3.24"
 license=('GPL')
 groups=('applications')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('de858640632a0e22769b6b73d5b98527f3cfc2c83f99692063e352e41d533505')
+sha256sums=('f4b72dba69b1984d96a1a9a6c544a9f94e54a531612b299251ef2702e0b0ad21')
 depends=('rootfs>=2.0.0')
 
 prepare() {

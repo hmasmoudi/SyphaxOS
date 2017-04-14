@@ -2,7 +2,7 @@
 
 pkgname=xorg-server
 pkgver=1.19.3
-pkgrel=1
+pkgrel=3
 pkgdesc="The Xorg Server is the graphicslayer of the X Window system. "
 arch=('x86_64')
 url="http://ftp.x.org/pub/individual/xserver"
@@ -27,8 +27,18 @@ build() {
    echo "Using XORG_PREFIX ($XORG_PREFIX) & XORG_CONFIG ($XORG_CONFIG)"
 
    ./configure $XORG_CONFIG            \
-              --enable-glamor          \
-              --enable-suid-wrapper    \
+               --enable-glamor          \
+               --enable-suid-wrapper    \
+               --enable-dri \
+               --enable-dmx \
+               --enable-xvfb \
+               --enable-xnest \
+               --enable-composite \
+               --enable-xcsecurity \
+               --enable-xorg \
+               --enable-xephyr \
+               --enable-glamor \
+               --enable-xwayland \
               --with-xkb-output=/var/lib/xkb
    make
 }

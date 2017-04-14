@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=mutter
-pkgver=3.24.0
+pkgver=3.24.1
 pkgrel=1
 pkgdesc="Mutter is the window manager for GNOME. It is not invoked directly, but from GNOME Session (on a machine with a hardware accelerated video driver)."
 arch=('x86_64')
@@ -9,12 +9,12 @@ url="http://ftp.gnome.org/pub/gnome/sources/mutter/3.24"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('2fec996a776259ddedfd02205e43b96ec35bd79ae3f73ac21d7010fba0189d08')
+sha256sums=('acaa77f9705cc6ca4a3d41935524ff31ba7a4c677bdd3e1d4662bbf3ece86a24')
 depends=('rootfs>=2.0.0')
 
 prepare() {
    cd "$srcdir/${pkgname}-${pkgver}"
-   
+       
    sed -i "/seems to be moved/s/^/#/" build-aux/ltmain.sh
    sed -i "/seems to be moved/s/^/#/" clutter/build/ltmain.sh
    sed -i "/seems to be moved/s/^/#/" cogl/build/ltmain.sh
@@ -23,8 +23,12 @@ prepare() {
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"
    
-   ./configure --prefix=/usr --disable-static --disable-compile-warnings
-
+   ./configure \
+      --prefix=/usr \
+      --enable-egl-device \
+      --disable-static \
+      --disable-compile-warnings
+      
    make
 }
 

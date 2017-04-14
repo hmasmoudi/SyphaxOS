@@ -2,7 +2,7 @@
 
 pkgname=grilo
 pkgver=0.3.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Grilo is a framework focused on making media discovery and browsing easy for applications and application developers."
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/grilo/0.3"

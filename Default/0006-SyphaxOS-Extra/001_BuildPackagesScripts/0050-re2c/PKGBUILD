@@ -1,12 +1,9 @@
-# $Id$
-# Maintainer:
-# Contributor: nut543 <kfs1@online.no>
-# Contributor: Dale Blount <dale@archlinux.org>
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=re2c
 pkgver=0.16
 pkgrel=1
-arch=(i686 x86_64)
+arch=(x86_64)
 depends=(gcc)
 pkgdesc='A tool for generating C-based recognizers from regular expressions'
 url='http://re2c.sourceforge.net/'
@@ -18,11 +15,6 @@ build() {
   cd $pkgname-$pkgver
   ./configure --prefix=/usr
   make
-}
-
-check() {
-  cd $pkgname-$pkgver
-  make tests
 }
 
 package() {

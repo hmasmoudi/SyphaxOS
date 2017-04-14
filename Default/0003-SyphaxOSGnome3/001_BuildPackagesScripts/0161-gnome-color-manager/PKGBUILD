@@ -1,20 +1,16 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=gnome-color-manager
-pkgver=3.22.2
+pkgver=3.24.0
 pkgrel=1
 pkgdesc="GNOME Color Manager is a session framework for the GNOME desktop environment that makes it easy to manage, install and generate color profiles."
 arch=('x86_64')
-url="http://ftp.gnome.org/pub/gnome/sources/gnome-color-manager/3.22"
+url="http://ftp.gnome.org/pub/gnome/sources/gnome-color-manager/3.24"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('e837a184e66a6a5fb778730a58d3aa8d3a10a447e13f48efc86cac7e4c94d45b')
+sha256sums=('a1009e6287d97b8d1fdd6e44a4c8668bcf05f1bb7f2186243318e54c6d061dd2')
 depends=('rootfs>=2.0.0')
-
-prepare() {
-   cd "$srcdir/${pkgname}-${pkgver}"
-}
 
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"

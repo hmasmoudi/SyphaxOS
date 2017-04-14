@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
-pkgname=xf86-video-vmware
-pkgver=13.2.1
-pkgrel=2
-pkgdesc="The Xorg VMware Driver package contains the X.Org Video Driver for VMware SVGA virtual video cards."
+pkgname=xf86-video-fbdev
+pkgver=0.4.4
+pkgrel=1
+pkgdesc="X.org framebuffer video driver."
 arch=('x86_64')
 url="http://ftp.x.org/pub/individual/driver"
 license=('GPL')
 groups=('graphicslayer')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
-md5sums=('4c3912e4d8947f6c2fc1ee9e2f211d74')
+md5sums=('3931c0e19d441cc576dc088f9eb9fd73')
 depends=('rootfs>=2.0.0')
 
 build() {
@@ -18,7 +18,7 @@ build() {
    source /etc/profile.d/xorg.sh
    echo "Using XORG_PREFIX ($XORG_PREFIX) & XORG_CONFIG ($XORG_CONFIG)"
 
-   ./configure $XORG_CONFIG --enable-vmwarectrl-client
+   ./configure $XORG_CONFIG
    
    make
 }

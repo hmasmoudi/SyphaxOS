@@ -1,20 +1,16 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=gtksourceview
-pkgver=3.22.2
+pkgver=3.24.1
 pkgrel=1
 pkgdesc="The GtkSourceView package contains libraries used for extending the GTK+ text functions to include syntax highlighting."
 arch=('x86_64')
-url="http://ftp.gnome.org/pub/gnome/sources/gtksourceview/3.22"
+url="http://ftp.gnome.org/pub/gnome/sources/gtksourceview/3.24"
 license=('GPL')
 groups=('applications')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('6ce84231dd0931cc747708434ca2f344c65a092dd6e1a800283fe0748773af5e')
+sha256sums=('717b6fe884ff9f25158bdc36f463790c608ada9f5e2e6f4dc7f1467c83711c25')
 depends=('rootfs>=2.0.0')
-
-prepare() {
-   cd "$srcdir/${pkgname}-${pkgver}"
-}
 
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"

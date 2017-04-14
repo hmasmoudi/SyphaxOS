@@ -2,7 +2,7 @@
 
 pkgname=SyphaxOS-Desktop
 pkgver=2.0.0
-pkgrel=17
+pkgrel=18
 pkgdesc="SyphaxOS 2.0.0 Default Desktop Package based on Gnome Desktop."
 arch=('x86_64')
 install=${pkgname}.install

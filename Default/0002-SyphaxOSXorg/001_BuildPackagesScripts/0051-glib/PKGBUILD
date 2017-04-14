@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=glib
-pkgver=2.52.0
+pkgver=2.52.1
 pkgrel=1
 pkgdesc="The GLib package contains low-level libraries useful for providing data structure handling for C, portability wrappers and interfaces for such runtime functionality as an event loop, threads, dynamic loading and an object system."
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="http://ftp.gnome.org/pub/gnome/sources/glib/2.52"
 license=('GPL')
 groups=('graphicslayer')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('4578e3e077b1b978cafeec8d28b676c680aba0c0475923874c4c993403df311a')
+sha256sums=('948c26b817f2d77e2a6cdd5082c60a51bf5dea854890286a1d5d4ccde5ce586f')
 depends=('rootfs>=2.0.0')
 
 build() {

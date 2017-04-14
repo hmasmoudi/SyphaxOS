@@ -2,7 +2,7 @@
 
 pkgname=gtkmm
 pkgver=3.22.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The Gtkmm package provides a C++ interface to GTK+ 3."
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/gtkmm/3.22"
