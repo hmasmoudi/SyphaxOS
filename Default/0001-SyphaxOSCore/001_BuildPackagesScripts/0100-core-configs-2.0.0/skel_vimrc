@@ -1,6 +1,3 @@
 " Begin .vimrc
 
-set wrapmargin=8
-set ruler
-
 " End .vimrc
