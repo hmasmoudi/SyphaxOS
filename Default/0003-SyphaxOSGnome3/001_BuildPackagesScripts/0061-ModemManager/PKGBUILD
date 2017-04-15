@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=ModemManager
-pkgver=1.6.0
+pkgver=1.6.4
 pkgrel=1
 pkgdesc="ModemManager provides a unified high level API for communicating with mobile broadband modems, regardless of the protocol used to communicate with the actual device."
 arch=('x86_64')
@@ -9,11 +9,13 @@ url="http://www.freedesktop.org/software/ModemManager"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-md5sums=('d9d93d2961ee35b4cd8a75a6a8631cb4')
+md5sums=('06488186c7dd53f8104183b86f7a1568')
 depends=('rootfs>=2.0.0')
 
 prepare() {
    cd "$srcdir/$pkgname-$pkgver"
+   
+   sed -i "/seems to be moved/s/^/#/" ltmain.sh
 }
 
 build() {
