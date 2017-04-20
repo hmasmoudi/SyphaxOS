@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=libsoup
-pkgver=2.57.1
+pkgver=2.58.0
 pkgrel=1
 pkgdesc="The libsoup is HTTP client/server library for GNOME."
 arch=('x86_64')
-url="http://ftp.gnome.org/pub/gnome/sources/libsoup/2.57"
+url="http://ftp.gnome.org/pub/gnome/sources/libsoup/2.58"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('ca1ca037e89e8bc7b782559f3ec5d89c9d0b836f505b2f95e008ed517fd6658f')
+sha256sums=('b61567e25ed61f4b89bb23a36713c807df6b76a8451beb786d8cc362e8f097f5')
 depends=('rootfs>=2.0.0')
 
 prepare() {
