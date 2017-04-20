@@ -18,7 +18,7 @@ groups=('applications')
 source=("$url/jdk/$pkgver-$_build/d54c1d3a095b4ff2b6607d096fa80163/jre-${_major}u${_minor}-linux-x64.tar.gz"
         "$url/jce/$_major/jce_policy-$_major.zip"
         "policytool-$_jname.desktop")
-md5sums=('093e22e4f0a55420780a0e437ab9fcd4'
+md5sums=('9864b3b90840a2bc4604fba513e87453'
          'b3c7031bc65c28c2340302065e7d00d3'
          '762729fa0faba8ff2b5a29c249c95079')
 depends=('rootfs>=2.0.0')
