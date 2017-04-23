@@ -2,14 +2,14 @@
 
 pkgname=SyphaxOS-Theme
 pkgver=2.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="SyphaxOS theme based on adapta gtk theme and Paper icons Packs"
 url="https://bintray.com/syphaxos"
 license=('CUSTOM')
 arch=('x86_64')
 source=("SyphaxOS-settings.gschema.override")
 install=${pkgname}.install
-md5sums=('9ed1744669bc7816cffd7133f34595ab')
+md5sums=('020997e7173c6639a750ba991680e255')
 
 depends=('rootfs>=2.0.0'
          'adapta-gtk-theme'
