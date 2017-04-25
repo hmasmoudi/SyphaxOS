@@ -2,8 +2,8 @@
 
 pkgname=budgie-desktop
 pkgver=10.3.1
-pkgrel=2
-_commit=cfc6131d1524e600b5317095f218d7a174217111  # master
+pkgrel=4
+_commit=84544363a7e3c65ef4e138c7aebb5eaa3a2e794f  # master
 pkgdesc="The Budgie Desktop a modern desktop designed to keep out the way of the user."
 arch=('x86_64')
 install=${pkgname}.install
