@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=nautilus
-pkgver=3.24.0
+pkgver=3.24.1
 pkgrel=1
 pkgdesc="The Nautilus package contains the GNOME file manager."
 arch=('x86_64')
@@ -9,13 +9,11 @@ url="http://ftp.gnome.org/pub/gnome/sources/nautilus/3.24"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('8a499247caff3c02437c0ad955f043e675a056912d8553d9c9783c762f5dbbbd')
+sha256sums=('47383d0e5f8a8c1cf6fdefaa3b6a3768a8dd4cdf9ad2471ae3f443557f5dc6b2')
 depends=('rootfs>=2.0.0')
 
 prepare() {
    cd "$srcdir/${pkgname}-${pkgver}"
-   
-   autoreconf -fiv
    
    sed -i "/seems to be moved/s/^/#/" ltmain.sh
 }
