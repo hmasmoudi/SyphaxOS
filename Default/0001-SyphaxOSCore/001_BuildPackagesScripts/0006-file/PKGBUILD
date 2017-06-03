@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=file
-pkgver=5.30
-pkgrel=3
+pkgver=5.31
+pkgrel=1
 pkgdesc="The File package contains a utility for determining the type of a given file or files."
 arch=('x86_64')
 url="ftp://ftp.astron.com/pub/file"
 license=('GPL')
 groups=('core')
 source=("$url/$pkgname-$pkgver.tar.gz")
-md5sums=('f35eaf05489ae566eafc4d26bb1dcd90')
+md5sums=('SKIP')
 depends=('rootfs>=2.0.0'
          'glibc'
          'zlib')
