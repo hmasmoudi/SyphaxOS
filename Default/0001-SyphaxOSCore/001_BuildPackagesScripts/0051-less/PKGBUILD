@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=less
-pkgver=481
-pkgrel=2
+pkgver=487
+pkgrel=1
 pkgdesc="The Less package contains a text file viewer."
 arch=('x86_64')
 url="http://www.greenwoodsoftware.com/less"
 license=('GPL')
 groups=('core')
 source=("$url/$pkgname-$pkgver.tar.gz")
-md5sums=('50ef46065c65257141a7340123527767')
+md5sums=('SKIP')
 depends=('rootfs>=2.0.0')
 
 build() {
