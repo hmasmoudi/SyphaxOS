@@ -1,9 +1,9 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=gcc
-pkgver=6.3.1
-pkgrel=20170415
-_commit=4ae5f9af38cc4b9287734f45b9928bd271673e15
+pkgver=7.1.1
+pkgrel=20170604
+_commit=b1f5e277c0ded58d657ea95cf8a911b2d2ccdb53
 pkgdesc="The GCC package contains the GNU compiler collection, which includes the C and C++ compilers."
 arch=('x86_64')
 url="http://gcc.gnu.org"
@@ -17,21 +17,21 @@ depends=('rootfs>=2.0.0'
          'mpc')
 
 prepare() {
-   cd "$srcdir/$pkgname-4ae5f9a"
+   cd "$srcdir/$pkgname-${_commit:0:7}"
 
    sed -e '/m64=/s/lib64/lib/' \
        -i.orig gcc/config/i386/t-linux64
 }
 
 build() {
-   cd "$srcdir/$pkgname-4ae5f9a"
+   cd "$srcdir/$pkgname-${_commit:0:7}"
 
    mkdir -v build
    cd build
    
    SED=sed                                   \
    ../configure --prefix=/usr                \
-                --enable-languages=c,c++,go  \
+                --enable-languages=c,c++     \
                 --enable-shared              \
                 --enable-threads=posix       \
                 --enable-libmpx              \
@@ -49,7 +49,7 @@ build() {
 }
 
 package() {
-   cd "$srcdir/$pkgname-4ae5f9a"
+   cd "$srcdir/$pkgname-${_commit:0:7}"
 
    mkdir -pv $pkgdir/lib
    mkdir -pv $pkgdir/usr/lib
