@@ -1,19 +1,19 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=os-prober
-pkgver=1.74
-pkgrel=8
+pkgver=1.75
+pkgrel=1
 pkgdesc="Detect OSes and linux variants."
 arch=('x86_64')
-url="http://http.debian.net/debian/pool/main/o/$pkgname"
+url="http://http.debian.net/debian/pool/main/o/os-prober"
 license=('GPL')
 groups=('core')
 source=("$url/${pkgname}_${pkgver}.tar.xz")
-md5sums=('3010a4b20c81da2a4ac25c59a1c090d3')
+sha256sums=('f4ef620455c5ffc3545daf4f32861640a48b0b3b6edda72491eecc1818653446')
 depends=('rootfs>=2.0.0')
 
 prepare() {
-   cd "$srcdir/$pkgname"
+   cd "$srcdir/$pkgname-$pkgver"
 
    # adjust lib dir to allow detection of 64-bit distros
    sed -i -e "s:/lib/ld\*\.so\*:/lib*/ld*.so*:g" os-probes/mounted/common/90linux-distro
@@ -23,13 +23,13 @@ prepare() {
 
 
 build() {
-   cd "$srcdir/$pkgname"
+   cd "$srcdir/$pkgname-$pkgver"
 
    make newns
 }
 
 package() {
-   cd "$srcdir/$pkgname"
+   cd "$srcdir/$pkgname-$pkgver"
 
    install -Dm755 linux-boot-prober "$pkgdir"/usr/bin/linux-boot-prober
    install -Dm755 os-prober "$pkgdir"/usr/bin/os-prober
