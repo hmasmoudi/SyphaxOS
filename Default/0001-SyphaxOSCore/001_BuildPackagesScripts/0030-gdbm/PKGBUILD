@@ -1,20 +1,16 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=gdbm
-pkgver=1.12
-pkgrel=2
+pkgver=1.13
+pkgrel=1
 pkgdesc="The GDBM package contains the GNU Database Manager. It is a library of database functions that use extensible hashing and work similar to the standard UNIX dbm. The library provides primitives for storing key/data pairs, searching and retrieving the data by its key and deleting a key along with its data."
 arch=('x86_64')
 url="http://ftp.gnu.org/gnu/gdbm"
 license=('GPL')
 groups=('core')
 source=("$url/$pkgname-$pkgver.tar.gz")
-md5sums=('9ce96ff4c99e74295ea19040931c8fb9')
+md5sums=('SKIP')
 depends=('rootfs>=2.0.0')
-
-prepare() {
-   cd "$srcdir/$pkgname-$pkgver"
-}
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"
