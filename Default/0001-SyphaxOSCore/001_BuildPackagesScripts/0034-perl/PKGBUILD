@@ -1,16 +1,24 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=perl
-pkgver=5.24.1
-pkgrel=1
+pkgver=5.26.0
+pkgrel=2
 pkgdesc="The Perl package contains the Practical Extraction and Report Language."
 arch=('x86_64')
 url="http://www.cpan.org/src/5.0"
 license=('GPL')
 groups=('core')
-source=("$url/$pkgname-$pkgver.tar.bz2")
-md5sums=('178ee0e8fa544dbc76d99cf041e2c9f0')
+source=("$url/$pkgname-$pkgver.tar.xz")
+md5sums=('8c6995718e4cb62188f0d5e3488cd91f')
 depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/$pkgname-$pkgver"
+   
+   sed -e '9751 a#ifndef PERL_IN_XSUB_RE' \
+    -e '9808 a#endif'                  \
+    -i regexec.c
+}
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"
@@ -23,7 +31,9 @@ build() {
                      -Dman1dir=/usr/share/man/man1 \
                      -Dman3dir=/usr/share/man/man3 \
                      -Dpager="/usr/bin/less -isR"  \
-                     -Duseshrplib
+                     -Duseshrplib                  \
+                     -Dusethreads
+
 
    make
 }
