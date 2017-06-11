@@ -1,21 +1,22 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=diffutils
-pkgver=3.5
-pkgrel=2
+pkgver=3.6
+pkgrel=1
 pkgdesc="The Diffutils package contains programs that show the differences between files or directories."
 arch=('x86_64')
 url="http://ftp.gnu.org/gnu/diffutils"
 license=('GPL')
 groups=('core')
 source=("$url/$pkgname-$pkgver.tar.xz")
-md5sums=('569354697ff1cfc9a9de3781361015fa')
+md5sums=('SKIP')
 depends=('rootfs>=2.0.0')
 
 prepare() {
    cd "$srcdir/$pkgname-$pkgver"
 
    sed -i 's:= @mkdir_p@:= /bin/mkdir -p:' po/Makefile.in.in
+   sed -i '233,237 s/max)/max) \\/' lib/intprops.h
 }
 
 build() {
