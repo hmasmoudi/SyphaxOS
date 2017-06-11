@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=grep
-pkgver=2.28
-pkgrel=2
+pkgver=3.0
+pkgrel=1
 pkgdesc="The Grep package contains programs for searching through files."
 arch=('x86_64')
 url="http://ftp.gnu.org/gnu/grep"
 license=('GPL')
 groups=('core')
 source=("$url/$pkgname-$pkgver.tar.xz")
-md5sums=('5d18e244a78fde69d3998a0447a6f795')
+md5sums=('SKIP')
 depends=('rootfs>=2.0.0')
 
 build() {
