@@ -1,20 +1,16 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=flex
-pkgver=2.6.3
-pkgrel=2
+pkgver=2.6.4
+pkgrel=1
 pkgdesc="The Flex package contains a utility for generating programs that recognize patterns in text."
 arch=('x86_64')
 url="https://github.com/westes/flex/releases/download/v$pkgver"
 license=('GPL')
 groups=('core')
 source=("$url/$pkgname-$pkgver.tar.lz")
-md5sums=('680dca8c6d2dc9e68eaffea1463be47d')
+md5sums=('SKIP')
 depends=('rootfs>=2.0.0')
-
-prepare() {
-   cd "$srcdir/$pkgname-$pkgver"
-}
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"
