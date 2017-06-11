@@ -14,10 +14,6 @@ prepare() {
    mkdir -pv "$srcdir/$pkgname-$pkgver"
 }
 
-build() {
-   cd "$srcdir/$pkgname-$pkgver"
-}
-
 package() {
    cd "$srcdir/$pkgname-$pkgver"
    

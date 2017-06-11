@@ -1,8 +1,8 @@
 NAME="SyphaxOS"
-VERSION="2.1.0"
+VERSION="2.2.0"
 ID=syphaxos
-PRETTY_NAME="SyphaxOS LTS 2.1.0"
-VERSION_ID="2.1.0"
-HOME_URL="https://www.facebook.com/Syphaxos"
+PRETTY_NAME="SyphaxOS LTS 2.2.0"
+VERSION_ID="2.2.0"
+HOME_URL="http://syphaxos.unaux.com"
 SUPPORT_URL="https://www.facebook.com/Syphaxos"
-BUG_REPORT_URL="https://www.facebook.com/Syphaxos"
+BUG_REPORT_URL="https://github.com/hmasmoudi/SyphaxOS"
