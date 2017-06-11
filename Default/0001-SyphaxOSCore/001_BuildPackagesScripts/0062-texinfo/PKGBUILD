@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=texinfo
-pkgver=6.1
-pkgrel=2
+pkgver=6.3
+pkgrel=1
 pkgdesc="The Texinfo package contains programs for reading, writing, and converting info pages."
 arch=('x86_64')
 url="http://ftp.gnu.org/gnu/texinfo"
 license=('GPL')
 groups=('core')
 source=("$url/$pkgname-$pkgver.tar.xz")
-md5sums=('1d7ec1888fae00730693597852b00cde')
+md5sums=('SKIP')
 depends=('rootfs>=2.0.0')
 
 build() {
