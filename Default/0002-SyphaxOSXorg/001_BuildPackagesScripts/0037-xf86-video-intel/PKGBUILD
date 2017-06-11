@@ -1,9 +1,9 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=xf86-video-intel
-pkgver=20170415
+pkgver=20170611
 pkgrel=1
-_commit=b57abe20e81f4b8e4dd203b6a9eda7ff441bc8ce  # master
+_commit=6babcf15dd605ef40de53f5c34f95b7fd195edbe  # master
 pkgdesc="The Xorg Intel Driver package contains the X.Org Video Driver for Intel integrated video cards"
 arch=('x86_64')
 url="https://01.org/linuxgraphics"
