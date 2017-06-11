@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=grub
-pkgver=2.02~rc2
+pkgver=2.02
 pkgrel=1
 pkgdesc="The GRUB package contains the GRand Unified Bootloader."
 arch=('x86_64')
-url="http://alpha.gnu.org/gnu/grub"
+url="http://ftp.gnu.org/gnu/grub"
 license=('GPL')
 groups=('core')
 source=("$url/$pkgname-$pkgver.tar.xz")
-md5sums=('fcce2628109b2ca408aa5f3eb46a1d86')
+md5sums=('8a4a2a95aac551fb0fba860ceabfa1d3')
 depends=('rootfs>=2.0.0')
 
 build() {
