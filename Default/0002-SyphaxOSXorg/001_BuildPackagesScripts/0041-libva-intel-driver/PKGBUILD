@@ -1,25 +1,25 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=libva-intel-driver
-pkgver=1.7.3
-pkgrel=4
+pkgver=1.8.2
+pkgrel=1
 pkgdesc="The libva-intel-driver is designed specifically for video cards based on an Intel GPU."
 arch=('x86_64')
 url="http://www.freedesktop.org/software/vaapi/releases/libva-intel-driver"
 license=('GPL')
 groups=('graphicslayer')
-source=("$url/${pkgname}-${pkgver}.tar.bz2")
-md5sums=('5b266e605905a3676b63b8bc93a2ffc8')
+source=("$url/intel-vaapi-driver-${pkgver}.tar.bz2")
+sha1sums=('1564e41f36b1ec646250418eeb344a916eb28407')
 depends=('rootfs>=2.0.0')
 
 prepare() {
-   cd "$srcdir/$pkgname-$pkgver"
+   cd "$srcdir/intel-vaapi-driver-$pkgver"
    
    autoreconf -fi
 }
 
 build() {
-   cd "$srcdir/$pkgname-$pkgver"
+   cd "$srcdir/intel-vaapi-driver-$pkgver"
    
    source /etc/profile.d/xorg.sh
    echo "Using XORG_PREFIX ($XORG_PREFIX) & XORG_CONFIG ($XORG_CONFIG)"
@@ -30,7 +30,7 @@ build() {
 }
 
 package() {
-   cd "$srcdir/$pkgname-$pkgver"
+   cd "$srcdir/intel-vaapi-driver-$pkgver"
    
    #Make the package
    make DESTDIR="$pkgdir" install

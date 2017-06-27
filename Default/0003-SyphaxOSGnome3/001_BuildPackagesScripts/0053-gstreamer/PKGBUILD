@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=gstreamer
-pkgver=1.11.2
+pkgver=1.12.1
 pkgrel=1
 pkgdesc="GStreamer is a streaming media framework that enables applications to share a common set of plugins for things like video encoding and decoding, audio encoding and decoding, audio and video filters, audio visualisation, web streaming and anything else that streams in real-time or otherwise."
 arch=('x86_64')
@@ -9,15 +9,25 @@ url="http://gstreamer.freedesktop.org/src/gstreamer"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('baa27e761e9d2e1770a8e311b2a61397edd6a288b2ff188940ea001615883305')
+sha256sums=('9044b9d8b3ff44457fa9e36faa59c56684b587b34dee449bfe15ec0c32a3a6d2')
 depends=('rootfs>=2.0.0')
+
+prepare() {
+   cd "$srcdir/$pkgname-$pkgver"
+
+   NOCONFIGURE=1 ./autogen.sh
+}
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"
 
-   ./configure --prefix=/usr \
-            --with-package-name="GStreamer 1.11.2 SyphaxOS" \
-            --with-package-origin="http://gstreamer.freedesktop.org/src/gstreamer"
+   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --libexecdir=/usr/lib \
+               --with-package-name="GStreamer SyphaxOS" \
+               --with-package-origin="http://gstreamer.freedesktop.org/src/gstreamer" \
+               --disable-static
+
+   # https://bugzilla.gnome.org/show_bug.cgi?id=655517
+   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
             
    make
 }

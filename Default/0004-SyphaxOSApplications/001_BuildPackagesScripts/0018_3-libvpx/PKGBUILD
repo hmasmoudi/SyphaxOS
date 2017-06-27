@@ -2,7 +2,7 @@
 
 pkgname=libvpx
 pkgver=1.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="This package, from the WebM project, provides the reference implementations of the VP8 Codec, used in most current html5 video, and of the next-generation VP9 Codec."
 arch=('x86_64')
 url="http://storage.googleapis.com/downloads.webmproject.org/releases/webm"
@@ -23,9 +23,15 @@ prepare() {
 build() {
    cd "$srcdir/${pkgname}-${pkgver}/libvpx-build"
    
-   ../configure --prefix=/usr    \
-                --enable-shared  \
-                --disable-static &&
+   ../configure --prefix=/usr     \
+                --enable-shared   \
+                --enable-vp8      \
+                --enable-postproc \
+                --enable-vp9      \
+                --enable-vp9-highbitdepth \
+                --enable-spatial-svc \
+                --disable-static
+
    make
 }
 

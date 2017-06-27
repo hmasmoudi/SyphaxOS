@@ -1,8 +1,8 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=pacman
-pkgver=5.0.1
-pkgrel=2
+pkgver=5.0.2
+pkgrel=1
 pkgdesc="SyphaxOS Package Manager."
 arch=('x86_64')
 url="https://git.archlinux.org/pacman.git/snapshot"
@@ -14,7 +14,7 @@ source=("$url/${pkgname}-${pkgver}.tar.xz"
         "pacman.conf"
         "pub.key"
         "trustdb.gpg")
-md5sums=('79d1418d4dff1c2903329ad61d989324'
+md5sums=('SKIP'
          'a8f38a0e14f0ab65492cfc11076236f4'
          'cb2a7235c825d917fc538f20a41a6c0c'
          'afae51776eeb25edb91ec4b1b5aa5219'

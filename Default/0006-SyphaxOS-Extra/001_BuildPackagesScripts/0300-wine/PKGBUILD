@@ -1,0 +1,56 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=wine
+pkgver=2.10
+pkgrel=1
+pkgdesc="A compatibility layer for running Windows programs."
+arch=('x86_64')
+install=${pkgname}.install
+url="https://dl.winehq.org/wine/source/2.x"
+license=('LGPL')
+groups=('applications')
+source=("$url/${pkgname}-${pkgver}.tar.xz"
+        "30-win32-aliases.conf")
+md5sums=('SKIP'
+         '1ff4e467f59409272088d92173a0f801')
+depends=('rootfs')
+
+prepare() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+      
+   patch -p1 -i ../../0001-winhlp32-Workaround-a-bug-in-Flex.patch
+   
+   #sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i configure*
+}
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   ./configure \
+         --prefix=/usr \
+         --libdir=/usr/lib \
+         --with-x \
+         --with-gstreamer \
+         --enable-win64 \
+         --disable-tests \
+         --with-pulse \
+         --with-pthread \
+         --with-osmesa \
+         --with-xxf86vm \
+         --with-x
+   make
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   make prefix="$pkgdir/usr" \
+        libdir="$pkgdir/usr/lib" \
+        dlldir="$pkgdir/usr/lib/wine" install
+        
+   # Font aliasing settings for Win32 applications
+   install -d "$pkgdir"/etc/fonts/conf.{avail,d}
+   install -m644 "$srcdir/30-win32-aliases.conf" "$pkgdir/etc/fonts/conf.avail"
+   ln -s ../conf.avail/30-win32-aliases.conf "$pkgdir/etc/fonts/conf.d/30-win32-aliases.conf"
+}
+

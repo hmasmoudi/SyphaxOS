@@ -1,7 +1,7 @@
 # https://specifications.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html
 [Desktop Entry]
 Type=Application
-Version=2.0.0
+Version=2.2.0
 Name=SyphaxOS-Installer
 Name[en_US]=SyphaxOS-Installer
 GenericName=SyphaxOS Installer

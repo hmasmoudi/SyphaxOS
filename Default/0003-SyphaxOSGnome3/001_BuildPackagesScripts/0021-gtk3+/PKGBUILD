@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=gtk3
-pkgver=3.22.12
+pkgver=3.22.16
 pkgrel=1
 pkgdesc="The GTK+ 3 package contains libraries used for creating graphical user interfaces for applications."
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="http://ftp.gnome.org/pub/gnome/sources/gtk+/3.22"
 license=('GPL')
 groups=('desktop')
 source=("$url/gtk+-$pkgver.tar.xz")
-sha256sums=('84fae0cefb6a11ee2b4e86b8ac42fe46a3d30b4ad16661d5fc51e8ae03e2a98c')
+sha256sums=('3e0c3ad01f3c8c5c9b1cc1ae00852bd55164c8e5a9c1f90ba5e07f14f175fe2c')
 depends=('rootfs>=2.0.0')
 
 prepare() {

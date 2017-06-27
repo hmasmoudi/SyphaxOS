@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=libva
-pkgver=1.7.3
-pkgrel=3
+pkgver=1.8.2
+pkgrel=1
 pkgdesc="The libva package contains a library which provides access to hardware accelerated video processing."
 arch=('x86_64')
 url="http://www.freedesktop.org/software/vaapi/releases/libva"
 license=('GPL')
 groups=('graphicslayer')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
-md5sums=('dafb1d7d6449e850e9eb1a099895c683')
+sha1sums=('7c4253c97f5e1e76500ff75321287131941494bc')
 depends=('rootfs>=2.0.0')
 
 prepare() {

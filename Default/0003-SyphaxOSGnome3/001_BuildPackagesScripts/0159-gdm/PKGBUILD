@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=gdm
-pkgver=3.24.1
+pkgver=3.24.2
 pkgrel=1
 pkgdesc="The GNOME Shell Extensions package contains a collection of extensions providing additional and optional functionality to the GNOME Shell."
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=("$url/${pkgname}-${pkgver}.tar.xz"
         "gdm-launch-environment"
         "gdm-password"
         )
-sha256sums=('1ee22139fe0a3fc1ff897ca1c626b28b4e997275ca8dd4d7e48e019a2f2c2179'
+sha256sums=('4378b9fad5536e03c56ad138d0e249fbcaa09977b867895426cb41c978fe5de8'
             '72b4e1a2d2da221414ca19586a3079a5a27f083573daadca4bd5ba69e5a2a0aa'
             '59b0e9ee9a2dab4a6ec26d8888b5de686dfd1bc71dacdee4a067305a92ebb333'
             '0f70b0c3c37888b723f4ea5dadbd3f072ae69be4832a00b6befa8b3ddaf95d31'

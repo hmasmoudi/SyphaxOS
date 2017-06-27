@@ -3,6 +3,6 @@ VERSION="2.2.0"
 ID=syphaxos
 PRETTY_NAME="SyphaxOS LTS 2.2.0"
 VERSION_ID="2.2.0"
-HOME_URL="http://syphaxos.unaux.com"
+HOME_URL="https://syphaxos.000webhostapp.com/"
 SUPPORT_URL="https://www.facebook.com/Syphaxos"
 BUG_REPORT_URL="https://github.com/hmasmoudi/SyphaxOS"

@@ -1,0 +1,27 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=cups-pk-helper
+pkgver=0.2.6
+pkgrel=2
+pkgdesc="The cups-pk-helper package contains a PolicyKit helper used to configure Cups with fine-grained privileges."
+arch=('x86_64')
+url="http://www.freedesktop.org/software/cups-pk-helper/releases"
+license=('GPL')
+groups=('desktop')
+source=("$url/${pkgname}-${pkgver}.tar.xz")
+md5sums=('a9045c7db6e502d6496da8fc71d8820e')
+depends=('rootfs')
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   ./configure --prefix=/usr --sysconfdir=/etc &&
+   make
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   make DESTDIR="${pkgdir}" install
+}
+

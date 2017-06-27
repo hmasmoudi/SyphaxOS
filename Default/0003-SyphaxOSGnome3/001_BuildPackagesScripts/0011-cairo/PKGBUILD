@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=cairo
-pkgver=1.14.8
+pkgver=1.14.10
 pkgrel=1
 pkgdesc="Cairo is a 2D graphics library with support for multiple output devices"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="http://cairographics.org/releases"
 license=('GPL')
 groups=('desktop')
 source=("$url/$pkgname-$pkgver.tar.xz")
-md5sums=('4ef0db2eacb271c74f8a3fd87822aa98')
+sha1sums=('28c59d85d6b790c21b8b59ece73a6a1dda28d69a')
 depends=('rootfs>=2.0.0')
 
 build() {

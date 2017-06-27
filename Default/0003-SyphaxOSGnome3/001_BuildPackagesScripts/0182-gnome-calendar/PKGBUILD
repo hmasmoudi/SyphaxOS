@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=gnome-calendar
-pkgver=3.24.0
+pkgver=3.24.3
 pkgrel=1
 pkgdesc="The GNOME calendar package contains the GNOME calendar."
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="http://ftp.gnome.org/pub/gnome/sources/gnome-calendar/3.24"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('8a21f51e10ce491e4a492e21c47de29a9ba1b568f4e2fd6f4e33616609d413d0')
+sha256sums=('3ecb4074f44cb6c883f81f93ebde2fa3890107f8e06740495be9f942190ff3ec')
 depends=('rootfs>=2.0.0')
 
 build() {

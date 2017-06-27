@@ -1,0 +1,21 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=slack
+pkgver=2.6.3
+pkgrel=1
+pkgdesc="Slack for Linux Beta"
+arch=('x86_64')
+install=$pkgname.install
+url="https://downloads.slack-edge.com/linux_releases"
+license=('GPL')
+groups=('applications')
+source=("$url/${pkgname}-desktop-${pkgver}-amd64.deb")
+sha256sums=('SKIP')
+depends=('SyphaxOS-Desktop')
+
+package() {
+   cd "$srcdir"
+   
+   tar -xJC "${pkgdir}" -f data.tar.xz
+}
+

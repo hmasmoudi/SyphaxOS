@@ -1,0 +1,30 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=gst-plugins-ugly
+pkgver=1.12.1
+pkgrel=2
+pkgdesc="The GStreamer Good Plug-ins is a set of plug-ins considered by the GStreamer developers to have good quality code, correct functionality, and the preferred license (LGPL for the plug-in code, LGPL or LGPL-compatible for the supporting library)"
+arch=('x86_64')
+url="http://gstreamer.freedesktop.org/src/${pkgname}"
+license=('GPL')
+groups=('applications')
+source=("$url/${pkgname}-${pkgver}.tar.xz")
+sha256sums=('8fc2123d059713a34fa5d0a26641fb8158f52f6766633d2db7a661adc88e1069')
+depends=('rootfs>=2.0.0')
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --libexecdir=/usr/lib \
+               --with-package-name="GStreamer ugly Plugins SyphaxOS" \
+               --with-package-origin="http://gstreamer.freedesktop.org/src/gst-plugins-ugly" \
+               --disable-static   
+   make
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   make DESTDIR="${pkgdir}" install
+}
+

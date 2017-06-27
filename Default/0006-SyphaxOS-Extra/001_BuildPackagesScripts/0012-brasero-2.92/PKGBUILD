@@ -2,7 +2,7 @@
 
 pkgname=brasero
 pkgver=3.12.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Brasero is an application used to burn CD/DVD on the GNOME Desktop."
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/brasero/3.12"
@@ -12,7 +12,9 @@ groups=('applications')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('216691249053448a9f2b4ee5e118ce72')
 depends=('rootfs>=2.0.0'
-         'libevent>=2.0.22')
+         'libevent'
+         'squashfs-tools'
+         'libisoburn')
 
 prepare() {
    cd "$srcdir/${pkgname}-${pkgver}"

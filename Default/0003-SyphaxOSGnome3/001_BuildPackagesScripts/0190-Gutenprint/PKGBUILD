@@ -1,0 +1,35 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=gutenprint
+pkgver=5.2.12
+pkgrel=2
+pkgdesc="The Gutenprint (formerly Gimp-Print) package contains high quality drivers for many brands and models of printers for use with Cups-2.2.2 and the GIMP-2.0."
+arch=('x86_64')
+url="http://downloads.sourceforge.net/gimp-print"
+license=('GPL')
+groups=('desktop')
+source=("$url/${pkgname}-${pkgver}.tar.bz2")
+md5sums=('9789107b577d1338c1d189993ea99eef')
+depends=('rootfs')
+
+prepare() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   sed -i 's|$(PACKAGE)/doc|doc/$(PACKAGE)-$(VERSION)|' \
+          {,doc/,doc/developer/}Makefile.in
+}
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   ./configure --prefix=/usr --disable-static
+   
+   make
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   make DESTDIR="${pkgdir}" install
+}
+

@@ -2,21 +2,22 @@
 
 pkgname=gnupg
 pkgver=2.1.20
-pkgrel=1
+pkgrel=5
 pkgdesc="The GnuPG package is GNU's tool for secure communication and data storage."
 arch=('x86_64')
 url="ftp://ftp.gnupg.org/gcrypt/gnupg"
 license=('GPL')
+install=${pkgname}.install
 groups=('applications')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
-md5sums=('f6bc7e0b82893dfafe09109d86ff6e9b')
+md5sums=('SKIP')
 depends=('rootfs>=2.0.0')
 
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"
    
    ./configure --prefix=/usr \
-               --enable-symcryptrun \
+               --enable-symcryptrun   \
                --docdir=/usr/share/doc/gnupg-${pkgver}
    make
    

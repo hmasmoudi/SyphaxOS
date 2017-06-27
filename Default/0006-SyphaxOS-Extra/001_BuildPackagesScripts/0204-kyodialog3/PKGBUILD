@@ -1,0 +1,20 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=kyodialog3
+pkgver=0.5
+pkgrel=0
+pkgdesc="Kyocera printers drivers. The Linux Package 3 includes a new, stand-alone UI that organizes and enhances printer features using a convenient tab system."
+arch=('x86_64')
+url="https://cdn.kyostatics.net"
+license=('GPL')
+groups=('applications')
+instal=${pkgname}.install
+source=("kyodialog3.fr_0.5-0_amd64.deb")
+md5sums=('SKIP')
+depends=('rootfs>=2.0.0')
+
+package() {
+   msg2 "Extracting the data.tar.gz..."
+   bsdtar -xf data.tar.gz -C "$pkgdir/"
+}
+

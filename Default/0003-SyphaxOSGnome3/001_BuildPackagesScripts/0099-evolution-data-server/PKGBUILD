@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=evolution-data-server
-pkgver=3.24.1
+pkgver=3.24.3
 pkgrel=1
 pkgdesc="Evolution Data Server package provides a unified backend for programs that work with contacts, tasks, and calendar information."
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="http://ftp.gnome.org/pub/gnome/sources/evolution-data-server/3.24"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('6344b8035e2bcc5cd404bc86e6d874cdf54102a8948aa0ab7b4e717d328881b0')
+sha256sums=('13e3171f5ac73bbf9edf2ed42859fbf952fce240113b6d3362200fba02c241ca')
 depends=('rootfs>=2.0.0')
 
 prepare() {

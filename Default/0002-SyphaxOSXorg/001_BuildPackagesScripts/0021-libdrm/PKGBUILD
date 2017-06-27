@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=libdrm
-pkgver=2.4.76
+pkgver=2.4.81
 pkgrel=1
 pkgdesc="libdrm provides a user space library for accessing the DRM, direct rendering manager, on operating systems that support the ioctl interface."
 arch=('x86_64')
@@ -9,13 +9,11 @@ url="http://dri.freedesktop.org/libdrm"
 license=('GPL')
 groups=('graphicslayer')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
-md5sums=('7a28eedd84459ac97017f1aa437237ac')
+md5sums=('SKIP')
 depends=('rootfs>=2.0.0')
 
 prepare() {
    cd "$srcdir/$pkgname-$pkgver"
-   
-   sed -i "/pthread-stubs/d" configure.ac
    
    autoreconf -fiv
 }

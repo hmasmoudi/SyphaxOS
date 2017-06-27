@@ -1,21 +1,24 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=skypeforlinux
-pkgver=5.1.0.1
+pkgver=5.3.0.1
 pkgrel=1
 pkgdesc="Skype for Linux Alpha."
 arch=('x86_64')
-url="https://repo.skype.com/latest"
+url="https://repo.skype.com/deb/pool/main/s/skypeforlinux"
 license=('GPL')
 groups=('applications')
-source=("$url/${pkgname}-64.deb")
-md5sums=('a43c8f03ad19ce9839a0576846184622')
+source=("$url/${pkgname}_${pkgver}_amd64.deb")
+sha256sums=('3fdb61292cfdeef42ddb473d019884a4a8c5798f871793086f5edb6fb14d4e23')
 depends=('rootfs>=2.0.0')
 
 package() {
    cd "$srcdir"
    
    tar -xJC "${pkgdir}" -f data.tar.xz
+   install -d "${pkgdir}/usr/share/licenses/skypeforlinux-bin"
+   mv "${pkgdir}/usr/share/skypeforlinux/LICENSE" "${pkgdir}/usr/share/licenses/skypeforlinux-bin/"
+   mv "${pkgdir}/usr/share/skypeforlinux/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/skypeforlinux-bin/"
    rm -rf "${pkgdir}/opt"
 }
 

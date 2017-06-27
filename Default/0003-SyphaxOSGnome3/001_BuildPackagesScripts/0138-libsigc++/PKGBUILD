@@ -2,7 +2,7 @@
 
 pkgname=libsigc++
 pkgver=2.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The libsigc++ package implements a typesafe callback system for standard C++."
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/libsigc++/2.10"

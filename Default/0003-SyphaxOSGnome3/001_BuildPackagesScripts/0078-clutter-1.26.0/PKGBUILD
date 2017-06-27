@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=clutter
-pkgver=1.26.0
+pkgver=1.26.2
 pkgrel=2
 pkgdesc="The Clutter package contains an open source software library used for creating fast, visually rich and animated graphical user interfaces."
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="http://ftp.gnome.org/pub/gnome/sources/clutter/1.26"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('67514e7824b3feb4723164084b36d6ce1ae41cb3a9897e9f1a56c8334993ce06')
+sha256sums=('e7233314983055e9018f94f56882e29e7fc34d8d35de030789fdcd9b2d0e2e56')
 depends=('rootfs>=2.0.0')
 
 build() {

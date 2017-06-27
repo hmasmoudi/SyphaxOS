@@ -1,9 +1,9 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=gnomedesktop
-pkgver=2.0.0
-pkgrel=12
-pkgdesc="SyphaxOS 2.0.0 Gnome 3.22 Desktop Package."
+pkgver=2.2.0
+pkgrel=2
+pkgdesc="SyphaxOS 2.2.0 Gnome 3.24.2 Desktop Package."
 arch=('x86_64')
 install=${pkgname}.install
 license=('GPL')
@@ -135,12 +135,15 @@ depends=(
          'bluez'
          'libogg'
          'libvorbis'
+         'libtheora'
+         'flac'
          'alsa-lib'
          'libcanberra'
          'gnome-bluetooth'
          'gnome-keyring'
          'lcms2'
          'libusb'
+         'libusb-compat'
          'upower'
          'json-c'
          'libsndfile'
@@ -200,6 +203,9 @@ depends=(
          'sound-theme-freedesktop'
          'gnome-calendar'
          'parted'
+         'gutenprint'
+         'cups-pk-helper'
+         'system-config-printer'
          )
 
 package() {

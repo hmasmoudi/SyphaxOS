@@ -2,7 +2,7 @@
 
 pkgname=cheese
 pkgver=3.24.0
-pkgrel=1
+pkgrel=4
 pkgdesc="Cheese is used to take photos and videos with fun graphical effects."
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/cheese/3.24"

@@ -2,7 +2,7 @@
 
 pkgname=XML-Parser
 pkgver=2.44
-pkgrel=2
+pkgrel=3
 pkgdesc="The XML::Parser module is a Perl interface to James Clark's XML parser, Expat."
 arch=('x86_64')
 url="http://cpan.metacpan.org/authors/id/T/TO/TODDR"
@@ -24,4 +24,12 @@ package() {
    cd "$srcdir/$pkgname-$pkgver"
 
    make DESTDIR="$pkgdir" install
+   
+# template start; name=perl-binary-module-dependency; version=1;
+if [[ $(find "$pkgdir/usr/lib/perl5/" -name "*.so") ]]; then
+	_perlver_min=$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]);')
+	_perlver_max=$(perl -e '$v = $^V->{version}; print $v->[0].".".($v->[1]+1);')
+	depends+=("perl>=$_perlver_min" "perl<$_perlver_max")
+fi
+# template end;
 }
