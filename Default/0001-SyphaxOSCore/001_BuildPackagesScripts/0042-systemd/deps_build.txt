@@ -1,0 +1,12 @@
+#List here all package to be rebuild if any upgrade of Systemd package: Major
+# grep -r "lib/libxxx.so"  /usr/var/lib/pacman/local/
+
+- evolution-data-server
+- gdm
+- gnome-shell
+- gnome-session
+- budgie
+- gnome-desktop
+- nautilus
+- dbus
+- dbus-glib

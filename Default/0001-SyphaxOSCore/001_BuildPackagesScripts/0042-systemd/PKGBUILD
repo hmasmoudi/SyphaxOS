@@ -1,8 +1,8 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=systemd
-pkgver=233
-pkgrel=4
+pkgver=234
+pkgrel=2
 pkgdesc="The systemd package contains programs for controlling the startup, running, and shutdown of the system."
 arch=('x86_64')
 install=$pkgname.install
@@ -10,11 +10,13 @@ url="https://github.com/systemd/systemd/archive"
 license=('GPL')
 groups=('core')
 source=($pkgname-$pkgver.tar.gz::"$url/v$pkgver.tar.gz")
-md5sums=('11d3ff48f3361b8bdcfcdc076a31b537')
+md5sums=('SKIP')
 depends=('rootfs>=2.0.0')
 
 prepare() {
    cd "$srcdir/$pkgname-$pkgver"
+
+    sed -i "s/unit_status_emit_starting_stopping_reloading(u, t)/{}/g" ./src/core/job.c
 
    ./autogen.sh
    sed -i "/seems to be moved/s/^/#/" build-aux/ltmain.sh

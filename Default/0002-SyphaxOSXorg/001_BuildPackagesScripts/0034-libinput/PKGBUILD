@@ -1,20 +1,16 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=libinput
-pkgver=1.6.2
-pkgrel=3
+pkgver=1.8.0
+pkgrel=1
 pkgdesc="libinput is a library that handles input devices for display servers and other applications that need to directly deal with input devices."
 arch=('x86_64')
 url="http://www.freedesktop.org/software/libinput"
 license=('GPL')
 groups=('graphicslayer')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-md5sums=('f497894a06ce76bcfcd0dc2312ec9f17')
-depends=('rootfs>=2.0.0')
-
-prepare() {
-   cd "$srcdir/$pkgname-$pkgver"
-}
+md5sums=('SKIP')
+depends=('rootfs')
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"
@@ -25,6 +21,8 @@ build() {
    ./configure --prefix=/usr      \
                --disable-static   \
                --disable-libwacom \
+               --disable-documentation \
+               --disable-tests \
                --with-udev-dir=/lib/udev
    make
 }

@@ -2,7 +2,7 @@
 
 pkgname=nautilus
 pkgver=3.24.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The Nautilus package contains the GNOME file manager."
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/nautilus/3.24"

@@ -2,7 +2,7 @@
 
 pkgname=gnome-control-center
 pkgver=3.24.2
-pkgrel=1
+pkgrel=3
 pkgdesc="The GNOME Control Center package contains the GNOME settings manager."
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/gnome-control-center/3.24"
@@ -21,7 +21,7 @@ prepare() {
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"
    
-   ./configure --prefix=/usr
+   ./configure --prefix=/usr --disable-static
    
    make
 }
@@ -30,6 +30,8 @@ package() {
    cd "$srcdir/${pkgname}-${pkgver}"
    
    make DESTDIR="${pkgdir}" install
+   
+   sed -i "/OnlyShowIn/d" "$pkgdir/usr/share/applications/gnome-control-center.desktop"
    
    install -d -o root -g 102 -m 700 "$pkgdir/usr/share/polkit-1/rules.d"
 }

@@ -2,7 +2,7 @@
 
 pkgname=ncurses
 pkgver=6.0
-pkgrel=3
+pkgrel=4
 pkgdesc="The Ncurses package contains libraries for terminal-independent handling of character screens."
 arch=('x86_64')
 url="http://ftp.gnu.org/gnu/ncurses"
@@ -53,6 +53,9 @@ package() {
    rm -vf                     "$pkgdir"/usr/lib/libcursesw.so
    echo "INPUT(-lncursesw)" > "$pkgdir"/usr/lib/libcursesw.so
    ln -sfv libncurses.so      "$pkgdir"/usr/lib/libcurses.so
+   
+   ln -snfv libncursesw.so    "$pkgdir"/usr/lib/libncurses.so.5
+   ln -snfv libncursesw.so    "$pkgdir"/usr/lib/libtinfo.so.5
 
    mkdir -pv       "$pkgdir"/usr/share/doc/ncurses-6.0
    cp -v -R doc/* "$pkgdir"/usr/share/doc/ncurses-6.0

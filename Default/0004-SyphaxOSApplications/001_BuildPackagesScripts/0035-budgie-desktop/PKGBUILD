@@ -2,8 +2,8 @@
 
 pkgname=budgie-desktop
 pkgver=10.3.1
-pkgrel=20170627
-_commit=28ddd4237a25ecc05e1bd3be0a27dbf43ecea96f  # master
+pkgrel=20170714
+_commit=254d284cf6857e5ab3fed37cbaea4d8e09d9daad  # master
 pkgdesc="The Budgie Desktop a modern desktop designed to keep out the way of the user."
 arch=('x86_64')
 install=${pkgname}.install
@@ -14,32 +14,32 @@ source=("git+https://github.com/budgie-desktop/budgie-desktop#commit=$_commit"
         "panel.ini")
 md5sums=('SKIP'
          'ac45706b3ce00d3898065b4a53750ff2')
-depends=('gnomedesktop>=2.0.0' 'gnome-screensaver>=3.6.1' 'SyphaxOS-Theme>=2.0.0')
+makedepends=('git' 'gobject-introspection' 'intltool' 'meson' 'vala' 'sassc')
+depends=('gnomedesktop' 'gnome-screensaver' 'SyphaxOS-Theme')
 
 prepare() {
-   cd "$srcdir/${pkgname}"
+   cd "${srcdir}/${pkgname}"
    
    #Remove old build
    rm -rf build
    
    #update de get gvc
-   git submodule init
-   git submodule update
+   git submodule update --init
    
-   meson build --prefix=/usr --sysconfdir=/etc --buildtype release -Dwith-gtk-doc=false
+   meson build --prefix=/usr --sysconfdir=/etc --buildtype release -Dwith-gtk-doc=false --strip
    
-   cp "$srcdir"/panel.ini "$srcdir/${pkgname}"/src/panel/panel.ini
+   cp "${srcdir}"/panel.ini "${srcdir}/${pkgname}"/src/panel/panel.ini
 }
 
 build() {
-   cd "$srcdir/${pkgname}"
+   cd "${srcdir}/${pkgname}"
    
    cd build
    ninja -j$(($(getconf _NPROCESSORS_ONLN)+1))
 }
 
 package() {
-   cd "$srcdir/${pkgname}"
+   cd "${srcdir}/${pkgname}"
    
    cd build
    DESTDIR="${pkgdir}" ninja install

@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=adapta-gtk-theme
-pkgver=3.91.0.126
+pkgver=3.91.0.204
 pkgrel=1
 pkgdesc="Adapta gtk theme for SyphaxOS Desktop"
 url="https://github.com/adapta-project/adapta-gtk-theme"

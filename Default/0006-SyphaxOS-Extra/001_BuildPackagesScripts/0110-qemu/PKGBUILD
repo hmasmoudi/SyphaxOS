@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=qemu
-pkgver=2.8.1
+pkgver=2.8.1.1
 pkgrel=1
 pkgdesc="QEMU is a generic and open source machine emulator and virtualizer."
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="http://download.qemu-project.org"
 license=('GPL')
 groups=('applications')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('4d4d2f62c0f7977fb1d49ba4894b2d5e43b8bf8a442be77d42701262c9166440')
+sha256sums=('SKIP')
 depends=('rootfs')
 
 build() {

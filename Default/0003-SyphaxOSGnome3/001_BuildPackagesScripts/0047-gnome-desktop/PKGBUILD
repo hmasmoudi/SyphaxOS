@@ -2,7 +2,7 @@
 
 pkgname=gnome-desktop
 pkgver=3.24.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The GNOME Desktop package contains a library that provides an API shared by several applications on the GNOME Desktop."
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/gnome-desktop/3.24"

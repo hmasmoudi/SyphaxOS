@@ -1,0 +1,27 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=gnome-todo
+pkgver=3.24.2
+pkgrel=1
+pkgdesc="Task manager for GNOME"
+url="http://ftp.acc.umu.se/pub/gnome/sources/gnome-todo/3.24"
+arch=('x86_64')
+license=(GPL)
+install=${pkgname}.install
+groups=('applications')
+source=("$url/${pkgname}-${pkgver}.tar.xz")
+sha256sums=('6985c75b9dd5883ed03af2b9ab9aa004152401ce455feb916248337e8077f8d4')
+depends=('rootfs>=2.0.0')
+
+build() {
+   cd "$srcdir/$pkgname-$pkgver"
+   ./configure --prefix=/usr
+   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+   make
+}
+
+package() {
+   cd "$srcdir/$pkgname-$pkgver"
+   make DESTDIR="$pkgdir" install
+}
+

@@ -2,7 +2,7 @@
 
 pkgname=gnome-session
 pkgver=3.24.1
-pkgrel=2
+pkgrel=4
 pkgdesc="The GNOME Session package contains the GNOME session manager."
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/gnome-session/3.24"
@@ -15,7 +15,7 @@ depends=('rootfs>=2.0.0')
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"
    
-   ./configure --prefix=/usr --docdir=/usr/share/doc/gnome-session-3.24.0 --disable-session-selector
+   ./configure --prefix=/usr --docdir=/usr/share/doc/gnome-session-3.24.1 --disable-session-selector
 
    make
 }

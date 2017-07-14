@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=dbus
-pkgver=1.10.18
+pkgver=1.10.20
 pkgrel=1
 pkgdesc="D-Bus is a message bus system, a simple way for applications to talk to one another"
 arch=('x86_64')
