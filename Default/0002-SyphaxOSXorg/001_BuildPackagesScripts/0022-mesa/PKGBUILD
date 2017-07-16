@@ -1,8 +1,8 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=mesa
-pkgver=17.1.4
-pkgrel=3
+pkgver=17.1.5
+pkgrel=1
 pkgdesc="Mesa is an OpenGL compatible 3D graphics library."
 arch=('x86_64')
 url="https://mesa.freedesktop.org/archive"
