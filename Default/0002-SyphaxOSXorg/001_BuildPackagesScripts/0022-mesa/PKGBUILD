@@ -2,14 +2,18 @@
 
 pkgname=mesa
 pkgver=17.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Mesa is an OpenGL compatible 3D graphics library."
 arch=('x86_64')
 url="https://mesa.freedesktop.org/archive"
 license=('GPL')
 groups=('graphicslayer')
-source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('SKIP')
+source=("$url/${pkgname}-${pkgver}.tar.xz"
+        0001-Fix-linkage-against-shared-glapi.patch
+        0002-glvnd-fix-gl-dot-pc.patch)
+sha256sums=('378516b171712687aace4c7ea8b37c85895231d7a6d61e1e27362cf6034fded9'
+            'c68d1522f9bce4ce31c92aa7a688da49f13043f5bb2254795b76dea8f47130b7'
+            '64a77944a28026b066c1682c7258d02289d257b24b6f173a9f7580c48beed966')
 depends=('rootfs>=2.0.0')
 
 prepare() {
@@ -17,6 +21,11 @@ prepare() {
    
    sed -i "/pthread_stubs_possible=/s/yes/no/" configure.ac
    sed -i "/seems to be moved/s/^/: #/" bin/ltmain.sh
+   
+   # glvnd support patches - from Fedora
+   # non-upstreamed ones
+   patch -Np1 -i ../0001-Fix-linkage-against-shared-glapi.patch
+   patch -Np1 -i ../0002-glvnd-fix-gl-dot-pc.patch
 }
 
 build() {
@@ -37,6 +46,8 @@ build() {
          --enable-dri3                   \
          --enable-gbm                    \
          --enable-vdpau                  \
+         --enable-gles1                  \
+         --enable-gles2                  \
          --enable-shared-glapi           \
          --with-platforms="drm,x11,wayland"  \
          --with-vulkan-drivers=intel         \
