@@ -1,0 +1,25 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=swig
+pkgver=3.0.12
+pkgrel=1
+pkgdesc="Generate scripting interfaces to C/C++ code"
+arch=('x86_64')
+url="http://www.swig.org/"
+license=('custom')
+depends=('SyphaxOS-Desktop')
+source=(http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz)
+sha1sums=('5cc1af41d041e4cc609580b99bb3dcf720effa25')
+
+build() {
+  cd ${pkgname}-${pkgver}
+  ./configure --prefix=/usr
+  make
+}
+
+package() {
+  cd ${pkgname}-${pkgver}
+  make DESTDIR="${pkgdir}" install
+  install -D -m644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+  install -D -m644 LICENSE-UNIVERSITIES "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE-UNIVERSITIES
+}

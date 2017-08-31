@@ -1,0 +1,35 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=graphviz
+pkgver=2.40.1
+pkgrel=8
+pkgdesc='Graph visualization software'
+url='http://www.graphviz.org/'
+license=('CPL')
+arch=('x86_64')
+depends=('rootfs')
+source=("${url}/pub/${pkgname}/stable/SOURCES/${pkgname}-${pkgver}.tar.gz"
+        'ghostscript918.patch')
+sha256sums=('ca5218fade0204d59947126c38439f432853543b0818d9d728c589dfe7f3a421'
+            '0083d126e27f2223ec4226fc1d71c9c84106968a0fdf65de838aee1e4882bfdb')
+
+prepare() {
+	cd "${srcdir}/${pkgname}-${pkgver}"
+	patch -p1 -i ../ghostscript918.patch
+}
+
+build() {
+	cd "${srcdir}/${pkgname}-${pkgver}"
+	export CXXFLAGS+=' -Dint64=int64_t' # for ocaml
+	export LIBPOSTFIX=/
+	export PYTHON=python2
+	export LUA=lua5.1
+
+	./configure --prefix=/usr
+	make
+}
+
+package() {
+	cd "${srcdir}/${pkgname}-${pkgver}"
+	make DESTDIR="${pkgdir}" install
+}

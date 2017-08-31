@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=linux
-pkgver=4.12.2
+pkgver=4.12.10
 pkgrel=1
 pkgdesc="The Linux package contains the Linux kernel."
 arch=('x86_64')

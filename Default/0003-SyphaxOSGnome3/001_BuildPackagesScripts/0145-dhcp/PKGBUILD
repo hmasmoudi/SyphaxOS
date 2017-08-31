@@ -1,0 +1,63 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=dhcp
+pkgver=4.3.6
+pkgrel=1
+pkgdesc="The ISC DHCP package contains both the client and server programs for DHCP. dhclient (the client) is used for connecting to a network which uses DHCP to assign network addresses. dhcpd (the server) is used for assigning network addresses on private networks."
+arch=('x86_64')
+url="http://ftp.isc.org/isc/dhcp/${pkgver}"
+license=('GPL')
+groups=('desktop')
+source=("$url/${pkgname}-${pkgver}.tar.gz"
+        "dhclient.conf"
+        "dhclientat.service")
+md5sums=('afa6e9b3eb7539ea048421a82c668adc'
+         '4e35868ad012c18e0d60727a022f7150'
+         'eb6c6321b3332e245bfdbdaf5078b0db')
+depends=('rootfs>=2.0.0')
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   CFLAGS="-D_PATH_DHCLIENT_SCRIPT='\"/sbin/dhclient-script\"'         \
+           -D_PATH_DHCPD_CONF='\"/etc/dhcp/dhcpd.conf\"'               \
+           -D_PATH_DHCLIENT_CONF='\"/etc/dhcp/dhclient.conf\"'"        \
+   ./configure --prefix=/usr                                           \
+               --sysconfdir=/etc/dhcp                                  \
+               --localstatedir=/var                                    \
+               --with-srv-lease-file=/var/lib/dhcpd/dhcpd.leases       \
+               --with-srv6-lease-file=/var/lib/dhcpd/dhcpd6.leases     \
+               --with-cli-lease-file=/var/lib/dhclient/dhclient.leases \
+               --with-cli6-lease-file=/var/lib/dhclient/dhclient6.leases &&
+   make -j1
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   mkdir -pv "${pkgdir}"/sbin
+   
+   make DESTDIR="${pkgdir}" -C client install
+   mv -v "${pkgdir}"/usr/sbin/dhclient "${pkgdir}"/sbin
+   install -v -m755 client/scripts/linux "${pkgdir}"/sbin/dhclient-script
+   
+   cp ../../dhclient.conf "${pkgdir}"/etc/dhcp/dhclient.conf
+   install -v -dm 755 "${pkgdir}"/var/lib/dhclient
+   
+   DESTDIR="${pkgdir}"
+   EXTDIR=${DESTDIR}/etc
+   DEFAULTSDIR=${DESTDIR}/etc/default
+   SERVICEDIR=${DESTDIR}/lib/services
+   TMPFILESDIR=${DESTDIR}/usr/lib/tmpfiles.d
+   UNITSDIR=${DESTDIR}/lib/systemd/system
+   MODE=755
+   DIRMODE=755
+   CONFMODE=644
+   
+   install -d -m ${DIRMODE} ${DEFAULTSDIR}
+	install -d -m ${DIRMODE} ${TMPFILESDIR}
+	install -d -m ${DIRMODE} ${UNITSDIR}
+	
+	install -m ${CONFMODE} ../../dhclientat.service ${UNITSDIR}/dhclient@.service
+}
+

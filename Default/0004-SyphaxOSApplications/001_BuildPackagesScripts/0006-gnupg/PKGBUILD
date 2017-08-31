@@ -1,8 +1,8 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=gnupg
-pkgver=2.1.20
-pkgrel=5
+pkgver=2.1.23
+pkgrel=2
 pkgdesc="The GnuPG package is GNU's tool for secure communication and data storage."
 arch=('x86_64')
 url="ftp://ftp.gnupg.org/gcrypt/gnupg"
@@ -32,16 +32,13 @@ package() {
    
    make DESTDIR="${pkgdir}" install
    
+   ln -s gpg "${pkgdir}"/usr/bin/gpg2
+   ln -s gpgv "${pkgdir}"/usr/bin/gpgv2
+
    install -v -m755 -d ${pkgdir}/usr/share/doc/gnupg-${pkgver}/html
    install -v -m644    doc/gnupg_nochunks.html \
                        ${pkgdir}/usr/share/doc/gnupg-${pkgver}/html/gnupg.html
    install -v -m644    doc/*.texi doc/gnupg.txt \
                        ${pkgdir}/usr/share/doc/gnupg-${pkgver}
-   for f in gpg gpgv
-   do
-     ln -svf ${f}2.1 ${pkgdir}/usr/share/man/man1/$f.1 &&
-     ln -svf ${f}2   ${pkgdir}/usr/bin/$f
-   done
-   unset f
 }
 

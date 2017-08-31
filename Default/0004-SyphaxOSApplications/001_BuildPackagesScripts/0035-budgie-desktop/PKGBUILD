@@ -1,9 +1,9 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=budgie-desktop
-pkgver=10.3.1
-pkgrel=20170714
-_commit=254d284cf6857e5ab3fed37cbaea4d8e09d9daad  # master
+pkgver=10.4.0
+pkgrel=20170814
+_commit=4fa0a6cc5234648c0173f4421980d10215432b01  # master
 pkgdesc="The Budgie Desktop a modern desktop designed to keep out the way of the user."
 arch=('x86_64')
 install=${pkgname}.install

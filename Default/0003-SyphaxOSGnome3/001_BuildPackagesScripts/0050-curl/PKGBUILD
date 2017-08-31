@@ -1,20 +1,16 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=curl
-pkgver=7.52.1
-pkgrel=2
+pkgver=7.55.0
+pkgrel=1
 pkgdesc="The cURL package contains a utility and a library used for transferring files with URL syntax to any of the following protocols: FTP, FTPS, HTTP, HTTPS, SCP, SFTP, TFTP, TELNET, DICT, LDAP, LDAPS and FILE."
 arch=('x86_64')
 url="https://curl.haxx.se/download"
 license=('GPL')
 groups=('desktop')
-source=("$url/${pkgname}-${pkgver}.tar.lzma")
-md5sums=('ddbd157359bc8a9174e11b151254b264')
+source=("$url/${pkgname}-${pkgver}.tar.xz")
+md5sums=('SKIP')
 depends=('rootfs>=2.0.0')
-
-prepare() {
-   cd "$srcdir/$pkgname-$pkgver"
-}
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"

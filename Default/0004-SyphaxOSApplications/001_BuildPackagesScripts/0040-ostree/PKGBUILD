@@ -1,0 +1,28 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=ostree
+pkgver=2017.10
+pkgrel=1
+pkgdesc="OSTree is a tool that combines a git-like model for committing and downloading bootable filesystem trees, along with a layer for deploying them and managing the bootloader configuration."
+arch=('x86_64')
+url="https://github.com/ostreedev/ostree/releases/download/v${pkgver}"
+license=('GPL')
+groups=('applications')
+source=("$url/lib${pkgname}-${pkgver}.tar.xz")
+md5sums=('SKIP')
+depends=('rootfs>=2.0.0')
+
+build() {
+   cd "$srcdir/lib${pkgname}-${pkgver}"
+   
+   ./configure --prefix=/usr
+   
+   make
+}
+
+package() {
+   cd "$srcdir/lib${pkgname}-${pkgver}"
+   
+   make DESTDIR="${pkgdir}" install
+}
+

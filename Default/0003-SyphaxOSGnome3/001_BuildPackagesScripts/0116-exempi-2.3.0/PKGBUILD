@@ -2,18 +2,19 @@
 
 pkgname=exempi
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Exempi is an implementation of XMP (Adobe's Extensible Metadata Platform)."
 arch=('x86_64')
 url="http://libopenraw.freedesktop.org/download"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
-md5sums=('1cc8c7f005fd4ef631e9000b3d5433a8')
+md5sums=('SKIP')
 depends=('rootfs>=2.0.0')
 
 prepare() {
    cd "$srcdir/${pkgname}-${pkgver}"
+   NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {

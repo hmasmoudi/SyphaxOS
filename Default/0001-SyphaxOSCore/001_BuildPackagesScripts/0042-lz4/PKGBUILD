@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=lz4
-pkgver=1.7.5
-pkgrel=2
+pkgver=1.8.0
+pkgrel=1
 pkgdesc="Extremely fast compression algorithm"
 arch=('x86_64')
 url="https://github.com/lz4/lz4/archive"
 license=('GPL')
 groups=('core')
 source=($pkgname-$pkgver::"$url/v${pkgver}.tar.gz")
-md5sums=('c9610c5ce97eb431dddddf0073d919b9')
+md5sums=('SKIP')
 depends=('rootfs>=2.0.0')
 
 build() {

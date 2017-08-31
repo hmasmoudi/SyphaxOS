@@ -2,7 +2,7 @@
 
 pkgname=gnome-autoar
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The Nautilus package contains the GNOME file manager."
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/gnome-autoar/0.2"

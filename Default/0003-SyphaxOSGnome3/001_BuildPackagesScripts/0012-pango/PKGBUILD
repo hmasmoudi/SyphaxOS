@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=pango
-pkgver=1.40.6
+pkgver=1.40.11
 pkgrel=1
 pkgdesc="Pango is a library for laying out and rendering of text, with an emphasis on internationalization."
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="http://ftp.gnome.org/pub/gnome/sources/pango/1.40"
 license=('GPL')
 groups=('desktop')
 source=("$url/$pkgname-$pkgver.tar.xz")
-sha256sums=('ca152b7383a1e9f7fd74ae96023dc6770dc5043414793bfe768ff06b6759e573')
+sha256sums=('5b11140590e632739e4151cae06b8116160d59e22bf36a3ccd5df76d1cf0383e')
 depends=('rootfs>=2.0.0')
 
 prepare() {

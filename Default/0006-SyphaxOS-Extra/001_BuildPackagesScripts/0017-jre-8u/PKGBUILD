@@ -2,8 +2,8 @@
 # Contributors: Refer to https://aur.archlinux.org/packages/jre/
 pkgname=jre
 _major=8
-_minor=131
-_build=b11
+_minor=144
+_build=b01
 _jname=${pkgname}${_major}
 _jvmdir=/usr/lib/jvm/java-$_major-$pkgname/jre
 DLAGENTS=('http::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -b oraclelicense=a -o %o %u')
@@ -15,10 +15,10 @@ install=${pkgname}.install
 url="http://download.oracle.com/otn-pub/java"
 license=('GPL')
 groups=('applications')
-source=("$url/jdk/$pkgver-$_build/d54c1d3a095b4ff2b6607d096fa80163/jre-${_major}u${_minor}-linux-x64.tar.gz"
+source=("$url/jdk/$pkgver-$_build/090f390dda5b47b9b721c7dfaa008135/jre-${_major}u${_minor}-linux-x64.tar.gz"
         "$url/jce/$_major/jce_policy-$_major.zip"
         "policytool-$_jname.desktop")
-md5sums=('9864b3b90840a2bc4604fba513e87453'
+md5sums=('e3808f24d0f588b0c313fa18b50683c6'
          'b3c7031bc65c28c2340302065e7d00d3'
          '762729fa0faba8ff2b5a29c249c95079')
 depends=('rootfs>=2.0.0')

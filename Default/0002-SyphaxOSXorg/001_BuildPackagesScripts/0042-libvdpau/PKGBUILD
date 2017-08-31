@@ -2,7 +2,7 @@
 
 pkgname=libvdpau
 pkgver=1.1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="The libvdpau package contains a library which implements the VDPAU library."
 arch=('x86_64')
 url="http://people.freedesktop.org/~aplattner/vdpau"
@@ -11,10 +11,6 @@ groups=('graphicslayer')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
 md5sums=('2fa0b05a4f4d06791eec83bc9c854d14')
 depends=('rootfs>=2.0.0')
-
-prepare() {
-   cd "$srcdir/$pkgname-$pkgver"
-}
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"

@@ -1,22 +1,22 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=man-db
-pkgver=2.7.5
-pkgrel=2
+pkgver=2.7.6.1
+pkgrel=3
 pkgdesc="The Man-DB package contains programs for finding and viewing man pages."
 arch=('x86_64')
 url="http://download.savannah.gnu.org/releases/man-db"
 license=('GPL')
 groups=('core')
 source=("$url/$pkgname-$pkgver.tar.xz")
-md5sums=('37da0bb0400cc7b640f33c26f6052202')
+md5sums=('SKIP')
 depends=('rootfs>=2.0.0')
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"
 
    ./configure --prefix=/usr                          \
-               --docdir=/usr/share/doc/man-db-$pkgver \
+               --docdir=/usr/share/doc/man-db-2.7.6.1 \
                --sysconfdir=/etc                      \
                --disable-setuid                       \
                --with-browser=/usr/bin/lynx           \
@@ -31,6 +31,6 @@ package() {
 
    make DESTDIR="$pkgdir" install
 
-   sed -i "s:man root:root root:g" $pkgdir/usr/lib/tmpfiles.d/man-db.conf
+   sed -i "s:man man:root root:g" $pkgdir/usr/lib/tmpfiles.d/man-db.conf
 }
 

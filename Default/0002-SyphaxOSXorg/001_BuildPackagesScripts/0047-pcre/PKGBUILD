@@ -1,20 +1,16 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=pcre
-pkgver=8.40
-pkgrel=3
+pkgver=8.41
+pkgrel=2
 pkgdesc="The PCRE package contains Perl Compatible Regular Expression libraries."
 arch=('x86_64')
-url="ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre"
+url="http://www.pcre.org/"
 license=('GPL')
 groups=('graphicslayer')
-source=("$url/${pkgname}-${pkgver}.tar.bz2")
-md5sums=('41a842bf7dcecd6634219336e2167d1d')
+source=("https://ftp.pcre.org/pub/pcre/${pkgname}-${pkgver}.tar.bz2")
+md5sums=('SKIP')
 depends=('rootfs>=2.0.0')
-
-prepare() {
-   cd "$srcdir/$pkgname-$pkgver"
-}
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"
@@ -42,7 +38,10 @@ package() {
    #Make the package
    make DESTDIR="$pkgdir" install
    
+  install -Dm644 LICENCE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+   
    mv -v ${pkgdir}/usr/lib/libpcre.so.* ${pkgdir}/lib
-   ln -sfv ../../lib/libpcre.so.1 ${pkgdir}/usr/lib/libpcre.so
+   ln -sfv ../../lib/libpcre.so.1 "${pkgdir}/usr/lib/libpcre.so"
+   ln -sfv libpcre.so "${pkgdir}/usr/lib/libpcre.so.3"
 }
 

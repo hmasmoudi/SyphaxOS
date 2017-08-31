@@ -1,9 +1,9 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=core
-pkgver=2.0.0
-pkgrel=7
-pkgdesc="SyphaxOS 2.0.0 Core Package."
+pkgver=2.2.0
+pkgrel=1
+pkgdesc="SyphaxOS 2.2.0 Core Package."
 arch=('x86_64')
 license=('GPL')
 groups=('core')
@@ -87,6 +87,7 @@ depends=(
          'fuse'
          'ntfs-3g'
          'bash-completion'
+         'nano'
          'core-configs'
          )
 

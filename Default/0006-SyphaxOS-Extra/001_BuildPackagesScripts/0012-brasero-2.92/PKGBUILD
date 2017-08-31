@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=brasero
-pkgver=3.12.1
+pkgver=3.12.2
 pkgrel=5
 pkgdesc="Brasero is an application used to burn CD/DVD on the GNOME Desktop."
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL')
 install=${pkgname}.install
 groups=('applications')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-md5sums=('216691249053448a9f2b4ee5e118ce72')
+sha256sums=('6822166f9d08efcf8d900cab6f563e87f49f0e078ca10595dcd908498ef12041')
 depends=('rootfs>=2.0.0'
          'libevent'
          'squashfs-tools'

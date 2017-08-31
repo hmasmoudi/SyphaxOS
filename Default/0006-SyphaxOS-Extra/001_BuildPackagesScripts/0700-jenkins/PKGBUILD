@@ -1,0 +1,21 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=jenkins
+pkgver=2.71
+pkgrel=1
+pkgdesc="Jenkins"
+arch=('x86_64')
+url="https://jenkins.io/"
+license=('GPL')
+groups=('applications')
+source=("jenkins-2.71-1-any.pkg.tar.xz")
+sha256sums=('SKIP')
+depends=('SyphaxOS-Desktop')
+
+package() {
+   cd "$srcdir"
+   
+   cp -rf etc "${pkgdir}"/etc
+   cp -rf usr "${pkgdir}"/usr
+}
+

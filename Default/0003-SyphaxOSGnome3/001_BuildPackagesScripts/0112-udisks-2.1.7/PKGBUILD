@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=udisks
-pkgver=2.1.7
+pkgver=2.1.8
 pkgrel=1
 pkgdesc="The UDisks package provides a daemon, tools and libraries to access and manipulate disks and storage devices."
 arch=('x86_64')
@@ -9,12 +9,8 @@ url="http://udisks.freedesktop.org/releases"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
-md5sums=('8bccd36573b75286538bd5bd2c424f45')
+md5sums=('SKIP')
 depends=('rootfs>=2.0.0')
-
-prepare() {
-   cd "$srcdir/${pkgname}-${pkgver}"
-}
 
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"

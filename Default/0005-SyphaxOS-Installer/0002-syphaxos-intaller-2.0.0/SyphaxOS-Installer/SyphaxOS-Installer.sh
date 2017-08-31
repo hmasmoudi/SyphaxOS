@@ -162,266 +162,117 @@ prepare_drives() {
 part_menu() {
 
 	op_title="$manual_op_msg"
-	unset manual_part
+	unset part
 	tmp_menu=/tmp/part.sh tmp_list=/tmp/part.list
 	dev_menu="|  Device:  |  Size:  |  Used:  |  FS:  |  Mount:  |  Type:  |"
-	count=$(lsblk | grep "sd." | grep -v "$USB|loop|1K" | wc -l)
+	device_list=$(lsblk -no NAME,SIZE,TYPE,FSTYPE | egrep -v "$USB|loop[0-9]+|sr[0-9]+|fd[0-9]+" | sed 's/[^[:alnum:]_-., ]//g' | column -t | sort -k 1,1 | uniq)
+	device_count=$(<<<"$device_list" wc -l)
+
+	if "$screen_h" ; then
+		echo "dialog --extra-button --extra-label \"$write\" --colors --backtitle \"$backtitle\" --title \"$op_title\" --ok-button \"$edit\" --cancel-button \"$cancel\" --menu \"$manual_part_msg \n\n $dev_menu\" 21 68 9 \\" > "$tmp_menu"
+	else
+		echo "dialog --extra-button --extra-label \"$write\" --colors --title \"$title\" --ok-button \"$edit\" --cancel-button \"$cancel\" --menu \"$manual_part_msg \n\n $dev_menu\" 20 68 8 \\" > "$tmp_menu"
+	fi
+
 	int=1
+	empty_value="----"
+	until [ "$int" -gt "$device_count" ]
+	do
+		device=$(<<<"$device_list" awk '{print $1}' | awk "NR==$int")
+		dev_size=$(<<<"$device_list" grep -w "$device" | awk '{print $2}')
+		dev_type=$(<<<"$device_list" grep -w "$device" | awk '{print $3}')
+		dev_fs=$(<<<"$device_list" grep -w "$device" | awk '{print $4}')
+		dev_mnt=$(df | grep -w "$device" | awk '{print $6}' | sed 's/mnt\/\?//')
 
-	until [ "$int" -gt "$count" ]
-	  do
-		device=$(lsblk | grep "sd." | grep -v "$USB|loop|1K" | awk "NR==$int {print \$1}")
-		dev_size=$(lsblk | grep "sd." | grep -v "$USB|loop|1K" | awk "NR==$int {print \$4}" | sed 's/\,/\./')
-		dev_type=$(lsblk | grep "sd." | grep -v "$USB|loop|1K" | awk "NR==$int {print \$6}")
-		mnt_point=$(lsblk | grep "sd." | grep -v "$USB|loop|1K" | awk "NR==$int {print \$7}" | sed 's/\/mnt/\//;s/\/\//\//')
-
-		if [ "$int" -eq "1" ]; then
-			if "$screen_h" ; then
-				echo "dialog --extra-button --extra-label \"$write\" --colors --backtitle \"$backtitle\" --title \"$op_title\" --ok-button \"$edit\" --cancel-button \"$cancel\" --menu \"$manual_part_msg \n\n $dev_menu\" 21 68 9 \\" > "$tmp_menu"
-			else
-				echo "dialog --extra-button --extra-label \"$write\" --colors --title \"$title\" --ok-button \"$edit\" --cancel-button \"$cancel\" --menu \"$manual_part_msg \n\n $dev_menu\" 20 68 8 \\" > "$tmp_menu"
-			fi
-			echo "\"$device   \" \"$dev_size $dev_type ------------->\" \\" > $tmp_list
+		if (<<<"$dev_mnt" grep "/" &> /dev/null) then
+			dev_used=$(df -T | grep -w "$device" | awk '{print $6}')
 		else
-			if (<<<"$device" grep "sd.[0-9]" &> /dev/null) then
-				if (<<<"$mnt_point" grep "/" &> /dev/null) then
-					fs_type="$(df -T | grep "$(<<<"$device" sed 's/^..//')" | awk '{print $2}')"
-					dev_used=$(df -T | grep "$(<<<"$device" sed 's/^..//')" | awk '{print $6}')
-				else
-					unset fs_type dev_used
-				fi
-				
-				if (fdisk -l | grep "$(<<<"$device" sed 's/^..//')" | grep "*" &> /dev/null) then
-					part_type=$(fdisk -l | grep "$(<<<"$device" sed 's/^..//')" | awk '{print $8,$9}')
-				else
-					if (fdisk -l | grep "Disklabel type: gpt" &>/dev/null) then
-						part_type=$(fdisk -l | grep "$(<<<"$device" sed 's/^..//')" | awk '{print $6,$7}')
-						if [ "$part_type" == "Linux filesystem" ]; then
-							part_type="Linux"
-						elif [ "$part_type" == "EFI System" ]; then
-							part_type="EFI/ESP"
-						fi
-					else
-						part_type=$(fdisk -l | grep "$(<<<"$device" sed 's/^..//')" | awk '{print $7,$8}')
-					fi
-				fi
-
-				if [ "$part_type" == "Linux swap" ]; then
-					part_type="Linux/SWAP"
-				fi
-
-				echo "\"$device\" \"$dev_size $dev_used $fs_type $mnt_point $part_type\" \\" >> "$tmp_list"
-				unset part_type
-			else
-				echo "\"$device\" \"$dev_size $dev_type ------------->\" \\" >> "$tmp_list"
+			dev_used=$(swapon -s | grep -w "$device" | awk '{print $4}')
+			if [ -n "$dev_used" ]; then
+				dev_used=$dev_used%
 			fi
 		fi
 
+		test -z "$dev_fs" || test "$dev_fs" == "linux_raid_member" && dev_fs=$empty_value
+		test -z "$dev_used" && dev_used=$empty_value
+		test -z "$dev_mnt" && dev_mnt=$empty_value
+
+		parent_device=$(lsblk -dnro PKNAME /dev/${device/-//})
+		if [ -z "$parent_device" ]; then
+			dev_type=$(<<<"$device_list" grep -w "$device" | awk '{print $3}')
+		else
+			dev_type=$(fdisk -lo Device,Type /dev/$parent_device | grep -w "$device" | cut -d ' ' -f 2- | sed -e 's/^[[:space:]]*//;s/[[:space:]]*$//;s/ /_/g')
+		fi
+
+		echo "\"$device\" \"$dev_size $dev_used $dev_fs $dev_mnt $dev_type\" \\" >> "$tmp_list"
+
 		int=$((int+1))
 	done
-   
+
 	<"$tmp_list" column -t >> "$tmp_menu"
 	echo "\"$done_msg\" \"$write\" 3>&1 1>&2 2>&3" >> "$tmp_menu"
 	echo "if [ \"\$?\" -eq \"3\" ]; then clear ; echo \"$done_msg\" ; fi" >> "$tmp_menu"
-	manual_part=$(bash "$tmp_menu" | sed 's/ //g')
+	part=$(bash "$tmp_menu" | sed 's/^\s\+//g;s/\s\+$//g')
+	if (<<<"$part" grep "$done_msg" &> /dev/null) then part="$done_msg" ; fi
 	rm $tmp_menu $tmp_list
-	if (<<<"$manual_part" grep "$done_msg") then manual_part="$done_msg" ; fi
 	part_class
 }
 	
 part_class() {
 
 	op_title="$edit_op_msg"
-	if [ -z "$manual_part" ]; then
-		prepare_drives
-	elif (<<<$manual_part grep "[0-9]" &> /dev/null); then
-		part=$(<<<"$manual_part" sed 's/^..//')
-		part_size=$(lsblk | grep "$part" | awk '{print $4}' | sed 's/\,/\./')
-		part_mount=$(lsblk | grep "$part" | awk '{print $7}' | sed 's/\/mnt/\//;s/\/\//\//')
-		source "$lang_file"  &> /dev/null
+	if [ -z "$part" ]; then
+		unset DRIVE ROOT
+		return
+	else
+		part_size=$(<<<"$device_list" grep -w "$part" | awk '{print $2}')
+		part_type=$(<<<"$device_list" grep -w "$part" | awk '{print $3}')
+		part_fs=$(<<<"$device_list" grep -w "$part" | awk '{print $4}')
+		part_mount=$(df | grep -w "$part" | awk '{print $6}' | sed 's/mnt\/\?//')
+	fi
 
-		if ! (lsblk | grep "part" | grep "$ARCH" &> /dev/null); then
-			case "$part_size" in
-				[4-9]G|[0-9][0-9]*G|[4-9].*G|T)
-					if (dialog --yes-button "$yes" --no-button "$no" --defaultno --yesno "\n$root_var" 13 60) then
-						f2fs=$(cat /sys/block/$(echo $part | sed 's/[0-9]//g')/queue/rotational)
-						fs_select
+	if [ "$part_type" == "lvm" ]; then
+		part=${part/-//}
+	fi
 
-						if [ "$?" -gt "0" ]; then
-							part_menu
-						fi
+	if [ "$part_fs" == "linux_raid_member" ]; then # do nothing
+		part_menu
+	elif ([ "$part_type" == "disk" ]) || ( (<<<"$part_type" egrep "raid[0-9]+" &> /dev/null) && [ -z "$part_fs" ] ); then # Partition
 
-						source "$lang_file"
+        source "$lang_file"
 
-						if (dialog --yes-button "$write" --no-button "$cancel" --defaultno --yesno "\n$root_confirm_var" 14 50) then
-							sgdisk --zap-all /dev/"$part"
-							wipefs -a /dev/"$part" &> /dev/null &
-							pid=$! pri=0.1 msg="\n$frmt_load \n\n \Z1> \Z2wipefs -a /dev/$part\Zn" load
-
-							case "$FS" in
-								jfs|reiserfs)
-									echo -e "y" | mkfs."$FS" /dev/"$part" &> /dev/null &
-								;;
-								*)
-									mkfs."$FS" /dev/"$part" &> /dev/null &
-								;;
-							esac
-							pid=$! pri=1 msg="\n$load_var1 \n\n \Z1> \Z2mkfs.$FS /dev/$part\Zn" load
-
-							(mount /dev/"$part" "$ARCH"
-							echo "$?" > /tmp/ex_status.var) &> /dev/null &
-							pid=$! pri=0.1 msg="\n$mnt_load \n\n \Z1> \Z2mount /dev/$part $ARCH\Zn" load
-
-							if [ $(</tmp/ex_status.var) -eq "0" ]; then
-								mounted=true
-								ROOT="$part"
-								DRIVE=$(<<<$part sed 's/[0-9]//')
-							else
-								dialog --ok-button "$ok" --msgbox "\n$part_err_msg1" 10 60
-								prepare_drives
-							fi
-						fi
-					else
-						part_menu
-					fi
-				;;
-				*)
-					dialog --ok-button "$ok" --msgbox "\n$root_err_msg" 10 60
-				;;
-			esac
-		elif [ -n "$part_mount" ]; then
-			if (dialog --yes-button "$edit" --no-button "$back" --defaultno --yesno "\n$manual_part_var0" 13 60) then
-				if [ "$part" == "$ROOT" ]; then
-					if (dialog --yes-button "$yes" --no-button "$no" --defaultno --yesno "\n$manual_part_var2" 11 60) then
-						mounted=false
-						unset ROOT DRIVE
-						umount -R "$ARCH" &> /dev/null &
-						pid=$! pri=0.1 msg="$wait_load \n\n \Z1> \Z2umount -R $ARCH\Zn" load
-					fi
-				else
-					if [ "$part_mount" == "[SWAP]" ]; then
-						if (dialog --yes-button "$yes" --no-button "$no" --defaultno --yesno "\n$manual_swap_var" 10 60) then
-							swapoff /dev/"$part" &> /dev/null &
-							pid=$! pri=0.1 msg="$wait_load \n\n \Z1> \Z2swapoff /dev/$part\Zn" load
-						fi
-					elif (dialog --yes-button "$yes" --no-button "$no" --defaultno --yesno "\n$manual_part_var1" 10 60) then
-						umount  "$ARCH"/"$part_mount" &> /dev/null &
-						pid=$! pri=0.1 msg="$wait_load \n\n \Z1> \Z2umount ${ARCH}${part_mount}\Zn" load
-						rm -r "$ARCH"/"$part_mount"
-						points=$(echo -e "$part_mount   mountpoint>\n$points")
-					fi
-				fi
+		if (df | grep -w "$part" | grep "$ARCH" &> /dev/null); then
+			if (dialog --yes-button "$edit" --no-button "$cancel" --defaultno --yesno "\n$mount_warn_var" 10 60) then
+				points=$(echo -e "$points_orig\n$custom $custom-mountpoint")
+				(umount -R "$ARCH"
+				swapoff -a) &> /dev/null &
+				pid=$! pri=0.1 msg="$wait_load \n\n \Z1> \Z2umount -R /mnt\Zn" load
+				mounted=false
+				unset DRIVE
+				cfdisk /dev/"$part"
+				sleep 0.5
+				clear
 			fi
-		elif (dialog --yes-button "$edit" --no-button "$back" --yesno "\n$manual_new_part_var" 12 60) then
-			mnt=$(dialog --ok-button "$ok" --cancel-button "$cancel" --menu "$mnt_var0" 15 60 6 $points 3>&1 1>&2 2>&3)
-			
-			if [ "$?" -gt "0" ]; then
-				part_menu
-			fi
-
-			if [ "$mnt" == "$custom" ]; then
-				err=true
-
-				until ! "$err"
-				  do
-					mnt=$(dialog --ok-button "$ok" --cancel-button "$cancel" --inputbox "$custom_msg" 10 50 "/" 3>&1 1>&2 2>&3)
-					
-					if [ "$?" -gt "0" ]; then
-						err=false
-						part_menu
-					elif (<<<$mnt grep "[\[\$\!\'\"\`\\|%&#@()+=<>~;:?.,^{}]\|]" &> /dev/null); then
-						dialog --ok-button "$ok" --msgbox "\n$custom_err_msg0" 10 60
-					elif (<<<$mnt grep "^[/]$" &> /dev/null); then
-						dialog --ok-button "$ok" --msgbox "\n$custom_err_msg1" 10 60
-					else
-						err=false
-					fi
-				done
-			fi
-			
-			if [ "$mnt" != "SWAP" ]; then
-				if (dialog --yes-button "$yes" --no-button "$no" --defaultno --yesno "\n$part_frmt_msg" 11 50) then
-					f2fs=$(cat /sys/block/$(echo $part | sed 's/[0-9]//g')/queue/rotational)
-					
-					if [ "$mnt" == "/boot" ] || [ "$mnt" == "/boot/EFI" ] || [ "$mnt" == "/boot/efi" ]; then
-						if (fdisk -l | grep "$part" | grep "EFI" &> /dev/null); then
-							vfat=true
-						fi
-						f2fs=1
-						btrfs=false
-					fi
-					
-					fs_select
-
-					if [ "$?" -gt "0" ]; then
-						part_menu
-					fi
-					frmt=true
-				else
-					frmt=false
-				fi
-			else
-				FS="SWAP"
-			fi
-
-			source "$lang_file"
-		
-			if [ "$mnt" == "SWAP" ]; then
-				if (dialog --yes-button "$yes" --no-button "$no" --yesno "\n$swap_frmt_msg" 11 50) then
-					(wipefs -a -q /dev/"$part"
-					mkswap /dev/"$part"
-					swapon /dev/"$part") &> /dev/null &
-					pid=$! pri=0.1 msg="\n$swap_load \n\n \Z1> \Z2mkswap /dev/$part\Zn" load
-				else
-					swapon /dev/"$part" &> /dev/null
-					if [ "$?" -gt "0" ]; then
-						dialog --ok-button "$ok" --msgbox "$swap_err_msg2" 10 60
-					fi
-				fi
-			else
-				points=$(echo  "$points" | grep -v "$mnt")
-			
-				if "$frmt" ; then
-					if (dialog --yes-button "$write" --no-button "$cancel" --defaultno --yesno "$part_confirm_var" 12 50) then
-						sgdisk --zap-all /dev/"$part"
-						wipefs -a /dev/"$part" &> /dev/null &
-						pid=$! pri=0.1 msg="\n$frmt_load \n\n \Z1> \Z2wipefs -a /dev/$part\Zn" load
-			
-						case "$FS" in
-							vfat)
-								mkfs.vfat -F32 /dev/"$part" &> /dev/null &
-							;;
-							jfs|reiserfs)
-								echo -e "y" | mkfs."$FS" /dev/"$part" &> /dev/null &
-							;;
-							*)
-								mkfs."$FS" /dev/"$part" &> /dev/null &
-							;;
-						esac
-						pid=$! pri=1 msg="\n$load_var1 \n\n \Z1> \Z2mkfs.FS /dev/$part\Zn" load
-					else
-						part_menu
-					fi
-				fi
-					
-				(mkdir -p "$ARCH"/"$mnt"
-				mount /dev/"$part" "$ARCH"/"$mnt" ; echo "$?" > /tmp/ex_status.var ; sleep 0.5) &> /dev/null &
-				pid=$! pri=0.1 msg="\n$mnt_load \n\n \Z1> \Z2mount /dev/$part ${ARCH}${mnt}\Zn" load
-
-				if [ "$(</tmp/ex_status.var)" -gt "0" ]; then
-					dialog --ok-button "$ok" --msgbox "\n$part_err_msg2" 10 60
-				fi
-			fi
+		elif (dialog --yes-button "$edit" --no-button "$cancel" --yesno "\n$manual_part_var3" 12 60) then
+			cfdisk /dev/"$part"
+			sleep 0.5
+			clear
 		fi
 
 		part_menu
-	elif [ "$manual_part" == "$done_msg" ]; then
-		if ! "$mounted" ; then
+
+    elif [ "$part" == "$done_msg" ]; then # Done
+
+        if ! "$mounted" ; then
 			dialog --ok-button "$ok" --msgbox "\n$root_err_msg1" 10 60
 			part_menu
 		else
-			final_part=$(lsblk | grep "/\|[SWAP]" | grep "part" | grep -v "/run" | awk '{print " "$1" "$4" "$7 "\\n"}' | sed 's/\/mnt/\//;s/\/\//\//' | column -t)
-			final_count=$(lsblk | grep "/\|[SWAP]" | grep "part" | grep -v "/run" | wc -l)
+			if [ -z "$BOOT" ]; then
+				BOOT="$ROOT"
+			fi
+
+			final_part=$((df -h | grep "$ARCH" | awk '{print $1,$2,$6 "\\n"}' | sed 's/mnt\/\?//' ; swapon | awk 'NR==2 {print $1,$3,"SWAP"}') | column -t)
+			final_count=$(<<<"$final_part" wc -l)
 
 			if [ "$final_count" -lt "7" ]; then
 				height=17
@@ -432,9 +283,9 @@ part_class() {
 			else
 				height=30
 			fi
-			
+
 			part_menu="$partition: $size: $mountpoint:"
-			
+
 			if (dialog --yes-button "$write" --no-button "$cancel" --defaultno --yesno "\n$write_confirm_msg \n\n $part_menu \n\n$final_part \n\n $write_confirm" "$height" 50) then
 				if (efivar -l &>/dev/null); then
 					if (fdisk -l | grep "EFI" &>/dev/null); then
@@ -494,46 +345,228 @@ part_class() {
 				fi
 
 				if "$enable_f2fs" ; then
-					if ! (lsblk | grep "$ARCH/boot\|$ARCH/boot/efi" &> /dev/null) then
+					if ! (df | grep "$ARCH/boot\|$ARCH/boot/efi" &> /dev/null) then
 						FS="f2fs" source "$lang_file"
 						dialog --ok-button "$ok" --msgbox "\n$fs_err_var" 10 60
 						part_menu
 					fi
 				elif "$enable_btrfs" ; then
-					if ! (lsblk | grep "$ARCH/boot\|$ARCH/boot/efi" &> /dev/null) then
+					if ! (df | grep "$ARCH/boot\|$ARCH/boot/efi" &> /dev/null) then
 						FS="btrfs" source "$lang_file"
 						dialog --ok-button "$ok" --msgbox "\n$fs_err_var" 10 60
 						part_menu
 					fi
 				fi
-				
+
 				sleep 1
 				pid=$! pri=0.1 msg="$wait_load \n\n \Z1> \Z2Finalize...\Zn" load
-				prepare_core
+				return
 			else
 				part_menu
 			fi
 		fi
-	else
-		part_size=$(lsblk | grep "$manual_part" | awk 'NR==1 {print $4}')
-		source "$lang_file"
 
-		if (lsblk | grep "$manual_part" | grep "$ARCH" &> /dev/null); then	
-			if (dialog --yes-button "$edit" --no-button "$cancel" --defaultno --yesno "\n$mount_warn_var" 10 60) then
-				points=$(echo -e "$points_orig\n$custom $custom-mountpoint")
-				(umount -R "$ARCH"
-				swapoff -a) &> /dev/null &
-				pid=$! pri=0.1 msg="$wait_load \n\n \Z1> \Z2umount -R /mnt\Zn" load
-				mounted=false
-				unset DRIVE
-				cfdisk /dev/"$manual_part"
-				sleep 0.5
-				clear
+	else # Install on a partition or md device with a file system
+
+		source "$lang_file"  &> /dev/null
+
+		if [ -z "$ROOT" ]; then
+			case "$part_size" in
+				[4-9]G|[1-9][0-9]*G|[4-9].*G|[4-9],*G|T)
+					if (dialog --yes-button "$yes" --no-button "$no" --defaultno --yesno "\n$root_var" 13 60) then
+						f2fs=$(lsblk -dnro ROTA /dev/$part)
+						fs_select
+
+						if [ "$?" -gt "0" ]; then
+							part_menu
+						fi
+
+						source "$lang_file"
+
+						if (dialog --yes-button "$write" --no-button "$cancel" --defaultno --yesno "\n$root_confirm_var" 14 50) then
+							(sgdisk --zap-all /dev/"$part"
+							wipefs -a /dev/"$part") &> /dev/null &
+							pid=$! pri=0.1 msg="\n$frmt_load \n\n \Z1> \Z2wipefs -a /dev/$part\Zn" load
+
+							case "$FS" in
+								jfs|reiserfs)
+									echo -e "y" | mkfs."$FS" /dev/"$part" &> /dev/null &
+								;;
+								*)
+									mkfs."$FS" /dev/"$part" &> /dev/null &
+								;;
+							esac
+							pid=$! pri=1 msg="\n$load_var1 \n\n \Z1> \Z2mkfs.$FS /dev/$part\Zn" load
+
+							(mount /dev/"$part" "$ARCH"
+							echo "$?" > /tmp/ex_status.var) &> /dev/null &
+							pid=$! pri=0.1 msg="\n$mnt_load \n\n \Z1> \Z2mount /dev/$part $ARCH\Zn" load
+
+							if [ $(</tmp/ex_status.var) -eq "0" ]; then
+								mounted=true
+								ROOT="$part"
+								if [ "$part_type" == "lvm" ]; then
+									lvm_pv=$(lvdisplay -m | grep -A 20 /dev/$part | grep "Physical volume" | sed 's/^\s\+//g;s/\s\+/ /g' | cut -d ' ' -f 3)
+									DRIVE=$(lsblk -dnro PKNAME $lvm_pv)
+								else
+									DRIVE=$(lsblk -dnro PKNAME /dev/$part)
+								fi
+							else
+								dialog --ok-button "$ok" --msgbox "\n$part_err_msg1" 10 60
+								return
+							fi
+						fi
+					else
+						part_menu
+					fi
+				;;
+				*)
+					dialog --ok-button "$ok" --msgbox "\n$root_err_msg" 10 60
+				;;
+			esac
+		elif [ -n "$part_mount" ]; then
+			if (dialog --yes-button "$edit" --no-button "$back" --defaultno --yesno "\n$manual_part_var0" 13 60) then
+				if [ "$part" == "$ROOT" ]; then
+					if (dialog --yes-button "$yes" --no-button "$no" --defaultno --yesno "\n$manual_part_var2" 11 60) then
+						mounted=false
+						unset ROOT DRIVE
+						umount -R "$ARCH" &> /dev/null &
+						pid=$! pri=0.1 msg="$wait_load \n\n \Z1> \Z2umount -R $ARCH\Zn" load
+					fi
+				else
+					if [ "$part_mount" == "[SWAP]" ]; then
+						if (dialog --yes-button "$yes" --no-button "$no" --defaultno --yesno "\n$manual_swap_var" 10 60) then
+							swapoff /dev/"$part" &> /dev/null &
+							pid=$! pri=0.1 msg="$wait_load \n\n \Z1> \Z2swapoff /dev/$part\Zn" load
+						fi
+					elif (dialog --yes-button "$yes" --no-button "$no" --defaultno --yesno "\n$manual_part_var1" 10 60) then
+						umount  "$ARCH"/"$part_mount" &> /dev/null &
+						pid=$! pri=0.1 msg="$wait_load \n\n \Z1> \Z2umount ${ARCH}${part_mount}\Zn" load
+						rm -r "$ARCH"/"$part_mount"
+						points=$(echo -e "$part_mount   mountpoint>\n$points")
+					fi
+				fi
 			fi
-		elif (dialog --yes-button "$edit" --no-button "$cancel" --yesno "$manual_part_var3" 12 60) then
-			cfdisk /dev/"$manual_part"
-			sleep 0.5
-			clear
+		elif (dialog --yes-button "$edit" --no-button "$back" --yesno "\n$manual_new_part_var" 12 60) then
+			part_swap=false
+			if (fdisk -l | grep "gpt" &>/dev/null) then
+				part_type_uuid=$(fdisk -l -o Device,Size,Type-UUID | grep -w "$part" | awk '{print $3}')
+
+				if [ $part_type_uuid == "0657FD6D-A4AB-43C4-84E5-0933C84B4F4F" ]; then
+					part_swap=true
+				fi
+			else
+				part_type_id=$(fdisk -l | grep -w "$part" | sed 's/\*//' | awk '{print $6}')
+
+				if [ $part_type_id == "82" ]; then
+					part_swap=true
+				fi
+			fi
+
+			if ($part_swap); then
+				mnt="SWAP"
+			else
+				mnt=$(dialog --ok-button "$ok" --cancel-button "$cancel" --menu "$mnt_var0" 15 60 6 $points 3>&1 1>&2 2>&3)
+				if [ "$?" -gt "0" ]; then
+					part_menu
+				fi
+			fi
+
+			if [ "$mnt" == "$custom" ]; then
+				while (true)
+				  do
+					mnt=$(dialog --ok-button "$ok" --cancel-button "$cancel" --inputbox "$custom_msg" 10 50 "/" 3>&1 1>&2 2>&3)
+
+					if [ "$?" -gt "0" ]; then
+						part_menu ; break
+					elif (<<<$mnt grep "[\[\$\!\'\"\`\\|%&#@()+=<>~;:?.,^{}]\|]" &> /dev/null); then
+						dialog --ok-button "$ok" --msgbox "\n$custom_err_msg0" 10 60
+					elif (<<<$mnt grep "^[/]$" &> /dev/null); then
+						dialog --ok-button "$ok" --msgbox "\n$custom_err_msg1" 10 60
+					else
+						break
+					fi
+				done
+			fi
+
+			if [ "$mnt" != "SWAP" ]; then
+				if (dialog --yes-button "$yes" --no-button "$no" --defaultno --yesno "\n$part_frmt_msg" 11 50) then
+					f2fs=$(lsblk -dnro ROTA /dev/$part)
+
+					if [ "$mnt" == "/boot/EFI" ] || [ "$mnt" == "/boot/efi" ]; then
+						f2fs=1
+						btrfs=false
+					fi
+
+					if (fdisk -l | grep "$part" | grep "EFI" &> /dev/null); then
+						vfat=true
+					fi
+
+					fs_select
+
+					if [ "$?" -gt "0" ]; then
+						part_menu
+					fi
+					frmt=true
+				else
+					frmt=false
+				fi
+
+				if [ "$mnt" == "/boot" ] || [ "$mnt" == "/boot/EFI" ] || [ "$mnt" == "/boot/efi" ]; then
+					BOOT="$part"
+				fi
+			else
+				FS="SWAP"
+			fi
+
+			source "$lang_file"
+
+			if [ "$mnt" == "SWAP" ]; then
+				if (dialog --yes-button "$yes" --no-button "$no" --yesno "\n$swap_frmt_msg" 11 50) then
+					(wipefs -a -q /dev/"$part"
+					mkswap /dev/"$part"
+					swapon /dev/"$part") &> /dev/null &
+					pid=$! pri=0.1 msg="\n$swap_load \n\n \Z1> \Z2mkswap /dev/$part\Zn" load
+				else
+					swapon /dev/"$part" &> /dev/null
+					if [ "$?" -gt "0" ]; then
+						dialog --ok-button "$ok" --msgbox "$swap_err_msg2" 10 60
+					fi
+				fi
+			else
+				points=$(echo  "$points" | grep -v "$mnt")
+
+				if "$frmt" ; then
+					if (dialog --yes-button "$write" --no-button "$cancel" --defaultno --yesno "$part_confirm_var" 12 50) then
+						(sgdisk --zap-all /dev/"$part"
+						wipefs -a /dev/"$part") &> /dev/null &
+						pid=$! pri=0.1 msg="\n$frmt_load \n\n \Z1> \Z2wipefs -a /dev/$part\Zn" load
+
+						case "$FS" in
+							vfat)
+								mkfs.vfat -F32 /dev/"$part" &> /dev/null &
+							;;
+							jfs|reiserfs)
+								echo -e "y" | mkfs."$FS" /dev/"$part" &> /dev/null &
+							;;
+							*)
+								mkfs."$FS" /dev/"$part" &> /dev/null &
+							;;
+						esac
+						pid=$! pri=1 msg="\n$load_var1 \n\n \Z1> \Z2mkfs.$FS /dev/$part\Zn" load
+					else
+						part_menu
+					fi
+				fi
+
+				(mkdir -p "$ARCH"/"$mnt"
+				mount /dev/"$part" "$ARCH"/"$mnt" ; echo "$?" > /tmp/ex_status.var ; sleep 0.5) &> /dev/null &
+				pid=$! pri=0.1 msg="\n$mnt_load \n\n \Z1> \Z2mount /dev/$part ${ARCH}${mnt}\Zn" load
+
+				if [ "$(</tmp/ex_status.var)" -gt "0" ]; then
+					dialog --ok-button "$ok" --msgbox "\n$part_err_msg2" 10 60
+				fi
+			fi
 		fi
 
 		part_menu
@@ -552,29 +585,32 @@ fs_select() {
 		vfat=false
 	else
 		if [ "$f2fs" -eq "0" ]; then
-			FS=$(dialog --nocancel --menu "$fs_msg" 17 65 7 \
+			FS=$(dialog --nocancel --menu "$fs_msg" 17 65 8 \
 				"ext4"      "$fs0" \
 				"ext3"      "$fs1" \
 				"ext2"      "$fs2" \
 				"btrfs"     "$fs3" \
-				"f2fs"		"$fs6" \
+				"f2fs"	    "$fs6" \
 				"jfs"       "$fs4" \
-				"reiserfs"  "$fs5" 3>&1 1>&2 2>&3)
+				"reiserfs"  "$fs5" \
+				"xfs"       "$fs8" 3>&1 1>&2 2>&3)
 		elif "$btrfs" ; then
-				FS=$(dialog --nocancel --menu "$fs_msg" 16 65 6 \
+			FS=$(dialog --nocancel --menu "$fs_msg" 16 65 7 \
 				"ext4"      "$fs0" \
 				"ext3"      "$fs1" \
 				"ext2"      "$fs2" \
 				"btrfs"     "$fs3" \
 				"jfs"       "$fs4" \
-				"reiserfs"  "$fs5" 3>&1 1>&2 2>&3)
+				"reiserfs"  "$fs5" \
+				"xfs"       "$fs8" 3>&1 1>&2 2>&3)
 		else
-			FS=$(dialog --nocancel --menu "$fs_msg" 15 65 5 \
+			FS=$(dialog --nocancel --menu "$fs_msg" 15 65 6 \
 				"ext4"      "$fs0" \
 				"ext3"      "$fs1" \
 				"ext2"      "$fs2" \
 				"jfs"       "$fs4" \
-				"reiserfs"  "$fs5" 3>&1 1>&2 2>&3)
+				"reiserfs"  "$fs5" \
+				"xfs"       "$fs8" 3>&1 1>&2 2>&3)
 				btrfs=true
 		fi
 	fi

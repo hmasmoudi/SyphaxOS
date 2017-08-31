@@ -1,64 +1,57 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=mesa
-pkgver=17.1.5
-pkgrel=2
+pkgver=17.2.0
+pkgrel=8
 pkgdesc="Mesa is an OpenGL compatible 3D graphics library."
 arch=('x86_64')
 url="https://mesa.freedesktop.org/archive"
 license=('GPL')
 groups=('graphicslayer')
-source=("$url/${pkgname}-${pkgver}.tar.xz"
-        0001-Fix-linkage-against-shared-glapi.patch
-        0002-glvnd-fix-gl-dot-pc.patch)
-sha256sums=('378516b171712687aace4c7ea8b37c85895231d7a6d61e1e27362cf6034fded9'
-            'c68d1522f9bce4ce31c92aa7a688da49f13043f5bb2254795b76dea8f47130b7'
-            '64a77944a28026b066c1682c7258d02289d257b24b6f173a9f7580c48beed966')
+source=("$url/${pkgname}-${pkgver}-rc6.tar.xz")
+sha256sums=('SKIP')
 depends=('rootfs>=2.0.0')
 
 prepare() {
-   cd "$srcdir/$pkgname-$pkgver"
+   cd "$srcdir/$pkgname-$pkgver"-rc6
    
    sed -i "/pthread_stubs_possible=/s/yes/no/" configure.ac
    sed -i "/seems to be moved/s/^/: #/" bin/ltmain.sh
-   
-   # glvnd support patches - from Fedora
-   # non-upstreamed ones
-   patch -Np1 -i ../0001-Fix-linkage-against-shared-glapi.patch
-   patch -Np1 -i ../0002-glvnd-fix-gl-dot-pc.patch
 }
 
 build() {
-   cd "$srcdir/$pkgname-$pkgver"
+   cd "$srcdir/$pkgname-$pkgver"-rc6
    
    source /etc/profile.d/xorg.sh
-   echo "Using XORG_PREFIX ($XORG_PREFIX) & XORG_CONFIG ($XORG_CONFIG)"
+   echo "Using XORG_PREm			FIX ($XORG_PREFIX) & XORG_CONFIG ($XORG_CONFIG)"
 
    ./autogen.sh CFLAGS='-O2' CXXFLAGS='-O2' \
-         --prefix=$XORG_PREFIX           \
-         --sysconfdir=/etc               \
-         --enable-texture-float          \
-         --enable-osmesa                 \
-         --enable-xa                     \
-         --enable-glx                    \
-         --enable-glx-tls                \
-         --enable-dri                    \
-         --enable-dri3                   \
-         --enable-gbm                    \
-         --enable-vdpau                  \
-         --enable-gles1                  \
-         --enable-gles2                  \
-         --enable-shared-glapi           \
-         --with-platforms="drm,x11,wayland"  \
-         --with-vulkan-drivers=intel         \
-         --with-dri-drivers=i915,i965,r200,radeon,nouveau \
-         --without-gallium-drivers
+    --prefix=$XORG_PREFIX  \
+    --sysconfdir=/etc \
+    --with-gallium-drivers=r600,nouveau,svga,virgl \
+    --with-dri-drivers=i915,i965,r200,radeon,nouveau,swrast \
+    --with-platforms=x11,drm,wayland \
+    --with-vulkan-drivers=intel \
+    --enable-shared-glapi \
+    --enable-egl \
+    --enable-glx \
+    --enable-glx-tls \
+    --enable-gles1 \
+    --enable-gles2 \
+    --enable-gbm \
+    --enable-dri \
+    --enable-dri3 \
+    --enable-gallium-extra-hud \
+    --enable-texture-float \
+    --enable-xa \
+    --enable-vdpau \
+    --enable-osmesa
    
    make
 }
 
 package() {
-   cd "$srcdir/$pkgname-$pkgver"
+   cd "$srcdir/$pkgname-$pkgver"-rc6
    
    #Make the package
    make DESTDIR="$pkgdir" install

@@ -1,9 +1,9 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=gcc
-pkgver=7.1.1
-pkgrel=20170707
-_commit=d4064d4a3d1f9160d187e105d218c105b541f3c7
+pkgver=7.2.0
+pkgrel=20170827
+_commit=45afd2567a11afd218b175a78321f6412ba7f2f5
 pkgdesc="The GCC package contains the GNU compiler collection, which includes the C and C++ compilers."
 arch=('x86_64')
 url="http://gcc.gnu.org"
@@ -31,7 +31,7 @@ build() {
    
    SED=sed                                   \
    ../configure --prefix=/usr                \
-                --enable-languages=c,c++     \
+                --enable-languages=c,c++,go  \
                 --enable-shared              \
                 --enable-threads=posix       \
                 --enable-libmpx              \

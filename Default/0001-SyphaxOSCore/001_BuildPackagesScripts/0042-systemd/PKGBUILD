@@ -2,7 +2,7 @@
 
 pkgname=systemd
 pkgver=234
-pkgrel=2
+pkgrel=3
 pkgdesc="The systemd package contains programs for controlling the startup, running, and shutdown of the system."
 arch=('x86_64')
 install=$pkgname.install

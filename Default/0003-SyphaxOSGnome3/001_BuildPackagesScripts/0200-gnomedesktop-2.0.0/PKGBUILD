@@ -2,7 +2,7 @@
 
 pkgname=gnomedesktop
 pkgver=2.2.0
-pkgrel=2
+pkgrel=6
 pkgdesc="SyphaxOS 2.2.0 Gnome 3.24.2 Desktop Package."
 arch=('x86_64')
 install=${pkgname}.install
@@ -26,6 +26,7 @@ depends=(
          'libxkbcommon'
          'yasm'
          'nasm'
+         'libjpeg6-turbo'
          'libjpeg-turbo'
          'tiff'
          'gdk-pixbuf'
@@ -64,6 +65,7 @@ depends=(
          'telepathy-glib'
          'curl'
          'libarchive'
+         'libuv'
          'cmake'
          'gstreamer'
          'gst-plugins-base'

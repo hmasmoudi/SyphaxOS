@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=xkeyboard-config
-pkgver=2.18
+pkgver=2.21
 pkgrel=1
 pkgdesc="The XKeyboardConfig package contains the keyboard configuration database for the X Window System."
 arch=('x86_64')
@@ -9,12 +9,8 @@ url="http://xorg.freedesktop.org/archive/individual/data/${pkgname}"
 license=('GPL')
 groups=('graphicslayer')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
-md5sums=('c28cf45616bfec276879360bc36c6b27')
+md5sums=('SKIP')
 depends=('rootfs>=2.0.0')
-
-prepare() {
-   cd "$srcdir/$pkgname-$pkgver"
-}
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"

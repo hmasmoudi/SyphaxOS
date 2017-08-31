@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=subversion
-pkgver=1.9.5
-pkgrel=3
+pkgver=1.9.7
+pkgrel=1
 pkgdesc="Subversion is a version control system that is designed to be a compelling replacement for CVS in the open source community."
 arch=('x86_64')
 url="https://www.apache.org/dist/subversion"
 license=('APACHE')
 groups=('applications')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
-sha1sums=('8bd6a44a1aed30c4c6b6b068488dafb44eaa6adf')
+sha1sums=('874b81749cdc3e88152d103243c3623ac6338388')
 depends=('rootfs>=2.0.0'
          'apr>=1.5.2'
          'apr-util>=1.5.4'
