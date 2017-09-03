@@ -1,21 +1,26 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=libpng
-pkgver=1.6.31
+pkgver=1.6.32
 pkgrel=1
 pkgdesc="The libpng package contains libraries used by other programs for reading and writing PNG files."
 arch=('x86_64')
 url="http://downloads.sourceforge.net/libpng"
 license=('GPL')
 groups=('graphicslayer')
-source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('232a602de04916b2b5ce6f901829caf419519e6a16cc9cd7c1c91187d3ee8b41')
+source=("$url/${pkgname}-${pkgver}.tar.xz"
+         "0001-fix-build.patch")
+sha256sums=('c918c3113de74a692f0a1526ce881dc26067763eb3915c57ef3a0f7b6886f59b'
+            '98adabd33280c16ebf6db68410c09bd2882c1dfef619297b8dc9cdd93eb06c78')
 depends=('rootfs>=2.0.0')
 
 prepare() {
    cd "$srcdir/$pkgname-$pkgver"
    
    curl -L http://downloads.sourceforge.net/project/apng/libpng/libpng16/$pkgname-$pkgver-apng.patch.gz | gzip -cd | patch -p0
+   
+   # fix build
+   patch -Np1 -i ../0001-fix-build.patch
 }
 
 build() {
