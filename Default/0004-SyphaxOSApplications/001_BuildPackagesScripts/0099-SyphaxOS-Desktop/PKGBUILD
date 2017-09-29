@@ -1,0 +1,44 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=SyphaxOS-Desktop
+pkgver=3.0.0
+pkgrel=8
+pkgdesc="SyphaxOS 3.0.0 Default Desktop Package based on Gnome Desktop."
+arch=('x86_64')
+install=${pkgname}.install
+license=('GPL')
+groups=('desktop')
+depends=(
+         'gnomedesktop'
+         'pacman'
+         'gnome-calculator'
+         'gedit'
+         'eog'
+         'gnome-screenshot'
+         'file-roller'
+         'p7zip'
+         'totem'
+         'cheese'
+         'transmission'
+         'evince'
+         'skypeforlinux'
+         'rhythmbox'
+         'ttf-ms-fonts'
+         'wps-office'
+         'google-chrome'
+         'flatpak'
+         'brasero'
+         'dash-to-dock'
+         'SyphaxOS-Theme'
+         )
+
+prepare() {
+   mkdir -pv "$srcdir/$pkgname-$pkgver"
+}
+
+package() {
+   cd "$srcdir/$pkgname-$pkgver"
+   
+   echo "Packaging SyphaxOS Desktop"
+}
+

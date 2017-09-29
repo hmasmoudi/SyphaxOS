@@ -2,7 +2,7 @@
 
 pkgname=gpgme
 pkgver=1.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The GPGME package is a C library that allows cryptography support to be added to a program. It is designed to make access to public key crypto engines like GnuPG or GpgSM easier for applications."
 arch=('x86_64')
 url="ftp://ftp.gnupg.org/gcrypt/gpgme"
@@ -10,7 +10,7 @@ license=('GPL')
 groups=('applications')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
 md5sums=('9ab4a18094ca0cf9a0687e0b7d10b63d')
-depends=('rootfs>=2.0.0')
+depends=('rootfs')
 
 prepare() {
    cd "$srcdir/${pkgname}-${pkgver}"

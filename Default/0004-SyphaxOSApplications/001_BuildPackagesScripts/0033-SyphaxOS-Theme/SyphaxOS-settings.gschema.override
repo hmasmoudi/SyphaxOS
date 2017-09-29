@@ -1,13 +1,13 @@
 [org.gnome.desktop.background]
 show-desktop-icons=true
-picture-uri='file:///usr/share/backgrounds/gnome/Sandstone.jpg'
+picture-uri='file:///usr/share/backgrounds/gnome/Signpost_of_the_Shadows.jpg'
 
 [org.gnome.desktop.screensaver]
 picture-uri='file:///usr/share/backgrounds/gnome/Stones.jpg'
 
 [org.gnome.desktop.interface]
 gtk-theme="Adapta"
-icon-theme="Papirus"
+icon-theme="Papirus-Adapta"
 cursor-theme="Capitaine"
 font-name="Cantarell 10"
 monospace-font-name="Monospace 10"

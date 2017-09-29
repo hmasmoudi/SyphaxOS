@@ -2,7 +2,7 @@
 
 pkgname=capitaine-cursors
 pkgver=r2
-pkgrel=3
+pkgrel=4
 pkgdesc="An x-cursor theme inspired by macOS and based on KDE Breeze"
 arch=('x86_64')
 url="https://github.com/keeferrourke/capitaine-cursors"

@@ -1,8 +1,8 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=papirus-icon-theme
-pkgver=20170828
-pkgrel=1
+pkgver=20170921
+pkgrel=2
 pkgdesc="Papirus icon theme"
 url="https://github.com/PapirusDevelopmentTeam/papirus-icon-theme/archive"
 arch=('x86_64')

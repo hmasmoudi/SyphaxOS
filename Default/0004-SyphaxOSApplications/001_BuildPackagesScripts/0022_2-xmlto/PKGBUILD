@@ -1,0 +1,29 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=xmlto
+pkgver=0.0.28
+pkgrel=2
+pkgdesc="The xmlto is a front-end to an XSL toolchain"
+arch=('x86_64')
+url="https://releases.pagure.org/xmlto"
+license=('GPL')
+groups=('applications')
+source=("$url/${pkgname}-${pkgver}.tar.bz2")
+md5sums=('93bab48d446c826399d130d959fe676f')
+depends=('rootfs')
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   LINKS="/usr/bin/links" \
+   ./configure --prefix=/usr &&
+
+   make
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   make DESTDIR="${pkgdir}" install
+}
+

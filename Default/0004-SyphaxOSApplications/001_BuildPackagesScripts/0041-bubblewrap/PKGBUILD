@@ -2,7 +2,7 @@
 
 pkgname=bubblewrap
 pkgver=0.1.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Unprivileged sandboxing tool"
 arch=('x86_64')
 url="https://github.com/projectatomic/bubblewrap/releases/download/v$pkgver"
@@ -10,11 +10,7 @@ license=('GPL')
 groups=('applications')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('SKIP')
-depends=('rootfs>=2.0.0')
-
-prepare() {
-   cd "$srcdir/${pkgname}-${pkgver}"
-}
+depends=('rootfs')
 
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"

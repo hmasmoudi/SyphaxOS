@@ -1,32 +1,29 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=gnome-screenshot
-pkgver=3.22.0
-pkgrel=1
+pkgver=3.25.0
+pkgrel=4
 pkgdesc="The GNOME Screenshot is a utility used for taking screenshots of the entire screen, a window or a user-defined area of the screen, with optional beautifying border effects."
 arch=('x86_64')
-url="http://ftp.gnome.org/pub/gnome/sources/gnome-screenshot/3.22"
+url="http://ftp.gnome.org/pub/gnome/sources/gnome-screenshot/3.25"
 license=('GPL')
 groups=('applications')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('8a05f14b3c7c6cb42f9848ad0332034c7fe5c34a69742910203588fd60b00230')
-depends=('rootfs>=2.0.0')
-
-prepare() {
-   cd "$srcdir/${pkgname}-${pkgver}"
-}
+sha256sums=('0d560a4ac3fc74d20ca0d95c82269be7d2bb52258e6e1c5971a9362730292c71')
+depends=('rootfs')
 
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"
    
-   ./configure --prefix=/usr
-   
-   make
+   meson build --prefix=/usr
+   cd build
+   ninja -j$(($(getconf _NPROCESSORS_ONLN)+1))
 }
 
 package() {
    cd "$srcdir/${pkgname}-${pkgver}"
    
-   make DESTDIR="${pkgdir}" install
+   cd build
+   DESTDIR="${pkgdir}" ninja install
 }
 

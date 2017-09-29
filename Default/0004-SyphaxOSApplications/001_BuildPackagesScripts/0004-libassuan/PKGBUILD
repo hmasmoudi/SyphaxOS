@@ -1,0 +1,28 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=libassuan
+pkgver=2.4.3
+pkgrel=2
+pkgdesc="The libassuan package contains an inter process communication library used by some of the other GnuPG related packages."
+arch=('x86_64')
+url="ftp://ftp.gnupg.org/gcrypt/libassuan"
+license=('GPL')
+groups=('applications')
+source=("$url/${pkgname}-${pkgver}.tar.bz2")
+md5sums=('8e01a7c72d3e5d154481230668e6eb5a')
+depends=('rootfs')
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   ./configure --prefix=/usr
+   
+   make
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   make DESTDIR="${pkgdir}" install
+}
+

@@ -1,0 +1,36 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=fakeroot
+pkgver=1.20.2
+pkgrel=2
+pkgdesc="Tool for simulating superuser privileges."
+arch=('x86_64')
+url="http://ftp.debian.org/debian/pool/main/f/fakeroot"
+license=('GPL')
+groups=('applications')
+source=("$url/${pkgname}_${pkgver}.orig.tar.bz2"
+        "silence-dlerror.patch")
+md5sums=('a4b4564a75024aa96c86e4d1017ac786'
+         '5fba0b541b5af39d804265223fda525c')
+depends=('rootfs')
+
+prepare() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   patch -p1 -i ../../silence-dlerror.patch
+}
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   ./configure --prefix=/usr
+   
+   make
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   make DESTDIR="${pkgdir}" install
+}
+

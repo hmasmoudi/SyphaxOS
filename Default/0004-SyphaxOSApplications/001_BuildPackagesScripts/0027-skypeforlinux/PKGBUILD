@@ -1,8 +1,8 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=skypeforlinux
-pkgver=8.5.76.55323
-pkgrel=1
+pkgver=8.8.76.60544
+pkgrel=2
 pkgdesc="Skype for Linux Preview."
 arch=('x86_64')
 url="https://repo.skype.com/deb/pool/main/s/skypeforlinux"
@@ -10,7 +10,7 @@ license=('GPL')
 groups=('applications')
 source=("$url/${pkgname}_${pkgver}_amd64.deb")
 sha256sums=('SKIP')
-depends=('rootfs>=2.0.0')
+depends=('rootfs')
 
 package() {
    cd "$srcdir"

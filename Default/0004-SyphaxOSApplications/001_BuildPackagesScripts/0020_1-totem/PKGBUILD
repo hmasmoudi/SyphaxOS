@@ -1,16 +1,16 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=totem
-pkgver=3.24.0
-pkgrel=5
+pkgver=3.26.0
+pkgrel=4
 pkgdesc="Videos is a video playback application designed to work with GNOME 3"
 arch=('x86_64')
-url="http://ftp.gnome.org/pub/gnome/sources/totem/3.24"
+url="http://ftp.gnome.org/pub/gnome/sources/totem/3.26"
 license=('GPL')
 groups=('applications')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('9bd78f7b940e886b5c809acdfe00a610a834de5080dd40272b92835528a58d01')
-depends=('rootfs>=2.0.0'
+sha256sums=('e32fb9a68097045e75c87ad1b8177f5c01aea2a13dcb3b2e71a0f9570fe9ee13')
+depends=('rootfs'
          'libvdpau-va-gl'
          'clutter-gst'
          'glu'
@@ -25,20 +25,32 @@ depends=('rootfs>=2.0.0'
 prepare() {
    cd "$srcdir/${pkgname}-${pkgver}"
    
-   sed -i "/seems to be moved/s/^/#/" build-aux/ltmain.sh
+   #sed -i "/seems to be moved/s/^/#/" build-aux/ltmain.sh
 }
 
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"
    
-   ./configure --prefix=/usr
+   meson build --prefix=/usr -Denable-nautilus=yes
+   cd build
+   ninja -j$(($(getconf _NPROCESSORS_ONLN)+1))
    
-   make
+   #./configure \
+   #    --prefix=/usr \
+   #    --disable-static \
+   #    --enable-nautilus
+   
+   # https://bugzilla.gnome.org/show_bug.cgi?id=655517
+   #sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+  
+   #make
 }
 
 package() {
    cd "$srcdir/${pkgname}-${pkgver}"
    
-   make DESTDIR="${pkgdir}" install
+   cd build
+   DESTDIR="${pkgdir}" ninja install
+   #make DESTDIR="${pkgdir}" install
 }
 

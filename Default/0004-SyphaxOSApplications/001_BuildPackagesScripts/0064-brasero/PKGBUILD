@@ -1,0 +1,37 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=brasero
+pkgver=3.12.2
+pkgrel=10
+pkgdesc="Brasero is an application used to burn CD/DVD on the GNOME Desktop."
+arch=('x86_64')
+url="http://ftp.gnome.org/pub/gnome/sources/brasero/3.12"
+license=('GPL')
+groups=('applications')
+source=("$url/${pkgname}-${pkgver}.tar.xz")
+sha256sums=('6822166f9d08efcf8d900cab6f563e87f49f0e078ca10595dcd908498ef12041')
+depends=('rootfs' 'libevent' 'squashfs-tools' 'libisoburn')
+
+prepare() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   sed -i "/seems to be moved/s/^/#/" ltmain.sh
+}
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   ./configure --prefix=/usr                \
+               --enable-compile-warnings=no \
+               --enable-cxx-warnings=no \
+               --disable-caches \
+               --disable-schemas-compile
+   make
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   make DESTDIR="${pkgdir}" install
+}
+

@@ -1,19 +1,18 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=SyphaxOS-Theme
-pkgver=2.2.0
-pkgrel=15
+pkgver=3.0.0
+pkgrel=8
 pkgdesc="SyphaxOS theme based on adapta gtk theme and Paper icons Packs"
 url="https://bintray.com/syphaxos"
 license=('CUSTOM')
 arch=('x86_64')
-source=("SyphaxOS-settings.gschema.override"
-        "SyphaxOSLauncher.svg")
-install=${pkgname}.install
-md5sums=('661fd889b1dc9dc289256ff95d924f3f'
-         'a4037ede766d6e24f7b2d5fc2f87ccb2')
+source=("SyphaxOS-settings.gschema.override")
 
-depends=('rootfs>=2.0.0'
+install=${pkgname}.install
+md5sums=('b9c5c1e60b1a73e15987667f9b2f568e')
+
+depends=('rootfs'
          'adapta-gtk-theme'
          'papirus-icon-theme'
          'capitaine-cursors'
@@ -22,9 +21,6 @@ depends=('rootfs>=2.0.0'
 package() {
    echo "Packaging SyphaxOS Theme"
    
-   install -Dm644 "$srcdir/SyphaxOSLauncher.svg" \
-                  "$pkgdir/usr/share/icons/default/SyphaxOSLauncher.svg"
-
    install -Dm644 "$srcdir/SyphaxOS-settings.gschema.override" \
                   "$pkgdir/usr/share/glib-2.0/schemas/SyphaxOS-settings.gschema.override"
 }

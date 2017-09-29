@@ -1,0 +1,31 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=links
+pkgver=2.13
+pkgrel=4
+pkgdesc="Links is a text and graphics mode WWW browser."
+arch=('x86_64')
+url="http://links.twibright.com/download"
+license=('GPL')
+groups=('applications')
+source=("$url/${pkgname}-${pkgver}.tar.bz2")
+md5sums=('af418c83909ee73c09b95470bda6e377')
+depends=('rootfs')
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   ./configure --prefix=/usr --mandir=/usr/share/man &&
+   make
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   make DESTDIR="${pkgdir}" install
+   
+   install -v -d -m755 ${pkgdir}/usr/share/doc/links-2.13 &&
+   install -v -m644 doc/links_cal/* KEYS BRAILLE_HOWTO \
+       ${pkgdir}/usr/share/doc/links-2.13
+}
+

@@ -1,0 +1,34 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=transmission
+pkgver=2.92
+pkgrel=4
+pkgdesc="Transmission is a cross-platform, open source BitTorrent client."
+arch=('x86_64')
+url="https://github.com/transmission/transmission-releases/raw/master"
+license=('GPL')
+groups=('applications')
+source=("$url/${pkgname}-${pkgver}.tar.xz")
+md5sums=('3fce404a436e3cd7fde80fb6ed61c264')
+depends=('rootfs' 'libevent')
+
+prepare() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+
+  patch -p1 -i "../../transmission-2.92-openssl-1.1.0.patch"
+}
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   ./configure --prefix=/usr
+   
+   make
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   make DESTDIR="${pkgdir}" install
+}
+

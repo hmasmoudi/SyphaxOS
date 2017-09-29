@@ -1,16 +1,16 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=v4l-utils
-pkgver=1.12.3
-pkgrel=1
+pkgver=1.12.5
+pkgrel=4
 pkgdesc="v4l-utils provides a series of utilities for media devices, allowing to handle the proprietary formats available at most webcams (libv4l), and providing tools to test V4L devices."
 arch=('x86_64')
 url="https://www.linuxtv.org/downloads/v4l-utils"
 license=('GPL')
 groups=('applications')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
-md5sums=('89e1ed6c69c94e0489dc0a638c7841aa')
-depends=('rootfs>=2.0.0')
+md5sums=('SKIP')
+depends=('rootfs')
 
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"

@@ -1,16 +1,16 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=gst-libav
-pkgver=1.12.2
-pkgrel=1
+pkgver=1.12.3
+pkgrel=2
 pkgdesc="The GStreamer Libav package contains GStreamer plugins for Libav (a fork of FFmpeg)."
 arch=('x86_64')
 url="http://gstreamer.freedesktop.org/src/gst-libav"
 license=('GPL')
 groups=('applications')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('5bb735b9bb218b652ae4071ea6f6be8eaae55e9d3233aec2f36b882a27542db3')
-depends=('rootfs>=2.0.0')
+sha256sums=('015ef8cab6f7fb87c8fb42642486423eff3b6e6a6bccdcd6a189f436a3619650')
+depends=('rootfs')
 
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"

@@ -1,17 +1,16 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=evince
-pkgver=3.24.1
-pkgrel=1
+pkgver=3.26.0
+pkgrel=4
 pkgdesc="Evince is a document viewer for multiple document formats. It supports PDF, Postscript, DjVu, TIFF and DVI."
 arch=('x86_64')
-url="http://ftp.gnome.org/pub/gnome/sources/evince/3.24"
+url="http://ftp.gnome.org/pub/gnome/sources/evince/3.26"
 license=('GPL')
 groups=('applications')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('9ca0c5213407b37be55fddb04a85d9301b692c4412c5920319d975403bff0f37')
-depends=('rootfs>=2.0.0'
-         'poppler>=0.47.0')
+sha256sums=('79567bdb743cf0c3ed7b638da32afc9b850298f9b4edd532455df4a7e2a4c9d8')
+depends=('rootfs' 'poppler')
 
 prepare() {
    cd "$srcdir/${pkgname}-${pkgver}"

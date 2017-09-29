@@ -9,11 +9,11 @@
 
 pkgname=ttf-ms-fonts
 pkgver=10.0.14393
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='http://www.microsoft.com/typography/fonts/product.aspx?PID=164'
 license=(custom)
-depends=('rootfs>=2.0.0')
+depends=('rootfs')
 install=$pkgname.install
 
 _ttf_ms_fonts=(
@@ -65,7 +65,7 @@ webdings.ttf                                                # Webdings
 wingding.ttf                                                # Wingdings
 )
 
-source=(file://ttf-ms-fonts.tar.gz)
+source=(file://ttf-ms-fonts.tar.xz)
 
 md5sums=(SKIP)
         

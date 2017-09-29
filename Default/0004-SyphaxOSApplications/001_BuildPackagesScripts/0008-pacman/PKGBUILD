@@ -1,0 +1,55 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=pacman
+pkgver=5.0.2
+pkgrel=4
+pkgdesc="SyphaxOS Package Manager."
+arch=('x86_64')
+url="https://git.archlinux.org/pacman.git/snapshot"
+license=('GPL')
+groups=('applications')
+install=${pkgname}.install
+source=("$url/${pkgname}-${pkgver}.tar.xz"
+        "pacman.install"
+        "pacman.conf"
+        "pub.key"
+        "trustdb.gpg")
+md5sums=('SKIP'
+         'a8f38a0e14f0ab65492cfc11076236f4'
+         '0f63a88c747d78c3b20afc1242770f19'
+         'afae51776eeb25edb91ec4b1b5aa5219'
+         'af585fd1f02e18bef8a5fa5421747383')
+depends=('rootfs'
+         'asciidoc'
+         'npth'
+         'libksba'
+         'libassuan'
+         'pinentry'
+         'gnupg'
+         'gpgme'
+         'fakeroot'
+)
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   ./autogen.sh
+   ./configure --prefix=/usr \
+               --with-libcurl \
+               --with-openssl \
+               --with-gpgme \
+               --with-pkg-ext=.pkg.tar.xz \
+               --with-src-ext=.src.tar.xz
+   make
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   make DESTDIR="${pkgdir}" install
+   
+   cp -rf ../../pub.key ${pkgdir}/usr/etc/pub.key
+   cp -rf ../../trustdb.gpg ${pkgdir}/usr/etc/trustdb.gpg
+   cp -rf ../../pacman.conf ${pkgdir}/usr/etc/pacman.conf
+}
+

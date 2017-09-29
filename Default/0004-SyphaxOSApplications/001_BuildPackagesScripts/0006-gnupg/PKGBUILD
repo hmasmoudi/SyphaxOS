@@ -2,7 +2,7 @@
 
 pkgname=gnupg
 pkgver=2.1.23
-pkgrel=2
+pkgrel=4
 pkgdesc="The GnuPG package is GNU's tool for secure communication and data storage."
 arch=('x86_64')
 url="ftp://ftp.gnupg.org/gcrypt/gnupg"
@@ -11,7 +11,7 @@ install=${pkgname}.install
 groups=('applications')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
 md5sums=('SKIP')
-depends=('rootfs>=2.0.0')
+depends=('rootfs')
 
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"

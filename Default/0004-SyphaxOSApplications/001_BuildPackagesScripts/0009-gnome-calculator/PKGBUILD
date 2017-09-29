@@ -1,16 +1,16 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=gnome-calculator
-pkgver=3.24.0
-pkgrel=1
+pkgver=3.25.92
+pkgrel=4
 pkgdesc="GNOME Calculator is a powerful graphical calculator with financial, logical and scientific modes."
 arch=('x86_64')
-url="http://ftp.gnome.org/pub/gnome/sources/gnome-calculator/3.24"
+url="http://ftp.gnome.org/pub/gnome/sources/gnome-calculator/3.25"
 license=('GPL')
 groups=('applications')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('44758ac719edd20067381073de3c643f842308f26da039412b1978a415202d10')
-depends=('rootfs>=2.0.0')
+sha256sums=('e722f648e6847de4b6e34c300eedf277e0dfecf0f40f93ac6cc0968dc92d8510')
+depends=('rootfs')
 
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"

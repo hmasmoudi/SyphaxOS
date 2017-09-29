@@ -2,7 +2,7 @@
 
 pkgname=pinentry
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The PIN-Entry package contains a collection of simple PIN or pass-phrase entry dialogs."
 arch=('x86_64')
 url="ftp://ftp.gnupg.org/gcrypt/pinentry"
@@ -10,7 +10,7 @@ license=('GPL')
 groups=('applications')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
 md5sums=('4a3fad8b31f9b4c5526c8837495015dc')
-depends=('rootfs>=2.0.0')
+depends=('rootfs')
 
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"
