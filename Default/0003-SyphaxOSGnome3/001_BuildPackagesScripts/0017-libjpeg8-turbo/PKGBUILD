@@ -2,7 +2,7 @@
 
 pkgname=libjpeg6-turbo
 pkgver=1.5.2
-pkgrel=1
+pkgrel=4
 pkgdesc="libjpeg-turbo is a fork of the original IJG libjpeg which uses SIMD to accelerate baseline JPEG compression and decompression."
 arch=('x86_64')
 url="http://downloads.sourceforge.net/libjpeg-turbo"
@@ -10,7 +10,7 @@ license=('GPL')
 groups=('desktop')
 source=("$url/libjpeg-turbo-$pkgver.tar.gz")
 sha256sums=('9098943b270388727ae61de82adec73cf9f0dbb240b3bc8b172595ebf405b528')
-depends=('rootfs>=2.0.0')
+depends=('rootfs')
 
 build() {
    cd "$srcdir/libjpeg-turbo-$pkgver"

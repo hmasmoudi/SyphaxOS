@@ -1,8 +1,8 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=gsettings-desktop-schemas
-pkgver=3.24.0
-pkgrel=0
+pkgver=3.24.1
+pkgrel=4
 pkgdesc="The GSettings Desktop Schemas package contains a collection of GSettings schemas for settings shared by various components of a GNOME Desktop."
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/gsettings-desktop-schemas/3.24"
@@ -10,8 +10,8 @@ install=$pkgname.install
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('f6573a3f661d22ff8a001cc2421d8647717f1c0e697e342d03c6102f29bbbb90')
-depends=('rootfs>=2.0.0')
+sha256sums=('76a3fa309f9de6074d66848987214f0b128124ba7184c958c15ac78a8ac7eea7')
+depends=('rootfs')
 
 prepare() {
    cd "$srcdir/$pkgname-$pkgver"

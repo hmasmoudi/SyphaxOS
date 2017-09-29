@@ -1,0 +1,41 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=colord
+pkgver=1.4.1
+pkgrel=4
+pkgdesc="Colord is a system activated daemon that maps devices to color profiles."
+arch=('x86_64')
+url="http://www.freedesktop.org/software/colord/releases"
+install=${pkgname}.install
+license=('GPL')
+groups=('desktop')
+source=("$url/${pkgname}-${pkgver}.tar.xz"
+        "colord.install")
+sha256sums=('2b068fc8298265a7a3b68e7516c7a263394cff57579af0d1c0fb6b7429230555'
+            'SKIP')
+depends=('rootfs')
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   meson setup --prefix=/usr --buildtype=release build \
+               -Dwith-daemon-user=colord \
+               -Denable-vala=true \
+               -Denable-daemon=true \
+               -Denable-session-helper=true    \
+               -Denable-libcolordcompat=true   \
+               -Denable-argyllcms-sensor=false \
+               -Denable-bash-completion=false \
+               -Denable-man=false \
+               -Denable-docs=false
+   cd build
+   ninja
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+      
+   cd build
+   DESTDIR="${pkgdir}" ninja install
+}
+

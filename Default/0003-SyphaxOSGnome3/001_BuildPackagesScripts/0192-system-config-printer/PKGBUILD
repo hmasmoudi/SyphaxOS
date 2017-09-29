@@ -2,17 +2,18 @@
 
 pkgname=system-config-printer
 pkgver=1.5.9
-pkgrel=3
+pkgrel=6
 pkgdesc="A CUPS printer configuration tool and status applet"
 url="https://github.com/zdohnal/system-config-printer"
 arch=('x86_64')
 license=('GPL')
 groups=('desktop')
-depends=('rootfs')
 source=(https://github.com/zdohnal/system-config-printer/archive/v${pkgver}.tar.gz
 		pass_libgnome_keyring_missing.diff)
 sha256sums=('c8adf4468a465a2640ac365498f551e8a8645a09027e24004fd390e40b6262e3'
             '7d901711ca8fd0470342bc03bf4458fb2552cebdfa141acb435b99cfde4d2621')
+depends=('rootfs')
+
 prepare() {
   cd ${pkgname}-${pkgver}
   

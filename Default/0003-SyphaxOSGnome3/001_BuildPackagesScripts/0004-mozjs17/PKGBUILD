@@ -2,7 +2,7 @@
 
 pkgname=mozjs17
 pkgver=17.0.0
-pkgrel=2
+pkgrel=4
 pkgdesc="JS is Mozilla's JavaScript engine written in C/C++."
 arch=('x86_64')
 url="https://ftp.mozilla.org/pub/js"
@@ -10,7 +10,7 @@ license=('GPL')
 groups=('desktop')
 source=("$url/mozjs$pkgver.tar.gz")
 md5sums=('20b6f8f1140ef6e47daa3b16965c9202')
-depends=('rootfs>=2.0.0')
+depends=('rootfs')
 
 prepare() {
    cd "$srcdir/mozjs$pkgver/js/src"
@@ -25,8 +25,10 @@ build() {
                --enable-readline   \
                --enable-threadsafe \
                --with-system-ffi   \
-               --with-system-nspr
-   make
+               --with-system-nspr  \
+               --disable-tests
+
+   make  CXXFLAGS+='-fpermissive -w' 
 }
 
 package() {

@@ -1,37 +1,31 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=nautilus
-pkgver=3.24.2.1
-pkgrel=2
+pkgver=3.26.0
+pkgrel=4
 pkgdesc="The Nautilus package contains the GNOME file manager."
 arch=('x86_64')
-url="http://ftp.gnome.org/pub/gnome/sources/nautilus/3.24"
+url="http://ftp.gnome.org/pub/gnome/sources/nautilus/3.26"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('357d9d051fcc2c385ce9b3beb2db2ea1874b7cdf507ca10274a063023e1a61b3')
-depends=('rootfs>=2.0.0')
-
-prepare() {
-   cd "$srcdir/${pkgname}-${pkgver}"
-   
-   sed -i "/seems to be moved/s/^/#/" ltmain.sh
-}
+sha256sums=('a02b30ef9033f6f92fbc5e29abaceeb58ce6a600ed9fa5a4697ba82901d07924')
+depends=('rootfs')
 
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"
    
-   ./configure --prefix=/usr        \
-               --sysconfdir=/etc    \
-               --disable-selinux    \
-               --disable-tracker    \
-               --disable-packagekit
-   make
+   sed -i "/'libm'/s/^/libm = cc.find_library('m', required : false)#/" meson.build
+
+   meson build --prefix=/usr --sysconfdir=/etc --default-library=shared -Denable-selinux=false -Denable-packagekit=false 
+   cd build
+   ninja -j$(($(getconf _NPROCESSORS_ONLN)+1))
 }
 
 package() {
    cd "$srcdir/${pkgname}-${pkgver}"
    
-   make DESTDIR="$pkgdir" install
+   cd build
+   DESTDIR="${pkgdir}" ninja install
 }
 

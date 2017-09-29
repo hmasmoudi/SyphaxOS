@@ -1,32 +1,30 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=gnome-bluetooth
-pkgver=3.20.1
-pkgrel=1
+pkgver=3.26.1
+pkgrel=4
 pkgdesc="The GNOME Bluetooth package contains tools for managing and manipulating Bluetooth devices using the GNOME Desktop."
 arch=('x86_64')
-url="http://ftp.gnome.org/pub/gnome/sources/gnome-bluetooth/3.20"
+url="http://ftp.gnome.org/pub/gnome/sources/gnome-bluetooth/3.26"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('ea9050b5f3b94ef279febae4cb789c2500a25344c784f650fe7f932fcd6798fe')
-depends=('rootfs>=2.0.0')
-
-prepare() {
-   cd "$srcdir/${pkgname}-${pkgver}"
-}
+sha256sums=('1d2c7b94fc76a833dad0d4d91344e9a5a7b4aad740c5a90944bd25c5be7e784f')
+depends=('rootfs')
 
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"
    
-   ./configure --prefix=/usr
-   
-   make
+   meson setup --prefix=/usr --buildtype=release build -Denable-icon-update=false
+
+   cd build
+   ninja
 }
 
 package() {
    cd "$srcdir/${pkgname}-${pkgver}"
-   
-   make DESTDIR="$pkgdir" install
+      
+   cd build
+   DESTDIR="${pkgdir}" ninja install
 }
 

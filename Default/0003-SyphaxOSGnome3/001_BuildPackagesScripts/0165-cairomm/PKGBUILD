@@ -2,7 +2,7 @@
 
 pkgname=cairomm
 pkgver=1.12.2
-pkgrel=1
+pkgrel=6
 pkgdesc="The Cairomm package provides a C++ interface to Cairo."
 arch=('x86_64')
 url="http://cairographics.org/releases"
@@ -10,12 +10,12 @@ license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.gz")
 sha1sums=('621546f32221a2ddc079167a13ce5b5409bed704')
-depends=('rootfs>=2.0.0')
+depends=('rootfs')
 
 prepare() {
    cd "$srcdir/${pkgname}-${pkgver}"
    
-   sed -e '/^libdocdir =/ s/$(book_name)/cairomm-1.12.0/' \
+   sed -e '/^libdocdir =/ s/$(book_name)/cairomm-1.12.2/' \
        -i docs/Makefile.in
 }
 

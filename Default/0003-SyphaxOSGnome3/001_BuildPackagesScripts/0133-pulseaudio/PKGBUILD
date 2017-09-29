@@ -1,0 +1,42 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=pulseaudio
+pkgver=11.0
+pkgrel=10
+pkgdesc="PulseAudio is a sound system for POSIX OSes, meaning that it is a proxy for sound applications."
+arch=('x86_64')
+url="http://freedesktop.org/software/pulseaudio/releases"
+license=('GPL')
+groups=('desktop')
+source=("$url/${pkgname}-${pkgver}.tar.xz")
+md5sums=('SKIP')
+depends=('rootfs' 'sbc')
+
+prepare() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   sed -i "/seems to be moved/s/^/#/" build-aux/ltmain.sh
+}
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   ./configure --prefix=/usr        \
+               --sysconfdir=/etc    \
+               --localstatedir=/var \
+               --disable-bluez4     \
+               --disable-bluez5     \
+               --disable-rpath
+   make
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   make DESTDIR="$pkgdir" install
+   rm ${pkgdir}/etc/dbus-1/system.d/pulseaudio-system.conf
+   rm ${pkgdir}/etc/xdg/autostart/pulseaudio.desktop
+   
+   sed -i '/load-module module-console-kit/s/^/#/' ${pkgdir}/etc/pulse/default.pa
+}
+

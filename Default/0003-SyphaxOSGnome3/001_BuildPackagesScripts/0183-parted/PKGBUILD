@@ -2,13 +2,12 @@
 
 pkgname=parted
 pkgver=3.2
-pkgrel=1
+pkgrel=4
 pkgdesc="A program for creating, destroying, resizing, checking and copying partitions"
 arch=('x86_64')
 license=('GPL3')
 groups=('desktop')
 url="http://www.gnu.org/software/parted/parted.html"
-depends=('rootfs')
 makedepends=('pkg-config')
 source=("http://ftp.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.xz"
         'parted-735669-fat16-crash-v1.patch'
@@ -16,6 +15,7 @@ source=("http://ftp.gnu.org/gnu/${pkgname}/${pkgname}-${pkgver}.tar.xz"
 md5sums=('0247b6a7b314f8edeb618159fa95f9cb'
          '15a72be3860b9ec754dc7bff17a5afae'
          '7b2e6dff98e75c995370ae1c7c459179')
+depends=('rootfs')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"

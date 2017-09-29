@@ -1,0 +1,28 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=libpwquality
+pkgver=1.4.0
+pkgrel=4
+pkgdesc="The libpwquality package provides common functions for password quality checking and also scoring them based on their apparent randomness."
+arch=('x86_64')
+url="https://github.com/libpwquality/libpwquality/releases/download/${pkgname}-${pkgver}"
+license=('GPL')
+groups=('desktop')
+source=("$url/${pkgname}-${pkgver}.tar.bz2")
+md5sums=('b8defcc7280a90e9400d6689c93a279c')
+depends=('rootfs')
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   ./configure --prefix=/usr --disable-static
+    
+   make
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+      
+   make DESTDIR="${pkgdir}" install
+}
+

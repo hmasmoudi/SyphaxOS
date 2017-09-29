@@ -1,16 +1,16 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=gmime
-pkgver=2.6.23
-pkgrel=2
+pkgver=3.0.2
+pkgrel=4
 pkgdesc="The GMime package contains a set of utilities for parsing and creating messages using the Multipurpose Internet Mail Extension (MIME) as defined by the applicable RFCs."
 arch=('x86_64')
-url="http://ftp.gnome.org/pub/gnome/sources/gmime/2.6"
+url="http://ftp.gnome.org/pub/gnome/sources/gmime/3.0"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('7149686a71ca42a1390869b6074815106b061aaeaaa8f2ef8c12c191d9a79f6a')
-depends=('rootfs>=2.0.0')
+sha256sums=('0deb460111ffa2ec672677da339b82dedeb28b258ccdb216daa21c81a9472fb2')
+depends=('rootfs')
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"

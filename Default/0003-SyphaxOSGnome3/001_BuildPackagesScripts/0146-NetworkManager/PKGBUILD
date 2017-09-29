@@ -1,19 +1,19 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=NetworkManager
-pkgver=1.8.2
-pkgrel=1
+pkgver=1.9.2
+pkgrel=4
 pkgdesc="NetworkManager is a set of co-operative tools that make networking simple and straightforward."
 arch=('x86_64')
-url="http://ftp.gnome.org/pub/gnome/sources/NetworkManager/1.8"
+url="http://ftp.gnome.org/pub/gnome/sources/NetworkManager/1.9"
 install=${pkgname}.install
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz"
         "${pkgname}.install")
-sha256sums=('71a5efcd9e4c237ab57b2893ccc8f91f884ace3bec0e2bd4b31a4c9677ff1bf4'
+sha256sums=('3cc2c59286af3d589f336b6ddd7a979751a60f1bfb2bf2dcc3cf8e0ce9bedae9'
             '2de1347fa92bab517619f7a9c82de8258075eb2229fa150cce3fd9dda8215af4')
-depends=('rootfs>=2.0.0')
+depends=('rootfs')
 
 prepare() {
    cd "$srcdir/${pkgname}-${pkgver}"

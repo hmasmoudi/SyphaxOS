@@ -1,0 +1,53 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=nss
+pkgver=3.32.1
+pkgrel=2
+pkgdesc="The Network Security Services (NSS) package is a set of libraries designed to support cross-platform development of security-enabled client and server applications."
+arch=('x86_64')
+url="https://ftp.mozilla.org/pub/mozilla.org/security/nss/releases/NSS_3_32_1_RTM/src"
+license=('GPL')
+groups=('desktop')
+source=("$url/${pkgname}-${pkgver}.tar.gz"
+        "nss-3.32-standalone-1.patch")
+sha256sums=('4de59ca7f5bf4a56fbcfdbb4a054f254ba9f408f56476957404a091048624652'
+         'SKIP')
+depends=('rootfs')
+
+prepare() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   patch -Np1 -i ../../nss-3.32-standalone-1.patch 
+}
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   cd nss
+
+   make -j1 BUILD_OPT=1                  \
+     NSPR_INCLUDE_DIR=/usr/include/nspr  \
+     USE_SYSTEM_ZLIB=1                   \
+     ZLIB_LIBS=-lz                       \
+     NSS_ENABLE_WERROR=0                 \
+     $([ $(uname -m) = x86_64 ] && echo USE_64=1) \
+     $([ -f /usr/include/sqlite3.h ] && echo NSS_USE_SYSTEM_SQLITE=1)
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   cd dist
+   
+   mkdir -pv "${pkgdir}"/usr/{bin,lib,include}
+   mkdir -pv "${pkgdir}"/usr/lib/pkgconfig
+   
+   install -v -m755 Linux*/lib/*.so              "${pkgdir}"/usr/lib           &&
+   install -v -m644 Linux*/lib/{*.chk,libcrmf.a} "${pkgdir}"/usr/lib           &&
+   install -v -m755 -d                           "${pkgdir}"/usr/include/nss   &&
+   cp -v -RL {public,private}/nss/*              "${pkgdir}"/usr/include/nss   &&
+   chmod -v 644                                  "${pkgdir}"/usr/include/nss/* &&
+   install -v -m755 Linux*/bin/{certutil,nss-config,pk12util} "${pkgdir}"/usr/bin &&
+   install -v -m644 Linux*/lib/pkgconfig/nss.pc  "${pkgdir}"/usr/lib/pkgconfig
+}
+

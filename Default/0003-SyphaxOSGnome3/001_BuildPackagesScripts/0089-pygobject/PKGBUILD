@@ -1,16 +1,16 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=pygobject
-pkgver=3.24.1
-pkgrel=1
+pkgver=3.26.0
+pkgrel=4
 pkgdesc="PyGObject 2 and 3 provides Python bindings to the GObject class from GLib"
 arch=('x86_64')
-url="http://ftp.gnome.org/pub/gnome/sources/pygobject/3.24"
+url="http://ftp.gnome.org/pub/gnome/sources/pygobject/3.26"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('a628a95aa0909e13fb08230b1b98fc48adef10b220932f76d62f6821b3fdbffd')
-depends=('rootfs>=2.0.0')
+sha256sums=('7411acd600c8cb6f00d2125afa23303f2104e59b83e0a4963288dbecc3b029fa')
+depends=('rootfs')
 
 prepare() {
    cd "$srcdir/${pkgname}-${pkgver}"

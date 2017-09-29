@@ -1,0 +1,28 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=geocode-glib
+pkgver=3.25.4.1
+pkgrel=4
+pkgdesc=" The Geocode GLib is a convenience library for the Yahoo! Place Finder APIs."
+arch=('x86_64')
+url="http://ftp.gnome.org/pub/gnome/sources/geocode-glib/3.25"
+license=('GPL')
+groups=('desktop')
+source=("$url/${pkgname}-${pkgver}.tar.xz")
+sha256sums=('f10169262c313dfaa21acf00687c01e0aaf52983524648e8b9e8e42c052dd778')
+depends=('rootfs')
+
+build() {
+   cd "$srcdir/$pkgname-$pkgver"
+
+   ./configure --prefix=/usr
+   
+   make
+}
+
+package() {
+   cd "$srcdir/$pkgname-$pkgver"
+
+   make DESTDIR="$pkgdir" install
+}
+

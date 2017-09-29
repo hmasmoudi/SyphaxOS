@@ -2,7 +2,7 @@
 
 pkgname=dhcp
 pkgver=4.3.6
-pkgrel=1
+pkgrel=4
 pkgdesc="The ISC DHCP package contains both the client and server programs for DHCP. dhclient (the client) is used for connecting to a network which uses DHCP to assign network addresses. dhcpd (the server) is used for assigning network addresses on private networks."
 arch=('x86_64')
 url="http://ftp.isc.org/isc/dhcp/${pkgver}"
@@ -14,7 +14,7 @@ source=("$url/${pkgname}-${pkgver}.tar.gz"
 md5sums=('afa6e9b3eb7539ea048421a82c668adc'
          '4e35868ad012c18e0d60727a022f7150'
          'eb6c6321b3332e245bfdbdaf5078b0db')
-depends=('rootfs>=2.0.0')
+depends=('rootfs')
 
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"

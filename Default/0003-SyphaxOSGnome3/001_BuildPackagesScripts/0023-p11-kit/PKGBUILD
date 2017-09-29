@@ -1,0 +1,28 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=p11-kit
+pkgver=0.23.2
+pkgrel=4
+pkgdesc="The p11-kit package provides a way to load and enumerate PKCS #11 (a Cryptographic Token Interface Standard) modules."
+arch=('x86_64')
+url="http://p11-glue.freedesktop.org/releases"
+license=('GPL')
+groups=('desktop')
+source=("$url/${pkgname}-${pkgver}.tar.gz")
+md5sums=('738af2442331fc22f440df9bee9b062a')
+depends=('rootfs')
+
+build() {
+   cd "$srcdir/$pkgname-$pkgver"
+
+   ./configure --prefix=/usr --sysconfdir=/etc
+
+   make
+}
+
+package() {
+   cd "$srcdir/$pkgname-$pkgver"
+
+   make DESTDIR="$pkgdir" install
+}
+

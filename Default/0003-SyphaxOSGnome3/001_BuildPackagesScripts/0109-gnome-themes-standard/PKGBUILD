@@ -2,7 +2,7 @@
 
 pkgname=gnome-themes-standard
 pkgver=3.22.3
-pkgrel=1
+pkgrel=4
 pkgdesc="The GNOME Themes Standard package contains various components of the default GNOME theme."
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/gnome-themes-standard/3.22"
@@ -10,11 +10,7 @@ license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 sha256sums=('61dc87c52261cfd5b94d65e8ffd923ddeb5d3944562f84942eeeb197ab8ab56a')
-depends=('rootfs>=2.0.0')
-
-prepare() {
-   cd "$srcdir/${pkgname}-${pkgver}"
-}
+depends=('rootfs')
 
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"

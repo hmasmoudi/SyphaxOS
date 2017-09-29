@@ -1,0 +1,28 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=libgtop
+pkgver=2.38.0
+pkgrel=4
+pkgdesc="The libgtop package contains the GNOME top libraries."
+arch=('x86_64')
+url="http://ftp.gnome.org/pub/gnome/sources/libgtop/2.38"
+license=('GPL')
+groups=('desktop')
+source=("$url/${pkgname}-${pkgver}.tar.xz")
+sha256sums=('4f6c0e62bb438abfd16b4559cd2eca0251de19e291c888cdc4dc88e5ffebb612')
+depends=('rootfs')
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+
+   ./configure --prefix=/usr  --disable-static
+   
+   make
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   make DESTDIR="$pkgdir" install
+}
+

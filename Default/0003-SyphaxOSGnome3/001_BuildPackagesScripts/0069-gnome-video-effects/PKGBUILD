@@ -2,7 +2,7 @@
 
 pkgname=gnome-video-effects
 pkgver=0.4.3
-pkgrel=1
+pkgrel=6
 pkgdesc="The GNOME Video Effects package contains a collection of GStreamer effects."
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/gnome-video-effects/0.4"
@@ -10,11 +10,7 @@ license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 sha256sums=('5a7ee0f5ade4b7d921f1b99f3b97d7d7bb830f2fef0f1daee20a7a1867708219')
-depends=('rootfs>=2.0.0')
-
-prepare() {
-   cd "$srcdir/$pkgname-$pkgver"
-}
+depends=('rootfs')
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"

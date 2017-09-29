@@ -2,7 +2,7 @@
 
 pkgname=gtk2
 pkgver=2.24.31
-pkgrel=2
+pkgrel=6
 pkgdesc="The GTK+ 2 package contains libraries used for creating graphical user interfaces for applications."
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/gtk+/2.24"
@@ -10,7 +10,7 @@ license=('GPL')
 groups=('desktop')
 source=("$url/gtk+-${pkgver}.tar.xz")
 sha256sums=('68c1922732c7efc08df4656a5366dcc3afdc8791513400dac276009b40954658')
-depends=('rootfs>=2.0.0')
+depends=('rootfs')
 
 prepare() {
    cd "$srcdir/gtk+-$pkgver"

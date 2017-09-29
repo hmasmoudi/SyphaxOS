@@ -1,0 +1,30 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=libsndfile
+pkgver=1.0.28
+pkgrel=4
+pkgdesc="Libsndfile is a library of C routines for reading and writing files containing sampled audio data."
+arch=('x86_64')
+url="http://www.mega-nerd.com/libsndfile/files"
+license=('GPL')
+groups=('desktop')
+source=("$url/${pkgname}-${pkgver}.tar.gz")
+md5sums=('646b5f98ce89ac60cdb060fcd398247c')
+depends=('rootfs')
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   ./configure --prefix=/usr    \
+               --disable-static \
+               --docdir=/usr/share/doc/${pkgname}-${pkgver}
+   
+   make -j1
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   make DESTDIR="$pkgdir" install
+}
+

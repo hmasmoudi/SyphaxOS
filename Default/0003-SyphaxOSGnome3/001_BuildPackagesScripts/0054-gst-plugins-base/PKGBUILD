@@ -1,16 +1,16 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=gst-plugins-base
-pkgver=1.12.2
-pkgrel=1
+pkgver=1.12.3
+pkgrel=4
 pkgdesc="The GStreamer Base Plug-ins is a well-groomed and well-maintained collection of GStreamer plug-ins and elements, spanning the range of possible types of elements one would want to write for GStreamer."
 arch=('x86_64')
 url="http://gstreamer.freedesktop.org/src/gst-plugins-base"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('5067dce3afe197a9536fea0107c77213fab536dff4a213b07fc60378d5510675')
-depends=('rootfs>=2.0.0')
+sha256sums=('d3d37b8489d37fa0018973d850bd2067b98af335fef2fa543ee7d40359e3cea5')
+depends=('rootfs')
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"

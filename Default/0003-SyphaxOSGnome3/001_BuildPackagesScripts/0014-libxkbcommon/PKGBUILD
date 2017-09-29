@@ -2,7 +2,7 @@
 
 pkgname=libxkbcommon
 pkgver=0.7.2
-pkgrel=2
+pkgrel=4
 pkgdesc="libxkbcommon is a keymap compiler and support library which processes a reduced subset of keymaps as defined by the XKB specification."
 arch=('x86_64')
 url="http://xkbcommon.org/download"
@@ -10,7 +10,7 @@ license=('GPL')
 groups=('desktop')
 source=("$url/$pkgname-$pkgver.tar.xz")
 md5sums=('SKIP')
-depends=('rootfs>=2.0.0')
+depends=('rootfs')
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"

@@ -1,16 +1,16 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=grilo
-pkgver=0.3.3
-pkgrel=4
+pkgver=0.3.4
+pkgrel=6
 pkgdesc="Grilo is a framework focused on making media discovery and browsing easy for applications and application developers."
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/grilo/0.3"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('5c874222c7bdf42490cd56765a593c41407247706bb1f24a1bd5d007aa38a0e3')
-depends=('rootfs>=2.0.0')
+sha256sums=('7c6964053b42574c2f14715d2392a02ea5cbace955eb73e067c77aa3e43b066e')
+depends=('rootfs')
 
 prepare() {
    cd "$srcdir/$pkgname-$pkgver"

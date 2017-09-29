@@ -1,0 +1,28 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=json-glib
+pkgver=1.2.8
+pkgrel=4
+pkgdesc="The JSON GLib package is a library providing serialization and deserialization support for the JavaScript Object Notation (JSON) format described by RFC 4627."
+arch=('x86_64')
+url="http://ftp.gnome.org/pub/gnome/sources/json-glib/1.2"
+license=('GPL')
+groups=('desktop')
+source=("$url/${pkgname}-${pkgver}.tar.xz")
+sha256sums=('fd55a9037d39e7a10f0db64309f5f0265fa32ec962bf85066087b83a2807f40a')
+depends=('rootfs')
+
+build() {
+   cd "$srcdir/$pkgname-$pkgver"
+
+   ./configure --prefix=/usr
+   
+   make
+}
+
+package() {
+   cd "$srcdir/$pkgname-$pkgver"
+
+   make DESTDIR="$pkgdir" install
+}
+

@@ -1,16 +1,16 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=gnome-settings-daemon
-pkgver=3.24.3
-pkgrel=1
+pkgver=3.26.0
+pkgrel=4
 pkgdesc="The GNOME Settings Daemon is responsible for setting various parameters of a GNOME Session and the applications that run under it."
 arch=('x86_64')
-url="http://ftp.gnome.org/pub/gnome/sources/gnome-settings-daemon/3.24"
+url="http://ftp.gnome.org/pub/gnome/sources/gnome-settings-daemon/3.26"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('68c46038bc32b7cbe933cc24fa9f1eb96127d9900c07627767ab0a802f948593')
-depends=('rootfs>=2.0.0')
+sha256sums=('0e4c0ce3ac14262be022c3c33ebab794d7bd6a36b0246084be452b1ec540dc05')
+depends=('rootfs')
 
 prepare() {
    cd "$srcdir/${pkgname}-${pkgver}"

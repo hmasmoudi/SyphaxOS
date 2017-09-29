@@ -2,7 +2,7 @@
 
 pkgname=zip
 pkgver=30
-pkgrel=2
+pkgrel=6
 pkgdesc="The Zip package contains Zip utilities. These are useful for compressing files into ZIP archives."
 arch=('x86_64')
 url="http://downloads.sourceforge.net/infozip"
@@ -10,11 +10,7 @@ license=('GPL')
 groups=('desktop')
 source=("$url/$pkgname$pkgver.tar.gz")
 md5sums=('7b74551e63f8ee6aab6fbc86676c0d37')
-depends=('rootfs>=2.0.0')
-
-prepare() {
-   cd "$srcdir/$pkgname$pkgver"
-}
+depends=('rootfs')
 
 build() {
    cd "$srcdir/$pkgname$pkgver"

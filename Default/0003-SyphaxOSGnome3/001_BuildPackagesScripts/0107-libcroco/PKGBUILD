@@ -1,0 +1,28 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=libcroco
+pkgver=0.6.12
+pkgrel=4
+pkgdesc="The libcroco package contains a standalone CSS2 parsing and manipulation library."
+arch=('x86_64')
+url="http://ftp.gnome.org/pub/gnome/sources/libcroco/0.6"
+license=('GPL')
+groups=('desktop')
+source=("$url/${pkgname}-${pkgver}.tar.xz")
+sha256sums=('ddc4b5546c9fb4280a5017e2707fbd4839034ed1aba5b7d4372212f34f84f860')
+depends=('rootfs')
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+
+   ./configure --prefix=/usr --disable-static
+
+   make
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   make DESTDIR="$pkgdir" install
+}
+

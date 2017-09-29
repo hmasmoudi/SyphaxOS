@@ -1,8 +1,8 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=bluez
-pkgver=5.44
-pkgrel=1
+pkgver=5.46
+pkgrel=4
 pkgdesc="The BlueZ package contains the Bluetooth protocol stack for Linux."
 arch=('x86_64')
 url="http://www.kernel.org/pub/linux/bluetooth"
@@ -13,11 +13,11 @@ source=("$url/${pkgname}-${pkgver}.tar.xz"
         "${pkgname}.install"
         "rfcomm.conf"
         "uart.conf")
-md5sums=('94273617129ced06612fcb9f5273d14c'
+md5sums=('SKIP'
          'ca9fbb33443bb00fe030c4f5545df121'
          'e323bb72541a7f1c9c288a9e12c5bb95'
          'aea7d77ee22d0d354765a639f9c75d41')
-depends=('rootfs>=2.0.0')
+depends=('rootfs')
 
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"
@@ -42,5 +42,7 @@ package() {
    
    cp ../../rfcomm.conf ${pkgdir}/etc/bluetooth/rfcomm.conf
    cp ../../uart.conf ${pkgdir}/etc/bluetooth/uart.conf
+   
+   ln -fs /usr/lib/systemd/user/obex.service ${pkgdir}/usr/lib/systemd/user/dbus-org.bluez.obex.service
 }
 

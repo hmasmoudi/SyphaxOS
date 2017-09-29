@@ -1,0 +1,33 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=boost
+pkgver=1.65.1
+pkgrel=6
+pkgdesc="Boost provides a set of free peer-reviewed portable C++ source libraries."
+arch=('x86_64')
+url="http://downloads.sourceforge.net/boost"
+license=('GPL')
+groups=('desktop')
+source=("$url/${pkgname}_1_65_1.tar.bz2")
+md5sums=('SKIP')
+depends=('rootfs')
+
+prepare() {
+   cd "$srcdir/${pkgname}_1_65_1"
+   sed -e '/using python/ s@;@: /usr/include/python${PYTHON_VERSION/3*/${PYTHON_VERSION}m} ;@' \
+       -i bootstrap.sh
+}
+
+build() {
+   cd "$srcdir/${pkgname}_1_65_1"
+   
+   ./bootstrap.sh --prefix=/usr --with-python=python3
+   ./b2 stage threading=multi link=shared -j4
+}
+
+package() {
+   cd "$srcdir/${pkgname}_1_65_1"
+   
+   ./b2 --prefix="$pkgdir" install threading=multi link=shared
+}
+

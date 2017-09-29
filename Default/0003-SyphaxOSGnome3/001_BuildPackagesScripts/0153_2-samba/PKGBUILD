@@ -1,8 +1,8 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=samba
-pkgver=4.4.14
-pkgrel=1
+pkgver=4.6.7
+pkgrel=4
 pkgdesc="The Samba package provides file and print services to SMB/CIFS clients and Windows networking to Linux clients."
 arch=('x86_64')
 url="https://download.samba.org/pub/samba/stable"
@@ -10,15 +10,19 @@ license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.gz")
 md5sums=('SKIP')
-depends=('rootfs>=2.0.0')
+depends=('rootfs')
+
+prepare() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+
+   sed -i "/smb.conf.5/s/^/#/" docs-xml/wscript_build
+}
 
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"
    
    ./configure                            \
-      --prefix=/usr                       \
-      --libdir=/usr/lib                   \
-      --libexecdir=/usr/lib/samba         \
+       --prefix=/usr                      \
        --sysconfdir=/etc                  \
        --localstatedir=/var               \
        --with-piddir=/run/samba           \
@@ -26,6 +30,7 @@ build() {
        --enable-fhs                       \
        --without-ldap                     \
        --without-ads                      \
+       --without-ad-dc                    \
        --bundled-libraries=!tdb
     
    make

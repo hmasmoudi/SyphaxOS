@@ -2,7 +2,7 @@
 
 pkgname=docbook-xsl
 pkgver=1.79.1
-pkgrel=1
+pkgrel=4
 pkgdesc="The DocBook XSL Stylesheets package contains XSL stylesheets. These are useful for performing transformations on XML DocBook files."
 arch=('x86_64')
 url="http://downloads.sourceforge.net/docbook"
@@ -11,15 +11,7 @@ license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
 md5sums=('b48cbf929a2ad85e6672f710777ca7bc')
-depends=('rootfs>=2.0.0')
-
-prepare() {
-   cd "$srcdir/${pkgname}-${pkgver}"
-}
-
-build() {
-   cd "$srcdir/${pkgname}-${pkgver}"
-}
+depends=('rootfs')
 
 package() {
    cd "$srcdir/${pkgname}-${pkgver}"

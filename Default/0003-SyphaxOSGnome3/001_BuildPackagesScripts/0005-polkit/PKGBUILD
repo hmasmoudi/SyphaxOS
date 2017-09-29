@@ -2,7 +2,7 @@
 
 pkgname=polkit
 pkgver=0.113
-pkgrel=2
+pkgrel=6
 pkgdesc="Polkit is a toolkit for defining and handling authorizations."
 arch=('x86_64')
 url="http://www.freedesktop.org/software/polkit/releases"
@@ -11,7 +11,7 @@ license=('GPL')
 groups=('desktop')
 source=("$url/$pkgname-$pkgver.tar.gz")
 md5sums=('4b77776c9e4f897dcfe03b2c34198edf')
-depends=('rootfs>=2.0.0')
+depends=('rootfs')
 
 prepare() {
    cd "$srcdir/$pkgname-$pkgver"

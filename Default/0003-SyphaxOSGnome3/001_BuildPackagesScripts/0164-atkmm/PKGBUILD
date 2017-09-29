@@ -1,0 +1,35 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=atkmm
+pkgver=2.24.2
+pkgrel=8
+pkgdesc="Atkmm is the official C++ interface for the ATK accessibility toolkit library."
+arch=('x86_64')
+url="http://ftp.gnome.org/pub/gnome/sources/${pkgname}/2.24"
+license=('GPL')
+groups=('desktop')
+source=("$url/${pkgname}-${pkgver}.tar.xz")
+sha256sums=('ff95385759e2af23828d4056356f25376cfabc41e690ac1df055371537e458bd')
+depends=('rootfs')
+
+prepare() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   sed -e '/^libdocdir =/ s/$(book_name)/atkmm-2.24.2/' \
+       -i doc/Makefile.in
+}
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   ./configure --prefix=/usr
+
+   make
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   make DESTDIR="${pkgdir}" install
+}
+

@@ -2,7 +2,7 @@
 
 pkgname=slang
 pkgver=2.2.4
-pkgrel=2
+pkgrel=6
 pkgdesc="S-Lang is an interpreted language that may be embedded into an application to make the application extensible."
 arch=('x86_64')
 url="ftp://space.mit.edu/pub/davis/slang/v2.2"
@@ -10,11 +10,7 @@ license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
 md5sums=('7fcfd447e378f07dd0c0bae671fe6487')
-depends=('rootfs>=2.0.0')
-
-prepare() {
-   cd "$srcdir/${pkgname}-${pkgver}"
-}
+depends=('rootfs')
 
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"

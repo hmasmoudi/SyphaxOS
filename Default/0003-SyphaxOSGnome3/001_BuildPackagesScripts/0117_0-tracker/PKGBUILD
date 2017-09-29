@@ -1,0 +1,45 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=libtracker-sparql
+pkgver=1.12.3
+pkgrel=6
+pkgdesc="Desktop-neutral user information store, search tool and indexer"
+url="https://wiki.gnome.org/Projects/Tracker"
+arch=(x86_64)
+license=(GPL)
+_commit=c756218387e1df2590a50b8ba93ecd19f9d5cf7d  # tags/1.12.3^0
+options=(!emptydirs)
+source=("git+https://git.gnome.org/browse/tracker#commit=$_commit")
+sha256sums=('SKIP')
+depends=('rootfs')
+
+pkgver() {
+  cd tracker
+  git describe --tags | sed 's/-/+/g'
+}
+
+prepare() {
+  cd tracker
+  NOCONFIGURE=1 ./autogen.sh
+  sed -i "/seems to be moved/s/^/#/" build-aux/ltmain.sh
+}
+
+build() {
+  cd tracker
+
+  ./configure --prefix=/usr --disable-tracker-fts
+
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+  make
+}
+
+package() {
+  pkgdesc="tracker (SPARQL library)"
+  depends=(rootfs)
+
+  cd tracker
+  make DESTDIR="$pkgdir" -C src/libtracker-common install-libtracker_commonLTLIBRARIES
+  make DESTDIR="$pkgdir" -C src/libtracker-data install-libtracker_dataLTLIBRARIES
+  make DESTDIR="$pkgdir" -C src/libtracker-sparql install
+  make DESTDIR="$pkgdir" -C src/libtracker-sparql-backend install
+}

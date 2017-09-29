@@ -1,0 +1,35 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=librsvg
+pkgver=2.40.18
+pkgrel=4
+pkgdesc="The librsvg package contains a library and tools used to manipulate, convert and view Scalable Vector Graphic (SVG) images."
+arch=('x86_64')
+url="http://ftp.gnome.org/pub/gnome/sources/librsvg/2.40"
+license=('GPL')
+groups=('desktop')
+source=("$url/${pkgname}-${pkgver}.tar.xz")
+sha256sums=('bfc8c488c89c1e7212c478beb95c41b44701636125a3e6dab41187f1485b564c')
+depends=('rootfs')
+
+prepare() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   sed -i "/seems to be moved/s/^/#/" ltmain.sh
+}
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+
+   ./configure --prefix=/usr    \
+               --enable-vala    \
+               --disable-static
+   make
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   make DESTDIR="$pkgdir" install
+}
+

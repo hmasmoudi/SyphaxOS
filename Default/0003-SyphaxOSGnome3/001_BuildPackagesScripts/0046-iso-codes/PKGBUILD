@@ -2,7 +2,7 @@
 
 pkgname=iso-codes
 pkgver=3.74
-pkgrel=1
+pkgrel=4
 pkgdesc="The ISO Codes package contains a list of country, language and currency names and it is used as a central database for accessing this data."
 arch=('x86_64')
 url="https://pkg-isocodes.alioth.debian.org/downloads"
@@ -10,11 +10,7 @@ license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('d5448475d087756b78391b8c53c5b83a')
-depends=('rootfs>=2.0.0')
-
-prepare() {
-   cd "$srcdir/$pkgname-$pkgver"
-}
+depends=('rootfs')
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"

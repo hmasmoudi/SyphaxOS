@@ -1,21 +1,21 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=gnome-session
-pkgver=3.24.1
+pkgver=3.26.0
 pkgrel=4
 pkgdesc="The GNOME Session package contains the GNOME session manager."
 arch=('x86_64')
-url="http://ftp.gnome.org/pub/gnome/sources/gnome-session/3.24"
+url="http://ftp.gnome.org/pub/gnome/sources/gnome-session/3.26"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('3b4449238e396b95f9616dfd6f99d8345afaf30c7e3cb6a3549f253d9f966eee')
-depends=('rootfs>=2.0.0')
+sha256sums=('6f8254b4891f76852b65a7c164dc504dfeff1aa32092e1b262bb670efedac489')
+depends=('rootfs')
 
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"
    
-   ./configure --prefix=/usr --docdir=/usr/share/doc/gnome-session-3.24.1 --disable-session-selector
+   ./configure --prefix=/usr  --disable-session-selector
 
    make
 }

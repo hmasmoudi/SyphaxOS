@@ -1,11 +1,11 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=gdm
-pkgver=3.24.2
-pkgrel=3
+pkgver=3.26.0
+pkgrel=4
 pkgdesc="The GNOME Shell Extensions package contains a collection of extensions providing additional and optional functionality to the GNOME Shell."
 arch=('x86_64')
-url="http://ftp.gnome.org/pub/gnome/sources/gdm/3.24"
+url="http://ftp.gnome.org/pub/gnome/sources/gdm/3.26"
 install=${pkgname}.install
 license=('GPL')
 groups=('desktop')
@@ -16,13 +16,13 @@ source=("$url/${pkgname}-${pkgver}.tar.xz"
         "gdm-launch-environment"
         "gdm-password"
         )
-sha256sums=('4378b9fad5536e03c56ad138d0e249fbcaa09977b867895426cb41c978fe5de8'
+sha256sums=('afb8cac6b027bed672e9d6af0c5e70033352455425d6fa254478652ee3dce8d9'
             '72b4e1a2d2da221414ca19586a3079a5a27f083573daadca4bd5ba69e5a2a0aa'
             '59b0e9ee9a2dab4a6ec26d8888b5de686dfd1bc71dacdee4a067305a92ebb333'
             '0f70b0c3c37888b723f4ea5dadbd3f072ae69be4832a00b6befa8b3ddaf95d31'
             'd14c108f24b49808b02563e67462378cf4b28622d7ad74870a2eb9addb5df19f'
             '5d916229372a3ae9f4f2d988c6b84339e4a36363b58e8d66d7a8d578570ba5be')
-depends=('rootfs>=2.0.0')
+depends=('rootfs')
 
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"

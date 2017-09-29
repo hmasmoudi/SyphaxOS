@@ -1,0 +1,34 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=tiff
+pkgver=4.0.8
+pkgrel=4
+pkgdesc="The LibTIFF package contains the TIFF libraries and associated utilities."
+arch=('x86_64')
+url="http://download.osgeo.org/libtiff"
+license=('GPL')
+groups=('desktop')
+source=("$url/$pkgname-$pkgver.tar.gz")
+md5sums=('SKIP')
+depends=('rootfs')
+
+prepare() {
+   cd "$srcdir/$pkgname-$pkgver"
+   
+   sed -i "/seems to be moved/s/^/#/" config/ltmain.sh
+}
+
+build() {
+   cd "$srcdir/$pkgname-$pkgver"
+
+   ./configure --prefix=/usr --disable-static
+
+   make
+}
+
+package() {
+   cd "$srcdir/$pkgname-$pkgver"
+
+   make DESTDIR="$pkgdir" install
+}
+

@@ -2,7 +2,7 @@
 
 pkgname=curl
 pkgver=7.55.0
-pkgrel=1
+pkgrel=4
 pkgdesc="The cURL package contains a utility and a library used for transferring files with URL syntax to any of the following protocols: FTP, FTPS, HTTP, HTTPS, SCP, SFTP, TFTP, TELNET, DICT, LDAP, LDAPS and FILE."
 arch=('x86_64')
 url="https://curl.haxx.se/download"
@@ -10,7 +10,7 @@ license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('SKIP')
-depends=('rootfs>=2.0.0')
+depends=('rootfs')
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"

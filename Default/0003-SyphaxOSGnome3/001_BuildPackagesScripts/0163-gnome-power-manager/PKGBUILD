@@ -1,28 +1,31 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=gnome-power-manager
-pkgver=3.24.0
-pkgrel=1
+pkgver=3.25.90
+pkgrel=4
 pkgdesc="The GNOME Power Manager package contains a tool used to report on power management on the system."
 arch=('x86_64')
-url="http://ftp.gnome.org/pub/gnome/sources/gnome-power-manager/3.24"
+url="http://ftp.gnome.org/pub/gnome/sources/gnome-power-manager/3.25"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('135ec3cd01f02e9cc006a2944cb8bd53382b01bb39c871131ee706417c9f0ab7')
-depends=('rootfs>=2.0.0')
+sha256sums=('8aff057c507bd1c986a03e06f385c4ded9cb8df4f9609e5c6278bace0f35ad97')
+depends=('rootfs')
 
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"
    
-   ./configure --prefix=/usr
+   sed -i "/'libm'/s/^/libm = cc.find_library('m', required : false)#/" meson.build
+   mkdir build
+   cd build
+   ../configure --prefix=/usr
 
    make
 }
 
 package() {
    cd "$srcdir/${pkgname}-${pkgver}"
-   
+   cd build
    make DESTDIR="${pkgdir}" install
 }
 

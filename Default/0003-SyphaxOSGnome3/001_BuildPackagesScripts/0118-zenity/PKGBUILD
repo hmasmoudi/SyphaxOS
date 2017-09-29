@@ -2,7 +2,7 @@
 
 pkgname=zenity
 pkgver=3.24.0
-pkgrel=1
+pkgrel=4
 pkgdesc="Zenity is a rewrite of gdialog, the GNOME port of dialog which allows you to display GTK+ dialog boxes from the command line and shell scripts."
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/zenity/3.24"
@@ -10,7 +10,7 @@ license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 sha256sums=('6ff0a026ec94e5bc1b30f78df91e54f4f82fd982f4c29b52fe5dacc886a9f7f7')
-depends=('rootfs>=2.0.0')
+depends=('rootfs')
 
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"

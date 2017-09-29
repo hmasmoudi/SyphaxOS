@@ -1,16 +1,16 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=glib-networking
-pkgver=2.50.0
-pkgrel=2
+pkgver=2.54.0
+pkgrel=4
 pkgdesc="The GLib Networking package contains Network related gio modules for GLib."
 arch=('x86_64')
-url="http://ftp.gnome.org/pub/gnome/sources/glib-networking/2.50"
+url="http://ftp.gnome.org/pub/gnome/sources/glib-networking/2.54"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('3f1a442f3c2a734946983532ce59ed49120319fdb10c938447c373d5e5286bee')
-depends=('rootfs>=2.0.0')
+sha256sums=('5961b3779080b72314b373ff5d4790eb7e41b75ca91816ad7a81ef32922f7096')
+depends=('rootfs')
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"

@@ -2,7 +2,7 @@
 
 pkgname=libtheora
 pkgver=1.1.1
-pkgrel=1
+pkgrel=4
 pkgdesc="libtheora is a reference implementation of the Theora video compression format being developed by the Xiph.Org Foundation."
 arch=('x86_64')
 url="http://downloads.xiph.org/releases/theora"
@@ -10,7 +10,7 @@ license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('9eeabf1ad65b7f41533854a59f7a716d')
-depends=('rootfs>=2.0.0')
+depends=('rootfs')
 
 prepare() {
    cd "$srcdir/${pkgname}-${pkgver}"

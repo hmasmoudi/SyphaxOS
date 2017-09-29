@@ -1,0 +1,28 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=libatasmart
+pkgver=0.19
+pkgrel=6
+pkgdesc="The libatasmart package is a disk reporting library. It only supports a subset of the ATA S.M.A.R.T. functionality."
+arch=('x86_64')
+url="http://0pointer.de/public"
+license=('GPL')
+groups=('desktop')
+source=("$url/${pkgname}-${pkgver}.tar.xz")
+md5sums=('53afe2b155c36f658e121fe6def33e77')
+depends=('rootfs')
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   ./configure --prefix=/usr --disable-static
+      
+   make
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   make DESTDIR="$pkgdir" docdir=/usr/share/doc/${pkgname}-${pkgver} install
+}
+

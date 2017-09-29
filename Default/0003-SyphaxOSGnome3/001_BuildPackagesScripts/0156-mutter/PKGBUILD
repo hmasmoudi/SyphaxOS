@@ -1,16 +1,16 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=mutter
-pkgver=3.24.4
-pkgrel=1
+pkgver=3.26.0
+pkgrel=4
 pkgdesc="Mutter is the window manager for GNOME. It is not invoked directly, but from GNOME Session (on a machine with a hardware accelerated video driver)."
 arch=('x86_64')
-url="http://ftp.gnome.org/pub/gnome/sources/mutter/3.24"
+url="http://ftp.gnome.org/pub/gnome/sources/mutter/3.26"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('7300b3fbf1bd0f7fe25e4869dd37134f2127bb6d9b8aa3aadd0eaf3c8bbf9aea')
-depends=('rootfs>=2.0.0')
+sha256sums=('2a62933a11632830c430570b0f8d762fd9f76a2eb955d54cc14f73274d06e577')
+depends=('rootfs')
 
 prepare() {
    cd "$srcdir/${pkgname}-${pkgver}"

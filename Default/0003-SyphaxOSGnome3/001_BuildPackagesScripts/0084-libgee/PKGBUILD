@@ -1,0 +1,28 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=libgee
+pkgver=0.20.0
+pkgrel=4
+pkgdesc="The libgee package is a collection library providing GObject based interfaces and classes for commonly used data structures."
+arch=('x86_64')
+url="http://ftp.gnome.org/pub/gnome/sources/libgee/0.20"
+license=('GPL')
+groups=('desktop')
+source=("$url/${pkgname}-${pkgver}.tar.xz")
+sha256sums=('21308ba3ed77646dda2e724c0e8d5a2f8d101fb05e078975a532d7887223c2bb')
+depends=('rootfs')
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+
+   ./configure --prefix=/usr
+   
+   make
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   make DESTDIR="$pkgdir" install
+}
+

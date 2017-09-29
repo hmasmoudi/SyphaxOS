@@ -2,7 +2,7 @@
 
 pkgname=dbus-glib
 pkgver=0.108
-pkgrel=3
+pkgrel=6
 pkgdesc="The D-Bus GLib package contains GLib interfaces to the D-Bus API."
 arch=('x86_64')
 url="http://dbus.freedesktop.org/releases/dbus-glib"
@@ -10,7 +10,7 @@ license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.gz")
 md5sums=('a66a613705870752ca9786e0359aea97')
-depends=('rootfs>=2.0.0')
+depends=('rootfs')
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"

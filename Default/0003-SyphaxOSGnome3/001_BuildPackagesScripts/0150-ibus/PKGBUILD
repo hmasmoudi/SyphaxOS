@@ -1,0 +1,29 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=ibus
+pkgver=1.5.16
+pkgrel=4
+pkgdesc="IBus is an Intelligent Input Bus. It is a new input framework for Linux OS."
+arch=('x86_64')
+url="https://github.com/ibus/ibus/releases/download/${pkgver}"
+license=('GPL')
+groups=('desktop')
+source=("$url/${pkgname}-${pkgver}.tar.gz")
+md5sums=('SKIP')
+depends=('rootfs')
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   ./configure --prefix=/usr             \
+               --sysconfdir=/etc         \
+               --disable-emoji-dict 
+   make
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+      
+   make DESTDIR="${pkgdir}" install
+}
+

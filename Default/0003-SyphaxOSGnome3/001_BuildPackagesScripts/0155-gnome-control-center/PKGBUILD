@@ -1,21 +1,29 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=gnome-control-center
-pkgver=3.24.3
-pkgrel=1
+pkgver=3.26.0
+pkgrel=6
 pkgdesc="The GNOME Control Center package contains the GNOME settings manager."
 arch=('x86_64')
-url="http://ftp.gnome.org/pub/gnome/sources/gnome-control-center/3.24"
+url="http://ftp.gnome.org/pub/gnome/sources/gnome-control-center/3.26"
 license=('GPL')
 groups=('desktop')
-source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('43a4d2a4c222ee4a53428a4a720f823e157e4d4c597ea1a84e438d242596cca2')
-depends=('rootfs>=2.0.0')
+source=("$url/${pkgname}-${pkgver}.tar.xz"
+        "cc-info-overview-panel.patch"
+        "SyphaxOSLogoWhite.svg")
+sha256sums=('f519ce9bf268fd20cc81d46d23ad492cbc6975480c318d1ae4304c10d244c46f'
+            'SKIP'
+            '47990b67706071d17d9f94cf95cd8a02328ee8eb7bdbecd87b7981711d583cb2')
+depends=('rootfs')
 
 prepare() {
    cd "$srcdir/${pkgname}-${pkgver}"
    
    sed -i "/seems to be moved/s/^/#/" ltmain.sh
+   
+   cp -f ../SyphaxOSLogoWhite.svg ./panels/info/GnomeLogoVerticalMedium.svg
+
+  patch -p1 -i ../cc-info-overview-panel.patch
 }
 
 build() {

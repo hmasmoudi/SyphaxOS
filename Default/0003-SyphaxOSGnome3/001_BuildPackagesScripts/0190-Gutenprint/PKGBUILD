@@ -2,7 +2,7 @@
 
 pkgname=gutenprint
 pkgver=5.2.12
-pkgrel=2
+pkgrel=6
 pkgdesc="The Gutenprint (formerly Gimp-Print) package contains high quality drivers for many brands and models of printers for use with Cups-2.2.2 and the GIMP-2.0."
 arch=('x86_64')
 url="http://downloads.sourceforge.net/gimp-print"

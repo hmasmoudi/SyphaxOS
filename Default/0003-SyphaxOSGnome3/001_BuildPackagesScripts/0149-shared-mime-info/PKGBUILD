@@ -1,0 +1,28 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=shared-mime-info
+pkgver=1.8
+pkgrel=4
+pkgdesc="The Shared Mime Info package contains a MIME database. This allows central updates of MIME information for all supporting applications."
+arch=('x86_64')
+url="http://freedesktop.org/~hadess"
+license=('GPL')
+groups=('desktop')
+source=("$url/${pkgname}-${pkgver}.tar.xz")
+md5sums=('SKIP')
+depends=('rootfs')
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   ./configure --prefix=/usr
+   
+   make -j1
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+      
+   make -j1 DESTDIR="${pkgdir}" install
+}
+

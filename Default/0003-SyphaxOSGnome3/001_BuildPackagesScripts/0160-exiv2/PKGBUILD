@@ -1,0 +1,36 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=exiv2
+pkgver=0.26
+pkgrel=4
+pkgdesc="Exiv2 is a C++ library and a command line utility for managing image and video metadata."
+arch=('x86_64')
+url="http://www.exiv2.org/builds"
+license=('GPL')
+groups=('desktop')
+source=("$url/${pkgname}-${pkgver}-trunk.tar.gz")
+md5sums=('SKIP')
+depends=('rootfs')
+
+build() {
+   cd "$srcdir/${pkgname}-trunk"
+   
+   ./configure --prefix=/usr     \
+               --enable-video    \
+               --enable-webready \
+               --without-ssh     \
+               --disable-static
+   make
+}
+
+package() {
+   cd "$srcdir/${pkgname}-trunk"
+   
+   make DESTDIR="${pkgdir}" install
+   
+   chmod -v 755 "${pkgdir}"/usr/lib/libexiv2.so
+   
+   #remove created static link
+   rm -rf "${pkgdir}"/usr/lib/libexiv2.la
+}
+

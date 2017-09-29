@@ -2,7 +2,7 @@
 
 pkgname=cups-pk-helper
 pkgver=0.2.6
-pkgrel=2
+pkgrel=6
 pkgdesc="The cups-pk-helper package contains a PolicyKit helper used to configure Cups with fine-grained privileges."
 arch=('x86_64')
 url="http://www.freedesktop.org/software/cups-pk-helper/releases"
@@ -15,7 +15,7 @@ depends=('rootfs')
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"
    
-   ./configure --prefix=/usr --sysconfdir=/etc &&
+   ./configure --prefix=/usr --sysconfdir=/etc
    make
 }
 

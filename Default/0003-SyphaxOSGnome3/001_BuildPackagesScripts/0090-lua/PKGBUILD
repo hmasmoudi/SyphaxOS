@@ -2,7 +2,7 @@
 
 pkgname=lua
 pkgver=5.3.4
-pkgrel=1
+pkgrel=6
 pkgdesc="Lua is a powerful light-weight programming language designed for extending applications."
 arch=('x86_64')
 url="http://www.lua.org/ftp"
@@ -14,7 +14,7 @@ source=("$url/${pkgname}-${pkgver}.tar.gz"
 md5sums=('53a9c68bcc0eda58bdc2095ad5cdfc63'
          '63ecacd3ff6552537a73f8c30c396caf'
          'e37fb17483c9300c25e93699caa29c6c')
-depends=('rootfs>=2.0.0')
+depends=('rootfs')
 
 prepare() {
    cd "$srcdir/${pkgname}-${pkgver}"
