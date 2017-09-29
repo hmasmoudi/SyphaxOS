@@ -2,7 +2,7 @@
 
 pkgname=wayland
 pkgver=1.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Wayland is a project to define a protocol for a compositor to talk to its clients as well as a library implementation of the protocol."
 arch=('x86_64')
 url="http://wayland.freedesktop.org/releases"
@@ -10,7 +10,7 @@ license=('GPL')
 groups=('graphicslayer')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('SKIP')
-depends=('rootfs>=2.0.0')
+depends=('rootfs')
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"

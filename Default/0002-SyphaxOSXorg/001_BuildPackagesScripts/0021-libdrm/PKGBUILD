@@ -2,7 +2,7 @@
 
 pkgname=libdrm
 pkgver=2.4.83
-pkgrel=1
+pkgrel=2
 pkgdesc="libdrm provides a user space library for accessing the DRM, direct rendering manager, on operating systems that support the ioctl interface."
 arch=('x86_64')
 url="http://dri.freedesktop.org/libdrm"
@@ -10,7 +10,7 @@ license=('GPL')
 groups=('graphicslayer')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
 md5sums=('SKIP')
-depends=('rootfs>=2.0.0')
+depends=('rootfs')
 
 prepare() {
    cd "$srcdir/$pkgname-$pkgver"

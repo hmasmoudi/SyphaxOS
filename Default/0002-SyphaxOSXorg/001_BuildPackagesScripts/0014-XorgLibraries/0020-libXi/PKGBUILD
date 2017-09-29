@@ -2,7 +2,7 @@
 
 pkgname=libXi
 pkgver=1.7.9
-pkgrel=1
+pkgrel=2
 pkgdesc="The Xorg libraries provide library routines that are used within all X Window applications."
 arch=('x86_64')
 url="http://ftp.x.org/pub/individual/lib"
@@ -11,11 +11,7 @@ license=('GPL')
 groups=('graphicslayer')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
 md5sums=('1f0f2719c020655a60aee334ddd26d67')
-depends=('rootfs>=2.0.0')
-
-prepare() {
-   cd "$srcdir/$pkgname-$pkgver"
-}
+depends=('rootfs')
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"

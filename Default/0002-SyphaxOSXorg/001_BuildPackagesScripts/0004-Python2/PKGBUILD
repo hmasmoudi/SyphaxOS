@@ -2,7 +2,7 @@
 
 pkgname=Python2
 pkgver=2.7.13
-pkgrel=2
+pkgrel=4
 pkgdesc="The Python 2 package contains the Python development environment."
 arch=('x86_64')
 url="https://www.python.org/ftp/python/$pkgver"
@@ -10,7 +10,7 @@ license=('GPL')
 groups=('graphicslayer')
 source=("$url/Python-${pkgver}.tar.xz")
 md5sums=('53b43534153bb2a0363f08bae8b9d990')
-depends=('rootfs>=2.0.0')
+depends=('rootfs')
 
 build() {
    cd "$srcdir/Python-$pkgver"

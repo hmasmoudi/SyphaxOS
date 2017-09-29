@@ -2,7 +2,7 @@
 
 pkgname=libxml2
 pkgver=2.9.4
-pkgrel=2
+pkgrel=4
 pkgdesc="The libxml2 package contains libraries and utilities used for parsing XML files."
 arch=('x86_64')
 url="http://xmlsoft.org/sources"
@@ -10,7 +10,7 @@ license=('GPL')
 groups=('graphicslayer')
 source=("$url/${pkgname}-${pkgver}.tar.gz")
 md5sums=('ae249165c173b1ff386ee8ad676815f5')
-depends=('rootfs>=2.0.0')
+depends=('rootfs')
 
 prepare() {
    cd "$srcdir/$pkgname-$pkgver"

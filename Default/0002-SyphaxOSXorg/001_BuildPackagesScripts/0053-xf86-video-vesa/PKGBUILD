@@ -2,7 +2,7 @@
 
 pkgname=xf86-video-vesa
 pkgver=2.3.4
-pkgrel=1
+pkgrel=4
 pkgdesc="X.org framebuffer video driver."
 arch=('x86_64')
 url="http://ftp.x.org/pub/individual/driver"
@@ -10,7 +10,7 @@ license=('GPL')
 groups=('graphicslayer')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
 md5sums=('a893c37c589f7a31cea929a5d896a0e2')
-depends=('rootfs>=2.0.0')
+depends=('rootfs')
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"

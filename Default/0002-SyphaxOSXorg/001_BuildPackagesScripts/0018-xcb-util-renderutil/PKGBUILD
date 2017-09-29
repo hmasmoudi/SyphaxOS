@@ -1,0 +1,32 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=xcb-util-renderutil
+pkgver=0.3.9
+pkgrel=2
+pkgdesc="The xcb-util-renderutil package provides additional extensions to the XCB library."
+arch=('x86_64')
+url="http://xcb.freedesktop.org/dist"
+license=('GPL')
+groups=('graphicslayer')
+source=("$url/${pkgname}-${pkgver}.tar.bz2")
+md5sums=('468b119c94da910e1291f3ffab91019a')
+depends=('rootfs')
+
+build() {
+   cd "$srcdir/$pkgname-$pkgver"
+   
+   source /etc/profile.d/xorg.sh
+   echo "Using XORG_PREFIX ($XORG_PREFIX) & XORG_CONFIG ($XORG_CONFIG)"
+
+   ./configure $XORG_CONFIG
+   
+   make
+}
+
+package() {
+   cd "$srcdir/$pkgname-$pkgver"
+   
+   #Make the package
+   make DESTDIR="$pkgdir" install
+}
+

@@ -1,0 +1,33 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=libXxf86vm
+pkgver=1.1.4
+pkgrel=2
+pkgdesc="The Xorg libraries provide library routines that are used within all X Window applications."
+arch=('x86_64')
+url="http://ftp.x.org/pub/individual/lib"
+install=$pkgname.install
+license=('GPL')
+groups=('graphicslayer')
+source=("$url/${pkgname}-${pkgver}.tar.bz2")
+md5sums=('298b8fff82df17304dfdb5fe4066fe3a')
+depends=('rootfs')
+
+build() {
+   cd "$srcdir/$pkgname-$pkgver"
+   
+   source /etc/profile.d/xorg.sh
+   echo "Using XORG_PREFIX ($XORG_PREFIX) & XORG_CONFIG ($XORG_CONFIG)"
+   
+   ./configure $XORG_CONFIG
+   
+   make
+}
+
+package() {
+   cd "$srcdir/$pkgname-$pkgver"
+   
+   #Make the package
+   make DESTDIR="$pkgdir" install
+}
+

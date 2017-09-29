@@ -2,7 +2,7 @@
 
 pkgname=pcre
 pkgver=8.41
-pkgrel=2
+pkgrel=4
 pkgdesc="The PCRE package contains Perl Compatible Regular Expression libraries."
 arch=('x86_64')
 url="http://www.pcre.org/"
@@ -10,7 +10,7 @@ license=('GPL')
 groups=('graphicslayer')
 source=("https://ftp.pcre.org/pub/pcre/${pkgname}-${pkgver}.tar.bz2")
 md5sums=('SKIP')
-depends=('rootfs>=2.0.0')
+depends=('rootfs')
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"

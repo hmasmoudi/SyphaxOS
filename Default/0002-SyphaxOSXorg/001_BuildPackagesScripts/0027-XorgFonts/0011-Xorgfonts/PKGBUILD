@@ -1,0 +1,31 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=Xorgfonts
+pkgver=3.0.0
+pkgrel=2
+pkgdesc="SyphaxOS 3.0.0 Xorg Protocol Headers Package."
+arch=('x86_64')
+license=('GPL')
+groups=('graphicslayer')
+depends=(
+         'core'
+         'font-util>=1.3.1'
+         'encodings>=1.0.4'
+         'xorg-fonts-100dpi>=1.0.4'
+         'xorg-fonts-75dpi>=1.0.4'
+         'xorg-fonts-type1>=1.0.4'
+         'xorg-fonts-misc>=1.0.3'
+         'xorg-fonts-cyrillic>=1.0.4'
+         'font-alias>=1.0.3'
+         'font-bh-ttf>=1.0.3'
+         'fonts-config>=2.0.0'
+         )
+
+prepare() {
+   mkdir -pv "$srcdir/$pkgname-$pkgver"
+}
+
+package() {
+   cd "$srcdir/$pkgname-$pkgver"
+}
+

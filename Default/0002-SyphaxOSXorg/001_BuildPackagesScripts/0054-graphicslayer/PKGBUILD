@@ -1,0 +1,73 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=graphicslayer
+pkgver=3.0.0
+pkgrel=4
+pkgdesc="SyphaxOS 3.0.0 Intel, ATI and Nouveau Graphics Layer Packages."
+arch=('x86_64')
+license=('GPL')
+groups=('graphicslayer')
+depends=(
+         'core'
+         'Xorg-Profile'
+         'libffi'
+         'libxml2'
+         'wayland'
+         'Python2'
+         'Python3'
+         'util-macros'
+         'Xorgprotocolheaders'
+         'libXau'
+         'libXdmcp'
+         'xcb-proto'
+         'libxcb'
+         'freetype'
+         'fontconfig'
+         'Xorglibraries'
+         'xcb-util'
+         'xcb-util-image'
+         'xcb-util-keysyms'
+         'xcb-util-renderutil'
+         'xcb-util-wm'
+         'xcb-util-cursor'
+         'libdrm'
+         'mesa'
+         'xbitmaps'
+         'libpng'
+         'Xorgapplications'
+         'xcursor-themes'
+         'Xorgfonts'
+         'xkeyboard-config'
+         'pixman'
+         'libepoxy'
+         'xorg-server'
+         'mtdev'
+         'libevdev'
+         'libinput'
+         'xf86-input-evdev'
+         'xf86-input-libinput'
+         'xf86-video-intel'
+         'xf86-video-amdgpu'
+         'xf86-video-nouveau'
+         'xf86-video-ati'
+         'xf86-video-vmware'
+         'xf86-video-fbdev'
+         'xf86-video-vesa'
+         'libva-intel-driver'
+         'libva'
+         'libvdpau'
+         'twm'
+         'xterm'
+         'xclock'
+         'xinit'
+         'pcre'
+         'nettle'
+         'harfbuzz'
+         'icu'
+         'glib'
+         )
+
+package() {
+   echo "Packaging Graphics Layer Package\n"
+}
+

@@ -2,7 +2,7 @@
 
 pkgname=util-macros
 pkgver=1.19.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The util-macros package contains the m4 macros used by all of the Xorg packages."
 arch=('x86_64')
 url="http://ftp.x.org/pub/individual/util"
@@ -10,11 +10,7 @@ license=('GPL')
 groups=('graphicslayer')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
 md5sums=('6e76e546a4e580f15cebaf8019ef1625')
-depends=('rootfs>=2.0.0')
-
-prepare() {
-   cd "$srcdir/$pkgname-$pkgver"
-}
+depends=('rootfs')
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"

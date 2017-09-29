@@ -2,7 +2,7 @@
 
 pkgname=libepoxy
 pkgver=1.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="libepoxy is a library for handling OpenGL function pointer management."
 arch=('x86_64')
 url="https://github.com/anholt/libepoxy/archive"
@@ -10,7 +10,7 @@ license=('GPL')
 groups=('graphicslayer')
 source=("$url/${pkgver}.tar.gz")
 md5sums=('SKIP')
-depends=('rootfs>=2.0.0')
+depends=('rootfs')
 
 prepare() {
    cd "$srcdir/$pkgname-$pkgver"

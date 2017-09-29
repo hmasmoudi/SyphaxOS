@@ -2,7 +2,7 @@
 
 pkgname=xorg-server
 pkgver=1.19.3
-pkgrel=4
+pkgrel=6
 pkgdesc="The Xorg Server is the graphicslayer of the X Window system. "
 arch=('x86_64')
 url="http://ftp.x.org/pub/individual/xserver"
@@ -27,7 +27,7 @@ sha256sums=('677a8166e03474719238dfe396ce673c4234735464d6dadf2959b600d20e5a98'
             'ff0156309470fc1d378fd2e104338020a884295e285972cc88e250e031cc35b9'
             '2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776')
             
-depends=('rootfs>=2.0.0')
+depends=('rootfs')
 
 prepare() {
    cd "$srcdir/$pkgname-$pkgver"

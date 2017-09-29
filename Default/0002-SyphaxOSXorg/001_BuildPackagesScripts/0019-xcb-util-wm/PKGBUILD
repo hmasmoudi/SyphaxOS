@@ -1,0 +1,32 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=xcb-util-wm
+pkgver=0.4.1
+pkgrel=2
+pkgdesc="The xcb-util-wm package contains libraries which provide client and window-manager helpers for EWMH and ICCCM."
+arch=('x86_64')
+url="http://xcb.freedesktop.org/dist"
+license=('GPL')
+groups=('graphicslayer')
+source=("$url/${pkgname}-${pkgver}.tar.bz2")
+md5sums=('87b19a1cd7bfcb65a24e36c300e03129')
+depends=('rootfs')
+
+build() {
+   cd "$srcdir/$pkgname-$pkgver"
+   
+   source /etc/profile.d/xorg.sh
+   echo "Using XORG_PREFIX ($XORG_PREFIX) & XORG_CONFIG ($XORG_CONFIG)"
+
+   ./configure $XORG_CONFIG
+   
+   make
+}
+
+package() {
+   cd "$srcdir/$pkgname-$pkgver"
+   
+   #Make the package
+   make DESTDIR="$pkgdir" install
+}
+

@@ -1,0 +1,59 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=fontconfig
+pkgver=2.12.1
+pkgrel=4
+pkgdesc="The Fontconfig package contains a library and support programs used for configuring and customizing font access."
+arch=('x86_64')
+url="http://www.freedesktop.org/software/fontconfig/release"
+license=('GPL')
+groups=('graphicslayer')
+source=("$url/${pkgname}-${pkgver}.tar.bz2")
+md5sums=('b5af5a423ee3b5cfc34846838963c058')
+depends=('rootfs')
+
+prepare() {
+   cd "$srcdir/$pkgname-$pkgver"
+   
+   sed -e '/FC_CHAR_WIDTH/s/CHAR_WIDTH/CHARWIDTH/'             \
+       -e '/FC_CHARWIDTH/a #define FC_CHAR_WIDTH FC_CHARWIDTH' \
+       -i fontconfig/fontconfig.h                &&
+   sed 's/CHAR_WIDTH/CHARWIDTH/' -i src/fcobjs.h
+   
+   patch src/fcobjs.c -i ../../fonctconfig-2.12.1-fcobjs.patch
+}
+
+build() {
+   cd "$srcdir/$pkgname-$pkgver"
+   
+   source /etc/profile.d/xorg.sh
+   echo "Using XORG_PREFIX ($XORG_PREFIX) & XORG_CONFIG ($XORG_CONFIG)"
+
+   ./configure --prefix=/usr        \
+               --sysconfdir=/etc    \
+               --localstatedir=/var \
+               --disable-docs       \
+               --disable-static     \
+               --docdir=/usr/share/doc/$pkgname-${pkgver}
+   
+   make
+}
+
+package() {
+   cd "$srcdir/$pkgname-$pkgver"
+   
+   #Make the package
+   make DESTDIR="$pkgdir" install
+
+   mkdir -pv $pkgdir/usr/share/man/man1
+   mkdir -pv $pkgdir/usr/share/man/man3
+   mkdir -pv $pkgdir/usr/share/man/man5
+   
+   install -v -dm755 $pkgdir/usr/share/{man/man{3,5},doc/$pkgname-$pkgver/$pkgname-devel}
+   install -v -m644 fc-*/*.1         $pkgdir/usr/share/man/man1
+   install -v -m644 doc/*.3          $pkgdir/usr/share/man/man3
+   install -v -m644 doc/fonts-conf.5 $pkgdir/usr/share/man/man5
+   install -v -m644 doc/fontconfig-devel/* $pkgdir/usr/share/doc/$pkgname-$pkgver/$pkgname-devel &&
+   install -v -m644 doc/*.{pdf,sgml,txt,html} $pkgdir/usr/share/doc/$pkgname-$pkgver
+}
+

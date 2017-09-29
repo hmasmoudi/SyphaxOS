@@ -1,0 +1,33 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=icu
+pkgver=59.1
+pkgrel=12
+pkgdesc="The International Components for Unicode (ICU) package is a mature, widely used set of C/C++ libraries providing Unicode and Globalization support for software applications. ICU is widely portable and gives applications the same results on all platforms."
+arch=('x86_64')
+url="http://download.icu-project.org/files/icu4c/${pkgver}"
+license=('GPL')
+groups=('graphicslayer')
+source=("$url/icu4c-${pkgver:0:2}_${pkgver:3:4}-src.tgz")
+md5sums=('SKIP')
+depends=('rootfs')
+
+prepare() {
+   cd "$srcdir/$pkgname/source"
+   sed -i 's/xlocale/locale/' i18n/digitlst.cpp
+}
+build() {
+   cd "$srcdir/$pkgname/source"
+   
+   ./configure --prefix=/usr
+
+   make
+}
+
+package() {
+   cd "$srcdir/$pkgname/source"
+      
+   #Make the package
+   make DESTDIR="$pkgdir" install
+}
+

@@ -2,7 +2,7 @@
 
 pkgname=xf86-video-intel
 pkgver=20170822
-pkgrel=1
+pkgrel=6
 _commit=c89905754b929f0421db7ea6d60b8942ccdbd8af  # master
 pkgdesc="The Xorg Intel Driver package contains the X.Org Video Driver for Intel integrated video cards"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL')
 groups=('graphicslayer')
 source=("git+https://anongit.freedesktop.org/git/xorg/driver/xf86-video-intel#commit=$_commit")
 md5sums=('SKIP')
-depends=('rootfs>=2.0.0')
+depends=('rootfs')
 
 prepare() {
    cd "$srcdir/$pkgname"
@@ -24,7 +24,11 @@ build() {
    source /etc/profile.d/xorg.sh
    echo "Using XORG_PREFIX ($XORG_PREFIX) & XORG_CONFIG ($XORG_CONFIG)"
 
-   ./configure $XORG_CONFIG --with-default-dri=3
+   export CFLAGS=${CFLAGS/-fno-plt}
+   export CXXFLAGS=${CXXFLAGS/-fno-plt}
+   export LDFLAGS=${LDFLAGS/,-z,now}
+
+   ./configure $XORG_CONFIG --with-default-dri=3 --enable-kms-only --enable-uxa
    
    make
 }

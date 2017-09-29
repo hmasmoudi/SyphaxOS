@@ -2,7 +2,7 @@
 
 pkgname=Python3
 pkgver=3.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc="The Python 3 package contains the Python development environment."
 arch=('x86_64')
 url="https://www.python.org/ftp/python/$pkgver"
@@ -10,7 +10,7 @@ license=('GPL')
 groups=('graphicslayer')
 source=("$url/Python-${pkgver}.tar.xz")
 md5sums=('SKIP')
-depends=('rootfs>=2.0.0')
+depends=('rootfs')
 
 build() {
    cd "$srcdir/Python-$pkgver"

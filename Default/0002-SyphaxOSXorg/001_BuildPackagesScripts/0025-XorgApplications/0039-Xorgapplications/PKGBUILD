@@ -1,0 +1,28 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=Xorgapplications
+pkgver=3.0.0
+pkgrel=2
+pkgdesc="SyphaxOS 2.0.0 Xorg Applications Package."
+arch=('x86_64')
+license=('GPL')
+groups=('graphicslayer')
+depends=(
+         'core'
+         'bdftopcf>=1.0.5'     'smproxy>=1.0.6'     'xdriinfo>=1.0.5'  'xkbutils>=1.0.4'    'xprop>=1.2.2'     'xwd>=1.0.6'
+         'iceauth>=1.0.7'      'x11perf>=1.6.0'     'xev>=1.2.2'       'xkill>=1.0.4'       'xrandr>=1.5.0'    'xwininfo>=1.1.3'
+         'luit>=1.1.1'         'xauth>=1.0.9'       'xgamma>=1.0.6'    'xlsatoms>=1.1.2'    'xrdb>=1.1.0'      'xwud>=1.0.4'
+         'mkfontdir>=1.0.7'    'xbacklight>=1.2.1'  'xhost>=1.0.7'     'xlsclients>=1.1.3'  'xrefresh>=1.0.5'
+         'mkfontscale>=1.1.2'  'xcmsdb>=1.0.5'      'xinput>=1.6.2'    'xmessage>=1.0.4'    'xset>=1.2.3'
+         'sessreg>=1.1.0'      'xcursorgen>=1.0.6'  'xkbcomp>=1.3.1'   'xmodmap>=1.0.9'     'xsetroot>=1.1.1'
+         'setxkbmap>=1.3.1'    'xdpyinfo>=1.3.2'    'xkbevd>=1.1.4'    'xpr>=1.0.4'         'xvinfo>=1.1.3'
+         )
+
+prepare() {
+   mkdir -pv "$srcdir/$pkgname-$pkgver"
+}
+
+package() {
+   cd "$srcdir/$pkgname-$pkgver"
+}
+

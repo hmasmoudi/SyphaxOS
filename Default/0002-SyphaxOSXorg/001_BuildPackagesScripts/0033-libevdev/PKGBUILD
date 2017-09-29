@@ -2,7 +2,7 @@
 
 pkgname=libevdev
 pkgver=1.5.7
-pkgrel=1
+pkgrel=2
 pkgdesc="The libevdev package contains common functions for Xorg input drivers."
 arch=('x86_64')
 url="http://www.freedesktop.org/software/libevdev"
@@ -10,7 +10,7 @@ license=('GPL')
 groups=('graphicslayer')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 md5sums=('SKIP')
-depends=('rootfs>=2.0.0')
+depends=('rootfs')
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"
