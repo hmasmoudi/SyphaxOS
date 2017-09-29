@@ -1,14 +1,14 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=core-configs
-pkgver=2.0.0
+pkgver=0.0.0
 pkgrel=1
-pkgdesc="First Install Scripts of SyphaxOS $pkgver."
+pkgdesc="First Install Scripts of SyphaxOS. Packages will nevers be updated."
 arch=('x86_64')
 install=$pkgname.install
 license=('GPL')
 groups=('core')
-depends=('rootfs>=2.0.0')
+depends=('rootfs')
 
 prepare() {
    mkdir -pv "$srcdir/$pkgname-$pkgver"

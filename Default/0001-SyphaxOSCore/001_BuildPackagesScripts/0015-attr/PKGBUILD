@@ -2,7 +2,7 @@
 
 pkgname=attr
 pkgver=2.4.47
-pkgrel=2
+pkgrel=6
 pkgdesc="The attr package contains utilities to administer the extended attributes on filesystem objects."
 arch=('x86_64')
 url="http://download.savannah.gnu.org/releases/attr"
@@ -10,7 +10,7 @@ license=('GPL')
 groups=('core')
 source=("$url/$pkgname-$pkgver.src.tar.gz")
 md5sums=('84f58dec00b60f2dc8fd1c9709291cc7')
-depends=('rootfs>=2.0.0')
+depends=('rootfs')
 
 prepare() {
    cd "$srcdir/$pkgname-$pkgver"

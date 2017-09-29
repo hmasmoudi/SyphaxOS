@@ -2,7 +2,7 @@
 
 pkgname=tar
 pkgver=1.29
-pkgrel=2
+pkgrel=4
 pkgdesc="The Tar package contains an archiving program."
 arch=('x86_64')
 url="http://ftp.gnu.org/gnu/tar"
@@ -10,7 +10,7 @@ license=('GPL')
 groups=('core')
 source=("$url/$pkgname-$pkgver.tar.xz")
 md5sums=('a1802fec550baaeecff6c381629653ef')
-depends=('rootfs>=2.0.0')
+depends=('rootfs')
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"

@@ -2,7 +2,7 @@
 
 pkgname=os-prober
 pkgver=1.76
-pkgrel=1
+pkgrel=2
 pkgdesc="Detect OSes and linux variants."
 arch=('x86_64')
 url="http://http.debian.net/debian/pool/main/o/os-prober"
@@ -10,7 +10,7 @@ license=('GPL')
 groups=('core')
 source=("$url/${pkgname}_${pkgver}.tar.xz")
 sha256sums=('SKIP')
-depends=('rootfs>=2.0.0')
+depends=('rootfs')
 
 prepare() {
    cd "$srcdir/$pkgname-$pkgver"

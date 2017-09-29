@@ -2,7 +2,7 @@
 
 pkgname=kmod
 pkgver=24
-pkgrel=2
+pkgrel=4
 pkgdesc="The Kmod package contains libraries and utilities for loading kernel modules."
 arch=('x86_64')
 url="https://www.kernel.org/pub/linux/utils/kernel/kmod"
@@ -10,7 +10,7 @@ license=('GPL')
 groups=('core')
 source=("$url/$pkgname-$pkgver.tar.xz")
 md5sums=('08297dfb6f2b3f625f928ca3278528af')
-depends=('rootfs>=2.0.0')
+depends=('rootfs')
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"

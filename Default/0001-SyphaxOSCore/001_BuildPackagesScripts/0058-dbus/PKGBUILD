@@ -2,7 +2,7 @@
 
 pkgname=dbus
 pkgver=1.10.22
-pkgrel=1
+pkgrel=2
 pkgdesc="D-Bus is a message bus system, a simple way for applications to talk to one another"
 arch=('x86_64')
 url="http://dbus.freedesktop.org/releases/dbus"
@@ -16,7 +16,7 @@ source=("$url/${pkgname}-${pkgver}.tar.gz"
 md5sums=('SKIP'
          'f78a3655ff83e4e991f5679840fe1b0b'
          '77d9c14d87f14eccaf8e0803f0001ac2')
-depends=('rootfs>=2.0.0')
+depends=('rootfs')
 
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"

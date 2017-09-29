@@ -2,7 +2,7 @@
 
 pkgname=XML-Parser
 pkgver=2.44
-pkgrel=3
+pkgrel=4
 pkgdesc="The XML::Parser module is a Perl interface to James Clark's XML parser, Expat."
 arch=('x86_64')
 url="http://cpan.metacpan.org/authors/id/T/TO/TODDR"
@@ -10,7 +10,7 @@ license=('GPL')
 groups=('core')
 source=("$url/$pkgname-$pkgver.tar.gz")
 md5sums=('af4813fe3952362451201ced6fbce379')
-depends=('rootfs>=2.0.0')
+depends=('rootfs')
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"

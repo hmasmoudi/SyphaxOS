@@ -2,7 +2,7 @@
 
 pkgname=make
 pkgver=4.2.1
-pkgrel=2
+pkgrel=4
 pkgdesc="The Make package contains a program for compiling packages."
 arch=('x86_64')
 url="http://ftp.gnu.org/gnu/make"
@@ -10,7 +10,7 @@ license=('GPL')
 groups=('core')
 source=("$url/$pkgname-$pkgver.tar.bz2")
 md5sums=('15b012617e7c44c0ed482721629577ac')
-depends=('rootfs>=2.0.0')
+depends=('rootfs')
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"

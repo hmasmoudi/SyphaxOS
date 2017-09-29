@@ -2,7 +2,7 @@
 
 pkgname=diffutils
 pkgver=3.6
-pkgrel=1
+pkgrel=2
 pkgdesc="The Diffutils package contains programs that show the differences between files or directories."
 arch=('x86_64')
 url="http://ftp.gnu.org/gnu/diffutils"
@@ -10,7 +10,7 @@ license=('GPL')
 groups=('core')
 source=("$url/$pkgname-$pkgver.tar.xz")
 md5sums=('SKIP')
-depends=('rootfs>=2.0.0')
+depends=('rootfs')
 
 prepare() {
    cd "$srcdir/$pkgname-$pkgver"

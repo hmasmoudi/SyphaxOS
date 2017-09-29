@@ -2,7 +2,7 @@
 
 pkgname=flex
 pkgver=2.6.4
-pkgrel=1
+pkgrel=2
 pkgdesc="The Flex package contains a utility for generating programs that recognize patterns in text."
 arch=('x86_64')
 url="https://github.com/westes/flex/releases/download/v$pkgver"
@@ -10,7 +10,7 @@ license=('GPL')
 groups=('core')
 source=("$url/$pkgname-$pkgver.tar.lz")
 md5sums=('SKIP')
-depends=('rootfs>=2.0.0')
+depends=('rootfs')
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"

@@ -2,7 +2,7 @@
 
 pkgname=sed
 pkgver=4.4
-pkgrel=2
+pkgrel=4
 pkgdesc="The Sed package contains a stream editor."
 arch=('x86_64')
 url="http://ftp.gnu.org/gnu/sed"
@@ -10,11 +10,7 @@ license=('GPL')
 groups=('core')
 source=("$url/$pkgname-$pkgver.tar.xz")
 md5sums=('e0c583d4c380059abd818cd540fe6938')
-depends=('rootfs>=2.0.0')
-
-prepare() {
-   cd "$srcdir/$pkgname-$pkgver"
-}
+depends=('rootfs')
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"

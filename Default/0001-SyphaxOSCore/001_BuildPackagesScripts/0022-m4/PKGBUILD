@@ -2,7 +2,7 @@
 
 pkgname=m4
 pkgver=1.4.18
-pkgrel=2
+pkgrel=4
 pkgdesc="The M4 package contains a macro processor."
 arch=('x86_64')
 url="http://ftp.gnu.org/gnu/m4"
@@ -10,11 +10,7 @@ license=('GPL')
 groups=('core')
 source=("$url/$pkgname-$pkgver.tar.xz")
 md5sums=('730bb15d96fffe47e148d1e09235af82')
-depends=('rootfs>=2.0.0')
-
-prepare() {
-   cd "$srcdir/$pkgname-$pkgver"
-}
+depends=('rootfs')
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"

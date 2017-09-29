@@ -2,7 +2,7 @@
 
 pkgname=gperf
 pkgver=3.1
-pkgrel=1
+pkgrel=4
 pkgdesc="Gperf generates a perfect hash function from a key set."
 arch=('x86_64')
 url="http://ftp.gnu.org/gnu/gperf"
@@ -10,7 +10,7 @@ license=('GPL')
 groups=('core')
 source=("$url/$pkgname-$pkgver.tar.gz")
 md5sums=('9e251c0a618ad0824b51117d5d9db87e')
-depends=('rootfs>=2.0.0')
+depends=('rootfs')
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"

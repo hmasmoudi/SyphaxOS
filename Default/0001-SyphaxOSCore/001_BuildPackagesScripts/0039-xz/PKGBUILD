@@ -2,7 +2,7 @@
 
 pkgname=xz
 pkgver=5.2.3
-pkgrel=2
+pkgrel=4
 pkgdesc="The Xz package contains programs for compressing and decompressing files."
 arch=('x86_64')
 url="http://tukaani.org/xz"
@@ -10,7 +10,7 @@ license=('GPL')
 groups=('core')
 source=("$url/$pkgname-$pkgver.tar.xz")
 md5sums=('SKIP')
-depends=('rootfs>=2.0.0')
+depends=('rootfs')
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"

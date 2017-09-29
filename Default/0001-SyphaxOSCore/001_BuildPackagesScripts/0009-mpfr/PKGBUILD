@@ -1,17 +1,17 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=mpfr
-pkgver=3.1.5
-pkgrel=3
+pkgver=3.1.6
+pkgrel=2
 pkgdesc="The MPFR package contains functions for multiple precision math."
 arch=('x86_64')
 url="http://www.mpfr.org/mpfr-$pkgver"
 license=('GPL')
 groups=('core')
 source=("$url/$pkgname-$pkgver.tar.xz")
-md5sums=('c4ac246cf9795a4491e7766002cd528f')
-depends=('rootfs>=2.0.0'
-         'gmp>=6.1.2')
+md5sums=('SKIP')
+depends=('rootfs'
+         'gmp')
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"
@@ -19,7 +19,7 @@ build() {
    ./configure --prefix=/usr        \
                --disable-static     \
                --enable-thread-safe \
-               --docdir=/usr/share/doc/mpfr-3.1.5
+               --docdir=/usr/share/doc/mpfr-${pkgver}
 
    make
    make html

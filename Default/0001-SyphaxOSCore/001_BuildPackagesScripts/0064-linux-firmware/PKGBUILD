@@ -1,22 +1,37 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=linux-firmware
-pkgver=1.167
-pkgrel=1
-pkgdesc="The Linux package contains the Linux kernel firmwares."
+_commit=a61ac5cf8374edbfe692d12f805a1b194f7fead2 # master
+pkgver=20170907.a61ac5c
+pkgrel=4
+pkgdesc="Firmware files for Linux"
 arch=('x86_64')
-url="http://archive.ubuntu.com/ubuntu/pool/main/l/linux-firmware"
-license=('GPL')
-groups=('core')
-source=("$url/${pkgname}_${pkgver}.tar.gz")
+url="http://git.kernel.org/?p=linux/kernel/git/firmware/linux-firmware.git;a=summary"
+license=('GPL2' 'GPL3' 'custom')
+options=(!strip)
+source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git#commit=${_commit}")
 md5sums=('SKIP')
-depends=('rootfs>=2.0.0')
+depends=('rootfs')
+
+pkgver() {
+  cd "${srcdir}/${pkgname}"
+
+  # Commit date + short rev
+  echo $(TZ=UTC git show -s --pretty=%cd --date=format-local:%Y%m%d HEAD).$(git rev-parse --short HEAD)
+}
 
 package() {
-   cd "$srcdir/$pkgname"
+  cd "${srcdir}/${pkgname}"
 
-   mkdir -p $pkgdir/lib/firmware/
+  make DESTDIR="${pkgdir}" FIRMWAREDIR=/lib/firmware install
+  rm "${pkgdir}/lib/firmware/"{Makefile,README,configure,GPL-3}
 
-   cp -rf ../linux-firmware/* $pkgdir/lib/firmware/
+  install -d "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm644 LICEN* WHENCE "${pkgdir}/usr/share/licenses/linux-firmware/"
+
+  # Trigger a microcode reload for configurations not using early updates
+  install -d "${pkgdir}/lib/tmpfiles.d"
+  echo 'w /sys/devices/system/cpu/microcode/reload - - - - 1' \
+    >"${pkgdir}/lib/tmpfiles.d/${pkgname}.conf"
 }
 

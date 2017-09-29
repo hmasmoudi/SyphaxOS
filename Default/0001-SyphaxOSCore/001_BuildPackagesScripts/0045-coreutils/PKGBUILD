@@ -2,7 +2,7 @@
 
 pkgname=coreutils
 pkgver=8.28
-pkgrel=3
+pkgrel=6
 pkgdesc="The Coreutils package contains utilities for showing and setting the basic system characteristics."
 arch=('x86_64')
 url="http://ftp.gnu.org/gnu/coreutils"
@@ -10,7 +10,7 @@ license=('GPL')
 groups=('core')
 source=("$url/$pkgname-$pkgver.tar.xz")
 md5sums=('SKIP')
-depends=('rootfs>=2.0.0')
+depends=('rootfs')
 
 prepare() {
    cd "$srcdir/$pkgname-$pkgver"
@@ -23,7 +23,7 @@ prepare() {
 build() {
    cd "$srcdir/$pkgname-$pkgver"
 
-   ./configure \
+   FORCE_UNSAFE_CONFIGURE=1 ./configure \
                --prefix=/usr            \
                --enable-no-install-program=kill,uptime
 

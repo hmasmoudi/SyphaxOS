@@ -2,7 +2,7 @@
 
 pkgname=mpc
 pkgver=1.0.3
-pkgrel=4
+pkgrel=6
 pkgdesc="The MPC package contains a library for the arithmetic of complex numbers with arbitrarily high precision and correct rounding of the result."
 arch=('x86_64')
 url="http://www.multiprecision.org/mpc/download"
@@ -10,9 +10,9 @@ license=('GPL')
 groups=('core')
 source=("$url/$pkgname-$pkgver.tar.gz")
 md5sums=('d6a1d5f8ddea3abd2cc3e98f58352d26')
-depends=('rootfs>=2.0.0'
-         'gmp>=4.3.2'
-         'mpfr>=2.4.2')
+depends=('rootfs'
+         'gmp'
+         'mpfr')
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"

@@ -2,7 +2,7 @@
 
 pkgname=bash
 pkgver=4.4
-pkgrel=3
+pkgrel=4
 pkgdesc="The Bash package contains the Bourne-Again SHell."
 arch=('x86_64')
 url="http://ftp.gnu.org/gnu/bash"
@@ -10,7 +10,7 @@ license=('GPL')
 groups=('core')
 source=("$url/$pkgname-$pkgver.tar.gz")
 md5sums=('148888a7c95ac23705559b6f477dfe25')
-depends=('rootfs>=2.0.0')
+depends=('rootfs')
 
 prepare() {
    cd "$srcdir/$pkgname-$pkgver"

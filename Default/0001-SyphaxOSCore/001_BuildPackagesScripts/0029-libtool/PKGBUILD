@@ -2,7 +2,7 @@
 
 pkgname=libtool
 pkgver=2.4.6
-pkgrel=4
+pkgrel=6
 pkgdesc="The Libtool package contains the GNU generic library support script. It wraps the complexity of using shared libraries in a consistent, portable interface."
 arch=('x86_64')
 url="http://ftp.gnu.org/gnu/libtool"
@@ -10,7 +10,7 @@ license=('GPL')
 groups=('core')
 source=("$url/$pkgname-$pkgver.tar.xz")
 md5sums=('1bfb9b923f2c1339b4d2ce1807064aa5')
-depends=('rootfs>=2.0.0')
+depends=('rootfs')
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"

@@ -1,16 +1,16 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=man-pages
-pkgver=4.12
-pkgrel=1
+pkgver=4.13
+pkgrel=2
 pkgdesc="The Man-pages package contains over 2,200 man pages."
 arch=('x86_64')
 url="https://www.kernel.org/pub/linux/docs/man-pages"
 license=('GPL')
 groups=('core')
 source=("$url/$pkgname-$pkgver.tar.xz")
-sha256sums=('6f6d79d991fed04e16e7c7a15705304b0b9d51de772c51c57428555039fbe093')
-depends=('rootfs>=2.0.0')
+sha256sums=('d5c005c5b653248ab6680560de00ea8572ff39e48a57bd5be1468d986a0631bf')
+depends=('rootfs')
 
 package() {
    cd "$srcdir/$pkgname-$pkgver"

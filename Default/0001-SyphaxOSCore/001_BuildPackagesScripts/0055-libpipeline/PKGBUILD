@@ -2,7 +2,7 @@
 
 pkgname=libpipeline
 pkgver=1.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The Libpipeline package contains a library for manipulating pipelines of subprocesses in a flexible and convenient way."
 arch=('x86_64')
 url="http://download.savannah.gnu.org/releases/libpipeline"
@@ -10,7 +10,7 @@ license=('GPL')
 groups=('core')
 source=("$url/$pkgname-$pkgver.tar.gz")
 md5sums=('SKIP')
-depends=('rootfs>=2.0.0')
+depends=('rootfs')
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"

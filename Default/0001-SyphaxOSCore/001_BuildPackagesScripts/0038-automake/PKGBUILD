@@ -2,7 +2,7 @@
 
 pkgname=automake
 pkgver=1.15
-pkgrel=2
+pkgrel=4
 pkgdesc="The Automake package contains programs for generating Makefiles for use with Autoconf."
 arch=('x86_64')
 url="http://ftp.gnu.org/gnu/automake"
@@ -10,7 +10,7 @@ license=('GPL')
 groups=('core')
 source=("$url/$pkgname-$pkgver.tar.xz")
 md5sums=('9a1ddb0e053474d9d1105cfe39b0c48d')
-depends=('rootfs>=2.0.0')
+depends=('rootfs')
 
 prepare() {
    cd "$srcdir/$pkgname-$pkgver"

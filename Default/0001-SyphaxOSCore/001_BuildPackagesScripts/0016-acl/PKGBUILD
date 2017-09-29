@@ -2,7 +2,7 @@
 
 pkgname=acl
 pkgver=2.2.52
-pkgrel=2
+pkgrel=4
 pkgdesc="The Acl package contains utilities to administer Access Control Lists, which are used to define more fine-grained discretionary access rights for files and directories."
 arch=('x86_64')
 url="http://download.savannah.gnu.org/releases/acl"
@@ -10,7 +10,7 @@ license=('GPL')
 groups=('core')
 source=("$url/$pkgname-$pkgver.src.tar.gz")
 md5sums=('a61415312426e9c2212bd7dc7929abda')
-depends=('rootfs>=2.0.0')
+depends=('rootfs')
 
 prepare() {
    cd "$srcdir/$pkgname-$pkgver"

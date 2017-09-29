@@ -2,7 +2,7 @@
 
 pkgname=groff
 pkgver=1.22.3
-pkgrel=2
+pkgrel=4
 pkgdesc="The Groff package contains programs for processing and formatting text."
 arch=('x86_64')
 url="http://ftp.gnu.org/gnu/groff"
@@ -10,7 +10,7 @@ license=('GPL')
 groups=('core')
 source=("$url/$pkgname-$pkgver.tar.gz")
 md5sums=('cc825fa64bc7306a885f2fb2268d3ec5')
-depends=('rootfs>=2.0.0')
+depends=('rootfs')
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"

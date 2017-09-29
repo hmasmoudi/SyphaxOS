@@ -2,7 +2,7 @@
 
 pkgname=procps-ng
 pkgver=3.3.12
-pkgrel=2
+pkgrel=4
 pkgdesc="The Procps-ng package contains programs for monitoring processes."
 arch=('x86_64')
 url="http://sourceforge.net/projects/procps-ng/files/Production"
@@ -10,7 +10,7 @@ license=('GPL')
 groups=('core')
 source=("$url/$pkgname-$pkgver.tar.xz")
 md5sums=('957e42e8b193490b2111252e4a2b443c')
-depends=('rootfs>=2.0.0')
+depends=('rootfs')
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"

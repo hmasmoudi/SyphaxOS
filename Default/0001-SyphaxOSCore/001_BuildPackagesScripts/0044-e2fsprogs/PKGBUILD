@@ -2,7 +2,7 @@
 
 pkgname=e2fsprogs
 pkgver=1.43.5
-pkgrel=2
+pkgrel=4
 pkgdesc="The E2fsprogs package contains the utilities for handling the ext2, ext3 and ext4 file system."
 arch=('x86_64')
 url="https://www.kernel.org/pub/linux/kernel/people/tytso/e2fsprogs/v$pkgver"
@@ -10,7 +10,7 @@ license=('GPL')
 groups=('core')
 source=("$url/$pkgname-$pkgver.tar.gz")
 md5sums=('SKIP')
-depends=('rootfs>=2.0.0')
+depends=('rootfs')
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"

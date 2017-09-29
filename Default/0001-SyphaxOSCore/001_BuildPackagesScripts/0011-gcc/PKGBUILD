@@ -1,9 +1,9 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=gcc
-pkgver=7.2.0
-pkgrel=20170903
-_commit=4b14ab059fcf344121edce5b735deac64bbc1098
+pkgver=7.2.1
+pkgrel=20170923
+_commit=76d4405effea5ca2c8558a60b4c45b858bf8cde5
 pkgdesc="The GCC package contains the GNU compiler collection, which includes the C and C++ compilers."
 arch=('x86_64')
 url="http://gcc.gnu.org"
@@ -12,8 +12,8 @@ groups=('core')
 options=('!emptydirs')
 source=("gcc-${pkgver}-${pkgrel}.tgz::https://gcc.gnu.org/git/?p=gcc.git;a=snapshot;h=${_commit};sf=tgz")
 md5sums=('SKIP')
-depends=('rootfs>=2.0.0'
-         'binutils>=2.28'
+depends=('rootfs'
+         'binutils'
          'mpc')
 
 prepare() {

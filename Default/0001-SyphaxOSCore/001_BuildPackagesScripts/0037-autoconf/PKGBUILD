@@ -2,7 +2,7 @@
 
 pkgname=autoconf
 pkgver=2.69
-pkgrel=2
+pkgrel=4
 pkgdesc="The Autoconf package contains programs for producing shell scripts that can automatically configure source code."
 arch=('x86_64')
 url="http://ftp.gnu.org/gnu/autoconf"
@@ -10,7 +10,7 @@ license=('GPL')
 groups=('core')
 source=("$url/$pkgname-$pkgver.tar.xz")
 md5sums=('50f97f4159805e374639a73e2636f22e')
-depends=('rootfs>=2.0.0')
+depends=('rootfs')
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"

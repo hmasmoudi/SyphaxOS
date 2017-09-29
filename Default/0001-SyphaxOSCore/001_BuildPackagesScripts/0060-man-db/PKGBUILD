@@ -2,7 +2,7 @@
 
 pkgname=man-db
 pkgver=2.7.6.1
-pkgrel=3
+pkgrel=4
 pkgdesc="The Man-DB package contains programs for finding and viewing man pages."
 arch=('x86_64')
 url="http://download.savannah.gnu.org/releases/man-db"
@@ -10,7 +10,7 @@ license=('GPL')
 groups=('core')
 source=("$url/$pkgname-$pkgver.tar.xz")
 md5sums=('SKIP')
-depends=('rootfs>=2.0.0')
+depends=('rootfs')
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"

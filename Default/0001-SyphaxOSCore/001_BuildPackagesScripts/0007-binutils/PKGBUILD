@@ -2,7 +2,7 @@
 
 pkgname=binutils
 pkgver=2.29
-pkgrel=1
+pkgrel=2
 pkgdesc="The Binutils package contains a linker, an assembler, and other tools for handling object files."
 arch=('x86_64')
 url="https://ftp.gnu.org/gnu/binutils"
@@ -10,8 +10,8 @@ license=('GPL')
 groups=('core')
 source=("$url/$pkgname-$pkgver.tar.xz")
 md5sums=('SKIP')
-depends=('rootfs>=2.0.0'
-         'glibc>=2.24'
+depends=('rootfs'
+         'glibc'
          'zlib')
 
 prepare() {

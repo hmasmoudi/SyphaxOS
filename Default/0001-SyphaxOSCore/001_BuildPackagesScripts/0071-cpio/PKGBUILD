@@ -2,7 +2,7 @@
 
 pkgname=cpio
 pkgver=2.12
-pkgrel=2
+pkgrel=4
 pkgdesc="The cpio package contains tools for archiving."
 arch=('x86_64')
 url="http://ftp.gnu.org/pub/gnu/cpio"
@@ -10,7 +10,7 @@ license=('GPL')
 groups=('applications')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
 md5sums=('93eea9f07c0058c097891c73e4955456')
-depends=('rootfs>=2.0.0')
+depends=('rootfs')
 
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"

@@ -2,7 +2,7 @@
 
 pkgname=readline
 pkgver=7.0
-pkgrel=3
+pkgrel=4
 pkgdesc="The Readline package is a set of libraries that offers command-line editing and history capabilities."
 arch=('x86_64')
 url="http://ftp.gnu.org/gnu/readline"
@@ -10,7 +10,7 @@ license=('GPL')
 groups=('core')
 source=("$url/$pkgname-$pkgver.tar.gz")
 md5sums=('205b03a87fc83dab653b628c59b9fc91')
-depends=('rootfs>=2.0.0')
+depends=('rootfs')
 
 prepare() {
    cd "$srcdir/$pkgname-$pkgver"

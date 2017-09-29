@@ -2,7 +2,7 @@
 
 pkgname=iptables
 pkgver=1.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The principal firewall tool for Linux is Iptables. You will need to install Iptables if you intend on using any form of a firewall."
 arch=('x86_64')
 url="http://www.netfilter.org/projects/iptables/files"
@@ -10,7 +10,7 @@ license=('GPL')
 groups=('core')
 source=("$url/$pkgname-$pkgver.tar.bz2")
 md5sums=('ab38a33806b6182c6f53d6afb4619add')
-depends=('rootfs>=2.0.0')
+depends=('rootfs')
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"

@@ -2,7 +2,7 @@
 
 pkgname=shadow
 pkgver=4.5
-pkgrel=1
+pkgrel=2
 pkgdesc="The Shadow package contains programs for handling passwords in a secure way."
 arch=('x86_64')
 url="https://github.com/shadow-maint/shadow/releases/download/${pkgver}"
@@ -10,7 +10,7 @@ license=('GPL')
 groups=('core')
 source=("$url/$pkgname-$pkgver.tar.xz")
 md5sums=('SKIP')
-depends=('rootfs>=2.0.0')
+depends=('rootfs')
 
 prepare() {
    cd "$srcdir/$pkgname-$pkgver"

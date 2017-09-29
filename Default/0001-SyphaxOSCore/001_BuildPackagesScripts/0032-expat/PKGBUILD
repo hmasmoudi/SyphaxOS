@@ -2,7 +2,7 @@
 
 pkgname=expat
 pkgver=2.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="The Expat package contains a stream oriented C library for parsing XML."
 arch=('x86_64')
 url="http://prdownloads.sourceforge.net/expat"
@@ -10,7 +10,7 @@ license=('GPL')
 groups=('core')
 source=("$url/$pkgname-$pkgver.tar.bz2")
 md5sums=('SKIP')
-depends=('rootfs>=2.0.0')
+depends=('rootfs')
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"

@@ -2,15 +2,15 @@
 
 pkgname=tzdata
 pkgver=2017b
-pkgrel=1
+pkgrel=2
 pkgdesc="timezone data."
 arch=('x86_64')
-url="https://www.iana.org/time-zones/repository/releases/"
+url="https://www.iana.org/time-zones/repository/releases"
 license=('GPL')
 groups=('core')
 source=("$url/$pkgname$pkgver.tar.gz")
 md5sums=('SKIP')
-depends=('rootfs>=2.0.0')
+depends=('rootfs')
 
 package() {
    cd "$srcdir"

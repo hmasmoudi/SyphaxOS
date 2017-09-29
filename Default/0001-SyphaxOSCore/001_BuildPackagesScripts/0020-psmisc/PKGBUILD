@@ -2,7 +2,7 @@
 
 pkgname=psmisc
 pkgver=23.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The Psmisc package contains programs for displaying information about running processes."
 arch=('x86_64')
 url="http://downloads.sourceforge.net/project/psmisc/psmisc"
@@ -10,7 +10,7 @@ license=('GPL')
 groups=('core')
 source=("$url/$pkgname-$pkgver.tar.xz")
 md5sums=('SKIP')
-depends=('rootfs>=2.0.0')
+depends=('rootfs')
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"

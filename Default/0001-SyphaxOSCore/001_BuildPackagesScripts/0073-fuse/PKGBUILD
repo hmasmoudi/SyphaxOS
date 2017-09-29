@@ -2,7 +2,7 @@
 
 pkgname=fuse
 pkgver=2.9.7
-pkgrel=2
+pkgrel=4
 pkgdesc="FUSE (Filesystem in Userspace) is a simple interface for userspace programs to export a virtual filesystem to the Linux kernel."
 arch=('x86_64')
 url="https://github.com/libfuse/libfuse/releases/download/${pkgname}-${pkgver}"
@@ -10,7 +10,7 @@ license=('GPL')
 groups=('applications')
 source=("$url/${pkgname}-${pkgver}.tar.gz")
 md5sums=('9bd4ce8184745fd3d000ca2692adacdb')
-depends=('rootfs>=2.0.0')
+depends=('rootfs')
 
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"

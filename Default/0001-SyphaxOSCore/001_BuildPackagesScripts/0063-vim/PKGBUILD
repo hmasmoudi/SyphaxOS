@@ -2,7 +2,7 @@
 
 pkgname=vim
 pkgver=7.4
-pkgrel=2
+pkgrel=4
 pkgdesc="The Vim package contains a powerful text editor."
 arch=('x86_64')
 url="ftp://ftp.vim.org/pub/vim/unix"
@@ -10,7 +10,7 @@ license=('GPL')
 groups=('core')
 source=("$url/$pkgname-$pkgver.tar.bz2")
 md5sums=('607e135c559be642f210094ad023dc65')
-depends=('rootfs>=2.0.0')
+depends=('rootfs')
 
 prepare() {
    cd "$srcdir/${pkgname}74"

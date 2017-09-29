@@ -2,7 +2,7 @@
 
 pkgname=inetutils
 pkgver=1.9.4
-pkgrel=3
+pkgrel=4
 pkgdesc="The Inetutils package contains programs for basic networking."
 arch=('x86_64')
 url="http://ftp.gnu.org/gnu/inetutils"
@@ -10,11 +10,7 @@ license=('GPL')
 groups=('core')
 source=("$url/$pkgname-$pkgver.tar.xz")
 md5sums=('87fef1fa3f603aef11c41dcc097af75e')
-depends=('rootfs>=2.0.0')
-
-prepare() {
-   cd "$srcdir/$pkgname-$pkgver"
-}
+depends=('rootfs')
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"

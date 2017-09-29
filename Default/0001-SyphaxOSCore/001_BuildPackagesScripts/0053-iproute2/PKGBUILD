@@ -1,8 +1,8 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=iproute2
-pkgver=4.12.0
-pkgrel=1
+pkgver=4.13.0
+pkgrel=2
 pkgdesc="The IPRoute2 package contains programs for basic and advanced IPV4-based networking."
 arch=('x86_64')
 url="https://www.kernel.org/pub/linux/utils/net/iproute2"
@@ -10,7 +10,7 @@ license=('GPL')
 groups=('core')
 source=("$url/$pkgname-$pkgver.tar.xz")
 md5sums=('SKIP')
-depends=('rootfs>=2.0.0')
+depends=('rootfs')
 
 prepare() {
    cd "$srcdir/$pkgname-$pkgver"

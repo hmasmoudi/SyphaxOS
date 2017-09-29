@@ -2,7 +2,7 @@
 
 pkgname=texinfo
 pkgver=6.4
-pkgrel=1
+pkgrel=2
 pkgdesc="The Texinfo package contains programs for reading, writing, and converting info pages."
 arch=('x86_64')
 url="http://ftp.gnu.org/gnu/texinfo"
@@ -10,7 +10,7 @@ license=('GPL')
 groups=('core')
 source=("$url/$pkgname-$pkgver.tar.xz")
 md5sums=('SKIP')
-depends=('rootfs>=2.0.0')
+depends=('rootfs')
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"
