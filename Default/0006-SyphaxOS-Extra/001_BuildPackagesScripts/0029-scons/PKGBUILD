@@ -2,7 +2,7 @@
 
 pkgname=scons
 pkgver=2.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Extensible Python-based build utility."
 arch=('x86_64')
 url="http://downloads.sourceforge.net/sourceforge/$pkgname"
@@ -10,7 +10,7 @@ license=('MIT')
 groups=('applications')
 source=("$url/${pkgname}-${pkgver}.tar.gz")
 md5sums=('aaaf09e1351a598f98d17b0cf1103e7a')
-depends=('rootfs>=2.0.0')
+depends=('rootfs')
 
 package() {
    cd "$srcdir/${pkgname}-${pkgver}"

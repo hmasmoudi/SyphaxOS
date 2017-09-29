@@ -3,7 +3,7 @@
 pkgbase=openal
 pkgname=(openal)
 pkgver=1.17.2
-pkgrel=2
+pkgrel=4
 pkgdesc="Cross-platform 3D audio library, software implementation"
 arch=(x86_64)
 url="https://github.com/kcat/openal-soft"

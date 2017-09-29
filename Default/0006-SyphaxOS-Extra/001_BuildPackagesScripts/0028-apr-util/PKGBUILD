@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=apr-util
-pkgver=1.5.4
+pkgver=1.6.0
 pkgrel=2
 pkgdesc="The Apache Portable Runtime."
 arch=('x86_64')
@@ -9,13 +9,8 @@ url="https://www.apache.org/dist/apr"
 license=('APACHE')
 groups=('applications')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
-md5sums=('2202b18f269ad606d70e1864857ed93c')
-depends=('rootfs>=2.0.0'
-         'apr>=1.5.2')
-
-prepare() {
-   cd "$srcdir/${pkgname}-${pkgver}"
-}
+md5sums=('069a9a980776acab05212c5f37ef8368')
+depends=('rootfs' 'apr')
 
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"

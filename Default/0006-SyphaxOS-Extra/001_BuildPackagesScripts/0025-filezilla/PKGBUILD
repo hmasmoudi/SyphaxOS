@@ -2,7 +2,7 @@
 
 pkgname=FileZilla
 pkgver=3.27.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast cross-platform FTP client."
 arch=('x86_64')
 url="https://netix.dl.sourceforge.net/project/filezilla/FileZilla_Client/${pkgver}"
@@ -11,7 +11,7 @@ groups=('applications')
 instal=${pkgname}.install
 source=("$url/${pkgname}_${pkgver}_x86_64-linux-gnu.tar.bz2")
 md5sums=('SKIP')
-depends=('rootfs>=2.0.0')
+depends=('rootfs')
 
 package() {
    mv "$srcdir"/${pkgname}3 "${pkgdir}"/usr

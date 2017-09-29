@@ -1,10 +1,9 @@
-# $Id$
-# Maintainer: Jan de Groot <jgc@archlinux.org>
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgbase=libpst
 pkgname=('libpst')
 pkgver=0.6.70
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="http://www.five-ten-sg.com/libpst/"
 license=('GPL')

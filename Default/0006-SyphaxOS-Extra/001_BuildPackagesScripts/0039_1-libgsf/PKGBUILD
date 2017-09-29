@@ -1,11 +1,9 @@
-# $Id$
-# Maintainer: Jan de Groot <jgc@archlinux.org>
-# Contributor: Sarah Hay <sarahhay@mb.sympatico.ca>
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=libgsf
 pkgver=1.14.41+3+gc7b4b53
-pkgrel=1
-arch=(i686 x86_64)
+pkgrel=2
+arch=('x86_64')
 pkgdesc="An extensible I/O abstraction library for dealing with structured file formats"
 url="https://git.gnome.org/browse/libgsf"
 license=('GPL' 'LGPL')
@@ -24,15 +22,10 @@ prepare() {
   NOCONFIGURE=1 ./autogen.sh
 }
 
-check() {
-  cd $pkgname
-  make check
-}
-
 build() {
   cd "$pkgname"
   PYTHON=/usr/bin/python2 ./configure --prefix=/usr --sysconfdir=/etc \
-      --localstatedir=/var --disable-static --enable-introspection --enable-gtk-doc
+      --localstatedir=/var --disable-static --enable-introspection
   make
 }
 

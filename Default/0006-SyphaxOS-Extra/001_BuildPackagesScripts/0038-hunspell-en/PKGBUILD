@@ -3,7 +3,7 @@
 
 pkgbase=hunspell-en
 pkgname=('hunspell-en_US' 'hunspell-en_GB'  'hunspell-en')
-pkgver=2017.01.22
+pkgver=2017.08.24
 pkgrel=2
 pkgdesc="English hunspell dictionaries"
 arch=(x86_64)
@@ -12,8 +12,8 @@ license=('LGPL' 'custom:scowl')
 optdepends=('hunspell: the spell checking libraries and apps')
 source=(http://downloads.sourceforge.net/project/wordlist/speller/$pkgver/hunspell-en_US-$pkgver.zip
         http://downloads.sourceforge.net/project/wordlist/speller/$pkgver/hunspell-en_GB-large-$pkgver.zip)
-sha1sums=('bbf01200587fa7731dfab20de88bd34df1f2d991'
-          '615d74ecb81c47155a00757b55be056459d5ba70')
+sha1sums=('SKIP'
+          'SKIP')
 
 prepare() {
   sed -i "s:SET UTF8:SET UTF-8:g" *.aff

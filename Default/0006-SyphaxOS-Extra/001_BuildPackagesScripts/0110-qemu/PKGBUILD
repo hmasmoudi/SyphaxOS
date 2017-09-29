@@ -2,7 +2,7 @@
 
 pkgname=qemu
 pkgver=2.10.0
-pkgrel=1
+pkgrel=4
 pkgdesc="QEMU is a generic and open source machine emulator and virtualizer."
 arch=('x86_64')
 url="http://download.qemu-project.org"
@@ -25,6 +25,7 @@ build() {
       --with-gtkabi=3.0          \
       --with-sdlabi=2.0          \
       --enable-kvm               \
+      --enable-opengl            \
       --enable-modules           \
       --target-list=x86_64-softmmu
       

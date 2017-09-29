@@ -8,7 +8,7 @@ _jname=${pkgname}${_major}
 _jvmdir=/usr/lib/jvm/java-$_major-$pkgname/jre
 DLAGENTS=('http::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -b oraclelicense=a -o %o %u')
 pkgver=${_major}u${_minor}
-pkgrel=1
+pkgrel=2
 pkgdesc="Oracle Java Runtime Environment"
 arch=('x86_64')
 install=${pkgname}.install
@@ -21,7 +21,7 @@ source=("$url/jdk/$pkgver-$_build/090f390dda5b47b9b721c7dfaa008135/jre-${_major}
 md5sums=('e3808f24d0f588b0c313fa18b50683c6'
          'b3c7031bc65c28c2340302065e7d00d3'
          '762729fa0faba8ff2b5a29c249c95079')
-depends=('rootfs>=2.0.0')
+depends=('rootfs')
 
 backup=("etc/java-$_jname/amd64/jvm.cfg"
         "etc/java-$_jname/images/cursors/cursors.properties"
