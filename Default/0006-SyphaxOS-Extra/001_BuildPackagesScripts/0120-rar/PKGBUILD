@@ -1,0 +1,29 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=rar
+pkgver=5.5.0
+pkgrel=2
+pkgdesc="WinRAR is a powerful archive manager"
+url="https://www.rarlab.com"
+license=('custom:rar')
+arch=('x86_64')
+depends=('SyphaxOS-Desktop')
+source=(
+    "${url}/rar/${pkgname}linux-x64-${pkgver}.tar.gz"
+)
+sha512sums=('SKIP')
+
+prepare() {
+   cd "$srcdir/$pkgname"
+   
+   sed -i -- 's/PREFIX=/PREFIX=${DESTDIR}/g' makefile
+   sed -i -- 's/\/etc/${DESTDIR}\/etc\//g' makefile
+}
+package() {
+   cd "$srcdir/$pkgname"
+   
+   mkdir -pv "${pkgdir}/etc"
+   
+   make DESTDIR=${pkgdir} install
+}
+

@@ -1,0 +1,27 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=dash-to-panel
+pkgver=11
+pkgrel=4
+pkgdesc="An icon taskbar for the Gnome Shell. This extension moves the dash into the gnome main panel so that the application launchers and system tray are combined into a single panel, similar to that found in KDE Plasma and Windows 7+."
+arch=('x86_64')
+url="https://github.com/jderose9/dash-to-panel/archive"
+license=('GPL')
+install=${pkgname}.install
+groups=('applications')
+source=(${pkgname}-${pkgver}::"$url/v${pkgver}.tar.gz")
+sha256sums=('SKIP')
+depends=('rootfs')
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   make
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   make DESTDIR="${pkgdir}" install
+}
+

@@ -1,0 +1,31 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=gthumb
+pkgver=3.6.0
+pkgrel=2
+pkgdesc="Image browser and viewer for the GNOME Desktop"
+url="https://ftp.gnome.org/pub/gnome/sources/gthumb/3.6"
+arch=(x86_64)
+license=(GPL)
+depends=('rootfs')
+source=("$url/${pkgname}-${pkgver}.tar.xz")
+sha256sums=('SKIP')
+
+prepare() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   sed -i "/seems to be moved/s/^/#/" ltmain.sh
+}
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+
+   ./configure --prefix=/usr --disable-static --enable-libchamplain
+   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+   make
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+
+   make DESTDIR="$pkgdir" install
+}

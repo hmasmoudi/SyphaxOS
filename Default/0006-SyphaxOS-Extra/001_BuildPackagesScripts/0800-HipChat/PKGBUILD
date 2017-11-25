@@ -1,0 +1,33 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=HipChat4
+pkgver=4.30.2.1665
+pkgrel=2
+pkgdesc="HipChat for Linux"
+arch=('x86_64')
+install=$pkgname.install
+url="https://atlassian.artifactoryonline.com/atlassian/hipchat-apt-client/pool"
+license=('GPL')
+groups=('extras')
+source=("$url/${pkgname}-${pkgver}-Linux.deb"
+        "libssl.tar.xz"
+        "license.html"
+        "fix-seccomp-sandbox-bug.patch")
+sha256sums=('SKIP'
+            'f9b31e7b337ad73cf43ae0ef5870ca7a0bf555feeef4acb18c71bc36d642914a'
+            'SKIP'
+            'SKIP')
+depends=('SyphaxOS-Desktop')
+
+package() {
+   cd "$srcdir"
+   
+   tar -xzf data.tar.gz -C "${pkgdir}"
+   tar -xJC "${pkgdir}"/opt/HipChat4/lib -f libssl.tar.xz
+   
+   cd "${pkgdir}" ; patch -p1 -i "${srcdir}/fix-seccomp-sandbox-bug.patch"
+
+   mkdir -p "${pkgdir}/usr/bin"
+   ln -nsf "/opt/HipChat4/bin/HipChat4" "${pkgdir}/usr/bin/hipchat4"
+}
+
