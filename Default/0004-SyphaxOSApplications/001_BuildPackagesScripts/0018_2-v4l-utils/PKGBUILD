@@ -2,7 +2,7 @@
 
 pkgname=v4l-utils
 pkgver=1.12.5
-pkgrel=4
+pkgrel=6
 pkgdesc="v4l-utils provides a series of utilities for media devices, allowing to handle the proprietary formats available at most webcams (libv4l), and providing tools to test V4L devices."
 arch=('x86_64')
 url="https://www.linuxtv.org/downloads/v4l-utils"

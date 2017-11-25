@@ -2,7 +2,7 @@
 
 pkgname=coreutils
 pkgver=8.28
-pkgrel=6
+pkgrel=8
 pkgdesc="The Coreutils package contains utilities for showing and setting the basic system characteristics."
 arch=('x86_64')
 url="http://ftp.gnu.org/gnu/coreutils"

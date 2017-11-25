@@ -2,7 +2,7 @@
 
 pkgname=ModemManager
 pkgver=1.6.8
-pkgrel=4
+pkgrel=6
 pkgdesc="ModemManager provides a unified high level API for communicating with mobile broadband modems, regardless of the protocol used to communicate with the actual device."
 arch=('x86_64')
 url="http://www.freedesktop.org/software/ModemManager"

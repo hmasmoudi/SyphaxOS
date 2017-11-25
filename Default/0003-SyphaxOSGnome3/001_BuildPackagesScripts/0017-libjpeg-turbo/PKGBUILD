@@ -2,7 +2,7 @@
 
 pkgname=libjpeg-turbo
 pkgver=1.5.2
-pkgrel=4
+pkgrel=6
 pkgdesc="libjpeg-turbo is a fork of the original IJG libjpeg which uses SIMD to accelerate baseline JPEG compression and decompression."
 arch=('x86_64')
 url="http://downloads.sourceforge.net/libjpeg-turbo"

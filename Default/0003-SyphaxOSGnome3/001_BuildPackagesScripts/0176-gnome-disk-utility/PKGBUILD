@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=gnome-disk-utility
-pkgver=3.26.0
-pkgrel=4
+pkgver=3.26.2
+pkgrel=2
 pkgdesc="The GNOME Disk Utility package provides applications used for dealing with storage devices."
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/gnome-disk-utility/3.26"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('efcd6da256fcf1a65fb39dc96b3665a62fa24ef226ba1686f0f26b663465fc93')
+sha256sums=('aa2b96c2c64d8bde6cf802ff8da5796720d0becb21111342ced0637961e256f2')
 depends=('rootfs')
 
 build() {

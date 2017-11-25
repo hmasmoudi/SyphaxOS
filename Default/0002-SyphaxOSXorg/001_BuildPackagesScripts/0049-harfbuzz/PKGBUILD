@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=harfbuzz
-pkgver=1.5.1
-pkgrel=6
+pkgver=1.6.3
+pkgrel=2
 pkgdesc="The HarfBuzz package contains an OpenType text shaping engine."
 arch=('x86_64')
 url="http://www.freedesktop.org/software/harfbuzz/release"
 license=('GPL')
 groups=('graphicslayer')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('56838dfdad2729b8866763c82d623354d138a4d99d9ffb710c7d377b5cfc7c51')
+sha256sums=('e31eb367beb61a9399d2c78b51c225ab2b1cbd46f364f2d80d97bb422b44101a')
 depends=('rootfs')
 
 build() {

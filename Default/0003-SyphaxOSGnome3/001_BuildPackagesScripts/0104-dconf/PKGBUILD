@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=dconf
-pkgver=0.26.0
-pkgrel=4
+pkgver=0.26.1
+pkgrel=2
 pkgdesc="The DConf package contains a low-level configuration system."
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/dconf/0.26"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-md5sums=('7fc3cb1cf22d904d8744bd12e9c9d3dd')
+sha256sums=('d583b1f7fc93b879e2956acc6a26ea05a445a0002158aeef80c8e378e1414535')
 depends=('rootfs')
 
 build() {

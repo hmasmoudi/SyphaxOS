@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=gnome-shell-extensions
-pkgver=3.26.0
-pkgrel=4
+pkgver=3.26.2
+pkgrel=2
 pkgdesc="The GNOME Shell Extensions package contains a collection of extensions providing additional and optional functionality to the GNOME Shell."
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/gnome-shell-extensions/3.26"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('f51b59b4ae192d7480229657cab2354bee24d40857384a0fde72d0af2635f704')
+sha256sums=('aefda4d810ef5ceb9402e2d620f4bdc1dc40c9cc4f6a51749840f7dd08628ab6')
 depends=('rootfs')
 
 build() {

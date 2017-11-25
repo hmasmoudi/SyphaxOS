@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=rhythmbox
-pkgver=3.4.1
-pkgrel=8
+pkgver=3.4.2
+pkgrel=2
 pkgdesc="Brasero is an application used to burn CD/DVD on the GNOME Desktop."
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/${pkgname}/3.4"
 license=('GPL')
 groups=('applications')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-md5sums=('6ea925ea25228fa2f85d3d32705d4172')
+sha256sums=('c27622fb7658d3c8e935937a562ebd8a65f5316a12694d6a06cb17f790b6ec43')
 depends=('rootfs')
 
 prepare() {
@@ -22,7 +22,8 @@ build() {
    cd "$srcdir/${pkgname}-${pkgver}"
    
    ./configure --prefix=/usr \
-               --disable-schemas-compile
+               --disable-schemas-compile \
+               --without-gudev
    make
 }
 

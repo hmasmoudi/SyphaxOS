@@ -2,7 +2,7 @@
 
 pkgname=clutter-gst
 pkgver=3.0.24
-pkgrel=6
+pkgrel=8
 pkgdesc="The Clutter Gst is an integration library for using GStreamer with Clutter."
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/clutter-gst/3.0"

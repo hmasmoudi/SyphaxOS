@@ -2,7 +2,7 @@
 
 pkgname=libchamplain
 pkgver=0.12.16
-pkgrel=4
+pkgrel=6
 pkgdesc="The libchamplain is a Clutter based widget used to display rich, eye-candy and interactive maps."
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/libchamplain/0.12"

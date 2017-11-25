@@ -2,7 +2,7 @@
 
 pkgname=libatasmart
 pkgver=0.19
-pkgrel=6
+pkgrel=8
 pkgdesc="The libatasmart package is a disk reporting library. It only supports a subset of the ATA S.M.A.R.T. functionality."
 arch=('x86_64')
 url="http://0pointer.de/public"

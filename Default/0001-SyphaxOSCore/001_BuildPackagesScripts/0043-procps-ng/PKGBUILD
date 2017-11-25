@@ -2,7 +2,7 @@
 
 pkgname=procps-ng
 pkgver=3.3.12
-pkgrel=4
+pkgrel=6
 pkgdesc="The Procps-ng package contains programs for monitoring processes."
 arch=('x86_64')
 url="http://sourceforge.net/projects/procps-ng/files/Production"

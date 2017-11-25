@@ -2,7 +2,7 @@
 
 pkgname=gtkhtml
 pkgver=4.10.0
-pkgrel=6
+pkgrel=8
 pkgdesc="The GtkHTML package contains a lightweight HTML rendering/printing/editing engine."
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/gtkhtml/4.10"

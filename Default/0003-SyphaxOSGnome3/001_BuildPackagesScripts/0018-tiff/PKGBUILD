@@ -2,7 +2,7 @@
 
 pkgname=tiff
 pkgver=4.0.8
-pkgrel=4
+pkgrel=6
 pkgdesc="The LibTIFF package contains the TIFF libraries and associated utilities."
 arch=('x86_64')
 url="http://download.osgeo.org/libtiff"

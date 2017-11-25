@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=tzdata
-pkgver=2017b
+pkgver=2017c
 pkgrel=2
 pkgdesc="timezone data."
 arch=('x86_64')

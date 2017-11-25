@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=mesa
-pkgver=17.2.1
+pkgver=17.2.5
 pkgrel=2
 pkgdesc="Mesa is an OpenGL compatible 3D graphics library."
 arch=('x86_64')
@@ -9,13 +9,14 @@ url="https://mesa.freedesktop.org/archive"
 license=('GPL')
 groups=('graphicslayer')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('77385d17827cff24a3bae134342234f2efe7f7f990e778109682571dbbc9ba1e')
+sha256sums=('7f7f914b7b9ea0b15f2d9d01a4375e311b0e90e55683b8e8a67ce8691eb1070f')
 depends=('rootfs')
 
 prepare() {
    cd "$srcdir/$pkgname-$pkgver"
    
-   sed -i "/pthread_stubs_possible=/s/yes/no/" configure.ac
+   autoreconf -fiv
+
    sed -i "/seems to be moved/s/^/: #/" bin/ltmain.sh
 }
 
@@ -25,27 +26,26 @@ build() {
    source /etc/profile.d/xorg.sh
    echo "Using XORG_PREFIX ($XORG_PREFIX) & XORG_CONFIG ($XORG_CONFIG)"
 
-   ./autogen.sh CFLAGS='-O2' CXXFLAGS='-O2' \
-    --prefix=$XORG_PREFIX  \
-    --sysconfdir=/etc \
-    --with-gallium-drivers=r600,nouveau,svga,virgl \
-    --with-dri-drivers=i915,i965,r200,radeon,nouveau,swrast \
-    --with-platforms=x11,drm,wayland \
-    --with-vulkan-drivers=intel \
-    --enable-shared-glapi \
-    --enable-egl \
-    --enable-glx \
-    --enable-glx-tls \
-    --enable-gles1 \
-    --enable-gles2 \
-    --enable-gbm \
-    --enable-dri \
-    --enable-dri3 \
-    --enable-gallium-extra-hud \
-    --enable-texture-float \
-    --enable-xa \
-    --enable-vdpau \
-    --enable-osmesa
+   ./configure  --prefix=$XORG_PREFIX  \
+                --sysconfdir=/etc \
+                --with-gallium-drivers=r600,nouveau,svga,virgl \
+                --with-dri-drivers=i915,i965,r200,radeon,nouveau,swrast \
+                --with-platforms=x11,drm,wayland \
+                --with-vulkan-drivers=intel \
+                --enable-shared-glapi \
+                --enable-egl \
+                --enable-glx \
+                --enable-glx-tls \
+                --enable-gles1 \
+                --enable-gles2 \
+                --enable-gbm \
+                --enable-dri \
+                --enable-dri3 \
+                --enable-gallium-extra-hud \
+                --enable-texture-float \
+                --enable-xa \
+                --enable-vdpau \
+                --enable-osmesa
    
    make
 }

@@ -2,7 +2,7 @@
 
 pkgname=Python2
 pkgver=2.7.13
-pkgrel=4
+pkgrel=6
 pkgdesc="The Python 2 package contains the Python development environment."
 arch=('x86_64')
 url="https://www.python.org/ftp/python/$pkgver"

@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=strace
-pkgver=4.18
+pkgver=4.20
 pkgrel=2
 pkgdesc='A diagnostic, debugging and instructional userspace tracer'
 arch=(x86_64)
-url='http://sourceforge.net/projects/strace/'
+url='http://sourceforge.net/projects/strace'
 license=(BSD)
 depends=(perl)
 source=(http://downloads.sourceforge.net/$pkgname/${pkgname}-${pkgver}.tar.xz)
-md5sums=('3579b3266bb096cebaefbe2cdb1a3a78')
+md5sums=('SKIP')
          
 build() {
   cd $pkgname-$pkgver

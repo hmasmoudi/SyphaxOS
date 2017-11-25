@@ -2,7 +2,7 @@
 
 pkgname=gstreamer
 pkgver=1.12.3
-pkgrel=4
+pkgrel=6
 pkgdesc="GStreamer is a streaming media framework that enables applications to share a common set of plugins for things like video encoding and decoding, audio encoding and decoding, audio and video filters, audio visualisation, web streaming and anything else that streams in real-time or otherwise."
 arch=('x86_64')
 url="http://gstreamer.freedesktop.org/src/gstreamer"

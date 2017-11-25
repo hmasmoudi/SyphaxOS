@@ -2,7 +2,7 @@
 
 pkgname=nasm
 pkgver=2.13.01
-pkgrel=4
+pkgrel=6
 pkgdesc="NASM (Netwide Assembler) is an 80x86 assembler designed for portability and modularity."
 arch=('x86_64')
 url="http://www.nasm.us/pub/nasm/releasebuilds/${pkgver}"

@@ -1,17 +1,17 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=NetworkManager
-pkgver=1.9.2
-pkgrel=4
+pkgver=1.10.0
+pkgrel=2
 pkgdesc="NetworkManager is a set of co-operative tools that make networking simple and straightforward."
 arch=('x86_64')
-url="http://ftp.gnome.org/pub/gnome/sources/NetworkManager/1.9"
+url="http://ftp.gnome.org/pub/gnome/sources/NetworkManager/1.10"
 install=${pkgname}.install
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz"
         "${pkgname}.install")
-sha256sums=('3cc2c59286af3d589f336b6ddd7a979751a60f1bfb2bf2dcc3cf8e0ce9bedae9'
+sha256sums=('8abbd60cf0e56003a7b9428ceb50a58c80e02e045ac31c3399e9227a712e04de'
             '2de1347fa92bab517619f7a9c82de8258075eb2229fa150cce3fd9dda8215af4')
 depends=('rootfs')
 
@@ -31,6 +31,7 @@ build() {
                --with-nmtui                                    \
                --disable-ppp                                   \
                --disable-json-validation                       \
+               --disable-ovs                                   \
                --with-session-tracking=systemd                 \
                --with-systemdsystemunitdir=/lib/systemd/system \
                --docdir=/usr/share/doc/network-manager-${pkgver}

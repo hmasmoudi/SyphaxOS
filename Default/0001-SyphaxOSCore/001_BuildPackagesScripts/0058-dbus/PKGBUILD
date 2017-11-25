@@ -2,7 +2,7 @@
 
 pkgname=dbus
 pkgver=1.10.22
-pkgrel=2
+pkgrel=4
 pkgdesc="D-Bus is a message bus system, a simple way for applications to talk to one another"
 arch=('x86_64')
 url="http://dbus.freedesktop.org/releases/dbus"

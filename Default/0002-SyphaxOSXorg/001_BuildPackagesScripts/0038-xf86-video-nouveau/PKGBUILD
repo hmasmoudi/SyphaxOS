@@ -2,10 +2,10 @@
 
 pkgname=xf86-video-nouveau
 pkgver=1.0.15
-pkgrel=2
+pkgrel=4
 pkgdesc="The Xorg Nouveau Driver package contains the X.Org Video Driver for NVidia Cards"
 arch=('x86_64')
-url="https://xorg.freedesktop.org/archive/individual/driver/"
+url="https://xorg.freedesktop.org/archive/individual/driver"
 license=('GPL')
 groups=('graphicslayer')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")

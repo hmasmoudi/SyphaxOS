@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=gnome-online-accounts
-pkgver=3.26.0
-pkgrel=4
+pkgver=3.26.1
+pkgrel=2
 pkgdesc="The GNOME Online Accounts package contains a framework used to access the user's online accounts."
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/gnome-online-accounts/3.26"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('5cab736751c19efca762c0459e3358255d6662a6f4f27728cd02ea7b024e52ac')
+sha256sums=('603c110405cb89a01497a69967f10e3f3f36add3dc175b062ec4c5ed4485621b')
 depends=('rootfs')
 
 prepare() {

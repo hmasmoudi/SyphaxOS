@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=flatpak
-pkgver=0.9.98.2
+pkgver=0.10.0
 pkgrel=2
 pkgdesc="THE FUTURE OF APPLICATION DISTRIBUTION. Flatpak is the new framework for desktop applications on Linux."
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/flatpak/flatpak/releases/download/${pkgver}"
 license=('GPL')
 groups=('applications')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('aa6bb50926af5ec1a3aa22d553b2a0eaa1a36bccfb095a9d747fef5d84cd0756')
+sha256sums=('57920502e154088e8a1776137e98786d53736daa92bb49c0920a0df1b7032da9')
 depends=('rootfs' 'ostree' 'elfutils' 'bubblewrap')
 
 prepare() {

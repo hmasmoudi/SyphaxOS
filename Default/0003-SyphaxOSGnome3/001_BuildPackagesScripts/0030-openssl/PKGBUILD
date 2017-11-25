@@ -1,8 +1,8 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=openssl
-pkgver=1.1.0f
-pkgrel=4
+pkgver=1.1.0g
+pkgrel=2
 pkgdesc="The OpenSSL package contains management tools and libraries relating to cryptography."
 arch=('x86_64')
 url="https://openssl.org/source"
@@ -13,7 +13,7 @@ source=("$url/${pkgname}-${pkgver}.tar.gz"
         "remove-expired-certs.sh"
         "make-ca.sh"
         "make-cert.pl")
-sha1sums=('9e3e02bc8b4965477a7a1d33be1249299a9deb15'
+sha1sums=('e8240a8be304d4317a750753321b073c664bfdd4'
           'SKIP'
           '0c5c4a49307ee52ba328a14cd003d8d670648adf'
           '93e4634b66b08a4f0da949b26972dad1c079ad06'
@@ -28,7 +28,7 @@ prepare() {
    cp "${srcdir}"/make-ca.sh              "${srcdir}"/$pkgname-$pkgver
    cp "${srcdir}"/make-cert.pl            "${srcdir}"/$pkgname-$pkgver
    
-   sed -i '1 i #CVS_ID @# $ RCSfile: certdata.txt $ $Revision: 20170526 $ $Date: $' certdata.txt
+   sed -i '1 i #CVS_ID @# $ RCSfile: certdata.txt $ $Revision: 20171103 $ $Date: $' certdata.txt
 }
 
 build() {

@@ -1,8 +1,8 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=libinput
-pkgver=1.8.2
-pkgrel=2
+pkgver=1.9.0
+pkgrel=4
 pkgdesc="libinput is a library that handles input devices for display servers and other applications that need to directly deal with input devices."
 arch=('x86_64')
 url="http://www.freedesktop.org/software/libinput"
@@ -18,19 +18,20 @@ build() {
    source /etc/profile.d/xorg.sh
    echo "Using XORG_PREFIX ($XORG_PREFIX) & XORG_CONFIG ($XORG_CONFIG)"
 
-   ./configure --prefix=/usr      \
-               --disable-static   \
-               --disable-libwacom \
-               --disable-documentation \
-               --disable-tests \
-               --with-udev-dir=/lib/udev
-   make
+   meson build --prefix=/usr         \
+               -Dlibwacom=false      \
+               -Ddocumentation=false \
+               -Dtests=false         \
+               -Ddebug-gui=false     \
+               -Dudev-dir=/lib/udev
+
+   ninja  -C build -j$(($(getconf _NPROCESSORS_ONLN)+1))
 }
 
 package() {
    cd "$srcdir/$pkgname-$pkgver"
    
    #Make the package
-   make DESTDIR="$pkgdir" install
+   DESTDIR="${pkgdir}" ninja -C build install
 }
 

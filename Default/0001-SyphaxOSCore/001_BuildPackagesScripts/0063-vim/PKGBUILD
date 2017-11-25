@@ -1,25 +1,26 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=vim
-pkgver=7.4
-pkgrel=4
+pkgver=8.0.586
+pkgrel=2
 pkgdesc="The Vim package contains a powerful text editor."
 arch=('x86_64')
 url="ftp://ftp.vim.org/pub/vim/unix"
 license=('GPL')
 groups=('core')
 source=("$url/$pkgname-$pkgver.tar.bz2")
-md5sums=('607e135c559be642f210094ad023dc65')
+md5sums=('SKIP')
 depends=('rootfs')
 
 prepare() {
-   cd "$srcdir/${pkgname}74"
+   cd "$srcdir/${pkgname}${pkgver:0:1}${pkgver:2:1}"
 
    echo '#define SYS_VIMRC_FILE "/etc/vimrc"' >> src/feature.h
+   sed -i '/call/{s/split/xsplit/;s/303/492/}' src/testdir/test_recover.vim
 }
 
 build() {
-   cd "$srcdir/${pkgname}74"
+   cd "$srcdir/${pkgname}${pkgver:0:1}${pkgver:2:1}"
 
    ./configure --prefix=/usr
 
@@ -27,7 +28,7 @@ build() {
 }
 
 package() {
-   cd "$srcdir/${pkgname}74"
+   cd "$srcdir/${pkgname}${pkgver:0:1}${pkgver:2:1}"
 
    mkdir -v $pkgdir/etc
 
@@ -39,7 +40,7 @@ package() {
    done
 
    mkdir -pv $pkgdir/usr/share/doc/vim-pkgver
-   ln -sv ../vim/vim74/doc $pkgdir/usr/share/doc/vim-pkgver
+   ln -sv ../vim/vim${pkgver:0:1}${pkgver:2:1}/doc $pkgdir/usr/share/doc/vim-${pkgver}
 
    cp ../../vimrc $pkgdir/etc/vimrc
 }

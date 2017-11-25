@@ -1,22 +1,16 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=bash
-pkgver=4.4
-pkgrel=4
+pkgver=4.4.12
+pkgrel=2
 pkgdesc="The Bash package contains the Bourne-Again SHell."
 arch=('x86_64')
 url="http://ftp.gnu.org/gnu/bash"
 license=('GPL')
 groups=('core')
 source=("$url/$pkgname-$pkgver.tar.gz")
-md5sums=('148888a7c95ac23705559b6f477dfe25')
+md5sums=('SKIP')
 depends=('rootfs')
-
-prepare() {
-   cd "$srcdir/$pkgname-$pkgver"
-
-   patch -p0 -i ../../bash-4.4-upstream_fixes-12.patch
-}
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"

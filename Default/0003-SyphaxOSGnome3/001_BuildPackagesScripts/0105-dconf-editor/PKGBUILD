@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=dconf-editor
-pkgver=3.23.4
-pkgrel=4
+pkgver=3.26.2
+pkgrel=2
 pkgdesc="The DConf-Editor, as the name suggests, is a graphical editor for the DConf database."
 arch=('x86_64')
-url="http://ftp.gnome.org/pub/gnome/sources/dconf-editor/3.23"
+url="http://ftp.gnome.org/pub/gnome/sources/dconf-editor/3.26"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('fe60f25168b1ace5ee44a2c1eff6c1310d53e4a188e0e97734e9c06ff9e2b812')
+sha256sums=('28b453fe49c49d7dfaf07c85c01d7495913f93ab64a0b223c117eb17d1cb8ad1')
 depends=('rootfs')
 
 build() {

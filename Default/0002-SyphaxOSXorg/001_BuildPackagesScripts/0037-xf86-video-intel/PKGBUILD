@@ -1,9 +1,9 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=xf86-video-intel
-pkgver=20170822
-pkgrel=6
-_commit=c89905754b929f0421db7ea6d60b8942ccdbd8af  # master
+pkgver=20171109
+pkgrel=2
+_commit=37a682aa8a420a75a920e0fa7cf8659f834ed60f # master
 pkgdesc="The Xorg Intel Driver package contains the X.Org Video Driver for Intel integrated video cards"
 arch=('x86_64')
 url="https://01.org/linuxgraphics"
@@ -28,7 +28,7 @@ build() {
    export CXXFLAGS=${CXXFLAGS/-fno-plt}
    export LDFLAGS=${LDFLAGS/,-z,now}
 
-   ./configure $XORG_CONFIG --with-default-dri=3 --enable-kms-only --enable-uxa
+   ./configure $XORG_CONFIG --with-default-dri=3
    
    make
 }

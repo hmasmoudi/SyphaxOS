@@ -2,7 +2,7 @@
 
 pkgname=pulseaudio
 pkgver=11.0
-pkgrel=10
+pkgrel=12
 pkgdesc="PulseAudio is a sound system for POSIX OSes, meaning that it is a proxy for sound applications."
 arch=('x86_64')
 url="http://freedesktop.org/software/pulseaudio/releases"

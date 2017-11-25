@@ -2,7 +2,7 @@
 
 pkgname=telepathy-glib
 pkgver=0.24.1
-pkgrel=4
+pkgrel=6
 pkgdesc="The Telepathy GLib contains a library used by GLib based Telepathy components."
 arch=('x86_64')
 url="http://telepathy.freedesktop.org/releases/telepathy-glib"

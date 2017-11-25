@@ -2,7 +2,7 @@
 
 pkgname=cogl
 pkgver=1.22.2
-pkgrel=6
+pkgrel=8
 pkgdesc="Cogl is a modern 3D graphics API with associated utility APIs designed to expose the features of 3D graphics hardware using a direct state access API design, as opposed to the state-machine style of OpenGL."
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/cogl/1.22"

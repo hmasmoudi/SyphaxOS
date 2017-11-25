@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=nautilus
-pkgver=3.26.0
+pkgver=3.26.2
 pkgrel=4
 pkgdesc="The Nautilus package contains the GNOME file manager."
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="http://ftp.gnome.org/pub/gnome/sources/nautilus/3.26"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('a02b30ef9033f6f92fbc5e29abaceeb58ce6a600ed9fa5a4697ba82901d07924')
+sha256sums=('79c99404c665ea76b3db86f261fbd28a62b54c51429b05c3314462c9de2614b4')
 depends=('rootfs')
 
 build() {
@@ -18,14 +18,12 @@ build() {
    sed -i "/'libm'/s/^/libm = cc.find_library('m', required : false)#/" meson.build
 
    meson build --prefix=/usr --sysconfdir=/etc --default-library=shared -Denable-selinux=false -Denable-packagekit=false 
-   cd build
-   ninja -j$(($(getconf _NPROCESSORS_ONLN)+1))
+   ninja -C build
 }
 
 package() {
    cd "$srcdir/${pkgname}-${pkgver}"
    
-   cd build
-   DESTDIR="${pkgdir}" ninja install
+   DESTDIR="${pkgdir}" ninja -C build install
 }
 

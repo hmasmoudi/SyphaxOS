@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=at-spi2-core
-pkgver=2.26.0
-pkgrel=4
+pkgver=2.26.2
+pkgrel=2
 pkgdesc="The At-Spi2 Core package is a part of the GNOME Accessibility Project."
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/at-spi2-core/2.26"
 license=('GPL')
 groups=('desktop')
 source=("$url/$pkgname-$pkgver.tar.xz")
-sha256sums=('511568a65fda11fdd5ba5d4adfd48d5d76810d0e6ba4f7460f1b2ec0dbbbc337')
+sha256sums=('c80e0cdf5e3d713400315b63c7deffa561032a6c37289211d8afcfaa267c2615')
 depends=('rootfs')
 
 build() {

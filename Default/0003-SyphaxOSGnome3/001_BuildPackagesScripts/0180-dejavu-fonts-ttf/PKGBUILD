@@ -2,7 +2,7 @@
 
 pkgname=dejavu-fonts-ttf
 pkgver=2.37
-pkgrel=4
+pkgrel=6
 pkgdesc="The DejaVu fonts are a font family based on the Vera Fonts."
 arch=('x86_64')
 url="http://sourceforge.net/projects/dejavu/files/dejavu/${pkgver}"
@@ -14,10 +14,20 @@ md5sums=('d0efec10b9f110a32e9b8f796e21782c')
 depends=('rootfs')
 
 package() {
-   cd "$srcdir/${pkgname}-${pkgver}"
-   cd ttf
+  install -dm755 "${pkgdir}"/etc/fonts/conf.avail
+  install -dm755 "${pkgdir}"/etc/fonts/conf.d
+  install -dm755 "${pkgdir}"/usr/share/fonts/TTF
 
-   install -v -d -m755 "${pkgdir}"/usr/share/fonts/dejavu
-   install -v -m644 *.ttf "${pkgdir}"/usr/share/fonts/dejavu
+  cd "${srcdir}"/dejavu-fonts-ttf-${pkgver}
+  install -m644 ttf/*.ttf "${pkgdir}"/usr/share/fonts/TTF/
+  install -m644 fontconfig/*.conf "${pkgdir}"/etc/fonts/conf.avail/
+
+  pushd "${pkgdir}"/etc/fonts/conf.avail
+  for config in *; do
+    ln -sf ../conf.avail/${config} ../conf.d/${config}
+  done
+  popd
+
+  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
 

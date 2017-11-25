@@ -2,7 +2,7 @@
 
 pkgname=wayland
 pkgver=1.14.0
-pkgrel=2
+pkgrel=6
 pkgdesc="Wayland is a project to define a protocol for a compositor to talk to its clients as well as a library implementation of the protocol."
 arch=('x86_64')
 url="http://wayland.freedesktop.org/releases"

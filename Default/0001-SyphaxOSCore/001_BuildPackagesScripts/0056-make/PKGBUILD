@@ -2,7 +2,7 @@
 
 pkgname=make
 pkgver=4.2.1
-pkgrel=4
+pkgrel=6
 pkgdesc="The Make package contains a program for compiling packages."
 arch=('x86_64')
 url="http://ftp.gnu.org/gnu/make"

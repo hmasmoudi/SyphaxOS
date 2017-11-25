@@ -1,9 +1,9 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=linux-firmware
-_commit=a61ac5cf8374edbfe692d12f805a1b194f7fead2 # master
-pkgver=20170907.a61ac5c
-pkgrel=4
+_commit=bf04291309d3169c0ad3b8db52564235bbd08e30 # master
+pkgver=20171009.bf04291
+pkgrel=2
 pkgdesc="Firmware files for Linux"
 arch=('x86_64')
 url="http://git.kernel.org/?p=linux/kernel/git/firmware/linux-firmware.git;a=summary"
@@ -30,8 +30,8 @@ package() {
   install -Dm644 LICEN* WHENCE "${pkgdir}/usr/share/licenses/linux-firmware/"
 
   # Trigger a microcode reload for configurations not using early updates
-  install -d "${pkgdir}/lib/tmpfiles.d"
+  install -d "${pkgdir}/usr/lib/tmpfiles.d"
   echo 'w /sys/devices/system/cpu/microcode/reload - - - - 1' \
-    >"${pkgdir}/lib/tmpfiles.d/${pkgname}.conf"
+    >"${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
 }
 

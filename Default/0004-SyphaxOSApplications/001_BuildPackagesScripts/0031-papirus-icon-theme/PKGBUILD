@@ -1,18 +1,24 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=papirus-icon-theme
-pkgver=20170921
+pkgver=20171124
 pkgrel=2
 pkgdesc="Papirus icon theme"
 url="https://github.com/PapirusDevelopmentTeam/papirus-icon-theme/archive"
 arch=('x86_64')
 license=('LGPL3')
 makedepends=('rootfs')
-source=("${pkgname}-${pkgver}::${url}/${pkgver}.tar.gz")
-sha256sums=('SKIP')
+source=("${pkgname}-${pkgver}::${url}/${pkgver}.tar.gz"
+        "SyphaxOSLauncher.svg")
+sha256sums=('SKIP'
+            'db96a23dbcd2c37276d39260357d93fd79033886b7855e6c70d115bda6d8a9eb')
 options=('!strip')
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  make DESTDIR="${pkgdir}/" install
+   cd "${srcdir}/${pkgname}-${pkgver}"
+   make DESTDIR="${pkgdir}/" IGNORE="ePapirus" install
+
+   #Patch view-app-grid-symbolic.svg to add SyphaxOS Icon
+   install -Dm644 "$srcdir/SyphaxOSLauncher.svg" \
+                  "$pkgdir/usr/share/icons/Papirus-Adapta/symbolic/actions/view-app-grid-symbolic.svg"
 }

@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=gnome-session
-pkgver=3.26.0
-pkgrel=4
+pkgver=3.26.1
+pkgrel=2
 pkgdesc="The GNOME Session package contains the GNOME session manager."
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/gnome-session/3.26"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('6f8254b4891f76852b65a7c164dc504dfeff1aa32092e1b262bb670efedac489')
+sha256sums=('d9414b368db982d3837ca106e64019f18e6cdd5b13965bea6c7d02ddf5103708')
 depends=('rootfs')
 
 build() {

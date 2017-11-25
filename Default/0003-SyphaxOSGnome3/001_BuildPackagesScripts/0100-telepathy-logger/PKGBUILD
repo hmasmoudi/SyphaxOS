@@ -2,7 +2,7 @@
 
 pkgname=telepathy-logger
 pkgver=0.8.2
-pkgrel=4
+pkgrel=6
 pkgdesc="The Telepathy Logger package is a headless observer client that logs information received by the Telepathy framework."
 arch=('x86_64')
 url="http://telepathy.freedesktop.org/releases/telepathy-logger"

@@ -2,7 +2,7 @@
 
 pkgname=gawk
 pkgver=4.1.4
-pkgrel=4
+pkgrel=6
 pkgdesc="The Gawk package contains programs for manipulating text files."
 arch=('x86_64')
 url="http://ftp.gnu.org/gnu/gawk"

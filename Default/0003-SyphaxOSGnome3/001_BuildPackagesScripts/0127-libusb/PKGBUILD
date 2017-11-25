@@ -2,7 +2,7 @@
 
 pkgname=libusb
 pkgver=1.0.21
-pkgrel=4
+pkgrel=6
 pkgdesc="The libusb package contains a library used by some applications for USB device access."
 arch=('x86_64')
 url="http://downloads.sourceforge.net/libusb"

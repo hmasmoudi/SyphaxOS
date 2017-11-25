@@ -2,7 +2,7 @@
 
 pkgname=GConf
 pkgver=3.2.6
-pkgrel=4
+pkgrel=6
 pkgdesc="The GConf package contains a configuration database system used by many GNOME applications. "
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/GConf/3.2"

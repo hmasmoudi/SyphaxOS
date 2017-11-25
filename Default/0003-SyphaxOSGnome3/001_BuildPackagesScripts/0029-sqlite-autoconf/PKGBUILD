@@ -1,21 +1,21 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=sqlite
-pkgver=3200100
-pkgrel=4
+pkgver=3210000
+pkgrel=2
 pkgdesc="The SQLite package is a software library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine."
 arch=('x86_64')
 url="http://sqlite.org/2017"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-autoconf-${pkgver}.tar.gz")
-sha1sums=('48593dcd19473f25fe6fcd08048e13ddbff4c983')
+sha1sums=('f56fe3407d8297fc0a68a058f4c9e6b77e83575c')
 depends=('rootfs')
 
 build() {
    cd "$srcdir/$pkgname-autoconf-$pkgver"
 
-   ./configure --prefix=/usr --disable-static        \
+   ./configure --prefix=/usr --disable-static  --enable-fts5      \
                CFLAGS="-g -O2 -DSQLITE_ENABLE_FTS3=1 \
                -DSQLITE_ENABLE_COLUMN_METADATA=1     \
                -DSQLITE_ENABLE_UNLOCK_NOTIFY=1       \

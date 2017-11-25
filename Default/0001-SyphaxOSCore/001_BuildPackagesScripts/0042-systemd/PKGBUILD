@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=systemd
-pkgver=234
+pkgver=235
 pkgrel=4
 pkgdesc="The systemd package contains programs for controlling the startup, running, and shutdown of the system."
 arch=('x86_64')
@@ -16,53 +16,46 @@ depends=('rootfs')
 prepare() {
    cd "$srcdir/$pkgname-$pkgver"
 
-    sed -i "s/unit_status_emit_starting_stopping_reloading(u, t)/{}/g" ./src/core/job.c
-
-   ./autogen.sh
-   sed -i "/seems to be moved/s/^/#/" build-aux/ltmain.sh
+   ## Update Log to Remove Starting Service log trace ==> Keep only started on not Started logs.
+   sed -i "s/unit_status_emit_starting_stopping_reloading(u, t)/{}/g" ./src/core/job.c
 }
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"
 
-   cc_cv_CFLAGS__flto=no                \
-   XSLTPROC="/usr/bin/xsltproc"         \
-   ./configure --prefix=/usr            \
-               --sysconfdir=/etc        \
-               --localstatedir=/var     \
-               --with-rootprefix=       \
-               --with-rootlibdir=/lib   \
-               --enable-split-usr       \
-               --disable-firstboot      \
-               --disable-ldconfig       \
-               --disable-sysusers       \
-               --without-python         \
-               --with-default-dnssec=no \
-               --disable-tests          \
-               --docdir=/usr/share/doc/systemd-$pkgver
-   make
+   cc_cv_CFLAGS__flto=no               \
+   XSLTPROC="/usr/bin/xsltproc"        \
+   meson build --prefix=/usr           \
+               --sysconfdir=/etc       \
+               --localstatedir=/var    \
+               -Dfallback-hostname='SyphaxOS' \
+               -Drootprefix=           \
+               -Drootlibdir=/lib       \
+               -Dsplit-usr=true        \
+               -Dfirstboot=false       \
+               -Dldconfig=false        \
+               -Dsysusers=false        \
+               -Daudit=false           \
+               -Ddefault-dnssec=no     \
+               -Dtests=unsafe
+
+   ninja  -C build -j$(($(getconf _NPROCESSORS_ONLN)+1))
 }
 
 package() {
    cd "$srcdir/$pkgname-$pkgver"
 
-   make DESTDIR="$pkgdir" install
-
+   DESTDIR="${pkgdir}" ninja -C build install
+   
    mkdir -pv $pkgdir/sbin
 
    rm -rfv $pkgdir/usr/lib/rpm
    for tool in runlevel reboot shutdown poweroff halt telinit; do
       ln -sfv ../bin/systemctl $pkgdir/sbin/${tool}
    done
+   
    ln -sfv ../lib/systemd/systemd $pkgdir/sbin/init
-   
-   ln -sfv /lib/libsystemd.la          $pkgdir/usr/lib/libsystemd.la
-   ln -sfv /lib/libudev.la             $pkgdir/usr/lib/libudev.la
-   ln -sfv /lib/libnss_myhostname.la   $pkgdir/usr/lib/libnss_myhostname.la
-   ln -sfv /lib/libnss_mymachines.la   $pkgdir/usr/lib/libnss_mymachines.la
-   ln -sfv /lib/libnss_resolve.la      $pkgdir/usr/lib/libnss_resolve.la
-   ln -sfv /lib/libnss_systemd.la      $pkgdir/usr/lib/libnss_systemd.la
-   
+      
    cp ../../system.conf $pkgdir/etc/systemd/system.conf
    cp ../../systemd-user $pkgdir/etc/pam.d/systemd-user
      

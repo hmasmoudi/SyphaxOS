@@ -1,8 +1,8 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=ibus
-pkgver=1.5.16
-pkgrel=4
+pkgver=1.5.17
+pkgrel=2
 pkgdesc="IBus is an Intelligent Input Bus. It is a new input framework for Linux OS."
 arch=('x86_64')
 url="https://github.com/ibus/ibus/releases/download/${pkgver}"

@@ -2,7 +2,7 @@
 
 pkgname=findutils
 pkgver=4.6.0
-pkgrel=4
+pkgrel=6
 pkgdesc="The Findutils package contains programs to find files."
 arch=('x86_64')
 url="http://ftp.gnu.org/gnu/findutils"

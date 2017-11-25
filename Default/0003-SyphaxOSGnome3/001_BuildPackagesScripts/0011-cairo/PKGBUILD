@@ -2,7 +2,7 @@
 
 pkgname=cairo
 pkgver=1.14.10
-pkgrel=4
+pkgrel=6
 pkgdesc="Cairo is a 2D graphics library with support for multiple output devices"
 arch=('x86_64')
 url="http://cairographics.org/releases"

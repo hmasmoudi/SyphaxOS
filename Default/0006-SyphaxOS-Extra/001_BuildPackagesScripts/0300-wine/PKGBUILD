@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=wine
-pkgver=2.17
+pkgver=2.21
 pkgrel=2
 pkgdesc="A compatibility layer for running Windows programs."
 arch=('x86_64')

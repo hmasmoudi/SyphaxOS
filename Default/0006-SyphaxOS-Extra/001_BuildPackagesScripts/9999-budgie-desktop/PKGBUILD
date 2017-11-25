@@ -2,8 +2,8 @@
 
 pkgname=budgie-desktop
 pkgver=10.4.0
-pkgrel=20170922
-_commit=9e2cc0f2f6549b75ba6ba1d880ea68364ca6445c  # master
+pkgrel=20171111
+_commit=9f71bb847ef73a14e2cd248b34aaa3866b7e795c  # master
 pkgdesc="The Budgie Desktop a modern desktop designed to keep out the way of the user."
 arch=('x86_64')
 install=${pkgname}.install
@@ -15,7 +15,8 @@ source=("git+https://github.com/budgie-desktop/budgie-desktop#commit=$_commit"
 md5sums=('SKIP'
          'ac45706b3ce00d3898065b4a53750ff2')
 makedepends=('git' 'gobject-introspection' 'intltool' 'meson' 'vala' 'sassc')
-depends=('gnomedesktop' 'gnome-screensaver' 'SyphaxOS-Theme')
+#depends=('gnomedesktop' 'gnome-screensaver' 'SyphaxOS-Theme')
+depends=('gnomedesktop' 'SyphaxOS-Theme')
 
 prepare() {
    cd "${srcdir}/${pkgname}"
@@ -34,14 +35,12 @@ prepare() {
 build() {
    cd "${srcdir}/${pkgname}"
    
-   cd build
-   ninja -j$(($(getconf _NPROCESSORS_ONLN)+1))
+   ninja -C build -j$(($(getconf _NPROCESSORS_ONLN)+1))
 }
 
 package() {
    cd "${srcdir}/${pkgname}"
    
-   cd build
-   DESTDIR="${pkgdir}" ninja install
+   DESTDIR="${pkgdir}" ninja -C build install
 }
 
