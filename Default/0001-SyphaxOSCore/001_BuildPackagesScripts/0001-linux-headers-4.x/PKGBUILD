@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=linux-headers
-pkgver=4.14.2
+pkgver=4.14.3
 pkgrel=2
 pkgdesc="The Linux API Headers expose the kernel's API for use by Glibc."
 arch=('x86_64')

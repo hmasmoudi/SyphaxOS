@@ -2,8 +2,8 @@
 
 pkgname=glibc
 pkgver=2.26
-pkgrel=20171121
-_commit=71170eba2af41e08d51cf9d7b1ded5fd4b0b5c9c
+pkgrel=20171128
+_commit=f312f235d535fac5c3ff2b0aa7cacb1958aa4529
 pkgdesc="The Glibc package contains the main C library."
 arch=('x86_64')
 url="http://ftp.gnu.org/gnu/glibc"

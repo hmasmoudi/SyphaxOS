@@ -1,8 +1,8 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=upower
-pkgver=0.99.5
-pkgrel=4
+pkgver=0.99.7
+pkgrel=2
 pkgdesc="The UPower package provides an interface to enumerating power devices, listening to device events and querying history and statistics."
 arch=('x86_64')
 url="http://upower.freedesktop.org/releases"

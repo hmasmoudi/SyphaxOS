@@ -29,7 +29,6 @@ build() {
    export LDFLAGS=${LDFLAGS/,-z,now}
 
    ./configure $XORG_CONFIG --with-default-dri=3
-   
    make
 }
 

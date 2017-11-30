@@ -2,7 +2,7 @@
 
 pkgname=TopIcons-plus
 pkgver=21
-pkgrel=2
+pkgrel=4
 pkgdesc="TopIcons Plus brings all icons back to the top panel, so that it's easier to keep track of apps running in the backround."
 arch=('x86_64')
 url="https://github.com/phocean/TopIcons-plus/archive"
@@ -13,15 +13,9 @@ source=(${pkgname}-${pkgver}::"$url/v${pkgver}.tar.gz")
 sha256sums=('SKIP')
 depends=('rootfs')
 
-build() {
-   cd "$srcdir/${pkgname}-${pkgver}"
-   
-   make
-}
-
 package() {
    cd "$srcdir/${pkgname}-${pkgver}"
    
-   make DESTDIR="${pkgdir}" install
+   make install INSTALL_PATH="${pkgdir}"/usr/share/gnome-shell/extensions
 }
 

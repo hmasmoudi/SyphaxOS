@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=mesa
-pkgver=17.2.5
+pkgver=17.2.6
 pkgrel=2
 pkgdesc="Mesa is an OpenGL compatible 3D graphics library."
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://mesa.freedesktop.org/archive"
 license=('GPL')
 groups=('graphicslayer')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('7f7f914b7b9ea0b15f2d9d01a4375e311b0e90e55683b8e8a67ce8691eb1070f')
+sha256sums=('6ad85224620330be26ab68c8fc78381b12b38b610ade2db8716b38faaa8f30de')
 depends=('rootfs')
 
 prepare() {
