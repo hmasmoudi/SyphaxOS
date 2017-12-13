@@ -2,8 +2,8 @@
 
 pkgname=gcc
 pkgver=7.2.1
-pkgrel=20171123
-_commit=1f5386eaccf0764d7e87b7850d81875551a8bf0f
+pkgrel=20171210
+_commit=27c18fe95095a481e80516739d886919ee7f0225
 pkgdesc="The GCC package contains the GNU compiler collection, which includes the C and C++ compilers."
 arch=('x86_64')
 url="http://gcc.gnu.org"

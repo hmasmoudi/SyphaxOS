@@ -15,6 +15,7 @@ document-font-name="Sans 10"
 enable-animations=true
 
 [org.gnome.desktop.wm.preferences]
+button-layout='appmenu:minimize,maximize,close'
 titlebar-font="Cantarell Bold 10"
 
 [org.gnome.nautilus.icon-view]
