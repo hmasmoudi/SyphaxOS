@@ -1,0 +1,56 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgbase=opencv
+pkgname=('opencv')
+pkgver=3.3.1
+pkgrel=1
+pkgdesc="Open Source Computer Vision Library"
+arch=('x86_64')
+license=('BSD')
+url="http://opencv.org/"
+depends=('rootfs')
+source=("$pkgbase-$pkgver.tar.gz::https://github.com/opencv/opencv/archive/$pkgver.zip"
+        "opencv_contrib-$pkgver.tar.gz::https://github.com/opencv/opencv_contrib/archive/$pkgver.tar.gz")
+sha256sums=('e59412c7e0d398113b1e454d600fcdff54cd77100a84483ac0d82bbf52496932'
+            '6f3ce148dc6e147496f0dbec1c99e917e13bf138f5a8ccfc3765f5c2372bd331')
+
+_cmakeopts=('-D BUILD_WITH_DEBUG_INFO=OFF'
+            '-D BUILD_TESTS=OFF'
+            '-D BUILD_PERF_TESTS=OFF'
+            '-D CMAKE_BUILD_TYPE=Release'
+            '-D CMAKE_INSTALL_PREFIX=/usr'
+            '-D CMAKE_SKIP_RPATH=ON'
+            )
+
+build() {
+  mkdir -p build
+
+  cd build
+  # cmake's FindLAPACK doesn't add cblas to LAPACK_LIBRARIES, so we need to specify them manually
+  cmake ${_cmakeopts[@]} \
+    -DOPENCV_EXTRA_MODULES_PATH="$srcdir/opencv_contrib-$pkgver/modules" \
+    ../$pkgname-$pkgver
+  make
+}
+
+package() {
+  options=('staticlibs')
+
+  cd build
+  make DESTDIR="$pkgdir" install
+
+  # install license file
+  install -Dm644 "$srcdir/$pkgname-$pkgver/LICENSE" \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  cd "$pkgdir/usr/share"
+
+  # separate samples package; also be -R friendly
+  if [[ -d OpenCV/samples ]]; then
+    mv OpenCV/samples "$srcdir/$pkgname-samples"
+    mv OpenCV $pkgname # otherwise folder naming is inconsistent
+  elif [[ ! -d OpenCV ]]; then
+    warning "Directory naming issue; samples package may not be built!"
+  fi
+}
+

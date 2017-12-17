@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=HipChat4
-pkgver=4.30.2.1665
+pkgver=4.30.0.1668
 pkgrel=2
 pkgdesc="HipChat for Linux"
 arch=('x86_64')

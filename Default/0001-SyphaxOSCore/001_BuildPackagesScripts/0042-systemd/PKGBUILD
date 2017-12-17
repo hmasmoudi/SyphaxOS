@@ -1,27 +1,27 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=systemd
-pkgver=235
-pkgrel=4
+pkgver=236
+pkgrel=8
 pkgdesc="The systemd package contains programs for controlling the startup, running, and shutdown of the system."
 arch=('x86_64')
-install=$pkgname.install
+install=${pkgname}.install
 url="https://github.com/systemd/systemd/archive"
 license=('GPL')
 groups=('core')
-source=($pkgname-$pkgver.tar.gz::"$url/v$pkgver.tar.gz")
+source=(${pkgname}-${pkgver}.tar.gz::"$url/v${pkgver}.tar.gz")
 md5sums=('SKIP')
 depends=('rootfs')
 
 prepare() {
-   cd "$srcdir/$pkgname-$pkgver"
+   cd "$srcdir/${pkgname}-${pkgver}"
 
    ## Update Log to Remove Starting Service log trace ==> Keep only started on not Started logs.
    sed -i "s/unit_status_emit_starting_stopping_reloading(u, t)/{}/g" ./src/core/job.c
 }
 
 build() {
-   cd "$srcdir/$pkgname-$pkgver"
+   cd "$srcdir/${pkgname}-${pkgver}"
 
    cc_cv_CFLAGS__flto=no               \
    XSLTPROC="/usr/bin/xsltproc"        \
@@ -43,7 +43,7 @@ build() {
 }
 
 package() {
-   cd "$srcdir/$pkgname-$pkgver"
+   cd "$srcdir/${pkgname}-${pkgver}"
 
    DESTDIR="${pkgdir}" ninja -C build install
    

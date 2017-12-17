@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=librsvg
-pkgver=2.40.19
+pkgver=2.40.20
 pkgrel=2
 pkgdesc="The librsvg package contains a library and tools used to manipulate, convert and view Scalable Vector Graphic (SVG) images."
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="http://ftp.gnome.org/pub/gnome/sources/librsvg/2.40"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('612b4d8b8609036f5d899be3fe70d9866b5f6ac5c971154c1c0ef7242216c1f7')
+sha256sums=('cff4dd3c3b78bfe99d8fcfad3b8ba1eee3289a0823c0e118d78106be6b84c92b')
 depends=('rootfs')
 
 prepare() {

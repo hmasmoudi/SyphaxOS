@@ -1,8 +1,8 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=linux
-pkgver=4.14.5
-pkgrel=6
+pkgver=4.14.6
+pkgrel=4
 pkgdesc="The Linux package contains the Linux kernel."
 arch=('x86_64')
 url="https://www.kernel.org/pub/linux/kernel/v4.x"
