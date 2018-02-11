@@ -2,7 +2,7 @@
 
 pkgname=bash-completion
 pkgver=2.7
-pkgrel=2
+pkgrel=4
 pkgdesc="Programmable completion for the bash shell"
 arch=('x86_64')
 url="https://github.com/scop/bash-completion"
@@ -22,11 +22,11 @@ package() {
   make DESTDIR="${pkgdir}" install
 
   # bash-completion is sourced in /etc/bash.bashrc so that non-bash shell don't source it
-  rm "${pkgdir}/etc/profile.d/bash_completion.sh"
+  rm "$pkgdir/etc/profile.d/bash_completion.sh"
 
   # remove Slackware's makepkg completion
-  rm "${pkgdir}/usr/share/bash-completion/completions/makepkg"
+  rm "$pkgdir/usr/share/bash-completion/completions/makepkg"
 
   # remove completions which overlap with util-linux
-  rm "${pkgdir}/usr/share/bash-completion/completions"/{u,}mount
+  rm "$pkgdir/usr/share/bash-completion/completions"/{{u,}mount,rfkill}
 }

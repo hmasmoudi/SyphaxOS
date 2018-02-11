@@ -1,9 +1,9 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=gcc
-pkgver=7.2.1
-pkgrel=20171210
-_commit=27c18fe95095a481e80516739d886919ee7f0225
+pkgver=7.3.1
+pkgrel=20180210
+_commit=c40ce33798d425bcb1cb5814f1d7178b2acf619e
 pkgdesc="The GCC package contains the GNU compiler collection, which includes the C and C++ compilers."
 arch=('x86_64')
 url="http://gcc.gnu.org"

@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=evolution-ews
-pkgver=3.26.3
+pkgver=3.26.5
 pkgrel=2
 pkgdesc="MS Exchange integration through Exchange Web Services"
-url="http://ftp.gnome.org/pub/gnome/sources/evolution-ews/3.26"
+url="https://ftp.gnome.org/pub/gnome/sources/evolution-ews/3.26"
 arch=(i686 x86_64)
 license=(LGPL2.1)
 depends=(libmspack evolution)
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('70995b96a1d6842ff9a00709b15eb68e65c3984087382885ed4d489a91659ded')
+sha256sums=('58ef6fa9a4298c92285eb1eb7f7a395a2158fbcfe23cb7d17a18f984c4823b60')
 
 build() {
   cd $pkgname-$pkgver

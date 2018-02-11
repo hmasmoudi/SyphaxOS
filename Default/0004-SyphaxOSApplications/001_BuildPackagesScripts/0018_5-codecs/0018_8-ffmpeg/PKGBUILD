@@ -1,0 +1,82 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=ffmpeg
+pkgver=3.4.1
+pkgrel=4
+pkgdesc='Complete solution to record, convert and stream audio and video'
+arch=('x86_64')
+url='http://ffmpeg.org/'
+license=('GPL3')
+depends=('rootfs')
+source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"
+        'fs56089.patch')
+sha256sums=('5a77278a63741efa74e26bf197b9bb09ac6381b9757391b922407210f0f991c0'
+            '0bfcd12d1992903f21c146ae56d9ad89b52818cfb2303197ee905347c25a5427')
+
+prepare() {
+  cd ffmpeg-${pkgver}
+
+  # https://bugs.archlinux.org/task/56089
+  # Backport of http://git.videolan.org/?p=ffmpeg.git;a=commitdiff;h=a606f27f4c610708fa96e35eed7b7537d3d8f712
+  patch -Np1 -i ../fs56089.patch
+}
+
+build() {
+  cd ffmpeg-${pkgver}
+
+ ./configure \
+   --prefix='/usr' \
+   --disable-debug \
+    --disable-static \
+   --disable-stripping \
+   --enable-avisynth \
+   --enable-avresample \
+   --enable-fontconfig \
+   --enable-gmp \
+   --enable-gnutls \
+   --enable-gpl \
+   --enable-libfreetype \
+   --enable-libpulse \
+   --enable-libspeex \
+   --enable-libtheora \
+   --enable-libv4l2 \
+   --enable-libvorbis \
+   --enable-libvpx \
+   --enable-libwebp \
+   --enable-libx264 \
+   --enable-libx265 \
+   --enable-libxcb \
+   --enable-libxml2 \
+   --enable-libxvid \
+   --enable-shared \
+   --enable-ffmpeg \
+   --enable-nonfree \
+   --enable-version3
+
+
+#    --enable-ladspa \
+#    --enable-libiec61883 \
+#    --enable-libass \
+#    --enable-libbluray \
+#    --enable-libgsm \
+#    --enable-libfribidi \
+#    --enable-libmodplug \
+#    --enable-libmp3lame \
+#    --enable-libopencore_amrnb \
+#    --enable-libopencore_amrwb \
+#    --enable-libopenjpeg \
+#    --enable-libopus \
+#    --enable-libsoxr \
+#    --enable-libssh \
+#    --enable-libvidstab \
+#    --enable-omx
+    
+  make
+}
+
+package() {
+  cd ffmpeg-${pkgver}
+
+  make DESTDIR="${pkgdir}" install
+}
+

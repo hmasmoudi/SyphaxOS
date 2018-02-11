@@ -2,7 +2,7 @@
 
 pkgname=fuse
 pkgver=2.9.7
-pkgrel=4
+pkgrel=6
 pkgdesc="FUSE (Filesystem in Userspace) is a simple interface for userspace programs to export a virtual filesystem to the Linux kernel."
 arch=('x86_64')
 url="https://github.com/libfuse/libfuse/releases/download/${pkgname}-${pkgver}"

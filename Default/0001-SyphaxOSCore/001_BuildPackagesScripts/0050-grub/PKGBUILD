@@ -2,10 +2,10 @@
 
 pkgname=grub
 pkgver=2.02
-pkgrel=2
+pkgrel=6
 pkgdesc="The GRUB package contains the GRand Unified Bootloader."
 arch=('x86_64')
-url="http://ftp.gnu.org/gnu/grub"
+url="https://ftp.gnu.org/gnu/grub"
 license=('GPL')
 groups=('core')
 source=("$url/$pkgname-$pkgver.tar.xz")

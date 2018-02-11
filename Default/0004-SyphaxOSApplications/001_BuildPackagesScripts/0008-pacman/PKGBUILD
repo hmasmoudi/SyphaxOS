@@ -2,7 +2,7 @@
 
 pkgname=pacman
 pkgver=5.0.2
-pkgrel=4
+pkgrel=10
 pkgdesc="SyphaxOS Package Manager."
 arch=('x86_64')
 url="https://git.archlinux.org/pacman.git/snapshot"
@@ -16,7 +16,7 @@ source=("$url/${pkgname}-${pkgver}.tar.xz"
         "trustdb.gpg")
 md5sums=('SKIP'
          'a8f38a0e14f0ab65492cfc11076236f4'
-         '0f63a88c747d78c3b20afc1242770f19'
+         'b83ddffdb4163961369974e3061cadbf'
          'afae51776eeb25edb91ec4b1b5aa5219'
          'af585fd1f02e18bef8a5fa5421747383')
 depends=('rootfs'
@@ -40,13 +40,15 @@ build() {
                --with-gpgme \
                --with-pkg-ext=.pkg.tar.xz \
                --with-src-ext=.src.tar.xz
-   make
+   make V=1
+   make -C contrib 
 }
 
 package() {
    cd "$srcdir/${pkgname}-${pkgver}"
    
    make DESTDIR="${pkgdir}" install
+   make DESTDIR="$pkgdir" -C contrib install
    
    cp -rf ../../pub.key ${pkgdir}/usr/etc/pub.key
    cp -rf ../../trustdb.gpg ${pkgdir}/usr/etc/trustdb.gpg

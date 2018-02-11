@@ -1,11 +1,11 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=expat
-pkgver=2.2.4
+pkgver=2.2.5
 pkgrel=2
 pkgdesc="The Expat package contains a stream oriented C library for parsing XML."
 arch=('x86_64')
-url="http://prdownloads.sourceforge.net/expat"
+url="https://prdownloads.sourceforge.net/expat"
 license=('GPL')
 groups=('core')
 source=("$url/$pkgname-$pkgver.tar.bz2")

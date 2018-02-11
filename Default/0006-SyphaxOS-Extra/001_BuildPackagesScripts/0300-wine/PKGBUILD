@@ -1,12 +1,12 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=wine
-pkgver=2.21
-pkgrel=2
+pkgver=2.0.4
+pkgrel=6
 pkgdesc="A compatibility layer for running Windows programs."
 arch=('x86_64')
 install=${pkgname}.install
-url="https://dl.winehq.org/wine/source/2.x"
+url="https://dl.winehq.org/wine/source/${pkgver:0:2}"
 license=('LGPL')
 groups=('applications')
 source=("$url/${pkgname}-${pkgver}.tar.xz"
@@ -20,7 +20,7 @@ prepare() {
       
    patch -p1 -i ../../0001-winhlp32-Workaround-a-bug-in-Flex.patch
    
-   #sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i configure*
+   sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i configure*
 }
 
 build() {

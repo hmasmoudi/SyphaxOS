@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=libva-intel-driver
-pkgver=1.8.2
+pkgver=1.8.3
 pkgrel=2
 pkgdesc="The libva-intel-driver is designed specifically for video cards based on an Intel GPU."
 arch=('x86_64')
 url="http://www.freedesktop.org/software/vaapi/releases/libva-intel-driver"
 license=('GPL')
 groups=('graphicslayer')
-source=("$url/intel-vaapi-driver-${pkgver}.tar.bz2")
-sha1sums=('1564e41f36b1ec646250418eeb344a916eb28407')
+source=("https://github.com/01org/intel-vaapi-driver/releases/download/${pkgver}/intel-vaapi-driver-${pkgver}.tar.bz2")
+sha1sums=('b0cfc0807993aafe78e209dd28cdceb4dfa57e78')
 depends=('rootfs')
 
 prepare() {
@@ -24,7 +24,11 @@ build() {
    source /etc/profile.d/xorg.sh
    echo "Using XORG_PREFIX ($XORG_PREFIX) & XORG_CONFIG ($XORG_CONFIG)"
 
-   ./configure $XORG_CONFIG
+   ./configure $XORG_CONFIG \
+               --enable-drm \
+               --enable-x11 \
+               --enable-wayland \
+               --enable-hybrid-codec
    
    make
 }

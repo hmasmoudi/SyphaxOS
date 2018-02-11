@@ -2,12 +2,12 @@
 
 pkgname=totem
 pkgver=3.26.0
-pkgrel=4
+pkgrel=8
 pkgdesc="Videos is a video playback application designed to work with GNOME 3"
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/totem/3.26"
 license=('GPL')
-groups=('applications')
+groups=('gnome')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
 sha256sums=('e32fb9a68097045e75c87ad1b8177f5c01aea2a13dcb3b2e71a0f9570fe9ee13')
 depends=('rootfs'
@@ -17,10 +17,15 @@ depends=('rootfs'
          'v4l-utils'
          'libvpx'
          'orc'
+         'xvidcore'
+         'x265'
+         'libx264'
+         'ffmpeg'
          'gst-libav'
          'gst-plugins-good'
          'gst-plugins-bad'
-         'gst-plugins-ugly')
+         'gst-plugins-ugly'
+         'gstreamer-vaapi')
 
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"

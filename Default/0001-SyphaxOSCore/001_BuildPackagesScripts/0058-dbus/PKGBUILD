@@ -1,11 +1,11 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=dbus
-pkgver=1.10.24
+pkgver=1.12.2
 pkgrel=2
 pkgdesc="D-Bus is a message bus system, a simple way for applications to talk to one another"
 arch=('x86_64')
-url="http://dbus.freedesktop.org/releases/dbus"
+url="https://dbus.freedesktop.org/releases/dbus"
 install=${pkgname}.install
 license=('GPL')
 groups=('core')

@@ -1,0 +1,69 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=ffmpeg-mpv
+pkgver=3.5
+pkgrel=1
+pkgdesc='FFmpeg is a collection of libraries and tools to process multimedia content such as audio, video, subtitles and related metadata.'
+arch=('x86_64')
+url='https://github.com/mpv-player/ffmpeg-mpv'
+license=('LGPL')
+depends=('rootfs')
+source=($pkgname-n${pkgver}.tar.gz::"https://github.com/mpv-player/$pkgname/archive/n$pkgver-dev.tar.gz")
+sha256sums=('SKIP')
+
+build() {
+  cd $pkgname-n${pkgver}-dev
+
+  ./configure \
+    --prefix='/usr' \
+    --disable-debug \
+    --disable-static \
+    --disable-stripping \
+    --enable-avisynth \
+    --enable-avresample \
+    --enable-fontconfig \
+    --enable-gmp \
+    --enable-gnutls \
+    --enable-gpl \
+    --enable-libfreetype \
+    --enable-libpulse \
+    --enable-libspeex \
+    --enable-libtheora \
+    --enable-libv4l2 \
+    --enable-libvorbis \
+    --enable-libvpx \
+    --enable-libwebp \
+    --enable-libxcb \
+    --enable-libxml2 \
+    --enable-shared \
+    --enable-version3
+#
+#    --enable-libx264 \
+#    --enable-libx265 \
+#    --enable-libxvid \    
+#    --enable-ladspa \
+#    --enable-libiec61883 \
+#    --enable-libass \
+#    --enable-libbluray \
+#    --enable-libgsm \
+#    --enable-libfribidi \
+#    --enable-libmodplug \
+#    --enable-libmp3lame \
+#    --enable-libopencore_amrnb \
+#    --enable-libopencore_amrwb \
+#    --enable-libopenjpeg \
+#    --enable-libopus \
+#    --enable-libsoxr \
+#    --enable-libssh \
+#    --enable-libvidstab \
+#    --enable-omx
+    
+  make
+}
+
+package() {
+  cd $pkgname-n${pkgver}-dev
+
+  make DESTDIR="${pkgdir}" install
+}
+

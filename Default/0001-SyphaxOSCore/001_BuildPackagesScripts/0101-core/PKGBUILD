@@ -1,9 +1,9 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=core
-pkgver=3.0.0
-pkgrel=5
-pkgdesc="SyphaxOS 3.0.0 Core Package."
+pkgver=3.1.0
+pkgrel=6
+pkgdesc="SyphaxOS 3.1.0 Core Package."
 arch=('x86_64')
 license=('GPL')
 groups=('core')
@@ -87,6 +87,9 @@ depends=(
          'fuse'
          'ntfs-3g'
          'bash-completion'
+         'hwids'
+         'pciutils'
+         'sudo'
          'nano'
          'core-configs'
          )

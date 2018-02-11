@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=gst-plugins-good
-pkgver=1.12.3
+pkgver=1.12.4
 pkgrel=6
 pkgdesc="The GStreamer Good Plug-ins is a set of plug-ins considered by the GStreamer developers to have good quality code, correct functionality, and the preferred license (LGPL for the plug-in code, LGPL or LGPL-compatible for the supporting library)"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="http://gstreamer.freedesktop.org/src/gst-plugins-good"
 license=('GPL')
 groups=('applications')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('13e7f479296891fef5a686438f20ba7d534680becf2269ecc5ee24aa83b45f03')
+sha256sums=('649f49bec60892d47ee6731b92266974c723554da1c6649f21296097715eb957')
 depends=('rootfs')
 
 build() {

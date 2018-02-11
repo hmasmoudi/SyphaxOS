@@ -1,26 +1,25 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=vim
-pkgver=8.0.586
+pkgver=8.0.1427
 pkgrel=2
 pkgdesc="The Vim package contains a powerful text editor."
 arch=('x86_64')
-url="ftp://ftp.vim.org/pub/vim/unix"
+url="https://github.com/vim/vim"
 license=('GPL')
 groups=('core')
-source=("$url/$pkgname-$pkgver.tar.bz2")
+source=($pkgname-$pkgver.tar.bz2::"$url/archive/v$pkgver.tar.gz")
 md5sums=('SKIP')
 depends=('rootfs')
 
 prepare() {
-   cd "$srcdir/${pkgname}${pkgver:0:1}${pkgver:2:1}"
+   cd "$srcdir/${pkgname}-${pkgver}"
 
    echo '#define SYS_VIMRC_FILE "/etc/vimrc"' >> src/feature.h
-   sed -i '/call/{s/split/xsplit/;s/303/492/}' src/testdir/test_recover.vim
 }
 
 build() {
-   cd "$srcdir/${pkgname}${pkgver:0:1}${pkgver:2:1}"
+   cd "$srcdir/${pkgname}-${pkgver}"
 
    ./configure --prefix=/usr
 
@@ -28,7 +27,7 @@ build() {
 }
 
 package() {
-   cd "$srcdir/${pkgname}${pkgver:0:1}${pkgver:2:1}"
+   cd "$srcdir/${pkgname}-${pkgver}"
 
    mkdir -v $pkgdir/etc
 

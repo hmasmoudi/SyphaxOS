@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=bluez
-pkgver=5.46
-pkgrel=4
+pkgver=5.48
+pkgrel=2
 pkgdesc="The BlueZ package contains the Bluetooth protocol stack for Linux."
 arch=('x86_64')
-url="http://www.kernel.org/pub/linux/bluetooth"
+url="https://git.kernel.org/pub/scm/bluetooth/bluez.git"
 install=${pkgname}.install
 license=('GPL')
 groups=('desktop')
-source=("$url/${pkgname}-${pkgver}.tar.xz"
+source=("$url/snapshot/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}.install"
         "rfcomm.conf"
         "uart.conf")
@@ -19,9 +19,15 @@ md5sums=('SKIP'
          'aea7d77ee22d0d354765a639f9c75d41')
 depends=('rootfs')
 
-build() {
+prepare() {
    cd "$srcdir/${pkgname}-${pkgver}"
    
+   ./bootstrap --prefix=/usr
+}
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+               
    ./configure --prefix=/usr        \
                --sysconfdir=/etc    \
                --localstatedir=/var \

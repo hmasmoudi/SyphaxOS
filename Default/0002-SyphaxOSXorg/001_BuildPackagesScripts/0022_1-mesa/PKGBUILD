@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=mesa
-pkgver=17.2.7
-pkgrel=1
+pkgver=17.3.3
+pkgrel=2
 pkgdesc="Mesa is an OpenGL compatible 3D graphics library."
 arch=('x86_64')
 url="https://mesa.freedesktop.org/archive"
 license=('GPL')
 groups=('graphicslayer')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('50cfdea8df55045797b4d0409591c04c784d9551c4da09b8178874dbe5a37a68')
+sha256sums=('41bac5de0ef6adc1f41a1ec0f80c19e361298ce02fa81b5f9ba4fdca33a9379b')
 makedepends=('python2-mako')
 depends=('rootfs')
 
@@ -31,7 +31,7 @@ build() {
                 --sysconfdir=/etc \
                 --with-gallium-drivers=r600,nouveau,svga,virgl \
                 --with-dri-drivers=i915,i965,r200,radeon,nouveau,swrast \
-                --with-platforms=x11,drm,wayland \
+                --with-platforms=drm,wayland,x11 \
                 --with-vulkan-drivers=intel \
                 --enable-shared-glapi \
                 --enable-egl \

@@ -1,0 +1,30 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=tesseract
+pkgver=3.05.01
+pkgrel=4
+pkgdesc="An OCR program"
+arch=('x86_64')
+url="https://github.com/tesseract-ocr/tesseract"
+license=("APACHE")
+depends=('leptonica')
+source=($pkgname-$pkgver.tar.gz::https://github.com/tesseract-ocr/tesseract/archive/$pkgver.tar.gz
+	     https://github.com/tesseract-ocr/tessdata/raw/master/osd.traineddata)
+sha256sums=('05898f93c5d057fada49b9a116fc86ad9310ff1726a0f499c3e5211b3af47ec1'
+            '9cf5d576fcc47564f11265841e5ca839001e7e6f38ff7f7aacf46d15a96b00ff')
+
+build() {
+  cd "$srcdir"/$pkgname-${pkgver}
+  [ -x configure ] || ./autogen.sh
+  [ -f Makefile ] || ./configure --prefix=/usr
+  make
+  make training
+}
+
+package() {
+  cd "$srcdir"/$pkgname-${pkgver}
+  make DESTDIR="$pkgdir" install
+  make DESTDIR="$pkgdir" training-install
+  mkdir -p "$pkgdir"/usr/share/tessdata
+  install -Dm0644 "$srcdir"/osd.traineddata "$pkgdir"/usr/share/tessdata/osd.traineddata
+}

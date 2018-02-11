@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=SyphaxOS-Desktop
-pkgver=3.0.0
-pkgrel=16
-pkgdesc="SyphaxOS 3.0.0 Default Desktop Package based on Gnome Desktop."
+pkgver=3.1.0
+pkgrel=8
+pkgdesc="SyphaxOS 3.1.0 Default Desktop Package based on Gnome Desktop."
 arch=('x86_64')
 install=${pkgname}.install
 license=('GPL')
 groups=('desktop')
 source=("SyphaxOS-Desktop-settings.gschema.override")
-sha256sums=('7de005ea3a6e785366a7ceca1110fb5d8ef12ee0b89d3104548807ae07e42059')
+sha256sums=('20301bb865c16db91e9c14e2a24c44e72b6164fda2be5be16cc7121219822fac')
 depends=(
          'gnomedesktop'
          'pacman'
@@ -28,11 +28,17 @@ depends=(
          'rhythmbox'
          'ttf-ms-fonts'
          'wps-office'
+         'wps-office-extension-english-uk-dictionary'
+         'wps-office-extension-french-dictionary'
          'google-chrome'
          'flatpak'
          'brasero'
          'dash-to-panel'
          'TopIcons-plus'
+         'Arc-Menu'
+         'SyphaxOS-updates-notifier'
+         'packagekit'
+         'gnome-software'
          'SyphaxOS-Theme'
          )
 

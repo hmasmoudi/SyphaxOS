@@ -2,7 +2,7 @@
 
 pkgname=gdm
 pkgver=3.26.2.1
-pkgrel=2
+pkgrel=4
 pkgdesc="The GNOME Shell Extensions package contains a collection of extensions providing additional and optional functionality to the GNOME Shell."
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/gdm/3.26"
@@ -32,7 +32,8 @@ build() {
                --localstatedir=/var  \
                --without-plymouth    \
                --disable-static      \
-               --enable-gdm-xsession
+               --enable-gdm-xsession  \
+               --enable-wayland-support
    make
 }
 

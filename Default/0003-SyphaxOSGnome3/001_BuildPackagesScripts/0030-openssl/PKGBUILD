@@ -2,7 +2,7 @@
 
 pkgname=openssl
 pkgver=1.1.0g
-pkgrel=2
+pkgrel=4
 pkgdesc="The OpenSSL package contains management tools and libraries relating to cryptography."
 arch=('x86_64')
 url="https://openssl.org/source"
@@ -28,7 +28,7 @@ prepare() {
    cp "${srcdir}"/make-ca.sh              "${srcdir}"/$pkgname-$pkgver
    cp "${srcdir}"/make-cert.pl            "${srcdir}"/$pkgname-$pkgver
    
-   sed -i '1 i #CVS_ID @# $ RCSfile: certdata.txt $ $Revision: 20171103 $ $Date: $' certdata.txt
+   sed -i '1 i #CVS_ID @# $ RCSfile: certdata.txt $ $Revision: 20180210 $ $Date: $' certdata.txt
 }
 
 build() {

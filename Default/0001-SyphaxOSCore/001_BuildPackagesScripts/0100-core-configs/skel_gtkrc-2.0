@@ -1,2 +1,2 @@
-include "/usr/share/themes/Adwaita/gtk-2.0/gtkrc"
-gtk-icon-theme-name = "Adwaita"
+include "/usr/share/themes/Adapta/gtk-2.0/gtkrc"
+gtk-icon-theme-name = "Adapta"

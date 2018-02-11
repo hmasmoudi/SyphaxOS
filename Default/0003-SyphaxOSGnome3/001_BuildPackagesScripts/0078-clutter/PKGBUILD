@@ -2,10 +2,10 @@
 
 pkgname=clutter
 pkgver=1.26.2
-pkgrel=8
+pkgrel=10
 pkgdesc="The Clutter package contains an open source software library used for creating fast, visually rich and animated graphical user interfaces."
 arch=('x86_64')
-url="http://ftp.gnome.org/pub/gnome/sources/clutter/1.26"
+url="https://ftp.gnome.org/pub/gnome/sources/clutter/1.26"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
@@ -18,12 +18,14 @@ build() {
    ./configure --prefix=/usr               \
                --sysconfdir=/etc           \
                --enable-introspection      \
-               --enable-egl-backend        \
                --enable-evdev-input        \
+               --enable-egl-backend        \
                --enable-wayland-backend    \
                --enable-gdk-backend        \
                --enable-x11-backend        \
-               --enable-wayland-compositor
+               --enable-gdk-pixbuf         \
+               --enable-wayland-compositor \
+               --disable-examples
    
    make
 }

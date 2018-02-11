@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=e2fsprogs
-pkgver=1.43.6
+pkgver=1.43.8
 pkgrel=2
 pkgdesc="The E2fsprogs package contains the utilities for handling the ext2, ext3 and ext4 file system."
 arch=('x86_64')

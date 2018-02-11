@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=tar
-pkgver=1.29
-pkgrel=4
+pkgver=1.30
+pkgrel=2
 pkgdesc="The Tar package contains an archiving program."
 arch=('x86_64')
 url="http://ftp.gnu.org/gnu/tar"
 license=('GPL')
 groups=('core')
 source=("$url/$pkgname-$pkgver.tar.xz")
-md5sums=('a1802fec550baaeecff6c381629653ef')
+md5sums=('SKIP')
 depends=('rootfs')
 
 build() {

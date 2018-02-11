@@ -1,0 +1,34 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+_langs=(ara eng fra)
+
+pkgbase=tesseract-data
+pkgname=($(for l in ${_langs[@]}; do echo tesseract-data-${l}; done))
+pkgver=3.04.00
+pkgrel=2
+pkgdesc="An OCR programm"
+arch=('x86_64')
+url="https://github.com/tesseract-ocr/tessdata"
+license=("APACHE")
+depends=(tesseract)
+source=($pkgbase-$pkgver.tar.gz::https://github.com/tesseract-ocr/tessdata/archive/$pkgver.tar.gz)
+sha256sums=('5dcb37198336b6953843b461ee535df1401b41008d550fc9e43d0edabca7adb1')
+
+build() {
+  true
+}
+
+# Declare the package functions for data
+for l in ${_langs[@]}; do
+    eval "
+package_tesseract-data-${l}(){
+    pkgdesc=\"Tesseract OCR data ($l)\"
+    depends=('tesseract')
+    groups=('tesseract-data')
+
+    mkdir -p \$pkgdir/usr/share/tessdata
+    cp \$srcdir/tessdata-$pkgver/${l}.* \$pkgdir/usr/share/tessdata/
+    find \$pkgdir/usr/share/tessdata -type f -exec chmod 0644 {} \;
+}
+    "
+done

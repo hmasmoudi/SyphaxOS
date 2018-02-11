@@ -1,0 +1,25 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=leptonica
+pkgver=1.74.4
+pkgrel=2
+pkgdesc="Software that is broadly useful for image processing and image analysis applications"
+arch=('x86_64')
+url="http://www.leptonica.com/"
+license=('custom')
+depends=('rootfs')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/DanBloomberg/leptonica/archive/$pkgver.tar.gz")
+sha256sums=('2092e126652ff07bc2569971a1d6c6411e1d481539d39c98031534c6f83dfc82')
+
+build() {
+   cd "$srcdir"/leptonica-${pkgver}
+   ./autobuild
+   ./configure --prefix=/usr
+   make
+}
+
+package() {
+   cd "$srcdir"/leptonica-${pkgver}
+   make DESTDIR="$pkgdir" install
+   install -D leptonica-license.txt "$pkgdir"/usr/share/licenses/leptonica/leptonica-license.txt
+}

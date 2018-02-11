@@ -1,0 +1,55 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=sudo
+pkgver=1.8.22
+pkgrel=4
+pkgdesc="Give certain users the ability to run some commands as root"
+arch=('x86_64')
+url="https://www.sudo.ws/sudo/"
+license=('custom')
+groups=('base-devel')
+depends=('glibc' 'libgcrypt')
+backup=('etc/sudoers' 'etc/pam.d/sudo')
+install=$pkgname.install
+source=(https://www.sudo.ws/sudo/dist/$pkgname-$pkgver.tar.gz
+        sudo.pam)
+sha256sums=('7256cb27c20883b14360eddbd17f98922073d104b214cf65aeacf1d9c9b9fd02'
+            'd1738818070684a5d2c9b26224906aad69a4fea77aabd960fc2675aee2df1fa2')
+
+build() {
+  cd "$srcdir/$pkgname-$pkgver"
+
+  ./configure \
+    --prefix=/usr \
+    --sbindir=/usr/bin \
+    --libexecdir=/usr/lib \
+    --with-rundir=/run/sudo \
+    --with-vardir=/var/db/sudo \
+    --with-logfac=auth \
+    --enable-gcrypt \
+    --enable-tmpfiles.d \
+    --with-pam \
+    --with-sssd \
+    --without-ldap \
+    --with-env-editor \
+    --with-passprompt="[sudo] password for %p: " \
+    --with-all-insults
+  make
+}
+
+package() {
+  cd "$srcdir/$pkgname-$pkgver"
+  make DESTDIR="$pkgdir" install
+
+  # Remove sudoers.dist; not needed since pacman manages updates to sudoers
+  rm "$pkgdir/etc/sudoers.dist"
+
+  # Remove /run/sudo directory; we create it using systemd-tmpfiles
+  rmdir "$pkgdir/run/sudo"
+  rmdir "$pkgdir/run"
+
+  install -Dm644 "$srcdir/sudo.pam" "$pkgdir/etc/pam.d/sudo"
+
+  install -Dm644 doc/LICENSE "$pkgdir/usr/share/licenses/sudo/LICENSE"
+}
+

@@ -2,7 +2,7 @@
 
 pkgname=libvdpau
 pkgver=1.1.1
-pkgrel=6
+pkgrel=8
 pkgdesc="The libvdpau package contains a library which implements the VDPAU library."
 arch=('x86_64')
 url="http://people.freedesktop.org/~aplattner/vdpau"
@@ -18,7 +18,7 @@ build() {
    source /etc/profile.d/xorg.sh
    echo "Using XORG_PREFIX ($XORG_PREFIX) & XORG_CONFIG ($XORG_CONFIG)"
 
-   ./configure $XORG_CONFIG --docdir=/usr/share/doc/$pkgname-$pkgver
+   ./configure $XORG_CONFIG --docdir=/usr/share/doc/$pkgname-$pkgver --enable-dri2
    
    make
 }

@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=py2cairo
-pkgver=1.15.2
-pkgrel=4
+pkgver=1.15.6
+pkgrel=2
 pkgdesc="Py2cairo provides Python 2 bindings to Cairo."
 arch=('x86_64')
 url="https://github.com/pygobject/pycairo/releases/download/v${pkgver}"
 license=('GPL')
 groups=('desktop')
 source=("$url/pycairo-${pkgver}.tar.gz")
-sha256sums=('a66f30c457736f682162e7b3a33bc5e8915c0f3b31ef9bdb4edf43c81935c914')
+sha256sums=('SKIP')
 depends=('rootfs')
 
 build() {

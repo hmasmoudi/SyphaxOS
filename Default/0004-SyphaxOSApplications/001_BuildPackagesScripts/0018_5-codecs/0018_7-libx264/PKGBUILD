@@ -1,0 +1,45 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=libx264
+pkgver=152.20171224
+pkgrel=4
+arch=('x86_64')
+url='https://www.videolan.org/developers/x264.html'
+license=('GPL')
+depends=('glibc')
+_commit='e9a5903edf8ca59ef20e6f4894c196f135af735e'
+source=("git+https://git.videolan.org/git/x264.git#commit=${_commit}")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd ${pkgname:3:4}
+
+  local _ver=$(grep '#define X264_BUILD' x264.h | cut -d' ' -f3)
+  local _date=$(git log -1 --format="%cd" --date=short | tr -d -)
+
+  echo ${_ver}.${_date}
+}
+
+prepare() {
+  mkdir build-{8,10}bit
+}
+
+build() {
+  for _b in 8 10; do (
+    cd build-${_b}bit
+    ../${pkgname:3:4}/configure \
+      --prefix='/usr' \
+      --enable-shared \
+      --enable-pic \
+      --enable-lto \
+      --bit-depth="${_b}"
+    make
+  ) done
+}
+
+package() {
+  pkgdesc='Library for encoding H264/AVC video streams (8bit depth)'
+
+  make -C build-8bit DESTDIR=${pkgdir} install-lib-shared
+}
+

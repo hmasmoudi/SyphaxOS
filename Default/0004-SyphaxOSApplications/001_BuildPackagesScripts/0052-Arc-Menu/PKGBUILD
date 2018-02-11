@@ -1,0 +1,28 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=Arc-Menu
+pkgver=15
+pkgrel=12
+pkgdesc="Arc Menu is a Gnome shell extension designed to replace the standard menu found in Gnome 3."
+arch=('x86_64')
+url="https://github.com/LinxGem33/Arc-Menu/archive"
+license=('GPL')
+install=${pkgname}.install
+groups=('applications')
+source=(${pkgname}-${pkgver}.tar.gz::"$url/v${pkgver}.tar.gz")
+sha256sums=('SKIP')
+depends=('rootfs')
+
+prepare () {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   cp -rf ../../SyphaxOS-menu-symbolic.svg media/arc-menu-symbolic.svg
+   cp -rf ../../org.gnome.shell.extensions.arc-menu.gschema.xml schemas/org.gnome.shell.extensions.arc-menu.gschema.xml
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   make INSTALL=system DESTDIR="${pkgdir}" install
+}
+

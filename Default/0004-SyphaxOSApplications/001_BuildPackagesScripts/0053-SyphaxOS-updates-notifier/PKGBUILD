@@ -1,0 +1,22 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=SyphaxOS-updates-notifier
+pkgver=25
+pkgrel=12
+pkgdesc="Convenient indicator for SyphaxOS Linux updates."
+arch=('x86_64')
+url="https://github.com/RaphaelRochet/arch-update"
+license=('GPL3')
+depends=('fakeroot' 'gnome-shell>=3.24')
+source=("${pkgname}-${pkgver}.tar.xz")
+sha512sums=('SKIP')
+
+package() {
+  _uuid='arch-update@RaphaelRochet'
+  _install_dir="${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}"
+
+  install -dm655 $_install_dir
+  cd "${pkgname}-${pkgver}"
+  glib-compile-schemas schemas
+  cp -r * $_install_dir
+}

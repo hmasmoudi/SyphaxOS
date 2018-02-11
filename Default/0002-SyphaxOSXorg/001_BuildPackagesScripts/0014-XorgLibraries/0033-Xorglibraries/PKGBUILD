@@ -1,9 +1,9 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=Xorglibraries
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=2
-pkgdesc="SyphaxOS 3.0.0 Xorg libraries Package."
+pkgdesc="SyphaxOS 3.1.0 Xorg libraries Package."
 arch=('x86_64')
 license=('GPL')
 groups=('graphicslayer')

@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=mozjs52
-pkgver=52.5.0
+pkgver=52.5.2
 pkgrel=2
 pkgdesc="JavaScript interpreter and libraries"
 arch=('x86_64')

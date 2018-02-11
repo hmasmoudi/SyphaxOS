@@ -1,8 +1,8 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=xorg-server
-pkgver=1.19.5
-pkgrel=4
+pkgver=1.19.6
+pkgrel=8
 pkgdesc="The Xorg Server is the graphicslayer of the X Window system. "
 arch=('x86_64')
 url="http://ftp.x.org/pub/individual/xserver"
@@ -11,11 +11,13 @@ groups=('graphicslayer')
 source=("$url/${pkgname}-${pkgver}.tar.bz2"
         "nvidia-add-modulepath-support.patch"
         "xserver-autobind-hotplug.patch"
+        "xwayland.patch"
         "xvfb-run"
         "xvfb-run.1")
-sha256sums=('18fffa8eb93d06d2800d06321fc0df4d357684d8d714315a66d8dfa7df251447'
+sha256sums=('a732502f1db000cf36a376cd0c010ffdbf32ecdd7f1fa08ba7f5bdf9601cc197'
             '914a8d775b708f836ae3f0eeca553da3872727a2e4262190f4d5c01241cb14e8'
             'fcaf536e4fc307958923b58f2baf3d3102ad694efc28506f6f95a9e64483fa57'
+            '7eefad8e624933610f32ed80a0b9e4d73f55c67a9b460bf1bdd84724f0e990d4'
             'ff0156309470fc1d378fd2e104338020a884295e285972cc88e250e031cc35b9'
             '2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776')
             
@@ -23,12 +25,14 @@ depends=('rootfs')
 
 prepare() {
    cd "$srcdir/$pkgname-$pkgver"
-   
+
    # merged upstream in trunk
    patch -Np1 -i ../nvidia-add-modulepath-support.patch
    # patch from Fedora, not yet merged
    patch -Np1 -i ../xserver-autobind-hotplug.patch
-  
+   
+   # Patch xwayland: reduce over-damage
+   patch -Np1 -i  ../xwayland.patch
    autoreconf -vfi
 
    sed -i "/seems to be moved/s/^/#/" ltmain.sh
@@ -39,13 +43,6 @@ build() {
    
    source /etc/profile.d/xorg.sh
    echo "Using XORG_PREFIX ($XORG_PREFIX) & XORG_CONFIG ($XORG_CONFIG)"
-
-   # Since pacman 5.0.2-2, hardened flags are now enabled in makepkg.conf
-   # With them, module fail to load with undefined symbol.
-   # See https://bugs.archlinux.org/task/55102 / https://bugs.archlinux.org/task/54845
-   export CFLAGS=${CFLAGS/-fno-plt}
-   export CXXFLAGS=${CXXFLAGS/-fno-plt}
-   export LDFLAGS=${LDFLAGS/,-z,now}
   
    ./configure $XORG_CONFIG \
                --libdir=/usr/lib \
@@ -61,6 +58,14 @@ build() {
                --enable-xephyr \
                --enable-glamor \
                --enable-xwayland \
+               --enable-kdrive \
+               --enable-kdrive-kbd \
+               --enable-kdrive-mouse \
+               --enable-config-udev \
+               --enable-systemd-logind \
+               --enable-suid-wrapper \
+               --enable-record \
+               --disable-install-setuid \
                --disable-xfbdev \
                --disable-xfake \
                --disable-static \

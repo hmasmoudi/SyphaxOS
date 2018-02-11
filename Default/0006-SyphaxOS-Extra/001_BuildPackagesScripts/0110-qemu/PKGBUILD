@@ -2,7 +2,7 @@
 
 pkgname=qemu
 pkgver=2.11.0
-pkgrel=2
+pkgrel=4
 pkgdesc="QEMU is a generic and open source machine emulator and virtualizer."
 arch=('x86_64')
 url="http://download.qemu-project.org"

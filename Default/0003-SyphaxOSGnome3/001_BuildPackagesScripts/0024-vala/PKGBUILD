@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=vala
-pkgver=0.38.4
+pkgver=0.38.7
 pkgrel=2
 pkgdesc="Vala is a new programming language that aims to bring modern programming language features to GNOME developers without imposing any additional runtime requirements and without using a different ABI compared to applications and libraries written in C."
 arch=('x86_64')
-url="http://ftp.gnome.org/pub/gnome/sources/vala/${pkgver:0:4}"
+url="https://ftp.gnome.org/pub/gnome/sources/vala/${pkgver:0:4}"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('2cb33a63bd17737e72f5f4f9ca4109f398500ee1f17a01ff4ef94139b07ae5e9')
+sha256sums=('09d10f5f7d0e4b3c905d9f636cb5ac55f317494e42c75e6572be4138b0603405')
 depends=('rootfs' 'graphviz')
 
 build() {

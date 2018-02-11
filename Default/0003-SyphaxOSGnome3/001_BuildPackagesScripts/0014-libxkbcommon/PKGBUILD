@@ -1,11 +1,11 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=libxkbcommon
-pkgver=0.7.2
-pkgrel=6
+pkgver=0.8.0
+pkgrel=2
 pkgdesc="libxkbcommon is a keymap compiler and support library which processes a reduced subset of keymaps as defined by the XKB specification."
 arch=('x86_64')
-url="http://xkbcommon.org/download"
+url="https://xkbcommon.org/download"
 license=('GPL')
 groups=('desktop')
 source=("$url/$pkgname-$pkgver.tar.xz")
@@ -16,8 +16,8 @@ build() {
    cd "$srcdir/$pkgname-$pkgver"
 
    ./configure --prefix=/usr    \
-               --docdir=/usr/share/doc/$pkgname-$pkgver
-
+               --with-default-layout=fr \
+               --disable-docs
    make
 }
 

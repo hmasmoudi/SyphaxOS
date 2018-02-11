@@ -2,7 +2,7 @@
 
 pkgname=libselinux
 pkgver=2.7
-pkgrel=2
+pkgrel=1
 pkgdesc="SELinux library and simple utilities"
 arch=('x86_64')
 url='http://userspace.selinuxproject.org'

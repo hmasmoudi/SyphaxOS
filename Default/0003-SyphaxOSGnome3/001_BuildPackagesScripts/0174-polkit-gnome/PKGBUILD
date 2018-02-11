@@ -2,7 +2,7 @@
 
 pkgname=polkit-gnome
 pkgver=0.105
-pkgrel=4
+pkgrel=6
 pkgdesc="The Polkit GNOME package provides an Authentication Agent for Polkit that integrates well with the GNOME Desktop environment."
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/${pkgname}/0.105"

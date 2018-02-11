@@ -1,19 +1,19 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=Python2-nautilus
-_pkgname=nautilus-python
-pkgver=1.1
-pkgrel=5
+_packagename=nautilus-python
+pkgver=1.2.2
+pkgrel=2
 pkgdesc="Python bindings for the Nautilus Extension API"
 arch=('x86_64')
 url="https://wiki.gnome.org/Projects/NautilusPython"
 license=('GPL')
-depends=('rootfs>=2.0.0' 'nautilus')
-source=(https://download.gnome.org/sources/$_pkgname/$pkgver/$_pkgname-$pkgver.tar.xz)
-sha256sums=('7825e08ada8e131f829d0e7d4144dcfac9fad7bfd7c0600bf3985349c20c496b')
+depends=('SyphaxOS-Desktop')
+source=(https://download.gnome.org/sources/$_packagename/${pkgver:0:3}/$_packagename-$pkgver.tar.xz)
+sha256sums=('90cda3fd613ed012214e47c2dc6f814db4e204a5af38e840479819ab9c59f112')
 
 build() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$srcdir/$_packagename-$pkgver"
 
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
               PYTHON=python2
@@ -21,7 +21,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd "$srcdir/$_packagename-$pkgver"
 
   make DESTDIR="$pkgdir/" install
 }

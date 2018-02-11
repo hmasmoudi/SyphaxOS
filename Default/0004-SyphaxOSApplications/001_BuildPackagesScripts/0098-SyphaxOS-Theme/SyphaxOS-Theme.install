@@ -1,0 +1,11 @@
+# arg 1:  the new package version
+post_install() {
+   glib-compile-schemas /usr/share/glib-2.0/schemas > /dev/null 2>&1
+   gtk-update-icon-cache -f /usr/share/icons/Papirus-Adapta
+}
+
+post_upgrade() {
+   glib-compile-schemas /usr/share/glib-2.0/schemas > /dev/null 2>&1
+   gtk-update-icon-cache -f /usr/share/icons/Papirus-Adapta
+}
+

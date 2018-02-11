@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=gawk
-pkgver=4.1.4
-pkgrel=6
+pkgver=4.2.0
+pkgrel=2
 pkgdesc="The Gawk package contains programs for manipulating text files."
 arch=('x86_64')
-url="http://ftp.gnu.org/gnu/gawk"
+url="https://ftp.gnu.org/gnu/gawk"
 license=('GPL')
 groups=('core')
 source=("$url/$pkgname-$pkgver.tar.xz")
-md5sums=('4e7dbc81163e60fd4f0b52496e7542c9')
+md5sums=('SKIP')
 depends=('rootfs')
 
 build() {

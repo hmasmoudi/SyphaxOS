@@ -2,10 +2,10 @@
 
 pkgname=gjs
 pkgver=1.50.2
-pkgrel=4
+pkgrel=20
 pkgdesc="Gjs is a set of Javascript bindings for GNOME."
 arch=('x86_64')
-url="http://ftp.gnome.org/pub/gnome/sources/gjs/1.50"
+url="https://ftp.gnome.org/pub/gnome/sources/gjs/${pkgver:0:4}"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
@@ -13,21 +13,21 @@ sha256sums=('2fad902cf7a7806454121c03918755c646fcfd6b08b52d488987db4e2d691ff3')
 depends=('rootfs')
 
 prepare() {
-   cd "$srcdir/$pkgname-$pkgver"
+   cd "$srcdir/$pkgname-${pkgver}"
    
    NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-   cd "$srcdir/$pkgname-$pkgver"
+   cd "$srcdir/$pkgname-${pkgver}"
    
    ./configure --prefix=/usr --disable-static
    sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-   make -j1
+   make
 }
 
 package() {
-   cd "$srcdir/$pkgname-$pkgver"
+   cd "$srcdir/$pkgname-${pkgver}"
 
    make DESTDIR="$pkgdir" install
 }

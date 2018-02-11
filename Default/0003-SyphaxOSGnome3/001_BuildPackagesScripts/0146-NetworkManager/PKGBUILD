@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=NetworkManager
-pkgver=1.10.2
+pkgver=1.10.4
 pkgrel=2
 pkgdesc="NetworkManager is a set of co-operative tools that make networking simple and straightforward."
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz"
         "${pkgname}.install")
-sha256sums=('169c34f50770e3c96b431f7d2cff654455246f2e6ccd46eccfb4454d4595625b'
+sha256sums=('7de0a7b77c2590a44195da4630b55d61be907f69ea1f3f1bd38da076ebad35fe'
             '2de1347fa92bab517619f7a9c82de8258075eb2229fa150cce3fd9dda8215af4')
 depends=('rootfs')
 

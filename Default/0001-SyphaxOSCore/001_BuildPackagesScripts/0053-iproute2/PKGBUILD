@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=iproute2
-pkgver=4.13.0
+pkgver=4.14.1
 pkgrel=2
 pkgdesc="The IPRoute2 package contains programs for basic and advanced IPV4-based networking."
 arch=('x86_64')
@@ -17,14 +17,13 @@ prepare() {
 
    sed -i /ARPD/d Makefile
    sed -i 's/arpd.8//' man/man8/Makefile
-   rm -v doc/arpd.sgml
    sed -i 's/m_ipt.o//' tc/Makefile
 }
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"
 
-   make
+   make -j1
 }
 
 package() {

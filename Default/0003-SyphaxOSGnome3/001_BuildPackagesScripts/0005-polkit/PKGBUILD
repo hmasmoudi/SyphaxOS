@@ -2,10 +2,10 @@
 
 pkgname=polkit
 pkgver=0.113
-pkgrel=10
+pkgrel=12
 pkgdesc="Polkit is a toolkit for defining and handling authorizations."
 arch=('x86_64')
-url="http://www.freedesktop.org/software/polkit/releases"
+url="https://www.freedesktop.org/software/polkit/releases"
 install=$pkgname.install
 license=('GPL')
 groups=('desktop')
@@ -27,13 +27,14 @@ build() {
    ./configure --prefix=/usr        \
                --sysconfdir=/etc    \
                --localstatedir=/var \
+               --enable-libsystemd-login=yes \
                --disable-static
    make
 }
 
 package() {
    cd "$srcdir/$pkgname-$pkgver"
-
+  
    make DESTDIR="$pkgdir" install
 
    mkdir -pv $pkgdir/etc/pam.d/   

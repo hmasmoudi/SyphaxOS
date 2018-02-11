@@ -1,8 +1,8 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=meson
-pkgver=0.42.1
-pkgrel=1
+pkgver=0.44.0
+pkgrel=2
 pkgdesc='High productivity build system'
 url='http://mesonbuild.com/'
 arch=('x86_64')
@@ -13,9 +13,13 @@ sha256sums=('SKIP')
 
 package() {
   cd ${pkgname}-${pkgver}
-  python3 setup.py install --root="${pkgdir}" -O1
-  install -Dm 644 syntax-highlighting/vim/ftdetect/meson.vim -t "${pkgdir}/usr/share/vim/vimfiles/ftdetect"
-  install -Dm 644 syntax-highlighting/vim/indent/meson.vim -t "${pkgdir}/usr/share/vim/vimfiles/indent"
-  install -Dm 644 syntax-highlighting/vim/syntax/meson.vim -t "${pkgdir}/usr/share/vim/vimfiles/syntax"
+  
+  python3 setup.py install --root="${pkgdir}" --optimize=1
+  
+  for _f in data/syntax-highlighting/vim/*/*; do
+    install -Dt "${pkgdir}/usr/share/vim/vimfiles/$(basename "$(dirname "$_f")")" -m644 "$_f"
+  done
+  install -Dt "${pkgdir}/usr/share/emacs/site-lisp" -m644 data/syntax-highlighting/emacs/*
+  install -Dt "${pkgdir}/usr/share/zsh/site-functions" -m644 data/shell-completions/zsh/*
 }
 

@@ -2,10 +2,10 @@
 
 pkgname=gnome-control-center
 pkgver=3.26.2
-pkgrel=5
+pkgrel=8
 pkgdesc="The GNOME Control Center package contains the GNOME settings manager."
 arch=('x86_64')
-url="http://ftp.gnome.org/pub/gnome/sources/gnome-control-center/3.26"
+url="https://ftp.gnome.org/pub/gnome/sources/gnome-control-center/3.26"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz"

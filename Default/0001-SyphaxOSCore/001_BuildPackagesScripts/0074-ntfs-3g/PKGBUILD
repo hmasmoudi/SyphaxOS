@@ -2,7 +2,7 @@
 
 pkgname=ntfs-3g
 pkgver=2017.3.23
-pkgrel=2
+pkgrel=4
 pkgdesc="The Ntfs-3g package contains a stable, read-write open source driver for NTFS partitions."
 arch=('x86_64')
 url="https://tuxera.com/opensource"

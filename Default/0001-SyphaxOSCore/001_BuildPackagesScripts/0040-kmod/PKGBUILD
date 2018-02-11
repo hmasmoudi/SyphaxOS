@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=kmod
-pkgver=24
-pkgrel=4
+pkgver=25
+pkgrel=2
 pkgdesc="The Kmod package contains libraries and utilities for loading kernel modules."
 arch=('x86_64')
 url="https://www.kernel.org/pub/linux/utils/kernel/kmod"
 license=('GPL')
 groups=('core')
 source=("$url/$pkgname-$pkgver.tar.xz")
-md5sums=('08297dfb6f2b3f625f928ca3278528af')
+sha256sums=('7165e6496656159dcb909a91ed708a0fe273a4b128b4b1dc997ccb5189eef1cd')
 depends=('rootfs')
 
 build() {

@@ -1,28 +1,27 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=gcab
-pkgver=0.7
-pkgrel=4
+pkgver=1.1
+pkgrel=2
 pkgdesc="The Gcab package contains a program and a library used to create Microsoft cabinet (.cab) archives."
 arch=('x86_64')
-url="http://ftp.gnome.org/pub/gnome/sources/${pkgname}/0.7"
+url="https://ftp.gnome.org/pub/gnome/sources/${pkgname}/1.1"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-md5sums=('d8c54c340e56d0b6a8fe082fd04d8090')
+sha256sums=('192b2272c2adfde43595e5c62388854bca8a404bc796585b638e81774dd62950')
 depends=('rootfs')
 
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"
    
-   ./configure --prefix=/usr --disable-static
-
-   make
+   meson build --prefix=/usr --sysconfdir=/etc --default-library=shared
+   ninja -C build
 }
 
 package() {
    cd "$srcdir/${pkgname}-${pkgver}"
    
-   make DESTDIR="${pkgdir}" install
+   DESTDIR="${pkgdir}" ninja -C build install
 }
 

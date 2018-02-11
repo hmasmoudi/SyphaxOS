@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=nasm
-pkgver=2.13.01
-pkgrel=6
+pkgver=2.13.02
+pkgrel=2
 pkgdesc="NASM (Netwide Assembler) is an 80x86 assembler designed for portability and modularity."
 arch=('x86_64')
-url="http://www.nasm.us/pub/nasm/releasebuilds/${pkgver}"
+url="http://www.nasm.us/pub/nasm/releasebuilds/${pkgver}/${pkgname}-${pkgver}.tar.xz"
 license=('GPL')
 groups=('desktop')
 source=("$url/$pkgname-$pkgver.tar.xz")
-md5sums=('SKIP')
+sha1sums=('9f2e5f95d7966fe609c7c20771d64254ee77204e')
 depends=('rootfs')
 
 build() {

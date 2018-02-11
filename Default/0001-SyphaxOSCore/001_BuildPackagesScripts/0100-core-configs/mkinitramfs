@@ -150,7 +150,7 @@ fi
 # Install libraries
 sort $unsorted | uniq | while read library ; do
   if [ "$library" == "linux-vdso.so.1" ] ||
-     [ "$library" == "libsystemd-shared-235.so" ] ||
+     [ "$library" == "libsystemd-shared-237.so" ] ||
      [ "$library" == "linux-gate.so.1" ]; then
     continue
   fi
