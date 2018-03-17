@@ -1,16 +1,16 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=gnome-software
-pkgver=3.26.6
-pkgrel=4
+pkgver=3.28.0
+pkgrel=2
 pkgdesc="GNOME Software Tools"
 install=$pkgname.install
 arch=(x86_64)
 license=(GPL2)
 url="https://wiki.gnome.org/Apps/Software/"
 depends=("rootfs")
-source=("http://ftp.acc.umu.se/pub/gnome/sources/gnome-software/${pkgver:0:4}/$pkgname-$pkgver.tar.xz")
-sha256sums=('4a21ffac1a49457919c093f970812e8095ffcbae1f9236cae7880a91d7bbe4d7')
+source=("https://ftp.gnome.org/pub/gnome/sources/gnome-software/${pkgver:0:4}/$pkgname-$pkgver.tar.xz")
+sha256sums=('934b6b0da37192b6c9fbdf6b6219ed58e890eeb0ab783e1125ac00447f7f8b7f')
 
 build() {
   cd $pkgname-$pkgver
@@ -18,10 +18,12 @@ build() {
   meson build --prefix=/usr \
               -Denable-gtk-doc=false \
               -Denable-gtkspell=false \
+              -Denable-gspell=false \
               -Denable-tests=false \
               -Denable-valgrind=false \
               -Denable-fwupd=false \
               -Denable-rpm=false \
+              -Denable-snap=false \
               -Denable-shell-extensions=true \
               -Denable-flatpak=true \
               -Denable-packagekit=true \

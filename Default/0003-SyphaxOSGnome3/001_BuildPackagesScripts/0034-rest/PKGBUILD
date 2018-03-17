@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=rest
-pkgver=0.8.0
-pkgrel=4
+pkgver=0.8.1
+pkgrel=2
 pkgdesc="The rest package contains a library that was designed to make it easier to access web services that claim to be RESTful."
 arch=('x86_64')
-url="http://ftp.gnome.org/pub/gnome/sources/rest/0.8"
+url="https://ftp.gnome.org/pub/gnome/sources/rest/0.8"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('e7b89b200c1417073aef739e8a27ff2ab578056c27796ec74f5886a5e0dff647')
+sha256sums=('0513aad38e5d3cedd4ae3c551634e3be1b9baaa79775e53b2dba9456f15b01c9')
 depends=('rootfs')
 
 build() {

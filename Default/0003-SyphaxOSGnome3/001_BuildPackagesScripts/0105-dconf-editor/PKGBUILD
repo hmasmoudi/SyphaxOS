@@ -1,28 +1,27 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=dconf-editor
-pkgver=3.26.2
+pkgver=3.28.0
 pkgrel=2
 pkgdesc="The DConf-Editor, as the name suggests, is a graphical editor for the DConf database."
 arch=('x86_64')
-url="http://ftp.gnome.org/pub/gnome/sources/dconf-editor/3.26"
+url="http://ftp.gnome.org/pub/gnome/sources/dconf-editor/3.28"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('28b453fe49c49d7dfaf07c85c01d7495913f93ab64a0b223c117eb17d1cb8ad1')
+sha256sums=('455b53d827820efd28a176ee52e13eda5cda8cdf4e31e0145cfdd69931bf0c5a')
 depends=('rootfs')
 
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"
 
-   ./configure --prefix=/usr --sysconfdir=/etc
-
-   make
+   meson build --prefix=/usr --sysconfdir=/etc
+   ninja -C build
 }
 
 package() {
    cd "$srcdir/${pkgname}-${pkgver}"
    
-   make DESTDIR="$pkgdir" install
+   DESTDIR="$pkgdir" ninja -C build install
 }
 

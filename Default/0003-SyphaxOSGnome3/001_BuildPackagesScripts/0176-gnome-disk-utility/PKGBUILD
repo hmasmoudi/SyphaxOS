@@ -1,30 +1,27 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=gnome-disk-utility
-pkgver=3.26.2
+pkgver=3.28.0
 pkgrel=2
 pkgdesc="The GNOME Disk Utility package provides applications used for dealing with storage devices."
 arch=('x86_64')
-url="http://ftp.gnome.org/pub/gnome/sources/gnome-disk-utility/3.26"
+url="http://ftp.gnome.org/pub/gnome/sources/gnome-disk-utility/3.28"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('aa2b96c2c64d8bde6cf802ff8da5796720d0becb21111342ced0637961e256f2')
+sha256sums=('cc9d5572837400c4b6b9f3e66872ef637babc6f9a602243cc0df3fef7b45a929')
 depends=('rootfs')
 
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"
   
    meson build --prefix=/usr -Denable-static=false
-   
-   cd build
-   ninja -j$(($(getconf _NPROCESSORS_ONLN)+1))
+   ninja -C build
 }
 
 package() {
    cd "$srcdir/${pkgname}-${pkgver}"
    
-   cd build
-   DESTDIR="${pkgdir}" ninja install
+   DESTDIR="${pkgdir}" ninja -C build install
 }
 

@@ -2,14 +2,14 @@
 
 pkgname=itstool
 pkgver=2.0.2
-pkgrel=4
+pkgrel=10
 pkgdesc="Itstool extracts messages from XML files and outputs PO template files, then merges translations from MO files to create translated XML files."
 arch=('x86_64')
 url="http://files.itstool.org/itstool"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
-md5sums=('d472d877a7bc49899a73d442085b2f93')
+sha256sums=('SKIP')
 depends=('rootfs')
 
 build() {

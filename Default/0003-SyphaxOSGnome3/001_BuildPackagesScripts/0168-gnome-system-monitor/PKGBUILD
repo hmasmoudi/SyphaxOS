@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=gnome-system-monitor
-pkgver=3.26.0
-pkgrel=6
+pkgver=3.28.0
+pkgrel=2
 pkgdesc="The GNOME System Monitor package contains GNOME's replacement for gtop."
 arch=('x86_64')
-url="http://ftp.gnome.org/pub/gnome/sources/gnome-system-monitor/3.26"
+url="http://ftp.gnome.org/pub/gnome/sources/gnome-system-monitor/3.28"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('f848a8c2ca5e164cf09d3a205dd49e4e4bf4b60d43b0969c10443eb519d0e6b3')
+sha256sums=('76e7dd342cd442df19a99be2a7a4dee85d902cbd36e673bf472d09056ee96ff3')
 depends=('rootfs')
 
 build() {
@@ -17,9 +17,8 @@ build() {
       
    ./configure --prefix=/usr             \
                --enable-systemd          \
-               --disable-static
-               
-   #--enable-broken-wnck
+               --disable-static          \
+               --enable-broken-wnck
    
    make
 }

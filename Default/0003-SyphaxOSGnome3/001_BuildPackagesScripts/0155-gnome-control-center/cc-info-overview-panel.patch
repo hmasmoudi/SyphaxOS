@@ -1,12 +1,12 @@
 diff --git a/panels/info/cc-info-overview-panel.c b/panels/info/cc-info-overview-panel.c 
 --- a/panels/info/cc-info-overview-panel.c 	2017-08-28 17:58:05.000000000 +0100
 +++ b/panels/info/cc-info-overview-panel.c 	2018-01-28 18:48:58.137518000 +0100
-@@ -804,7 +804,7 @@
-                             &priv->gnome_date);
+@@ -772,7 +772,7 @@
    if (res)
      {
+       g_autofree gchar *text = NULL;
 -      text = g_strdup_printf (_("Version %s"), priv->gnome_version);
-+      text = g_strdup_printf (_("SyphaxOS LTS %s"), "3.1.0");
++      text = g_strdup_printf (_("Powered by Gnome %s"), priv->gnome_version);
        gtk_label_set_text (GTK_LABEL (priv->version_label), text);
-       g_free (text);
      }
+

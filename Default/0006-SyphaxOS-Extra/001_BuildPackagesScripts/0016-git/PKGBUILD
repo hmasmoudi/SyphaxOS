@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=git
-pkgver=2.14.2
+pkgver=2.16.2
 pkgrel=2
 pkgdesc="The Git feature that really makes it stand apart from nearly every other SCM out there is its branching model."
 arch=('x86_64')

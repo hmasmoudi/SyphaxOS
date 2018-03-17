@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=gjs
-pkgver=1.50.2
-pkgrel=20
+pkgver=1.52.0
+pkgrel=2
 pkgdesc="Gjs is a set of Javascript bindings for GNOME."
 arch=('x86_64')
 url="https://ftp.gnome.org/pub/gnome/sources/gjs/${pkgver:0:4}"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('2fad902cf7a7806454121c03918755c646fcfd6b08b52d488987db4e2d691ff3')
+sha256sums=('5524a045e5e1d34a2a510133c662f2685e15ce26ae2ed699fb5d131b6b04a4ca')
 depends=('rootfs')
 
 prepare() {

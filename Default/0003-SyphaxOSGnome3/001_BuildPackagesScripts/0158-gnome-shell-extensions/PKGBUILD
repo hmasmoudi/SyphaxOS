@@ -1,28 +1,27 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=gnome-shell-extensions
-pkgver=3.26.2
-pkgrel=4
+pkgver=3.28.0
+pkgrel=2
 pkgdesc="The GNOME Shell Extensions package contains a collection of extensions providing additional and optional functionality to the GNOME Shell."
 arch=('x86_64')
-url="https://ftp.gnome.org/pub/gnome/sources/gnome-shell-extensions/3.26"
+url="https://ftp.gnome.org/pub/gnome/sources/gnome-shell-extensions/3.28"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('aefda4d810ef5ceb9402e2d620f4bdc1dc40c9cc4f6a51749840f7dd08628ab6')
+sha256sums=('215dceb77ba355bdcc9e71dc72aa0debef3c9d7858e70d5094800182492eb503')
 depends=('rootfs')
 
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"
    
-   ./configure --prefix=/usr
-
-   make
+   meson build --prefix=/usr
+   ninja -C build
 }
 
 package() {
    cd "$srcdir/${pkgname}-${pkgver}"
-   
-   make DESTDIR="${pkgdir}" install
+  
+   DESTDIR="${pkgdir}" ninja -C build install
 }
 

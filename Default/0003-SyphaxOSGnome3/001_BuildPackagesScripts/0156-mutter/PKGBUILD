@@ -1,20 +1,20 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=mutter
-pkgver=3.26.2
+pkgver=3.28.0
 pkgrel=2
 pkgdesc="Mutter is the window manager for GNOME. It is not invoked directly, but from GNOME Session (on a machine with a hardware accelerated video driver)."
 arch=('x86_64')
-url="http://ftp.gnome.org/pub/gnome/sources/mutter/3.26"
+url="http://ftp.gnome.org/pub/gnome/sources/mutter/3.28"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('83309feb05a4635c47713665c0592af8ab6d7f17a36e4bd626d67609b6422fab')
+sha256sums=('58fffc8025f21fb6da27bd2189b6db4d20c54f950b1a46aa7f7cbf0a82d386b0')
 depends=('rootfs')
 
 prepare() {
    cd "$srcdir/${pkgname}-${pkgver}"
-       
+      
    sed -i "/seems to be moved/s/^/#/" build-aux/ltmain.sh
    sed -i "/seems to be moved/s/^/#/" clutter/build/ltmain.sh
    sed -i "/seems to be moved/s/^/#/" cogl/build/ltmain.sh

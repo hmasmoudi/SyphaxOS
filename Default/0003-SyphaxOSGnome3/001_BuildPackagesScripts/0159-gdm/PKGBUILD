@@ -1,11 +1,11 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=gdm
-pkgver=3.26.2.1
-pkgrel=4
+pkgver=3.28.0
+pkgrel=2
 pkgdesc="The GNOME Shell Extensions package contains a collection of extensions providing additional and optional functionality to the GNOME Shell."
 arch=('x86_64')
-url="http://ftp.gnome.org/pub/gnome/sources/gdm/3.26"
+url="http://ftp.gnome.org/pub/gnome/sources/gdm/3.28"
 install=${pkgname}.install
 license=('GPL')
 groups=('desktop')
@@ -16,7 +16,7 @@ source=("$url/${pkgname}-${pkgver}.tar.xz"
         "gdm-launch-environment"
         "gdm-password"
         )
-sha256sums=('17ddcb00602c2b426de58bb4b0d99af9de27450a8557dcc5ec850c080d55ad57'
+sha256sums=('SKIP'
             '72b4e1a2d2da221414ca19586a3079a5a27f083573daadca4bd5ba69e5a2a0aa'
             '59b0e9ee9a2dab4a6ec26d8888b5de686dfd1bc71dacdee4a067305a92ebb333'
             '0f70b0c3c37888b723f4ea5dadbd3f072ae69be4832a00b6befa8b3ddaf95d31'

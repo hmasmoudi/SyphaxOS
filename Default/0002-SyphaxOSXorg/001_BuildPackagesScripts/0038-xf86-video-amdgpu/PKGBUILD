@@ -1,8 +1,8 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=xf86-video-amdgpu
-pkgver=1.4.0
-pkgrel=4
+pkgver=18.0.0
+pkgrel=2
 pkgdesc="The Xorg Nouveau Driver package contains the X.Org Video Driver for AMD GPU Cards"
 arch=('x86_64')
 url="https://xorg.freedesktop.org/archive/individual/driver"

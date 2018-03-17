@@ -1,8 +1,8 @@
-NAME="SyphaxOS"
-VERSION="3.1.0"
-ID=syphaxos
-PRETTY_NAME="SyphaxOS LTS"
-VERSION_ID="3.1.0"
+NAME="SyphaxOS LTS"
+VERSION="2018.03"
+ID=SyphaxOS
+VERSION_ID="2018.03"
+PRETTY_NAME="SyphaxOS LTS 2018.03"
 HOME_URL="https://syphaxos.000webhostapp.com/"
 SUPPORT_URL="https://www.facebook.com/Syphaxos"
 BUG_REPORT_URL="https://github.com/hmasmoudi/SyphaxOS"

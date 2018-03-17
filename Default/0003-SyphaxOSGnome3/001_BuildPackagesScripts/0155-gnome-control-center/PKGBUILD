@@ -1,25 +1,23 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=gnome-control-center
-pkgver=3.26.2
-pkgrel=8
+pkgver=3.28.0
+pkgrel=2
 pkgdesc="The GNOME Control Center package contains the GNOME settings manager."
 arch=('x86_64')
-url="https://ftp.gnome.org/pub/gnome/sources/gnome-control-center/3.26"
+url="https://ftp.gnome.org/pub/gnome/sources/gnome-control-center/3.28"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz"
         "cc-info-overview-panel.patch"
         "SyphaxOSLogoWhite.svg")
-sha256sums=('07aed27d6317f2cad137daa6d94a37ad02c32b958dcd30c8f07d0319abfb04c5'
+sha256sums=('SKIP'
             'SKIP'
             '47990b67706071d17d9f94cf95cd8a02328ee8eb7bdbecd87b7981711d583cb2')
 depends=('rootfs')
 
 prepare() {
    cd "$srcdir/${pkgname}-${pkgver}"
-   
-   sed -i "/seems to be moved/s/^/#/" ltmain.sh
    
    cp -f ../SyphaxOSLogoWhite.svg ./panels/info/GnomeLogoVerticalMedium.svg
 
@@ -28,16 +26,15 @@ prepare() {
 
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"
-   
-   ./configure --prefix=/usr --disable-static
-   
-   make
+
+   meson build --prefix=/usr
+   ninja -C build
 }
 
 package() {
    cd "$srcdir/${pkgname}-${pkgver}"
-   
-   make DESTDIR="${pkgdir}" install
+
+   DESTDIR="${pkgdir}" ninja -C build install
    
    sed -i "/OnlyShowIn/d" "$pkgdir/usr/share/applications/gnome-control-center.desktop"
    

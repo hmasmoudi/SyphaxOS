@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=gcr
-pkgver=3.20.0
-pkgrel=4
+pkgver=3.28.0
+pkgrel=2
 pkgdesc="The Gcr package contains libraries used for displaying certificates and accessing key stores. It also provides the viewer for crypto files on the GNOME Desktop."
 arch=('x86_64')
-url="https://ftp.gnome.org/pub/gnome/sources/gcr/3.20"
+url="https://ftp.gnome.org/pub/gnome/sources/gcr/3.28"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-md5sums=('4314bf89eac293dd0a9d806593ff1b35')
+sha256sums=('15e175d1da7ec486d59749ba34906241c442898118ce224a7b70bf2e849faf0b')
 depends=('rootfs')
 
 prepare() {

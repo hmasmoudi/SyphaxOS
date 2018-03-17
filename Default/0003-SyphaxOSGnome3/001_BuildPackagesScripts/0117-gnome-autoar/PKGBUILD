@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=gnome-autoar
-pkgver=0.2.2
-pkgrel=8
+pkgver=0.2.3
+pkgrel=2
 pkgdesc="The Nautilus package contains the GNOME file manager."
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/gnome-autoar/0.2"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('e1fe2c06eed30305c38bf0939c72b0e51b4716658e2663a0cf4a4bf57874ca62')
+sha256sums=('5de9db0db028cd6cab7c2fec46ba90965474ecf9cd68cfd681a6488cf1fb240a')
 depends=('rootfs')
 
 prepare() {

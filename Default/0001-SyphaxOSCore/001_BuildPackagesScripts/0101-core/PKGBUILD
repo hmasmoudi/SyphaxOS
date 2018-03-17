@@ -1,8 +1,8 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=core
-pkgver=3.1.0
-pkgrel=6
+pkgver=2018.03.20
+pkgrel=2
 pkgdesc="SyphaxOS 3.1.0 Core Package."
 arch=('x86_64')
 license=('GPL')
@@ -92,6 +92,7 @@ depends=(
          'sudo'
          'nano'
          'core-configs'
+         'core-version'
          )
 
 package() {

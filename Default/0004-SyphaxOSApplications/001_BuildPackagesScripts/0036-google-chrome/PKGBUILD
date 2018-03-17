@@ -1,8 +1,8 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=google-chrome
-pkgver=64.0.3282.140
-pkgrel=1
+pkgver=65.0.3325.162
+pkgrel=2
 pkgdesc="An attempt at creating a safer, faster, and more stable browser (Stable Channel)"
 arch=('x86_64')
 url="https://www.google.com/chrome"

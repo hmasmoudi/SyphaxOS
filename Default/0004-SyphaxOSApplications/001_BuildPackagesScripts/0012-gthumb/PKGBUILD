@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=gthumb
-pkgver=3.6.0
+pkgver=3.6.1
 pkgrel=2
 pkgdesc="Image browser and viewer for the GNOME Desktop"
 url="https://ftp.gnome.org/pub/gnome/sources/gthumb/3.6"
@@ -9,7 +9,7 @@ arch=(x86_64)
 license=(GPL)
 depends=('rootfs')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('SKIP')
+sha256sums=('9cabf9e17f8feab1012836f6371e32a555f030bd3c912a565dc49795f83342ee')
 
 prepare() {
    cd "$srcdir/${pkgname}-${pkgver}"

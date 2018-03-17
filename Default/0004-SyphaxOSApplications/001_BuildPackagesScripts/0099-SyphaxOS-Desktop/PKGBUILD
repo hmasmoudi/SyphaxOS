@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=SyphaxOS-Desktop
-pkgver=3.1.0
-pkgrel=8
+pkgver=2018.03.20
+pkgrel=6
 pkgdesc="SyphaxOS 3.1.0 Default Desktop Package based on Gnome Desktop."
 arch=('x86_64')
 install=${pkgname}.install
 license=('GPL')
 groups=('desktop')
 source=("SyphaxOS-Desktop-settings.gschema.override")
-sha256sums=('20301bb865c16db91e9c14e2a24c44e72b6164fda2be5be16cc7121219822fac')
+sha256sums=('3ed0060c4635bdb8ad08bb2abd116fc1aaff1f699afb12609cfb0206ae23cf6e')
 depends=(
          'gnomedesktop'
          'pacman'
@@ -34,7 +34,7 @@ depends=(
          'flatpak'
          'brasero'
          'dash-to-panel'
-         'TopIcons-plus'
+         'appindicator'
          'Arc-Menu'
          'SyphaxOS-updates-notifier'
          'packagekit'

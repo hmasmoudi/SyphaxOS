@@ -1,8 +1,8 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=Arc-Menu
-pkgver=15
-pkgrel=12
+pkgver=16
+pkgrel=2
 pkgdesc="Arc Menu is a Gnome shell extension designed to replace the standard menu found in Gnome 3."
 arch=('x86_64')
 url="https://github.com/LinxGem33/Arc-Menu/archive"

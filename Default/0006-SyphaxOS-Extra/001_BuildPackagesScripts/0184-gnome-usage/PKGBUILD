@@ -1,0 +1,27 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=gnome-usage
+pkgver=3.28.0
+pkgrel=2
+pkgdesc="The GNOME Usage package contains GNOME's replacement for System Monitor."
+arch=('x86_64')
+url="http://ftp.gnome.org/pub/gnome/sources/gnome-usage/3.28"
+license=('GPL')
+groups=('desktop')
+source=("$url/${pkgname}-${pkgver}.tar.xz")
+sha256sums=('d812655c23a59990045f8f282bcd2b138d594b6cd670aaec01e3cf6b235f6004')
+depends=('rootfs')
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+      
+   meson build --prefix=/usr
+   ninja -C build
+}
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   DESTDIR="${pkgdir}" ninja -C build install
+}
+

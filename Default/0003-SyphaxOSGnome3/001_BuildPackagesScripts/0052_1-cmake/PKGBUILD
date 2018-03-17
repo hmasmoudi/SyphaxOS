@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=cmake
-pkgver=3.9.2
-pkgrel=4
+pkgver=3.10.3
+pkgrel=2
 pkgdesc="The CMake package contains a modern toolset used for generating Makefiles."
 arch=('x86_64')
-url="http://www.cmake.org/files/v3.9"
+url="http://www.cmake.org/files/v3.10"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('954a5801a456ee48e76f01107c9a4961677dd0f3e115275bbd18410dc22ba3c1')
+sha256sums=('0c3a1dcf0be03e40cf4f341dda79c96ffb6c35ae35f2f911845b72dab3559cf8')
 depends=('rootfs')
 
 build() {

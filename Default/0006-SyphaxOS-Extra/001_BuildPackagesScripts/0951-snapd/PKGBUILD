@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=snapd
-pkgver=2.27.4
+pkgver=2.29.4
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/snapcore/snapd"

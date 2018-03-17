@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=gedit
-pkgver=3.22.1
-pkgrel=6
+pkgver=3.28.0
+pkgrel=2
 pkgdesc="The Gedit package contains a lightweight UTF-8 text editor for the GNOME Desktop."
 arch=('x86_64')
-url="http://ftp.gnome.org/pub/gnome/sources/gedit/3.22"
+url="http://ftp.gnome.org/pub/gnome/sources/gedit/3.28"
 license=('GPL')
 groups=('applications')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('aa7bc3618fffa92fdb7daf2f57152e1eb7962e68561a9c92813d7bbb7fc9492b')
+sha256sums=('9bf90a2d4fd7be802ad98d226d254ad42057b7c5cc03d1cd39b813123fa8ca5f')
 depends=('rootfs' 'gtksourceview')
 
 build() {

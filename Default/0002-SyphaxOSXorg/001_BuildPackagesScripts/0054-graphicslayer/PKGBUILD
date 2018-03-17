@@ -1,8 +1,8 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=graphicslayer
-pkgver=3.1.0
-pkgrel=4
+pkgver=2018.03.02
+pkgrel=2
 pkgdesc="SyphaxOS Intel, ATI and Nouveau Graphics Layer Packages."
 arch=('x86_64')
 license=('GPL')
@@ -16,7 +16,7 @@ depends=(
          'Python2'
          'Python3'
          'util-macros'
-         'Xorgprotocolheaders'
+         'xorgproto'
          'libXau'
          'libXdmcp'
          'xcb-proto'

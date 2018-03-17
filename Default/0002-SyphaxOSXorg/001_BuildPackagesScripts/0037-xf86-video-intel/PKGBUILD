@@ -1,9 +1,9 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=xf86-video-intel
-pkgver=20180124
-pkgrel=4
-_commit=26f5406841f3924f23f29df61b5ea53d2816b665 # master
+pkgver=20180302
+pkgrel=2
+_commit=aa36399cca1250d878a4608528a535faeb0e931a # master
 pkgdesc="The Xorg Intel Driver package contains the X.Org Video Driver for Intel integrated video cards"
 arch=('x86_64')
 url="https://01.org/linuxgraphics"
@@ -23,10 +23,6 @@ build() {
    
    source /etc/profile.d/xorg.sh
    echo "Using XORG_PREFIX ($XORG_PREFIX) & XORG_CONFIG ($XORG_CONFIG)"
-
-   export CFLAGS=${CFLAGS/-fno-plt}
-   export CXXFLAGS=${CXXFLAGS/-fno-plt}
-   export LDFLAGS=${LDFLAGS/,-z,now}
 
    ./configure $XORG_CONFIG --with-default-dri=3 --enable-glamor
    

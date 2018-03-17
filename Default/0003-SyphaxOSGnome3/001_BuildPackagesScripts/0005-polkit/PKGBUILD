@@ -1,39 +1,48 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=polkit
-pkgver=0.113
-pkgrel=12
+pkgver=0.113+34+g29ba7af
+pkgrel=2
 pkgdesc="Polkit is a toolkit for defining and handling authorizations."
 arch=('x86_64')
 url="https://www.freedesktop.org/software/polkit/releases"
 install=$pkgname.install
 license=('GPL')
 groups=('desktop')
-source=("$url/$pkgname-$pkgver.tar.gz")
-md5sums=('4b77776c9e4f897dcfe03b2c34198edf')
+_commit=29ba7afba1b79a325183a71966f35926dfdf506e  # master
+source=("git+https://anongit.freedesktop.org/git/polkit#commit=$_commit")
+sha256sums=('SKIP')
 depends=('rootfs')
 
+pkgver() {
+  cd $pkgname
+  git describe --tags | sed 's/-/+/g'
+}
+
 prepare() {
-   cd "$srcdir/$pkgname-$pkgver"
+   cd "$srcdir/$pkgname"
    
+   NOCONFIGURE=1 ./autogen.sh
+
    sed "s:/sys/fs/cgroup/systemd/:/bin:g" -i configure
    
    sed -i "/seems to be moved/s/^/#/" ltmain.sh
 }
 
 build() {
-   cd "$srcdir/$pkgname-$pkgver"
+   cd "$srcdir/$pkgname"
 
    ./configure --prefix=/usr        \
                --sysconfdir=/etc    \
                --localstatedir=/var \
                --enable-libsystemd-login=yes \
                --disable-static
+   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
    make
 }
 
 package() {
-   cd "$srcdir/$pkgname-$pkgver"
+   cd "$srcdir/$pkgname"
   
    make DESTDIR="$pkgdir" install
 

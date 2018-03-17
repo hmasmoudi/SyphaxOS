@@ -1,8 +1,8 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=pcre2
-pkgver=10.30
-pkgrel=6
+pkgver=10.31
+pkgrel=2
 pkgdesc="The PCRE2 package contains a new generation of the Perl Compatible Regular Expression libraries."
 arch=('x86_64')
 url="http://ftp.csx.cam.ac.uk/pub/software/programming/pcre"

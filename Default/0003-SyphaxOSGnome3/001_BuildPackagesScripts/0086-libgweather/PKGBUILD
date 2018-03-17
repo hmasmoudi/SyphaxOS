@@ -1,28 +1,27 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=libgweather
-pkgver=3.26.0
-pkgrel=4
+pkgver=3.28.0
+pkgrel=2
 pkgdesc="The libgweather package is a library used to access weather information from online services for numerous locations."
 arch=('x86_64')
-url="http://ftp.gnome.org/pub/gnome/sources/libgweather/3.26"
+url="https://ftp.gnome.org/pub/gnome/sources/libgweather/3.28"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('5b84badc0b3ecffff5db1bb9a7cc4dd4e400a8eb3f1282348f8ee6ba33626b6e')
+sha256sums=('594be78dcc0b4c48bf79cd42ea6768160b661bc2a74d9d35ecc742575416e18f')
 depends=('rootfs')
 
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"
 
-   ./configure --prefix=/usr
-   
-   make
+   meson build --prefix=/usr
+   ninja -C build
 }
 
 package() {
    cd "$srcdir/${pkgname}-${pkgver}"
-   
-   make DESTDIR="$pkgdir" install
+
+   DESTDIR="${pkgdir}" ninja -C build install
 }
 

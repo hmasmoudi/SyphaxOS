@@ -2,7 +2,7 @@
 
 pkgname=SyphaxOS-updates-notifier
 pkgver=25
-pkgrel=12
+pkgrel=14
 pkgdesc="Convenient indicator for SyphaxOS Linux updates."
 arch=('x86_64')
 url="https://github.com/RaphaelRochet/arch-update"

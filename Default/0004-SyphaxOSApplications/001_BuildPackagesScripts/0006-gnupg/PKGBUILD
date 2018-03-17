@@ -1,11 +1,11 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=gnupg
-pkgver=2.1.23
-pkgrel=4
+pkgver=2.2.5
+pkgrel=6
 pkgdesc="The GnuPG package is GNU's tool for secure communication and data storage."
 arch=('x86_64')
-url="ftp://ftp.gnupg.org/gcrypt/gnupg"
+url="https://www.gnupg.org/ftp/gcrypt/gnupg"
 license=('GPL')
 install=${pkgname}.install
 groups=('applications')

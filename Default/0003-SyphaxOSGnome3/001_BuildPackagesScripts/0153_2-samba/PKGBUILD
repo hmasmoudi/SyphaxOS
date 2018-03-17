@@ -1,8 +1,8 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=samba
-pkgver=4.6.7
-pkgrel=4
+pkgver=4.6.14
+pkgrel=1
 pkgdesc="The Samba package provides file and print services to SMB/CIFS clients and Windows networking to Linux clients."
 arch=('x86_64')
 url="https://download.samba.org/pub/samba/stable"

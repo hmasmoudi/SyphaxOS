@@ -62,9 +62,5 @@ package() {
    
    cp ../../mkinitramfs $pkgdir/sbin/
    cp ../../init.in $pkgdir/usr/share/mkinitramfs/
-   
-   cp ../../lsb-release $pkgdir/etc/
-   cp ../../os-release $pkgdir/etc/
-   cp ../../issue $pkgdir/etc/
 }
 

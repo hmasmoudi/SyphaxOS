@@ -1,27 +1,29 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+#pid1: do not initialize join_controllers by default
 
 pkgname=systemd
 pkgver=237
-pkgrel=2
+pkgrel=20180222
+_commit='7909254c7a8ee09d91b8b21fd779320b3e2fe716'
 pkgdesc="The systemd package contains programs for controlling the startup, running, and shutdown of the system."
 arch=('x86_64')
 install=${pkgname}.install
-url="https://github.com/systemd/systemd/archive"
+url="https://github.com/systemd/systemd-stable.git"
 license=('GPL')
 groups=('core')
-source=(${pkgname}-${pkgver}.tar.gz::"$url/v${pkgver}.tar.gz")
+source=("git+https://github.com/systemd/systemd-stable.git#commit=${_commit}")
 md5sums=('SKIP')
 depends=('rootfs')
 
 prepare() {
-   cd "$srcdir/${pkgname}-${pkgver}"
+   cd "$srcdir/${pkgname}-stable"
 
    ## Update Log to Remove Starting Service log trace ==> Keep only started on not Started logs.
    sed -i "s/unit_status_emit_starting_stopping_reloading(u, t)/{}/g" ./src/core/job.c
 }
 
 build() {
-   cd "$srcdir/${pkgname}-${pkgver}"
+   cd "$srcdir/${pkgname}-stable"
 
    cc_cv_CFLAGS__flto=no               \
    XSLTPROC="/usr/bin/xsltproc"        \
@@ -29,6 +31,8 @@ build() {
                --sysconfdir=/etc       \
                --localstatedir=/var    \
                -Dfallback-hostname='SyphaxOS' \
+               -Dblkid=true            \
+               -Dbuildtype=release     \
                -Drootprefix=           \
                -Drootlibdir=/lib       \
                -Dsplit-usr=true        \
@@ -37,13 +41,15 @@ build() {
                -Dsysusers=false        \
                -Daudit=false           \
                -Ddefault-dnssec=no     \
+               -Dinstall-tests=false   \
+               -Db_lto=false           \
                -Dtests=unsafe
 
    ninja  -C build -j$(($(getconf _NPROCESSORS_ONLN)+1))
 }
 
 package() {
-   cd "$srcdir/${pkgname}-${pkgver}"
+   cd "$srcdir/${pkgname}-stable"
 
    DESTDIR="${pkgdir}" ninja -C build install
    

@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=zenity
-pkgver=3.26.0
+pkgver=3.28.0
 pkgrel=2
 pkgdesc="Zenity is a rewrite of gdialog, the GNOME port of dialog which allows you to display GTK+ dialog boxes from the command line and shell scripts."
 arch=('x86_64')
-url="http://ftp.gnome.org/pub/gnome/sources/zenity/3.26"
+url="http://ftp.gnome.org/pub/gnome/sources/zenity/3.28"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('6a7f34626dd62b751fe22bcdb32f3558f8a8fdddcc9406893dd264f0ac18e830')
+sha256sums=('5e588f12b987db30139b0283d39d19b0fd47cab87840cc112dfe61e592826df8')
 depends=('rootfs')
 
 build() {

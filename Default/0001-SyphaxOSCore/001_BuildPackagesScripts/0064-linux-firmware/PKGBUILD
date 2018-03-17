@@ -1,8 +1,8 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=linux-firmware
-_commit=2aa2ac2e9c09f09b0cfb6fc320c1e2d281530fa0 # master
-pkgver=20180201.2aa2ac2
+_commit=	7344ec9e1df9e27d105ed48d2db99e22370236de # master
+pkgver=20180222.7344ec9
 pkgrel=1
 pkgdesc="Firmware files for Linux"
 arch=('x86_64')

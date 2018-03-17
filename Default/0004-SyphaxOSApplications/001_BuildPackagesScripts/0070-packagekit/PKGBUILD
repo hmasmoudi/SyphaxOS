@@ -1,8 +1,8 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=packagekit
-pkgver=1.1.8
-pkgrel=6
+pkgver=1.1.9
+pkgrel=2
 pkgdesc='A system designed to make installation and updates of packages easier'
 arch=('x86_64')
 url='http://www.packagekit.org/'
@@ -10,12 +10,12 @@ license=('GPL')
 depends=('dbus-glib' 'pacman>=5.0.0' 'polkit' 'shared-mime-info' 'sqlite')
 
 backup=('var/lib/PackageKit/transactions.db'
-	'etc/PackageKit/alpm.d/pacman.conf'
-	'etc/PackageKit/alpm.d/repos.list')
+	     'etc/PackageKit/alpm.d/pacman.conf'
+	     'etc/PackageKit/alpm.d/repos.list')
 
-source=("https://kalev.fedorapeople.org/PackageKit/releases/PackageKit-${pkgver}.tar.xz")
+source=("https://www.freedesktop.org/software/PackageKit/releases/PackageKit-${pkgver}.tar.xz")
 
-sha256sums=('757f902f2fb295790b64c345a561124300d54945cd33c690c2a176cc8dba885d')
+sha256sums=('a49ffa7ee4f023589a3520afd498a951eb10e2e0b81972c9f767d27a6addbf47')
 
 build() {
 	cd "${srcdir}/PackageKit-${pkgver}"

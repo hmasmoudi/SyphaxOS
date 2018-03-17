@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=xfsprogs
-pkgver=4.12.0
+pkgver=4.15.0
 pkgrel=2
 pkgdesc="XFS filesystem utilities"
 arch=('x86_64')

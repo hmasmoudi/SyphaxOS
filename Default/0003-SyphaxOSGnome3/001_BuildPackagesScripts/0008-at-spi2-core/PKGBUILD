@@ -1,28 +1,27 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=at-spi2-core
-pkgver=2.26.2
+pkgver=2.28.0
 pkgrel=2
 pkgdesc="The At-Spi2 Core package is a part of the GNOME Accessibility Project."
 arch=('x86_64')
-url="https://ftp.gnome.org/pub/gnome/sources/at-spi2-core/2.26"
+url="https://ftp.gnome.org/pub/gnome/sources/at-spi2-core/2.28"
 license=('GPL')
 groups=('desktop')
 source=("$url/$pkgname-$pkgver.tar.xz")
-sha256sums=('c80e0cdf5e3d713400315b63c7deffa561032a6c37289211d8afcfaa267c2615')
+sha256sums=('42a2487ab11ce43c288e73b2668ef8b1ab40a0e2b4f94e80fca04ad27b6f1c87')
 depends=('rootfs')
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"
-
-   ./configure --prefix=/usr --sysconfdir=/etc
-
-   make
+   
+     meson build --prefix=/usr --sysconfdir=/etc
+     ninja -C build
 }
 
 package() {
    cd "$srcdir/$pkgname-$pkgver"
-
-   make DESTDIR="$pkgdir" install
+  
+   DESTDIR="${pkgdir}" ninja -C build install
 }
 

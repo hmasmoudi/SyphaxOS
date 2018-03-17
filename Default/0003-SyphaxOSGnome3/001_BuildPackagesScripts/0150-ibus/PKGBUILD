@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=ibus
-pkgver=1.5.17
+pkgver=1.5.18
 pkgrel=2
 pkgdesc="IBus is an Intelligent Input Bus. It is a new input framework for Linux OS."
 arch=('x86_64')
@@ -17,7 +17,8 @@ build() {
    
    ./configure --prefix=/usr             \
                --sysconfdir=/etc         \
-               --disable-emoji-dict 
+               --disable-emoji-dict      \
+               --disable-unicode-dict
    make
 }
 

@@ -1,0 +1,26 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=libdazzle
+pkgver=3.28.0
+pkgrel=2
+pkgdesc="A library to delight your users with fancy features"
+url="https://ftp.gnome.org/pub/gnome/sources/libdazzle/3.28"
+arch=(x86_64)
+license=(LGPL)
+depends=(rootfs)
+source=("$url/${pkgname}-${pkgver}.tar.xz")
+sha256sums=('57aa6fe2ea534d9faa17fa105109ed5c38886d3812fe671d3ecc56fb4e3c037f')
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+
+   meson build --prefix=/usr
+   ninja -C build
+}
+
+
+package() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+
+   DESTDIR="${pkgdir}" ninja -C build install
+}

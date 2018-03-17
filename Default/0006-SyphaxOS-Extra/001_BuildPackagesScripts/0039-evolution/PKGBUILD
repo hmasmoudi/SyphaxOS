@@ -1,16 +1,16 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=evolution
-pkgver=3.26.5
+pkgver=3.28.0
 pkgrel=2
 pkgdesc="Evolution. Evolution is a personal information management application that provides integrated mail, calendaring and address book functionality."
 arch=('x86_64')
-url="https://ftp.gnome.org/pub/gnome/sources/evolution/3.26"
+url="https://ftp.gnome.org/pub/gnome/sources/evolution/3.28"
 license=('GPL')
 install=${pkgname}.install
 groups=('applications')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('4fd862d8a8f5bc55e6e45bba89d059260687dcad80e33560deea1f408643e4c8')
+sha256sums=('ce0a7a4da646bdf7692dcece1b0facb1473368ae53a1d3ee45cc35498ce1de2c')
 depends=('rootfs'
          'libpst'
          'hyphen'
@@ -23,7 +23,7 @@ depends=('rootfs'
 
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"
-   
+      
    cmake -DCMAKE_INSTALL_PREFIX=/usr -DLIBEXEC_INSTALL_DIR=/usr/lib -DSYSCONF_INSTALL_DIR=/etc -DENABLE_SMIME=ON -DENABLE_GTK_SPELL=ON -DENABLE_PST_IMPORT=ON -DWITH_OPENLDAP=OFF -DENABLE_GTK_DOC=OFF -DENABLE_LIBCRYPTUI=OFF -DENABLE_TEXT_HIGHLIGHT=OFF -DENABLE_YTNEF=OFF .
 
    make

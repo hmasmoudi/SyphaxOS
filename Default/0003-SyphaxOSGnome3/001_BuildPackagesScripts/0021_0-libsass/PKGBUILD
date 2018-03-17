@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=libsass
-pkgver=3.4.9
+pkgver=3.5.1
 pkgrel=2
 pkgdesc="C implementation of Sass CSS preprocessor (library)."
 arch=("i686" "x86_64")

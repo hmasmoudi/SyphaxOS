@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=mesa
-pkgver=17.3.3
-pkgrel=2
+pkgver=18.0.0
+pkgrel=8
 pkgdesc="Mesa is an OpenGL compatible 3D graphics library."
 arch=('x86_64')
 url="https://mesa.freedesktop.org/archive"
 license=('GPL')
 groups=('graphicslayer')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('41bac5de0ef6adc1f41a1ec0f80c19e361298ce02fa81b5f9ba4fdca33a9379b')
+sha256sums=('SKIP')
 makedepends=('python2-mako')
 depends=('rootfs')
 
@@ -29,11 +29,12 @@ build() {
 
    ./configure  --prefix=$XORG_PREFIX  \
                 --sysconfdir=/etc \
-                --with-gallium-drivers=r600,nouveau,svga,virgl \
+                --with-gallium-drivers=i915,r600,nouveau,svga,virgl \
                 --with-dri-drivers=i915,i965,r200,radeon,nouveau,swrast \
                 --with-platforms=drm,wayland,x11 \
                 --with-vulkan-drivers=intel \
                 --enable-shared-glapi \
+                --enable-opengl \
                 --enable-egl \
                 --enable-glx \
                 --enable-glx-tls \
@@ -45,6 +46,8 @@ build() {
                 --enable-gallium-extra-hud \
                 --enable-texture-float \
                 --enable-xa \
+                --enable-va \
+                --enable-xvmc \
                 --enable-vdpau \
                 --enable-osmesa
    

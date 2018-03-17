@@ -1,36 +1,27 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=gnome-shell
-pkgver=3.26.2
-pkgrel=6
+pkgver=3.28.0
+pkgrel=2
 pkgdesc="The GNOME Shell is the desktop user interface of the GNOME Desktop environment."
 arch=('x86_64')
-url="https://ftp.gnome.org/pub/gnome/sources/gnome-shell/3.26"
+url="https://ftp.gnome.org/pub/gnome/sources/gnome-shell/3.28"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('e5a87f2f838d981db9823352b90b2ce2f40d24d31ed9f062dccfa41b820e0b1c')
+sha256sums=('c7dec00d3c2b26e16611aac99630e3d41842179e9ec30cc873233b56c080ba4e')
 depends=('rootfs')
-
-prepare() {
-   cd "$srcdir/${pkgname}-${pkgver}"
-   
-  # sed -i "/seems to be moved/s/^/#/" config/ltmain.sh
-}
 
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"
    
-   ./configure --prefix=/usr \
-               --disable-compile-warnings \
-               --enable-browser-plugin
-
-   make
+   meson build --prefix=/usr -Denable-browser-plugin=true 
+   ninja -C build
 }
 
 package() {
    cd "$srcdir/${pkgname}-${pkgver}"
    
-   make DESTDIR="${pkgdir}" install
+   DESTDIR="${pkgdir}" ninja -C build install
 }
 

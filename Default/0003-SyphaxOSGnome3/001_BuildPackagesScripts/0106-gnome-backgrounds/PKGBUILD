@@ -1,29 +1,27 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=gnome-backgrounds
-pkgver=3.26.2
-pkgrel=4
+pkgver=3.28.0
+pkgrel=2
 pkgdesc="The GNOME Backgrounds package contains a collection of graphics files which can be used as backgrounds in the GNOME Desktop environment."
 arch=('x86_64')
-url="http://ftp.gnome.org/pub/gnome/sources/gnome-backgrounds/3.26"
+url="http://ftp.gnome.org/pub/gnome/sources/gnome-backgrounds/3.28"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('3a8ba8d3463d70bce2377b168218e32367c0020f2d0caf611e7e39066081f94f')
+sha256sums=('b25b963d9d1ce076b489ef1e85c6540166f2312c77132f4ec0ecc90f3da8f1e1')
 depends=('rootfs')
 
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"
 
    meson build --prefix=/usr
-   cd build
-   ninja -j$(($(getconf _NPROCESSORS_ONLN)+1))
+   ninja -C build
 }
 
 package() {
    cd "$srcdir/${pkgname}-${pkgver}"
    
-   cd build
-   DESTDIR="${pkgdir}" ninja install
+   DESTDIR="${pkgdir}" ninja -C build install
 }
 

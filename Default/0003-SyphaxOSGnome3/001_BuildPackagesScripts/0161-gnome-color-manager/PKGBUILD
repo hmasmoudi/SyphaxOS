@@ -1,30 +1,26 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=gnome-color-manager
-pkgver=3.26.0
-pkgrel=4
+pkgver=3.28.0
+pkgrel=2
 pkgdesc="GNOME Color Manager is a session framework for the GNOME desktop environment that makes it easy to manage, install and generate color profiles."
 arch=('x86_64')
-url="http://ftp.gnome.org/pub/gnome/sources/gnome-color-manager/3.26"
+url="http://ftp.gnome.org/pub/gnome/sources/gnome-color-manager/3.28"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('652100e08520338b24218230f0586227879150d7d093ca637fc06130b72171cd')
+sha256sums=('ec333a9fa4688b29b0f4b6cabe941f7f40bfe9a1369ba75b7ffc185c8d7a3dd6')
 depends=('rootfs')
 
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"
    
-   sed -i "/'libm'/s/^/libm = cc.find_library('m', required : false)#/" meson.build
    meson build --prefix=/usr -Denable-packagekit=false -Denable-tests=false
-   cd build
-   ninja -j$(($(getconf _NPROCESSORS_ONLN)+1))
+   ninja -C build
 }
 
 package() {
    cd "$srcdir/${pkgname}-${pkgver}"
-   
-   cd build
-   DESTDIR="${pkgdir}" ninja install
+   DESTDIR="${pkgdir}" ninja -C build install
 }
 

@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=libXfont2
-pkgver=2.0.1
+pkgver=2.0.3
 pkgrel=2
 pkgdesc="The Xorg libraries provide library routines that are used within all X Window applications."
 arch=('x86_64')
@@ -10,7 +10,7 @@ install=$pkgname.install
 license=('GPL')
 groups=('graphicslayer')
 source=("$url/${pkgname}-${pkgver}.tar.bz2")
-md5sums=('0d9f6dd9c23bf4bcbfb00504b566baf5')
+md5sums=('SKIP')
 depends=('rootfs')
 
 build() {

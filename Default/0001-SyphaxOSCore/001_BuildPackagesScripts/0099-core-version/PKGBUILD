@@ -1,0 +1,25 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=core-version
+pkgver=2018.03.20
+pkgrel=4
+pkgdesc="Contains SyphaxOS Core version."
+arch=('x86_64')
+license=('GPL')
+groups=('core')
+depends=('rootfs')
+
+prepare() {
+   mkdir -pv "$srcdir/$pkgname-$pkgver"
+}
+
+package() {
+   cd "$srcdir/$pkgname-$pkgver"
+   
+   mkdir -p $pkgdir/etc
+
+   cp ../../lsb-release $pkgdir/etc/
+   cp ../../os-release $pkgdir/etc/
+   cp ../../issue $pkgdir/etc/
+}
+

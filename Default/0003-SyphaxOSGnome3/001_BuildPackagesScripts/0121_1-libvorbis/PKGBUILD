@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=libvorbis
-pkgver=1.3.5
-pkgrel=6
+pkgver=1.3.6
+pkgrel=2
 pkgdesc="The libvorbis package contains a general purpose audio and music encoding format."
 arch=('x86_64')
 url="http://downloads.xiph.org/releases/vorbis"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-md5sums=('28cb28097c07a735d6af56e598e1c90f')
+md5sums=('SKIP')
 depends=('rootfs')
 
 build() {

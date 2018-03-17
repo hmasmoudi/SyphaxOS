@@ -2,7 +2,7 @@
 
 pkgname=gpgme
 pkgver=1.7.1
-pkgrel=2
+pkgrel=4
 pkgdesc="The GPGME package is a C library that allows cryptography support to be added to a program. It is designed to make access to public key crypto engines like GnuPG or GpgSM easier for applications."
 arch=('x86_64')
 url="ftp://ftp.gnupg.org/gcrypt/gpgme"

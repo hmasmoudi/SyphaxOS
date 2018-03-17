@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=nodejs
-pkgver=6.10.1
-pkgrel=1
+pkgver=8.9.4
+pkgrel=2
 pkgdesc="Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine."
 arch=(x86_64)
 license=(GPL2)
 url="https://nodejs.org/dist/v${pkgver}"
 depends=("rootfs")
 source=("$url/node-v$pkgver-linux-x64.tar.xz")
-sha256sums=('e8f100e9ee70eb63216b33cf39666a4dc6c4038f6ee4fbfc7751ab3a825e576c')
+sha256sums=('SKIP')
 
 package() {
   cd node-v$pkgver-linux-x64

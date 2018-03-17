@@ -1,30 +1,28 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=file-roller
-pkgver=3.26.2
+pkgver=3.28.0
 pkgrel=2
 pkgdesc="File Roller is an archive manager for GNOME with support for tar, bzip2, gzip, zip, jar, compress, lzop and many other archive formats."
 arch=('x86_64')
-url="http://ftp.gnome.org/pub/gnome/sources/file-roller/3.26"
+url="http://ftp.gnome.org/pub/gnome/sources/file-roller/3.28"
 license=('GPL')
 groups=('applications')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('3e677b8e1c2f19aead69cf4fc419a19fc3373aaf5d7bf558b4f077f10bbba8a5')
+sha256sums=('c17139b46dd4c566ae70a7e3cb930b16e46597c7f9931757fcab900e5015f696')
 depends=('rootfs')
 
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"
    
-   ./configure --prefix=/usr         \
-               --disable-packagekit  \
-               --disable-static
-   make
+     meson build --prefix=/usr
+     ninja -C build
 }
 
 package() {
    cd "$srcdir/${pkgname}-${pkgver}"
-   
-   make DESTDIR="${pkgdir}" install
+  
+   DESTDIR="${pkgdir}" ninja -C build install
    chmod -v 0755 "${pkgdir}"/usr/libexec/file-roller/isoinfo.sh
 }
 

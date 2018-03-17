@@ -1,8 +1,8 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=SyphaxOS-Installer
-pkgver=3.1.0
-pkgrel=4
+pkgver=2018.03.20
+pkgrel=14
 pkgdesc="SyphaxOS Installer Scripts"
 arch=('x86_64')
 install=${pkgname}.install

@@ -2,7 +2,7 @@
 
 pkgname=gettext
 pkgver=0.19.8.1
-pkgrel=4
+pkgrel=6
 pkgdesc="The Gettext package contains utilities for internationalization and localization."
 arch=('x86_64')
 url="http://ftp.gnu.org/gnu/gettext"
