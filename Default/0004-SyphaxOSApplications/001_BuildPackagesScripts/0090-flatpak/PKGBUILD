@@ -1,18 +1,21 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=flatpak
-pkgver=0.10.4
-pkgrel=2
+pkgver=0.11.3
+pkgrel=16
 pkgdesc="THE FUTURE OF APPLICATION DISTRIBUTION. Flatpak is the new framework for desktop applications on Linux."
 arch=('x86_64')
 url="https://github.com/flatpak/flatpak/releases/download/${pkgver}"
-install=$pkgname.install
 license=('GPL')
 groups=('applications')
-source=("$url/${pkgname}-${pkgver}.tar.xz" flatpak-bindir.sh flathub.flatpakrepo)
-sha256sums=('9e60561e2ccd3abf3f3a6d499b416cccc851767b0b6f2762799bf48802527dba'
+source=("$url/${pkgname}-${pkgver}.tar.xz"
+        "flatpak-bindir.sh"
+        "flathub.flatpakrepo"
+        "flathub.desktop")
+sha256sums=('SKIP'
             'cf20e4831bceaaee74e9298b4ad7c4d2d51085d43f62d1c6a2d2977d2f421e00'
-            '3371dd250e61d9e1633630073fefda153cd4426f72f4afa0c3373ae2e8fea03a')
+            '3371dd250e61d9e1633630073fefda153cd4426f72f4afa0c3373ae2e8fea03a'
+            'e338b7d26e30e7400abff52a587cf14e38ec93807780b490a41419af98f96952')
 depends=('rootfs' 'ostree' 'elfutils' 'bubblewrap')
 
 prepare() {
@@ -22,23 +25,20 @@ prepare() {
 }
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"
-   
-   #./configure --prefix=/usr --with-system-bubblewrap --enable-system-helper
-   
-     ./configure \
-          --prefix=/usr \
-          --sysconfdir=/etc \
-          --localstatedir=/var \
-          --sbindir=/usr/bin \
-          --libexecdir=/usr/lib/$pkgname \
-          --disable-static \
-          --with-system-bubblewrap \
-          --with-priv-mode=setuid \
-          --enable-system-helper \
-          --with-dbus-config-dir=/usr/share/dbus-1/system.d
+      
+   ./configure \
+       --prefix=/usr \
+       --sysconfdir=/etc \
+       --localstatedir=/var \
+       --sbindir=/usr/bin \
+       --libexecdir=/usr/lib/$pkgname \
+       --disable-static \
+       --with-system-bubblewrap \
+       --with-priv-mode=setuid \
+       --enable-system-helper \
+       --with-dbus-config-dir=/usr/share/dbus-1/system.d
 
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
-   
+   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
    
    make
 }
@@ -50,7 +50,7 @@ package() {
    
   install -Dt "$pkgdir/etc/profile.d" -m644 ../flatpak-bindir.sh
   install -Dt "$pkgdir/usr/share/flatpak" -m644 ../flathub.flatpakrepo
-
+  install -Dt "$pkgdir/usr/share/applications" -m644 ../flathub.desktop
   
   # Fixup mode to match polkit
   install -d -o root -g 102 -m 700 "$pkgdir/usr/share/polkit-1/rules.d"

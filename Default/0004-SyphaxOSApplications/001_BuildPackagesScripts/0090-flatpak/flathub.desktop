@@ -1,0 +1,16 @@
+# https://specifications.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html
+
+[Desktop Entry]
+Type=Application
+Version=1.0.0
+Name=Flathub
+GenericName=Flathub Repository
+Comment=Add Flathub repository
+Icon=system-software-install.png
+Path=/
+Exec=gnome-terminal -e 'sh -c  "sudo flatpak remote-add --if-not-exists flathub /usr/share/flatpak/flathub.flatpakrepo ; sudo rm -rf /usr/share/applications/flathub.desktop ; echo Done - Press enter to exit; read" '
+Encoding=UTF-8
+Terminal=true
+Categories=System;
+StartupNotify=false
+Name[fr_FR]=flathub.desktop

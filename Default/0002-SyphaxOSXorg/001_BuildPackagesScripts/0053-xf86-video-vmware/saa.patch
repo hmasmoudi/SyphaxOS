@@ -1,0 +1,13 @@
+--- a/saa/saa.h	2018-03-17 13:34:21.288614136 +0100
++++ b/saa/saa.h	2018-03-17 13:34:53.503856221 +0100
+@@ -56,6 +56,10 @@
+ #define SAA_PIXMAP_HINT_CREATE_HW (1 << 25)
+ #define SAA_PIXMAP_PREFER_SHADOW  (1 << 0)
+ 
++#ifndef fbGetRotatedPixmap
++#define fbGetRotatedPixmap(_pGC) NULL
++#endif
++
+ typedef unsigned int saa_access_t;
+ 
+ enum saa_pixmap_loc {

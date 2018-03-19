@@ -2,14 +2,14 @@
 
 pkgname=SyphaxOS-Desktop
 pkgver=2018.03.20
-pkgrel=6
-pkgdesc="SyphaxOS 3.1.0 Default Desktop Package based on Gnome Desktop."
+pkgrel=12
+pkgdesc="SyphaxOS Default Desktop Package based on Gnome Desktop."
 arch=('x86_64')
 install=${pkgname}.install
 license=('GPL')
 groups=('desktop')
 source=("SyphaxOS-Desktop-settings.gschema.override")
-sha256sums=('3ed0060c4635bdb8ad08bb2abd116fc1aaff1f699afb12609cfb0206ae23cf6e')
+sha256sums=('85828e015ff8ef70c291e00958295b60fe6debe61566d45409b52b2b8baecf8d')
 depends=(
          'gnomedesktop'
          'pacman'
@@ -31,14 +31,15 @@ depends=(
          'wps-office-extension-english-uk-dictionary'
          'wps-office-extension-french-dictionary'
          'google-chrome'
-         'flatpak'
          'brasero'
          'dash-to-panel'
          'appindicator'
          'Arc-Menu'
          'SyphaxOS-updates-notifier'
+         'sudo'
          'packagekit'
          'gnome-software'
+         'flatpak'
          'SyphaxOS-Theme'
          )
 

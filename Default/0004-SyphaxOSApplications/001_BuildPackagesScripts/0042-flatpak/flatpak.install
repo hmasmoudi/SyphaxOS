@@ -1,7 +1,0 @@
-post_install() {
-  flatpak remote-add --if-not-exists flathub /usr/share/flatpak/flathub.flatpakrepo
-}
-
-post_upgrade() {
-  post_install
-}

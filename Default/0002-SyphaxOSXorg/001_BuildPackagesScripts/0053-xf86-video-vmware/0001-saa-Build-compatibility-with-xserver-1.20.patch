@@ -1,0 +1,15 @@
+--- a/src/common_compat.h
++++ b/src/common_compat.h
+@@ -33,5 +33,9 @@ xf86SaveModeContents(DisplayModePtr intern, const DisplayModeRec *mode)
+ }
+ #endif
+ 
++#ifndef fbGetRotatedPixmap
++#define fbGetRotatedPixmap(_pGC) NULL
++#endif
++
+ #endif
+ 
+-- 
+2.14.3
+

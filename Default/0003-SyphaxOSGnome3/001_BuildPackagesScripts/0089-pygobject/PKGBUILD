@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=pygobject
-pkgver=3.28.0
+pkgver=3.28.1
 pkgrel=2
 pkgdesc="PyGObject 2 and 3 provides Python bindings to the GObject class from GLib"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://ftp.gnome.org/pub/gnome/sources/pygobject/3.28"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('42b47b261b45aedfc77e02e3c90a01cd74d6f86c3273c1860a054d531d606e5a')
+sha256sums=('42312b4a5015571fa0a4f2d201005da46b71c251ea2625bc95702d071c4ff895')
 depends=('rootfs')
 
 prepare() {

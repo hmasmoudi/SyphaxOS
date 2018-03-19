@@ -1,0 +1,11 @@
+--- ./appIndicator.js	2018-03-19 09:36:26.243068947 +0100
++++ ./appIndicator.js	2018-03-19 09:35:17.299073086 +0100
+@@ -228,7 +228,7 @@
+         this.height = icon_size * scale_factor
+ 
+         this._indicator     = indicator
+-        this._iconSize      = icon_size * scale_factor
++        this._iconSize      = icon_size * scale_factor * 1.25
+         this._iconCache     = new IconCache.IconCache()
+ 
+         this._mainIcon    = new St.Bin()

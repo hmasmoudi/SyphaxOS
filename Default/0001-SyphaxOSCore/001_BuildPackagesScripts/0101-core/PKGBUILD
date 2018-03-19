@@ -2,8 +2,8 @@
 
 pkgname=core
 pkgver=2018.03.20
-pkgrel=2
-pkgdesc="SyphaxOS 3.1.0 Core Package."
+pkgrel=4
+pkgdesc="SyphaxOS Core Package."
 arch=('x86_64')
 license=('GPL')
 groups=('core')
@@ -89,7 +89,6 @@ depends=(
          'bash-completion'
          'hwids'
          'pciutils'
-         'sudo'
          'nano'
          'core-configs'
          'core-version'

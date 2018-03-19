@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=ostree
-pkgver=2018.1
+pkgver=2018.2
 pkgrel=2
 pkgdesc="OSTree is a tool that combines a git-like model for committing and downloading bootable filesystem trees, along with a layer for deploying them and managing the bootloader configuration."
 arch=('x86_64')
