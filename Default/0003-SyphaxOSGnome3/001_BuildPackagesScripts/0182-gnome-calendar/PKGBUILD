@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=gnome-calendar
-pkgver=3.28.0
+pkgver=3.28.2
 pkgrel=2
 pkgdesc="The GNOME calendar package contains the GNOME calendar."
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="http://ftp.gnome.org/pub/gnome/sources/gnome-calendar/3.28"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('fae1eb831e3143670b38f2e8ea971d92cf99f038ce8d7848f0b0c8c35f36adf8')
+sha256sums=('dcf72dd7850a8a29dd16ebd2594acd83ac9c35b83f9f6ee87a7c3ae49eeddc74')
 depends=('rootfs')
 
 build() {

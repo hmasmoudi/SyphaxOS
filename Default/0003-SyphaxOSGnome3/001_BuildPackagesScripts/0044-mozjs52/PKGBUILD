@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=mozjs52
-pkgver=52.5.2
+pkgver=52.7.3
 pkgrel=2
 pkgdesc="JavaScript interpreter and libraries"
 arch=('x86_64')
@@ -32,18 +32,21 @@ prepare() {
 
 build() {
    unset CPPFLAGS
-   CFLAGS+=' -fno-delete-null-pointer-checks -fno-strict-aliasing -fno-tree-vrp -Wno-type-limits -Wno-implicit-fallthrough -Wno-uninitialized'
-   CXXFLAGS+=' -fno-delete-null-pointer-checks -fno-strict-aliasing -fno-tree-vrp -Wno-type-limits -Wno-implicit-fallthrough -Wno-uninitialized'
+   CFLAGS+=' -fno-delete-null-pointer-checks -fno-strict-aliasing -fno-tree-vrp -flto=3'
+   CXXFLAGS+=' -fno-delete-null-pointer-checks -fno-strict-aliasing -fno-tree-vrp -flto=3'
    export CC=gcc CXX=g++ PYTHON=/usr/bin/python2
 
    cd mozilla-unified-FIREFOX_${pkgver//./_}esr_RELEASE/js/src
    sh configure \
       --prefix=/usr \
-      --disable-optimize \
+      --disable-debug \
+      --disable-debug-symbols \
       --disable-strip \
+      --enable-optimize="-O2" \
       --enable-pie \
       --enable-posix-nspr-emulation \
       --enable-readline \
+      --enable-release \
       --enable-shared-js \
       --enable-tests \
       --with-intl-api \

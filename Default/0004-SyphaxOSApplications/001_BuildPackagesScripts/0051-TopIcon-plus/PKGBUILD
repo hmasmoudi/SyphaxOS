@@ -1,0 +1,28 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=TopIcons-plus
+pkgver=20180426
+pkgrel=4
+_commit=ae56b2093d2dba65cda749c7949d33ae693e366b  # master
+pkgdesc="TopIcons Plus brings all icons back to the top panel, so that it's easier to keep track of apps running in the backround."
+arch=('x86_64')
+url="https://github.com/charlesg99/TopIcons-plus"
+license=('GPL')
+install=${pkgname}.install
+groups=('applications')
+source=("git+https://github.com/charlesg99/TopIcons-plus#commit=$_commit")
+sha256sums=('SKIP')
+depends=('rootfs')
+
+prepare () {
+   cd "$srcdir/${pkgname}"
+
+   cp -rf ../../org.gnome.shell.extensions.topicons.gschema.xml schemas/org.gnome.shell.extensions.topicons.gschema.xml
+}
+
+package() {
+   cd "${srcdir}/${pkgname}"
+   
+   make install INSTALL_PATH="${pkgdir}"/usr/share/gnome-shell/extensions
+}
+

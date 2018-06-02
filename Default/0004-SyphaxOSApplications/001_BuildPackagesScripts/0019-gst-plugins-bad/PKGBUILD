@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=gst-plugins-bad
-pkgver=1.12.4
-pkgrel=4
+pkgver=1.14.1
+pkgrel=2
 pkgdesc="The GStreamer Bad Plug-ins package contains a set of plug-ins that aren't up to par compared to the rest."
 arch=('x86_64')
 url="http://gstreamer.freedesktop.org/src/gst-plugins-bad"
 license=('GPL')
 groups=('applications')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('0c7857be16686d5c1ba6e34bd338664d3d4599d32714a8eca5c8a41a101e2d08')
+sha256sums=('2a77c6908032aafdf2cd2e5823fec948f16a25c2d1497a953828d762dc20d61a')
 depends=('rootfs')
 
 build() {

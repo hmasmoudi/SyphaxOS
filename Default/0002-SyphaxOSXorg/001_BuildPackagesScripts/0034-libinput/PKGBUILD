@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=libinput
-pkgver=1.10.2
+pkgver=1.10.7
 pkgrel=2
 pkgdesc="libinput is a library that handles input devices for display servers and other applications that need to directly deal with input devices."
 arch=('x86_64')
@@ -25,7 +25,7 @@ build() {
                -Ddebug-gui=false     \
                -Dudev-dir=/lib/udev
 
-   ninja  -C build -j$(($(getconf _NPROCESSORS_ONLN)+1))
+   ninja  -C build
 }
 
 package() {

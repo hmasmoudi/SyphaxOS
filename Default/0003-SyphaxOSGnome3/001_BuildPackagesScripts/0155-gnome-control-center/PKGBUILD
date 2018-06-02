@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=gnome-control-center
-pkgver=3.28.0
+pkgver=3.28.2
 pkgrel=2
 pkgdesc="The GNOME Control Center package contains the GNOME settings manager."
 arch=('x86_64')
@@ -11,8 +11,8 @@ groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz"
         "cc-info-overview-panel.patch"
         "SyphaxOSLogoWhite.svg")
-sha256sums=('SKIP'
-            'SKIP'
+sha256sums=('ff9e3d7c1693c6004c8a337eb84452d517259b52330081b6b226a8ac5793d734'
+            '7ee4165ede984c723804ce6f31d1fa76a17413b9cbf74c68e1aebc8db85b9ee9'
             '47990b67706071d17d9f94cf95cd8a02328ee8eb7bdbecd87b7981711d583cb2')
 depends=('rootfs')
 

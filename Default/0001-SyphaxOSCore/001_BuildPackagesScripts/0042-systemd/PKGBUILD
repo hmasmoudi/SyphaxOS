@@ -1,10 +1,9 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
-#pid1: do not initialize join_controllers by default
 
 pkgname=systemd
-pkgver=237
-pkgrel=20180222
-_commit='7909254c7a8ee09d91b8b21fd779320b3e2fe716'
+pkgver=238
+pkgrel=20180531
+_commit='f58e62cbbc1c2842881a2a6ab9beda7bcb044a30'
 pkgdesc="The systemd package contains programs for controlling the startup, running, and shutdown of the system."
 arch=('x86_64')
 install=${pkgname}.install
@@ -25,7 +24,6 @@ prepare() {
 build() {
    cd "$srcdir/${pkgname}-stable"
 
-   cc_cv_CFLAGS__flto=no               \
    XSLTPROC="/usr/bin/xsltproc"        \
    meson build --prefix=/usr           \
                --sysconfdir=/etc       \
@@ -45,7 +43,7 @@ build() {
                -Db_lto=false           \
                -Dtests=unsafe
 
-   ninja  -C build -j$(($(getconf _NPROCESSORS_ONLN)+1))
+   ninja -C build
 }
 
 package() {

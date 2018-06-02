@@ -1,10 +1,11 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=vivaldi
-pkgver=1.13.1008.44
+pkgver=1.15.1147.36
 pkgrel=1
 pkgdesc='An advanced browser made with the power user in mind.'
 url="https://vivaldi.com"
+ffmpeg_url="http://security.ubuntu.com/ubuntu/pool/universe/c/chromium-browser/chromium-codecs-ffmpeg-extra_65.0.3325.181-0ubuntu0.17.10.1_amd64.deb"
 install=${pkgname}.install
 license=('custom')
 arch=('x86_64')
@@ -29,5 +30,10 @@ package() {
         install -Dm644 "$pkgdir/opt/vivaldi/product_logo_${res}.png" \
             "$pkgdir/usr/share/icons/hicolor/${res}x${res}/apps/vivaldi.png"
     done
+    
+    #patch ffmpeg with mp4 support
+    curl -L ${ffmpeg_url} -o chromium-codecs-ffmpeg-extra.deb
+    ar p chromium-codecs-ffmpeg-extra.deb data.tar.xz | tar xJ ./usr/lib/chromium-browser/libffmpeg.so --strip 4
+    install -Dm644 libffmpeg.so "$pkgdir/opt/vivaldi/lib/libffmpeg.so"
 }
 

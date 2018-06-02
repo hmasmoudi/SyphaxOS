@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=gnome-keyring
-pkgver=3.28.0.1
+pkgver=3.28.2
 pkgrel=2
 pkgdesc="The GNOME Keyring package contains a daemon that keeps passwords and other secrets for users."
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="http://ftp.gnome.org/pub/gnome/sources/gnome-keyring/3.28"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('d17c996f0917d9fb9d86492d8ff6e834fe76e3231ec355f7016b29d2f960bd63')
+sha256sums=('81171b7d07211b216b4c9bb79bf2deb3deca18fe8d56d46dda1c4549b4a2646a')
 depends=('rootfs')
 
 prepare() {

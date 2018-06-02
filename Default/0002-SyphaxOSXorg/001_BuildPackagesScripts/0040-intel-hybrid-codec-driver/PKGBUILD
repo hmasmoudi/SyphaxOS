@@ -1,0 +1,38 @@
+# Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
+
+pkgname=intel-hybrid-codec-driver
+_gitroot="git+https://github.com/01org/intel-hybrid-driver.git"
+_gitname=intel-hybrid-driver
+_pkgver=2.0.0
+pkgver=$_pkgver.r169.edead0c
+pkgrel=4
+pkgdesc='Libva support for partially hardware accelerated encode and decode on Haswell and newer'
+arch=('x86_64')
+install=${pkgname}.install
+url='https://01.org/linuxmedia/vaapi'
+license=('MIT')
+depends=('libva' 'libcmrt')
+optdepends=('libva-intel-driver-hybrid: To be able to use the full hw codecs with hybrid codecs')
+source=("$_gitname::$_gitroot")
+sha256sums=('SKIP')
+
+pkgver() {
+ cd ${srcdir}/$_gitname
+ printf $_pkgver".r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd ${srcdir}/${_gitname}
+  autoreconf -v --install
+}
+
+build() {
+  cd ${srcdir}/${_gitname}
+  ./configure --prefix=/usr
+  make
+}
+
+package() {
+  cd ${srcdir}/${_gitname}
+  make install DESTDIR=${pkgdir}
+}

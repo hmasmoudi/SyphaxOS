@@ -1,21 +1,21 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=sed
-pkgver=4.4
-pkgrel=4
+pkgver=4.5
+pkgrel=2
 pkgdesc="The Sed package contains a stream editor."
 arch=('x86_64')
 url="http://ftp.gnu.org/gnu/sed"
 license=('GPL')
 groups=('core')
 source=("$url/$pkgname-$pkgver.tar.xz")
-md5sums=('e0c583d4c380059abd818cd540fe6938')
+md5sums=('SKIP')
 depends=('rootfs')
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"
 
-   ./configure --prefix=/usr --bindir=/bin --htmldir=/usr/share/doc/sed-4.4
+   ./configure --prefix=/usr --bindir=/bin
 
    make
 }

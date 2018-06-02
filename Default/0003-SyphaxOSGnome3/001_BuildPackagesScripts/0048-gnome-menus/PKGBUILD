@@ -9,7 +9,7 @@ url="https://ftp.gnome.org/pub/gnome/sources/gnome-menus/3.13"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-md5sums=('eef5ef2308d7afc56119d7248f2aa6db')
+md5sums=('SKIP')
 depends=('rootfs')
 
 build() {

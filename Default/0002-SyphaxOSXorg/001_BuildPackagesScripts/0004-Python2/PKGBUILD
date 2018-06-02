@@ -1,8 +1,8 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=Python2
-pkgver=2.7.14
-pkgrel=6
+pkgver=2.7.15
+pkgrel=2
 pkgdesc="The Python 2 package contains the Python development environment."
 arch=('x86_64')
 url="https://www.python.org/ftp/python/$pkgver"

@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=nodejs
-pkgver=8.9.4
+pkgver=8.11.1
 pkgrel=2
 pkgdesc="Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine."
 arch=(x86_64)

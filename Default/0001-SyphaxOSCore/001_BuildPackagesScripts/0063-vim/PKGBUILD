@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=vim
-pkgver=8.0.1427
+pkgver=8.0.1826
 pkgrel=2
 pkgdesc="The Vim package contains a powerful text editor."
 arch=('x86_64')

@@ -1,26 +1,33 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=gnome-shell
-pkgver=3.28.0
-pkgrel=2
+pkgver=3.28.2
+pkgrel=4
 pkgdesc="The GNOME Shell is the desktop user interface of the GNOME Desktop environment."
 arch=('x86_64')
 url="https://ftp.gnome.org/pub/gnome/sources/gnome-shell/3.28"
 license=('GPL')
 groups=('desktop')
-source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('c7dec00d3c2b26e16611aac99630e3d41842179e9ec30cc873233b56c080ba4e')
+source=("$url/${pkgname}-${pkgver:0:6}.tar.xz")
+sha256sums=('27e690c0c4bb0faac2892b9772d3160aa3c6b09523a873b1c2b63c21634236ad')
 depends=('rootfs')
 
-build() {
-   cd "$srcdir/${pkgname}-${pkgver}"
+prepare() {
+   cd "$srcdir/${pkgname}-${pkgver:0:6}"
    
-   meson build --prefix=/usr -Denable-browser-plugin=true 
+   #Javascript invalid access fixes: https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/4
+   patch -Np1 -i ../../4.patch
+}
+
+build() {
+   cd "$srcdir/${pkgname}-${pkgver:0:6}"
+   
+   meson build --prefix=/usr -Dbrowser_plugin=true 
    ninja -C build
 }
 
 package() {
-   cd "$srcdir/${pkgname}-${pkgver}"
+   cd "$srcdir/${pkgname}-${pkgver:0:6}"
    
    DESTDIR="${pkgdir}" ninja -C build install
 }

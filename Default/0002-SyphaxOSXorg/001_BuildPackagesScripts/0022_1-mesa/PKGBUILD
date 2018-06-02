@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=mesa
-pkgver=18.0.0
-pkgrel=8
+pkgver=18.1.1
+pkgrel=2
 pkgdesc="Mesa is an OpenGL compatible 3D graphics library."
 arch=('x86_64')
 url="https://mesa.freedesktop.org/archive"
 license=('GPL')
 groups=('graphicslayer')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('SKIP')
+sha256sums=('d3312a2ede5aac14a47476b208b8e3a401367838330197c4588ab8ad420d7781')
 makedepends=('python2-mako')
 depends=('rootfs')
 
@@ -29,14 +29,14 @@ build() {
 
    ./configure  --prefix=$XORG_PREFIX  \
                 --sysconfdir=/etc \
-                --with-gallium-drivers=i915,r600,nouveau,svga,virgl \
+                --with-gallium-drivers=i915,r600,nouveau,svga,swrast,virgl \
                 --with-dri-drivers=i915,i965,r200,radeon,nouveau,swrast \
                 --with-platforms=drm,wayland,x11 \
                 --with-vulkan-drivers=intel \
                 --enable-shared-glapi \
                 --enable-opengl \
                 --enable-egl \
-                --enable-glx \
+                --enable-glx=dri \
                 --enable-glx-tls \
                 --enable-gles1 \
                 --enable-gles2 \
@@ -49,7 +49,8 @@ build() {
                 --enable-va \
                 --enable-xvmc \
                 --enable-vdpau \
-                --enable-osmesa
+                --enable-osmesa \
+                --enable-driglx-direct
    
    make
 }

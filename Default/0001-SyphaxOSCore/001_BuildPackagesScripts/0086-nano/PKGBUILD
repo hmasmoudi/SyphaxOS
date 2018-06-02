@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=nano
-pkgver=2.9.4
+pkgver=2.9.8
 pkgrel=2
 pkgdesc="Pico editor clone with enhancements"
 arch=('x86_64')

@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=gst-plugins-ugly
-pkgver=1.12.4
-pkgrel=4
+pkgver=1.14.1
+pkgrel=2
 pkgdesc="The GStreamer Good Plug-ins is a set of plug-ins considered by the GStreamer developers to have good quality code, correct functionality, and the preferred license (LGPL for the plug-in code, LGPL or LGPL-compatible for the supporting library)"
 arch=('x86_64')
 url="http://gstreamer.freedesktop.org/src/gst-plugins-ugly"
 license=('GPL')
 groups=('applications')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('1c165b8d888ed350acd8e6ac9f6fe06508e6fcc0a3afc6ccc9fbeb30df9be522')
+sha256sums=('cff2430bb13f54ef81409a0b3d65ce409a376d4a7bab57a14a97d602539fe1d3')
 depends=('rootfs')
 
 build() {

@@ -1,20 +1,20 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=xorg-server
-pkgver=1.19.99.905
+pkgver=1.20.0
 pkgrel=2
 pkgdesc="The Xorg Server is the graphicslayer of the X Window system. "
 arch=('x86_64')
 url="http://ftp.x.org/pub/individual/xserver"
 license=('GPL')
 groups=('graphicslayer')
-source=("$url/${pkgname}-${pkgver}.tar.xz")
+source=("$url/${pkgname}-${pkgver}.tar.bz2")
 sha256sums=('SKIP')
             
 depends=('rootfs')
 
 prepare() {
-   cd "$srcdir/$pkgname-$pkgver"
+   cd "$srcdir/$pkgname-${pkgver}"
 
    autoreconf -vfi
 
@@ -22,52 +22,79 @@ prepare() {
 }
 
 build() {
-   cd "$srcdir/$pkgname-$pkgver"
+   cd "$srcdir/$pkgname-${pkgver}"
    
    source /etc/profile.d/xorg.sh
    echo "Using XORG_PREFIX ($XORG_PREFIX) & XORG_CONFIG ($XORG_CONFIG)"
   
-   ./configure $XORG_CONFIG \
-               --libdir=/usr/lib \
-               --enable-suid-wrapper \
-               --enable-dri \
-               --enable-dri2\
-               --enable-dri3 \
-               --enable-libdrm \
-               --enable-glx \
-               --enable-dmx \
-               --enable-xvfb \
-               --enable-xnest \
-               --enable-composite \
-               --enable-xv \
-               --enable-xvmc \
-               --enable-xcsecurity \
-               --enable-xorg \
-               --enable-xephyr \
-               --enable-glamor \
-               --enable-xwayland \
-               --enable-kdrive \
-               --enable-kdrive-kbd \
-               --enable-kdrive-mouse \
-               --enable-config-udev \
-               --enable-systemd-logind \
-               --enable-suid-wrapper \
-               --enable-record \
-               --enable-input-thread \
-               --disable-install-setuid \
-               --disable-xfbdev \
-               --disable-xfake \
-               --disable-static \
-               --with-sha1=libgcrypt \
-               --enable-systemd-logind \
-              --with-xkb-output=/var/lib/xkb
-   make
+  # meson build --prefix=/usr --sysconfdir=/etc --libdir=/usr/lib \
+  #             -Dos_vendor="SyphaxOS" \
+  #             -Dsuid_wrapper=true \
+  #             -Ddri1=true \
+  #             -Ddri2=true \
+  #             -Ddri3=true \
+  #             -Dglx=true \
+  #             -Ddmx=true \
+  #             -Dxvfb=true \
+  #             -Dxnest=true \
+  #             -Dxv=true \
+  #             -Dxvmc=true \
+  #             -Dxcsecurity=true \
+  #             -Dxorg=true \
+  #             -Dxwayland=true \
+  #             -Dglamor=true \
+  #             -Dudev=true \
+  #             -Dsystemd_logind=true \
+  #             -Dvgahw=true \
+  #             -Dpciaccess=true \
+  #             -Dxkb_output_dir=/var/lib/xkb
+  #             
+  # ninja -C build
+  
+  
+    ./configure $XORG_CONFIG \
+                --libdir=/usr/lib \
+                --enable-suid-wrapper \
+                --enable-dri \
+                --enable-dri2\
+                --enable-dri3 \
+                --enable-libdrm \
+                --enable-glx \
+                --enable-dmx \
+                --enable-xvfb \
+                --enable-xnest \
+                --enable-composite \
+                --enable-xv \
+                --enable-xvmc \
+                --enable-xcsecurity \
+                --enable-xorg \
+                --enable-xephyr \
+                --enable-glamor \
+                --enable-xwayland \
+                --enable-kdrive \
+                --enable-kdrive-kbd \
+                --enable-kdrive-mouse \
+                --enable-config-udev \
+                --enable-systemd-logind \
+                --enable-suid-wrapper \
+                --enable-record \
+                --enable-input-thread \
+                --disable-install-setuid \
+                --disable-xfbdev \
+                --disable-xfake \
+                --disable-static \
+                --with-sha1=libgcrypt \
+                --enable-systemd-logind \
+                --with-xkb-output=/var/lib/xkb
+    make
 }
 
 package() {
-   cd "$srcdir/$pkgname-$pkgver"
+   cd "$srcdir/$pkgname-${pkgver}"
    
    #Make the package
+   #DESTDIR="${pkgdir}" ninja -C build install
+   
    make DESTDIR="$pkgdir" install
    
    mkdir -pv $pkgdir/etc/X11/xorg.conf.d

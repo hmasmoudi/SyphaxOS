@@ -1,3 +1,9 @@
 post_upgrade() {
   ldconfig -r .
+  localedef -i en_GB -f UTF-8 en_GB.UTF-8
+  localedef -i en_US -f ISO-8859-1 en_US
+  localedef -i en_US -f UTF-8 en_US.UTF-8
+  localedef -i fr_FR -f ISO-8859-1 fr_FR
+  localedef -i fr_FR@euro -f ISO-8859-15 fr_FR@euro
+  localedef -i fr_FR -f UTF-8 fr_FR.UTF-8
 }

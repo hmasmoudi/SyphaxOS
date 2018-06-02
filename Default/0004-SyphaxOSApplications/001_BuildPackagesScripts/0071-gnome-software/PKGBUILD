@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=gnome-software
-pkgver=3.28.0
+pkgver=3.28.2
 pkgrel=2
 pkgdesc="GNOME Software Tools"
 install=$pkgname.install
@@ -10,7 +10,7 @@ license=(GPL2)
 url="https://wiki.gnome.org/Apps/Software/"
 depends=("rootfs")
 source=("https://ftp.gnome.org/pub/gnome/sources/gnome-software/${pkgver:0:4}/$pkgname-$pkgver.tar.xz")
-sha256sums=('934b6b0da37192b6c9fbdf6b6219ed58e890eeb0ab783e1125ac00447f7f8b7f')
+sha256sums=('7c001853c0da8761e702e2c7e44311523da9184b76aeb334797dcf6c41b929e8')
 
 build() {
   cd $pkgname-$pkgver

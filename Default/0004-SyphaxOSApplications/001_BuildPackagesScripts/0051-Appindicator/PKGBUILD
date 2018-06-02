@@ -1,8 +1,8 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=appindicator
-pkgver=17.10.2
-pkgrel=4
+pkgver=18.04.30
+pkgrel=1
 pkgdesc="Integrates AppIndicators into GNOME Shell."
 arch=('x86_64')
 url="https://github.com/ubuntu/gnome-shell-extension-appindicator"
@@ -11,16 +11,8 @@ provides=('gnome-shell-extension-appindicator')
 license=('GPL')
 depends=('rootfs')
 
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Ubuntu/gnome-shell-extension-appindicator/archive/${pkgver}.tar.gz"
-        "appIndicator.patch")
-sha512sums=('SKIP' 'SKIP')
-
-prepare() {
-  cd "gnome-shell-extension-appindicator-${pkgver}"
-  
-  #fix icon size for SyphaxOS
-  patch -Np0 -i ../appIndicator.patch
-}
+source=("${pkgname}-${pkgver}.tar.xz::https://github.com/Ubuntu/gnome-shell-extension-appindicator/archive/${pkgver}.tar.gz")
+sha512sums=('SKIP')
 
 package() {
   cd "gnome-shell-extension-appindicator-${pkgver}"

@@ -1,41 +1,21 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=gstreamer-vaapi
-pkgver=1.12.4
-pkgrel=8
+pkgver=1.14.1
+pkgrel=2
 pkgdesc="GStreamer Multimedia Framework VAAPI Plugin"
-url="https://gstreamer.freedesktop.org/"
+url="http://gstreamer.freedesktop.org/src/gstreamer-vaapi"
 arch=(x86_64)
 license=(LGPL)
 depends=(gst-plugins-base gst-plugins-bad libva)
-_commit=e540e0899421d580423f41a7bd65307923eb6a26  # tags/1.12.4^0
-source=("git+https://anongit.freedesktop.org/git/gstreamer/gstreamer-vaapi#commit=$_commit"
-        "gst-common::git+https://anongit.freedesktop.org/git/gstreamer/common")
-sha256sums=('SKIP'
-            'SKIP')
-
-pkgver() {
-  cd $pkgname
-  git describe --tags | sed 's/-/+/g'
-}
-
-prepare() {
-  cd $pkgname
-
-  git submodule init
-  git config --local submodule.common.url "$srcdir/gst-common"
-  git submodule update
-
-  NOCONFIGURE=1 ./autogen.sh
-}
+source=("$url/${pkgname}-${pkgver}.tar.xz")
+sha256sums=('585c3ddb0c39220de0a33e5d0ed6196a108b8407ec3538d7c64617713b4434e8')
 
 build() {
-  cd $pkgname
-
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
   ./configure --prefix=/usr  --sysconfdir=/etc --localstatedir=/var --libexecdir=/usr/lib \
     --with-package-name="GStreamer VAAPI SyphaxOS" \
-    --with-package-origin="https://anongit.freedesktop.org/git/gstreamer/gstreamer-vaapi" \
-    --disable-builtin-libvpx \
     --disable-gtk-doc --disable-gtk-doc-html --disable-static
 
   # https://bugzilla.gnome.org/show_bug.cgi?id=655517
@@ -44,8 +24,7 @@ build() {
   make
 }
 
-
 package() {
-  cd $pkgname
-  make DESTDIR="$pkgdir" install
+   cd "$srcdir/${pkgname}-${pkgver}"
+   make DESTDIR="$pkgdir" install
 }

@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=gnome-system-monitor
-pkgver=3.28.0
+pkgver=3.28.2
 pkgrel=2
 pkgdesc="The GNOME System Monitor package contains GNOME's replacement for gtop."
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="http://ftp.gnome.org/pub/gnome/sources/gnome-system-monitor/3.28"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('76e7dd342cd442df19a99be2a7a4dee85d902cbd36e673bf472d09056ee96ff3')
+sha256sums=('eb87863f2505ae4ad693b3b6fe79817b6a9d57f6ed7de98bb2dbf95610b29198')
 depends=('rootfs')
 
 build() {

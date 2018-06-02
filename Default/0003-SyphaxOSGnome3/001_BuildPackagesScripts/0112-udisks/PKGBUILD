@@ -2,7 +2,7 @@
 
 pkgname=udisks
 pkgver=2.1.8
-pkgrel=4
+pkgrel=5
 pkgdesc="The UDisks package provides a daemon, tools and libraries to access and manipulate disks and storage devices."
 arch=('x86_64')
 url="http://udisks.freedesktop.org/releases"

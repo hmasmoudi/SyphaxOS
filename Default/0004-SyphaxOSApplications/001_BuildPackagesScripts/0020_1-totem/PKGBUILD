@@ -2,7 +2,7 @@
 
 pkgname=totem
 pkgver=3.26.0
-pkgrel=14
+pkgrel=16
 pkgdesc="Videos is a video playback application designed to work with GNOME 3"
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/totem/3.26"

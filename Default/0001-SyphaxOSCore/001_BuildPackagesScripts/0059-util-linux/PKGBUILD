@@ -1,8 +1,8 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=util-linux
-pkgver=2.31.1
-pkgrel=2
+pkgver=2.32.0
+pkgrel=1
 pkgdesc="The Util-linux package contains miscellaneous utility programs. Among them are utilities for handling file systems, consoles, partitions, and messages."
 arch=('x86_64')
 url="https://www.kernel.org/pub/linux/utils/util-linux/v${pkgver:0:4}"
@@ -11,6 +11,12 @@ groups=('core')
 source=("$url/$pkgname-$pkgver.tar.xz")
 sha256sums=('SKIP')
 depends=('rootfs')
+
+prepare() {
+   cd "$srcdir/$pkgname-$pkgver"
+
+   NOCONFIGURE=1 ./autogen.sh
+}
 
 build() {
    cd "$srcdir/$pkgname-$pkgver"

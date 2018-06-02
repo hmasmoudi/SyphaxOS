@@ -1,8 +1,8 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=xf86-input-libinput
-pkgver=0.26.0
-pkgrel=4
+pkgver=0.27.0
+pkgrel=2
 pkgdesc="Generic input driver for the X.Org server based on libinput"
 arch=('x86_64')
 url="http://ftp.x.org/pub/individual/driver"

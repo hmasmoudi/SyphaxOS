@@ -1,8 +1,8 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=xz
-pkgver=5.2.3
-pkgrel=4
+pkgver=5.2.4
+pkgrel=2
 pkgdesc="The Xz package contains programs for compressing and decompressing files."
 arch=('x86_64')
 url="http://tukaani.org/xz"

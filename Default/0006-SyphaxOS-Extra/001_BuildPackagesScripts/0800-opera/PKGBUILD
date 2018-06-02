@@ -1,19 +1,19 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=opera
-pkgver=51.0.2830.26
-pkgrel=1
+pkgver=53.0.2907.68
+pkgrel=2
 pkgdesc="A fast and secure web browser"
 url="http://www.opera.com/"
+ffmpeg_url="http://security.ubuntu.com/ubuntu/pool/universe/c/chromium-browser/chromium-codecs-ffmpeg-extra_67.0.3396.62-0ubuntu1_amd64.deb"
 options=(!strip !zipman)
 license=('custom:opera')
 backup=("etc/$pkgname/default")
 arch=('x86_64')
-depends=('SyphaxOS-Desktop')
-source=(
-    "https://get.geo.opera.com/pub/${pkgname}/desktop/${pkgver}/linux/${pkgname}-stable_${pkgver}_amd64.deb"
-    "opera"
-    "default"
+depends=('rootfs')
+source=("https://get.geo.opera.com/pub/${pkgname}/desktop/${pkgver}/linux/${pkgname}-stable_${pkgver}_amd64.deb"
+        "opera"
+        "default"
 )
 sha512sums=('SKIP'
             '7e854e4c972785b8941f60117fbe4b88baeb8d7ca845ef2e10e8064043411da73821ba1ab0068df61e902f242a3ce355b51ffa9eab5397ff3ae3b5defd1be496'
@@ -23,7 +23,6 @@ prepare() {
     sed -e "s/%pkgname%/$pkgname/g" -i "$srcdir/opera"
     sed -e "s/%operabin%/$pkgname\/$pkgname/g" \
         -i "$srcdir/opera"
-
 }
 
 package() {
@@ -50,5 +49,10 @@ package() {
     install -Dm644 \
         "$pkgdir/usr/share/doc/${pkgname}-stable/copyright" \
         "$pkgdir/usr/share/licenses/$pkgname/copyright"
+        
+    #link to ffmpeg
+    curl -L ${ffmpeg_url} -o chromium-codecs-ffmpeg-extra.deb
+    ar p chromium-codecs-ffmpeg-extra.deb data.tar.xz | tar xJ ./usr/lib/chromium-browser/libffmpeg.so --strip 4
+    install -Dm644 libffmpeg.so "$pkgdir/usr/lib/opera/libffmpeg.so"
 }
 

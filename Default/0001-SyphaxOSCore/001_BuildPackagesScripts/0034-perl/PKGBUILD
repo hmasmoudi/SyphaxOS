@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=perl
-pkgver=5.26.1
-pkgrel=4
+pkgver=5.26.2
+pkgrel=2
 pkgdesc="The Perl package contains the Practical Extraction and Report Language."
 arch=('x86_64')
 url="https://www.cpan.org/src/5.0"
 license=('GPL')
 groups=('core')
 source=("$url/$pkgname-$pkgver.tar.xz")
-sha256sums=('fe8208133e73e47afc3251c08d2c21c5a60160165a8ab8b669c43a420e4ec680')
+sha256sums=('0f8c0fb1b0db4681adb75c3ba0dd77a0472b1b359b9e80efd79fc27b4352132c')
 depends=('rootfs')
 
 build() {

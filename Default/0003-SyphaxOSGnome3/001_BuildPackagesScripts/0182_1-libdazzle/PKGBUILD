@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=libdazzle
-pkgver=3.28.0
+pkgver=3.28.2
 pkgrel=2
 pkgdesc="A library to delight your users with fancy features"
 url="https://ftp.gnome.org/pub/gnome/sources/libdazzle/3.28"
@@ -9,7 +9,7 @@ arch=(x86_64)
 license=(LGPL)
 depends=(rootfs)
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('57aa6fe2ea534d9faa17fa105109ed5c38886d3812fe671d3ecc56fb4e3c037f')
+sha256sums=('56519e13bd14b7f3280cc404d7ada924b5195990a9e4bb4843392c2eb1b7ddcd')
 
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"

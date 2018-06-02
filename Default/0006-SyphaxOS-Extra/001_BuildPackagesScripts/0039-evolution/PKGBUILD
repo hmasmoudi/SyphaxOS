@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=evolution
-pkgver=3.28.0
+pkgver=3.28.2
 pkgrel=2
 pkgdesc="Evolution. Evolution is a personal information management application that provides integrated mail, calendaring and address book functionality."
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL')
 install=${pkgname}.install
 groups=('applications')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('ce0a7a4da646bdf7692dcece1b0facb1473368ae53a1d3ee45cc35498ce1de2c')
+sha256sums=('e444a22d0bdca348b76edb59c7d15935dfa46bf731bf840060dcbada6555a953')
 depends=('rootfs'
          'libpst'
          'hyphen'
@@ -24,7 +24,7 @@ depends=('rootfs'
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"
       
-   cmake -DCMAKE_INSTALL_PREFIX=/usr -DLIBEXEC_INSTALL_DIR=/usr/lib -DSYSCONF_INSTALL_DIR=/etc -DENABLE_SMIME=ON -DENABLE_GTK_SPELL=ON -DENABLE_PST_IMPORT=ON -DWITH_OPENLDAP=OFF -DENABLE_GTK_DOC=OFF -DENABLE_LIBCRYPTUI=OFF -DENABLE_TEXT_HIGHLIGHT=OFF -DENABLE_YTNEF=OFF .
+   cmake -DCMAKE_INSTALL_PREFIX=/usr -DLIBEXEC_INSTALL_DIR=/usr/lib -DSYSCONF_INSTALL_DIR=/etc -DENABLE_SMIME=ON -DENABLE_PST_IMPORT=ON -DWITH_OPENLDAP=OFF -DENABLE_GTK_DOC=OFF -DENABLE_LIBCRYPTUI=OFF -DENABLE_TEXT_HIGHLIGHT=OFF -DENABLE_YTNEF=OFF .
 
    make
 }

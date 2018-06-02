@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=bubblewrap
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=2
 pkgdesc="Unprivileged sandboxing tool"
 arch=('x86_64')
