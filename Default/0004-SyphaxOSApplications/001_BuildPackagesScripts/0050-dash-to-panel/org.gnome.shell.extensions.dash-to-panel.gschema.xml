@@ -203,7 +203,7 @@
       <description>The delay (ms) before hiding the panel</description>
     </key>
     <key type="b" name="show-show-apps-button">
-      <default>true</default>
+      <default>false</default>
       <summary>Show applications button</summary>
       <description>Show appplications button in the dash</description>
     </key>

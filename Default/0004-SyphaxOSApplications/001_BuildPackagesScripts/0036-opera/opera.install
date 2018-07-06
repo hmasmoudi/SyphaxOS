@@ -1,0 +1,28 @@
+available()
+{
+	command -v $1 >/dev/null 2>&1
+}
+
+integration() {
+	# Setup MIME types
+   update-mime-database /usr/share/mime >/dev/null
+
+	# Setup Icons
+	gtk-update-icon-cache -tq /usr/share/icons/hicolor
+	
+	# Setup Menus
+	update-desktop-database -q /usr/share/applications
+
+}
+
+post_install() {
+	integration
+}
+
+post_upgrade() {
+	integration
+}
+
+post_remove() {
+	integration
+}

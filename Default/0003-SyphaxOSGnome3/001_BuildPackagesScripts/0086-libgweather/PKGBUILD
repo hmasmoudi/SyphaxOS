@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=libgweather
-pkgver=3.28.1
+pkgver=3.28.2
 pkgrel=2
 pkgdesc="The libgweather package is a library used to access weather information from online services for numerous locations."
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://ftp.gnome.org/pub/gnome/sources/libgweather/3.28"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('157a8388532a751b36befff424b11ed913b2c43689b62cd2060f6847eb730be3')
+sha256sums=('081ce81653afc614e12641c97a8dd9577c524528c63772407ae2dbcde12bde75')
 depends=('rootfs')
 
 build() {

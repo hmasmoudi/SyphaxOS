@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell
 pkgver=3.28.2
-pkgrel=4
+pkgrel=6
 pkgdesc="The GNOME Shell is the desktop user interface of the GNOME Desktop environment."
 arch=('x86_64')
 url="https://ftp.gnome.org/pub/gnome/sources/gnome-shell/3.28"

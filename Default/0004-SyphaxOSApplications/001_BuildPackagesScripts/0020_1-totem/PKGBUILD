@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=totem
-pkgver=3.26.0
-pkgrel=16
+pkgver=3.26.1
+pkgrel=2
 pkgdesc="Videos is a video playback application designed to work with GNOME 3"
 arch=('x86_64')
 url="http://ftp.gnome.org/pub/gnome/sources/totem/3.26"
 license=('GPL')
 groups=('gnome')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('e32fb9a68097045e75c87ad1b8177f5c01aea2a13dcb3b2e71a0f9570fe9ee13')
+sha256sums=('298160c9ee8d34f1ac6586c69e0440e3586a75fd4b1719d79f908edb9c00c382')
 depends=('rootfs'
          'libvdpau-va-gl'
          'clutter-gst'

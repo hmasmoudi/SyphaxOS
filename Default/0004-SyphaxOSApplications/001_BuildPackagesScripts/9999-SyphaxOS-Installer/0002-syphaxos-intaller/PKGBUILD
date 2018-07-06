@@ -2,7 +2,7 @@
 
 pkgname=SyphaxOS-Installer
 pkgver=2018.06.18
-pkgrel=2
+pkgrel=4
 pkgdesc="SyphaxOS Installer Scripts"
 arch=('x86_64')
 install=${pkgname}.install

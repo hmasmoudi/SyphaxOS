@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=opera
-pkgver=53.0.2907.68
+pkgver=54.0.2952.51
 pkgrel=2
 pkgdesc="A fast and secure web browser"
 url="http://www.opera.com/"
@@ -10,6 +10,7 @@ options=(!strip !zipman)
 license=('custom:opera')
 backup=("etc/$pkgname/default")
 arch=('x86_64')
+install=$pkgname.install
 depends=('rootfs')
 source=("https://get.geo.opera.com/pub/${pkgname}/desktop/${pkgver}/linux/${pkgname}-stable_${pkgver}_amd64.deb"
         "opera"

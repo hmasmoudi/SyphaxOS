@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=evolution
-pkgver=3.28.2
+pkgver=3.28.3
 pkgrel=2
 pkgdesc="Evolution. Evolution is a personal information management application that provides integrated mail, calendaring and address book functionality."
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL')
 install=${pkgname}.install
 groups=('applications')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('e444a22d0bdca348b76edb59c7d15935dfa46bf731bf840060dcbada6555a953')
+sha256sums=('d374511b7866df399c30458b92ac59a24cd5517c0f3a541d72010bc1eca73be8')
 depends=('rootfs'
          'libpst'
          'hyphen'

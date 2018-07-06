@@ -1,15 +1,15 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=totem-pl-parser
-pkgver=3.26.0
-pkgrel=4
+pkgver=3.26.1
+pkgrel=2
 pkgdesc="The Totem PL Parser package contains a simple GObject-based library used to parse a host of playlist formats, as well as save those."
 arch=('x86_64')
 url="https://ftp.gnome.org/pub/gnome/sources/totem-pl-parser/3.26"
 license=('GPL')
 groups=('desktop')
 source=("$url/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('f153a53391e9b42fed5cb6ce62322a58e323fde6ec4a54d8ba4d376cf4c1fbcb')
+sha256sums=('6ae2c4b8acaf052af21b8db256b6314385de031ba721a2dbdb361e90d4b4b74c')
 depends=('rootfs')
 
 build() {

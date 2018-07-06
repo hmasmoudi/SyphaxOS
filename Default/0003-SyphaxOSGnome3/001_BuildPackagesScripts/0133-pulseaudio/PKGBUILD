@@ -2,7 +2,7 @@
 
 pkgname=pulseaudio
 pkgver=11.0
-pkgrel=1
+pkgrel=16
 pkgdesc="PulseAudio is a sound system for POSIX OSes, meaning that it is a proxy for sound applications."
 arch=('x86_64')
 url="http://freedesktop.org/software/pulseaudio/releases"
@@ -15,12 +15,16 @@ depends=('rootfs' 'sbc')
 prepare() {
    cd "$srcdir/${pkgname}-${pkgver}"
    
+   patch -Np1 -i ../../pulseaudio-11.1-glibc_2.27_fix-1.patch
+   
+   AUTOPOINT='intltoolize --automake --copy' autoreconf -fiv
+   
    sed -i "/seems to be moved/s/^/#/" build-aux/ltmain.sh
 }
 
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"
-   
+      
    ./configure --prefix=/usr        \
                --sysconfdir=/etc    \
                --localstatedir=/var \
@@ -28,6 +32,9 @@ build() {
                --disable-bluez4     \
                --disable-bluez5     \
                --disable-rpath
+   
+   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+
    make
 }
 

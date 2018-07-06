@@ -1,11 +1,11 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=vivaldi
-pkgver=1.15.1147.36
+pkgver=1.15.1147.47
 pkgrel=1
 pkgdesc='An advanced browser made with the power user in mind.'
 url="https://vivaldi.com"
-ffmpeg_url="http://security.ubuntu.com/ubuntu/pool/universe/c/chromium-browser/chromium-codecs-ffmpeg-extra_65.0.3325.181-0ubuntu0.17.10.1_amd64.deb"
+ffmpeg_url="http://security.ubuntu.com/ubuntu/pool/universe/c/chromium-browser/chromium-codecs-ffmpeg-extra_67.0.3396.62-0ubuntu1_amd64.deb"
 install=${pkgname}.install
 license=('custom')
 arch=('x86_64')

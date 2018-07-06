@@ -1,7 +1,7 @@
 # Maintainer: Hatem Masmoudi <hatem.masmoudi@gmail.com>
 
 pkgname=gnupg
-pkgver=2.2.7
+pkgver=2.2.8
 pkgrel=2
 pkgdesc="The GnuPG package is GNU's tool for secure communication and data storage."
 arch=('x86_64')
@@ -13,18 +13,18 @@ source=("$url/${pkgname}-${pkgver}.tar.bz2")
 md5sums=('SKIP')
 depends=('rootfs')
 
+prepare() {
+   cd "$srcdir/${pkgname}-${pkgver}"
+   
+   sed -i "s/GPGRT_LOGLVL_INFO/GPGRT_LOG_INFO/" g10/mainproc.c
+}
+
 build() {
    cd "$srcdir/${pkgname}-${pkgver}"
    
    ./configure --prefix=/usr \
-               --enable-symcryptrun   \
-               --docdir=/usr/share/doc/gnupg-${pkgver}
+               --enable-symcryptrun
    make
-   
-   makeinfo --html --no-split \
-            -o doc/gnupg_nochunks.html doc/gnupg.texi
-   makeinfo --plaintext       \
-            -o doc/gnupg.txt           doc/gnupg.texi
 }
 
 package() {
@@ -34,11 +34,5 @@ package() {
    
    ln -s gpg "${pkgdir}"/usr/bin/gpg2
    ln -s gpgv "${pkgdir}"/usr/bin/gpgv2
-
-   install -v -m755 -d ${pkgdir}/usr/share/doc/gnupg-${pkgver}/html
-   install -v -m644    doc/gnupg_nochunks.html \
-                       ${pkgdir}/usr/share/doc/gnupg-${pkgver}/html/gnupg.html
-   install -v -m644    doc/*.texi doc/gnupg.txt \
-                       ${pkgdir}/usr/share/doc/gnupg-${pkgver}
 }
 
